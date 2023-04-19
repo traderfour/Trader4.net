@@ -19,7 +19,7 @@
     "nuxt-icon": "^0.3.3"
   },
   "dependencies": {
-    "@esbuild/darwin-arm64": "^0.17.17",
+    "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
     "@nuxtjs/color-mode": "^3.2.0",
     "@werify/id-ts": "^1.2.0",
     "flowbite": "^1.6.5",
