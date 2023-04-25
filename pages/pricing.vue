@@ -2552,13 +2552,6 @@
   </section>
 </template>
 <script>
-import { onMounted } from "vue";
-import { initFlowbite } from "flowbite";
-// initialize components based on data attribute selectors
-onMounted(() => {
-  initFlowbite();
-});
-
 const activeBtn = ref();
 
 const changeInput = () => {
