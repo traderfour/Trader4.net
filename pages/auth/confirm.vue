@@ -18,6 +18,9 @@
               @submit="loginUser"
               :validation-schema="schema"
             >
+              <p v-if="responseMsg" :class="responseStatus">
+                {{ responseMsg }}
+              </p>
               <div>
                 <label
                   for="code"
@@ -56,14 +59,43 @@
 </template>
 
 <script setup lang="ts">
+// Imports
+import { IVerifyOTPPayload } from "@werify/id-ts/dist/modules/public/verifyOTP/interfaces/IVerifyOTP";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import * as Yup from "yup";
 
+// Variables
+const responseMsg = ref("");
+const responseHasError = ref(false);
+const router = useRouter();
 const code = ref("");
 
-const loginUser = () => {
-  console.log(code.value);
+const loginUser = async () => {
+  let OTPPayload = JSON.parse(
+    localStorage.getItem("OTPPayload") as string
+  ) as IVerifyOTPPayload;
+  OTPPayload.otp = code.value;
+
+  const { auth } = await useAuth();
+  auth
+    .verifyOTP(OTPPayload, "/v1/oauth/verify-otp")
+    .then(() => {
+      localStorage.removeItem("OTPPayload");
+      responseMsg.value = "You've Successfully Logged in";
+      responseHasError.value = false;
+    })
+    .catch(() => {
+      responseMsg.value = "Something went wrong Please Check your code";
+      responseHasError.value = true;
+    });
 };
+
+// Error and success message Class
+const responseStatus = computed(() => {
+  return `text-${responseHasError.value ? "red" : "green"}-600 dark:text-${
+    responseHasError.value ? "red" : "green"
+  }-400`;
+});
 
 const schema = Yup.object({
   code: Yup.number()
