@@ -1,5 +1,15 @@
+<script lang="ts" setup>
+import { Dropdown, ListGroup, ListGroupItem } from "flowbite-vue";
+</script>
 <template>
   <!-- Start block -->
+  <dropdown text="Click me">
+    <list-group>
+      <list-group-item>Item #1</list-group-item>
+      <list-group-item>Item #2</list-group-item>
+      <list-group-item>Item #3</list-group-item>
+    </list-group>
+  </dropdown>
   <section
     class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased rounded my-5 py-5"
   >
@@ -3807,6 +3817,3 @@
     </div>
   </div>
 </template>
-<script>
-
-</script>
