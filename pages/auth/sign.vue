@@ -98,6 +98,9 @@
               @submit="loginUser"
               :validation-schema="schema"
             >
+              <p v-if="responseMsg" :class="responseStatus">
+                {{ responseMsg }}
+              </p>
               <div>
                 <label
                   for="email"
@@ -112,6 +115,7 @@
                   placeholder="For Example, hi@trader4.net"
                   autofocus
                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  @focus="responseMsg = ''"
                 />
                 <ErrorMessage class="text-red-700 text-sm" name="email" />
               </div>
@@ -136,23 +140,44 @@
 </template>
 
 <script setup lang="ts">
+// Libs Import
 import { ErrorMessage, Field, Form } from "vee-validate";
 import * as Yup from "yup";
 
+// Variables
 const identifier = ref("");
+const responseMsg = ref("");
+const responseHasError = ref(false);
+const router = useRouter();
 
+// Login User and request OTP
 const loginUser = async () => {
+  // Request OTP
   const { auth } = await useAuth();
   auth
     .requestOTP(identifier.value, "/v1/oauth/request-otp")
     .then((res) => {
-      console.log(res);
+      if (res.succeed) {
+        responseMsg.value = "Please Verify Your Email";
+        responseHasError.value = false;
+        localStorage.setItem("OTPPayload", JSON.stringify(res.results));
+        router.push("/auth/confirm");
+      }
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
+      responseMsg.value = "Something went wrong";
+      responseHasError.value = true;
     });
 };
 
+// Error and success message Class
+const responseStatus = computed(() => {
+  return `text-${responseHasError.value ? "red" : "green"}-600 dark:text-${
+    responseHasError.value ? "red" : "green"
+  }-400`;
+});
+
+// Form Validation
 const schema = Yup.object({
   email: Yup.string()
     .email(
