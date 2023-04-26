@@ -13,11 +13,11 @@
               <label for="simple-search" class="sr-only">Search</label>
               <div class="relative w-full">
                 <div
-                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                  class="absolute inset-y-0 left-0 rtl:right-0 flex items-center pl-3 rtl:pr-3 pointer-events-none"
                 >
                   <svg
                     aria-hidden="true"
-                    class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    class="w-5 h-5 text-gray-500 dark:text-gray-400 rtl:rotate-90"
                     fill="currentColor"
                     viewbox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@
                 <input
                   type="text"
                   id="simple-search"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 rtl:pr-10 p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Search"
                   required=""
                 />
@@ -45,10 +45,10 @@
           >
             <button
               type="button"
-              class="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+              class="flex items-center justify-center rtl:ml-2 text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
             >
               <svg
-                class="h-3.5 w-3.5 mr-2"
+                class="h-3.5 w-3.5 me-2 "
                 fill="currentColor"
                 viewbox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,15 +62,15 @@
               </svg>
               Add product
             </button>
-            <div class="flex items-center space-x-3 w-full md:w-auto">
+            <div class="flex items-center space-x-3  w-full md:w-auto">
               <button
                 id="actionsDropdownButton"
                 data-dropdown-toggle="actionsDropdown"
-                class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                class="w-full md:w-auto flex items-center rtl:ml-2 justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                 type="button"
               >
                 <svg
-                  class="-ml-1 mr-1.5 w-5 h-5"
+                  class="me-1 mr-1.5 ltr:ml-1.5 w-5 h-5"
                   fill="currentColor"
                   viewbox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +117,7 @@
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
-                  class="h-4 w-4 mr-2 text-gray-400"
+                  class="h-4 w-4 mr-2  rtl:ml-2 text-gray-400"
                   viewbox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -129,7 +129,7 @@
                 </svg>
                 Filter
                 <svg
-                  class="-mr-1 ml-1.5 w-5 h-5"
+                  class="mr-1 rtl:ml-1 ml-1.5 rtl:mr-1.5 w-5 h-5"
                   fill="currentColor"
                   viewbox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +164,7 @@
                     />
                     <label
                       for="apple"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                       >Apple (56)</label
                     >
                   </li>
@@ -177,7 +177,7 @@
                     />
                     <label
                       for="fitbit"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                       >Microsoft (16)</label
                     >
                   </li>
@@ -190,7 +190,7 @@
                     />
                     <label
                       for="razor"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                       >Razor (49)</label
                     >
                   </li>
@@ -203,7 +203,7 @@
                     />
                     <label
                       for="nikon"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                       >Nikon (12)</label
                     >
                   </li>
@@ -216,7 +216,7 @@
                     />
                     <label
                       for="benq"
-                      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                      class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                       >BenQ (74)</label
                     >
                   </li>
@@ -895,11 +895,11 @@
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-s-lg  border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 <span class="sr-only">Previous</span>
                 <svg
-                  class="w-5 h-5"
+                  class="w-5 h-5 rtl:rotate-180 "
                   aria-hidden="true"
                   fill="currentColor"
                   viewbox="0 0 20 20"
@@ -952,11 +952,11 @@
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-e-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 <span class="sr-only">Next</span>
                 <svg
-                  class="w-5 h-5"
+                  class="w-5 h-5 rtl:rotate-180"
                   aria-hidden="true"
                   fill="currentColor"
                   viewbox="0 0 20 20"

@@ -1,4 +1,5 @@
 <template>
+
   <section class="bg-gray-50 dark:bg-gray-900">
     <div class="mx-auto">
       <div
@@ -2261,7 +2262,7 @@
               >
                 <span class="sr-only">Previous</span>
                 <svg
-                  class="w-5 h-5"
+                  class="w-5 h-5  "
                   aria-hidden="true"
                   fill="currentColor"
                   viewbox="0 0 20 20"

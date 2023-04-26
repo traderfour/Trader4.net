@@ -13,7 +13,7 @@
         </p>
         <div class="flex items-center">
           <span
-            class="text-base font-medium text-gray-900 dark:text-white mr-3"
+            class="text-base font-medium text-gray-900 dark:text-white me-3"
           >
             Monthly
           </span>
@@ -29,7 +29,7 @@
           </label>
 
           <span
-            class="text-base font-medium text-gray-900 dark:text-white ml-4"
+            class="text-base font-medium text-gray-900 dark:text-white m-4"
           >
             Yearly
           </span>
@@ -103,11 +103,11 @@
       >
         <a
           href="https://trader4.net/"
-          class="flex items-center mb-2 border-gray-200 md:pr-4 md:mr-4 md:border-r md:mb-0 dark:border-gray-600"
+          class="flex items-center mb-2 border-gray-200 md:pe-7 md:me-4  md:border-e md:mb-0 dark:border-gray-600"
         >
           <img
             src="https://flowbite.com/docs/images/logo.svg"
-            class="h-6 mr-2"
+            class="h-6 mr-2 rtl:ml-2"
             alt="Trader4 Logo"
           />
           <span

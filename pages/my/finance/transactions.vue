@@ -1,4 +1,5 @@
 <template>
+  
   <!-- Start block -->
   <section class="bg-gray-50 dark:bg-gray-900 antialiased rounded">
     <div class="mx-auto">
@@ -54,7 +55,7 @@
                 xmlns="http://www.w3.org/2000/svg"
                 viewbox="0 0 24 24"
                 fill="currentColor"
-                class="mr-2 w-4 h-4"
+                class="me-2 w-4 h-4"
                 aria-hidden="true"
               >
                 <path
@@ -75,11 +76,11 @@
               <label for="simple-search" class="sr-only">Search</label>
               <div class="relative w-full">
                 <div
-                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                  class="absolute inset-y-0 left-0 rtl:right-0 flex items-center ps-3 pointer-events-none"
                 >
                   <svg
                     aria-hidden="true"
-                    class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                    class="w-5 h-5 text-gray-500 dark:text-gray-400 rtl:rotate-90"
                     fill="currentColor"
                     viewbox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +97,7 @@
                   id="simple-search"
                   placeholder="Search for products"
                   required=""
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 />
               </div>
             </form>
@@ -108,10 +109,11 @@
               type="button"
               id="createProductButton"
               data-modal-toggle="createProductModal"
-              class="flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              class="flex items-center justify-center ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
+            
               <svg
-                class="h-3.5 w-3.5 mr-1.5 -ml-1"
+                class="h-3.5 w-3.5 me-1.5 -ms-1"
                 fill="currentColor"
                 viewbox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +136,7 @@
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
-                class="h-4 w-4 mr-1.5 -ml-1 text-gray-400"
+                class="h-4 w-4 me-1.5 -ms-1 text-gray-400"
                 viewbox="0 0 20 20"
                 fill="currentColor"
               >
@@ -146,7 +148,7 @@
               </svg>
               Filter options
               <svg
-                class="-mr-1 ml-1.5 w-5 h-5"
+                class="-me-1 ms-1.5 w-5 h-5"
                 fill="currentColor"
                 viewbox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +260,7 @@
                         />
                         <label
                           for="apple"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >Apple (56)</label
                         >
                       </li>
@@ -271,7 +273,7 @@
                         />
                         <label
                           for="microsoft"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >Microsoft (45)</label
                         >
                       </li>
@@ -285,7 +287,7 @@
                         />
                         <label
                           for="logitech"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >Logitech (97)</label
                         >
                       </li>
@@ -298,7 +300,7 @@
                         />
                         <label
                           for="sony"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >Sony (234)</label
                         >
                       </li>
@@ -312,7 +314,7 @@
                         />
                         <label
                           for="asus"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >Asus (97)</label
                         >
                       </li>
@@ -325,7 +327,7 @@
                         />
                         <label
                           for="dell"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >Dell (56)</label
                         >
                       </li>
@@ -338,7 +340,7 @@
                         />
                         <label
                           for="msi"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >MSI (97)</label
                         >
                       </li>
@@ -352,7 +354,7 @@
                         />
                         <label
                           for="canon"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >Canon (49)</label
                         >
                       </li>
@@ -365,7 +367,7 @@
                         />
                         <label
                           for="benq"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >BenQ (23)</label
                         >
                       </li>
@@ -378,7 +380,7 @@
                         />
                         <label
                           for="razor"
-                          class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                          class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                           >Razor (49)</label
                         >
                       </li>
@@ -426,7 +428,7 @@
                   >
                     <select
                       id="price-from"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="bg-gray-50 border rtl:ml-2 border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
                       <option disabled="" selected="">From</option>
                       <option>$500</option>
@@ -598,7 +600,7 @@
                         name="rating"
                         class="w-4 h-4 bg-gray-100 border-gray-300 text-blue-600 dark:ring-offset-gray-700 dark:bg-gray-700 dark:border-gray-600"
                       />
-                      <label for="five-stars" class="flex items-center ml-2">
+                      <label for="five-stars" class="flex items-center ms-2">
                         <svg
                           aria-hidden="true"
                           class="w-5 h-5 text-yellow-400"
@@ -669,7 +671,7 @@
                         name="rating"
                         class="w-4 h-4 bg-gray-100 border-gray-300 text-blue-600 dark:ring-offset-gray-700 dark:bg-gray-700 dark:border-gray-600"
                       />
-                      <label for="four-stars" class="flex items-center ml-2">
+                      <label for="four-stars" class="flex items-center ms-2">
                         <svg
                           aria-hidden="true"
                           class="w-5 h-5 text-yellow-400"
@@ -741,7 +743,7 @@
                         checked=""
                         class="w-4 h-4 bg-gray-100 border-gray-300 text-blue-600 dark:ring-offset-gray-700 dark:bg-gray-700 dark:border-gray-600"
                       />
-                      <label for="three-stars" class="flex items-center ml-2">
+                      <label for="three-stars" class="flex items-center ms-2">
                         <svg
                           aria-hidden="true"
                           class="w-5 h-5 text-yellow-400"
@@ -812,7 +814,7 @@
                         name="rating"
                         class="w-4 h-4 bg-gray-100 border-gray-300 text-blue-600 dark:ring-offset-gray-700 dark:bg-gray-700 dark:border-gray-600"
                       />
-                      <label for="two-stars" class="flex items-center ml-2">
+                      <label for="two-stars" class="flex items-center ms-2">
                         <svg
                           aria-hidden="true"
                           class="w-5 h-5 text-yellow-400"
@@ -883,7 +885,7 @@
                         name="rating"
                         class="w-4 h-4 bg-gray-100 border-gray-300 text-blue-600 dark:ring-offset-gray-700 dark:bg-gray-700 dark:border-gray-600"
                       />
-                      <label for="one-star" class="flex items-center ml-2">
+                      <label for="one-star" class="flex items-center ms-2">
                         <svg
                           aria-hidden="true"
                           class="w-5 h-5 text-yellow-400"
@@ -959,7 +961,7 @@
               >
                 Actions
                 <svg
-                  class="-mr-1 ml-1.5 w-5 h-5"
+                  class="-me-1 ms-1.5 w-5 h-5"
                   fill="currentColor"
                   viewbox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -2541,11 +2543,11 @@
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                class="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-s-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 <span class="sr-only">Previous</span>
                 <svg
-                  class="w-5 h-5"
+                  class="w-5 h-5 rtl:rotate-180"
                   aria-hidden="true"
                   fill="currentColor"
                   viewbox="0 0 20 20"
@@ -2598,11 +2600,11 @@
             <li>
               <a
                 href="#"
-                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-e-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
               >
                 <span class="sr-only">Next</span>
                 <svg
-                  class="w-5 h-5"
+                  class="w-5 h-5 rtl:rotate-180"
                   aria-hidden="true"
                   fill="currentColor"
                   viewbox="0 0 20 20"
@@ -2799,7 +2801,7 @@
             </div>
           </div>
           <div class="mb-4 space-y-4 sm:flex sm:space-y-0">
-            <div class="flex items-center mr-4">
+            <div class="flex items-center me-4">
               <input
                 id="inline-checkbox"
                 type="checkbox"
@@ -2809,11 +2811,11 @@
               />
               <label
                 for="inline-checkbox"
-                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >In-store only</label
               >
             </div>
-            <div class="flex items-center mr-4">
+            <div class="flex items-center me-4">
               <input
                 id="inline-2-checkbox"
                 type="checkbox"
@@ -2823,11 +2825,11 @@
               />
               <label
                 for="inline-2-checkbox"
-                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >Online selling only</label
               >
             </div>
-            <div class="flex items-center mr-4">
+            <div class="flex items-center me-4">
               <input
                 checked=""
                 id="inline-checked-checkbox"
@@ -2838,7 +2840,7 @@
               />
               <label
                 for="inline-checked-checkbox"
-                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >Both in-store and online</label
               >
             </div>
@@ -2886,7 +2888,7 @@
           <div class="items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
             <button
               type="submit"
-              class="w-full sm:w-auto justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="w-full sm:w-auto rtl:ml-2 justify-center text-white inline-flex bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Add product
             </button>
@@ -2894,7 +2896,7 @@
               class="w-full sm:w-auto text-white justify-center inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               <svg
-                class="mr-1 -ml-1 w-5 h-5"
+                class="me-1 -ms-1 w-5 h-5"
                 fill="currentColor"
                 viewbox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -2913,7 +2915,7 @@
               class="w-full justify-center sm:w-auto text-gray-500 inline-flex items-center bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
             >
               <svg
-                class="mr-1 -ml-1 w-5 h-5"
+                class="me-1 -ms-1 w-5 h-5"
                 fill="currentColor"
                 viewbox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
