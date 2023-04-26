@@ -155,7 +155,7 @@ const loadingDisabled = ref(false);
 // Login User and request OTP
 const loginUser = async () => {
   loadingDisabled.value = true;
-  // Request OTP
+  // Request OTP WERIFY
   const { auth } = await useAuth();
   auth
     .requestOTP(identifier.value, "/v1/oauth/request-otp")

@@ -76,11 +76,13 @@ const loadingDisabled = ref(false);
 const loginUser = async () => {
   loadingDisabled.value = true;
 
+  // Otp payload
   let OTPPayload = JSON.parse(
     localStorage.getItem("OTPPayload") as string
   ) as IVerifyOTPPayload;
   OTPPayload.otp = code.value;
 
+  // Verify OTP WERIFY
   const { auth, user } = await useAuth();
   auth
     .verifyOTP(OTPPayload, "/v1/oauth/verify-otp")
