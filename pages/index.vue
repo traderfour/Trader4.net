@@ -239,12 +239,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-const tags = ref([]);
+const tags = ref<Category[]>();
 
-const { data, error } = await useApi("/v1/categories");
+const { data }: { data: any } = await useApi("/v1/categories");
 // const { data, error } = await useFetch(`${baseUrl}/v1/categories`);
-tags.value = data.results;
-
+tags.value = data.results as Category[];
 const tagBox = ref<Ref | null>(null);
 
 const { locale } = useI18n();

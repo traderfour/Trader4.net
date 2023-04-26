@@ -18,10 +18,10 @@
         >
         <div class="relative">
           <div
-            class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
+            class="flex absolute inset-y-0 left-0 rtl:right-0  items-center ps-3 pointer-events-none"
           >
             <svg
-              class="w-6 h-6 text-gray-500 dark:text-gray-400"
+              class="w-6 h-6  text-gray-500 dark:text-gray-400"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@
           <input
             type="text"
             id="email-adress-icon"
-            class="block p-4 pl-12 w-full text-gray-900 bg-gray-50 rounded outline-none border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="block p-4 ps-12 w-full text-gray-900 bg-gray-50 rounded outline-none border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Type keywords to find answers"
           />
         </div>

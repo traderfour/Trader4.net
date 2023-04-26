@@ -18,6 +18,9 @@
               @submit="loginUser"
               :validation-schema="schema"
             >
+              <p v-if="responseMsg" :class="responseStatus">
+                {{ responseMsg }}
+              </p>
               <div>
                 <label
                   for="code"
@@ -36,6 +39,7 @@
                 <ErrorMessage class="text-red-700 text-sm" name="code" />
               </div>
               <button
+                :disabled="loadingDisabled"
                 type="submit"
                 class="w-full disabled:bg-gray-400 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
@@ -56,14 +60,58 @@
 </template>
 
 <script setup lang="ts">
+// Imports
+import { IVerifyOTPPayload } from "@werify/id-ts/dist/modules/public/verifyOTP/interfaces/IVerifyOTP";
 import { ErrorMessage, Field, Form } from "vee-validate";
 import * as Yup from "yup";
 
+// Variables
+const responseMsg = ref("");
+const responseHasError = ref(false);
+const router = useRouter();
 const code = ref("");
+const loadingDisabled = ref(false);
 
-const loginUser = () => {
-  console.log(code.value);
+// Login User
+const loginUser = async () => {
+  loadingDisabled.value = true;
+
+  // Otp payload
+  let OTPPayload = JSON.parse(
+    localStorage.getItem("OTPPayload") as string
+  ) as IVerifyOTPPayload;
+  OTPPayload.otp = code.value;
+
+  // Verify OTP WERIFY
+  const { auth, user } = await useAuth();
+  auth
+    .verifyOTP(OTPPayload, "/v1/oauth/verify-otp")
+    .then((res) => {
+      if (res.succeed) {
+        localStorage.removeItem("OTPPayload");
+        localStorage.setItem(
+          "token",
+          `${res.results.token_type} ${res.results.access_token}`
+        );
+        localStorage.setItem("user", JSON.stringify(res.results));
+        user.value = res.results as any;
+        loadingDisabled.value = false;
+        location.replace("/");
+      }
+    })
+    .catch(() => {
+      responseMsg.value = "Something went wrong Please Check your code";
+      responseHasError.value = true;
+      loadingDisabled.value = false;
+    });
 };
+
+// Error and success message Class
+const responseStatus = computed(() => {
+  return `text-${responseHasError.value ? "red" : "green"}-600 dark:text-${
+    responseHasError.value ? "red" : "green"
+  }-400`;
+});
 
 const schema = Yup.object({
   code: Yup.number()
