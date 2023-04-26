@@ -88,6 +88,7 @@ const loginUser = async () => {
           "token",
           `${res.results.token_type} ${res.results.access_token}`
         );
+        localStorage.setItem("user", JSON.stringify(res.results));
         user.value = res.results as any;
         location.replace("/");
       }
