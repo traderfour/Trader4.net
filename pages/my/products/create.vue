@@ -4,7 +4,13 @@
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add a new event
       </h2>
-      <form action="#">
+      <VForm
+        id="products_create"
+        class="form"
+        novalidate
+        @submit="submitForm()"
+        :validation-schema="createForm"
+      >
         <div
           class="gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 sm:mb-2"
         >
@@ -15,79 +21,52 @@
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >Title</label
               >
-              <input
+              <Field
                 type="text"
-                name="title"
-                id="title"
+                name="first_name"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Add title here"
-                required
+                placeholder="Title"
+                v-model="model.title"
               />
-            </div>
-            <div>
-              <label
-                for="date_start"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Select Date</label
-              >
-              <div
-                date-rangepicker
-                class="items-center space-y-4 md:flex md:space-y-0"
-              >
-                <div class="relative w-full">
-                  <div
-                    class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                  <input
-                    id="date_start"
-                    name="start"
-                    type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
-                    placeholder="Select date start"
-                  />
-                </div>
-                <span class="hidden text-gray-500 md:mx-4 md:flex">to</span>
-                <div class="relative w-full">
-                  <div
-                    class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                  <input
-                    id="date_end"
-                    name="end"
-                    type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 datepicker-input"
-                    placeholder="Select date end"
-                  />
+              <div class="fv-plugins-message-container">
+                <div class="fv-help-block">
+                  <ErrorMessage name="title" />
                 </div>
               </div>
+            </div>
+            <div class="flex items-center justify-center w-full">
+              <label
+                for="dropzone-file"
+                class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+              >
+                <div
+                  class="flex flex-col items-center justify-center pt-5 pb-6"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-10 h-10 mb-3 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                    ></path>
+                  </svg>
+                  <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                    <span class="font-semibold">Click to upload</span> or drag
+                    and drop
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    SVG, PNG, JPG or GIF (MAX. 800x400px)
+                  </p>
+                </div>
+                <input id="dropzone-file" type="file" class="hidden" />
+              </label>
             </div>
             <div class="flex items-center space-x-3">
               <div class="flex items-center w-20">
@@ -591,11 +570,59 @@
         >
           Add new event
         </button>
-      </form>
+      </VForm>
     </div>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ErrorMessage, Field, Form as VForm } from "vee-validate";
+import * as Yup from "yup";
+interface Product {
+  title: string;
+  slogan: string;
+  logo?: null | string;
+  cover?: null | string;
+  type: number;
+  introduction: string;
+  description: string;
+  categories: string[];
+  tags: string[];
+  platforms: string[];
+}
+
+const model = ref<Product>({} as Product);
+// Validations Account Details
+const createForm = Yup.object().shape({
+  title: Yup.string().max(128).label("Title"),
+  slogan: Yup.string().max(256).label("Slogan"),
+
+  logo: Yup.mixed()
+    .test("fileSize", "The file is too large", (value: any) => {
+      if (!value.length) return true; // attachment is optional
+      return value[0].size <= 2000000;
+    })
+    .nonNullable()
+    .label("Logo"),
+
+  cover: Yup.mixed()
+    .test("fileSize", "The file is too large", (value: any) => {
+      if (!value.length) return true; // attachment is optional
+      return value[0].size <= 2000000;
+    })
+    .nonNullable()
+    .label("Cover"),
+  type: Yup.number().required().label("Type"),
+  introduction: Yup.string().max(512).label("Introduction"),
+  description: Yup.string().max(1024).label("Description"),
+  categories: Yup.array().of(Yup.string()).label("Categories"),
+  tags: Yup.array().of(Yup.string()).label("Tags"),
+  platforms: Yup.array().of(Yup.string()).label("Platforms"),
+});
+
+const submitForm = async () => {
+  console.log("submitForm", model.value);
+};
+</script>
 
 <style scoped></style>
