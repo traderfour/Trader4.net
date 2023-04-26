@@ -39,6 +39,7 @@
                 <ErrorMessage class="text-red-700 text-sm" name="code" />
               </div>
               <button
+                :disabled="loadingDisabled"
                 type="submit"
                 class="w-full disabled:bg-gray-400 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
@@ -69,10 +70,12 @@ const responseMsg = ref("");
 const responseHasError = ref(false);
 const router = useRouter();
 const code = ref("");
-const userData = ref();
+const loadingDisabled = ref(false);
 
 // Login User
 const loginUser = async () => {
+  loadingDisabled.value = true;
+
   let OTPPayload = JSON.parse(
     localStorage.getItem("OTPPayload") as string
   ) as IVerifyOTPPayload;
@@ -90,12 +93,14 @@ const loginUser = async () => {
         );
         localStorage.setItem("user", JSON.stringify(res.results));
         user.value = res.results as any;
+        loadingDisabled.value = false;
         location.replace("/");
       }
     })
     .catch(() => {
       responseMsg.value = "Something went wrong Please Check your code";
       responseHasError.value = true;
+      loadingDisabled.value = false;
     });
 };
 

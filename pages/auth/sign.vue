@@ -121,6 +121,7 @@
               </div>
               <button
                 type="submit"
+                :disabled="loadingDisabled"
                 class="w-full disabled:bg-gray-400 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Get Verify Code
@@ -149,9 +150,11 @@ const identifier = ref("");
 const responseMsg = ref("");
 const responseHasError = ref(false);
 const router = useRouter();
+const loadingDisabled = ref(false);
 
 // Login User and request OTP
 const loginUser = async () => {
+  loadingDisabled.value = true;
   // Request OTP
   const { auth } = await useAuth();
   auth
@@ -161,12 +164,14 @@ const loginUser = async () => {
         responseMsg.value = "Please Verify Your Email";
         responseHasError.value = false;
         localStorage.setItem("OTPPayload", JSON.stringify(res.results));
+        loadingDisabled.value = false;
         router.push("/auth/confirm");
       }
     })
     .catch(() => {
       responseMsg.value = "Something went wrong";
       responseHasError.value = true;
+      loadingDisabled.value = false;
     });
 };
 
