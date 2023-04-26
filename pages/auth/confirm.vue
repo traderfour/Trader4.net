@@ -79,10 +79,16 @@ const loginUser = async () => {
   const { auth } = await useAuth();
   auth
     .verifyOTP(OTPPayload, "/v1/oauth/verify-otp")
-    .then(() => {
-      localStorage.removeItem("OTPPayload");
-      responseMsg.value = "You've Successfully Logged in";
-      responseHasError.value = false;
+    .then((res) => {
+      if (res.succeed) {
+        localStorage.removeItem("OTPPayload");
+        localStorage.setItem(
+          "token",
+          `${res.results.token_type} ${res.results.access_token}`
+        );
+        localStorage.setItem("user", JSON.stringify(res.results));
+        location.replace("/");
+      }
     })
     .catch(() => {
       responseMsg.value = "Something went wrong Please Check your code";
