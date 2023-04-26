@@ -426,6 +426,13 @@ const form = Yup.object().shape({
   tags: Yup.array().of(Yup.string()).required().label("Tags"),
   platforms: Yup.array().of(Yup.string()).required().label("Platforms"),
 });
+
+const categories = ref<Category[]>();
+
+onMounted(async () => {
+  const { data }: { data: any } = await useApi("/v1/categories");
+  categories.value = data.results as Category[];
+});
 const onFileChange = (e: any) => {
   var files = e.target.files || e.dataTransfer.files;
   if (!files.length) return;
