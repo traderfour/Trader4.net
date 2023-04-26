@@ -69,14 +69,16 @@ const responseMsg = ref("");
 const responseHasError = ref(false);
 const router = useRouter();
 const code = ref("");
+const userData = ref();
 
+// Login User
 const loginUser = async () => {
   let OTPPayload = JSON.parse(
     localStorage.getItem("OTPPayload") as string
   ) as IVerifyOTPPayload;
   OTPPayload.otp = code.value;
 
-  const { auth } = await useAuth();
+  const { auth, user } = await useAuth();
   auth
     .verifyOTP(OTPPayload, "/v1/oauth/verify-otp")
     .then((res) => {
@@ -86,7 +88,7 @@ const loginUser = async () => {
           "token",
           `${res.results.token_type} ${res.results.access_token}`
         );
-        localStorage.setItem("user", JSON.stringify(res.results));
+        user.value = res.results as any;
         location.replace("/");
       }
     })
