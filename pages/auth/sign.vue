@@ -98,6 +98,9 @@
               @submit="loginUser"
               :validation-schema="schema"
             >
+              <p v-if="responseMsg" :class="responseStatus">
+                {{ responseMsg }}
+              </p>
               <div>
                 <label
                   for="email"
@@ -112,11 +115,13 @@
                   placeholder="For Example, hi@trader4.net"
                   autofocus
                   class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  @focus="responseMsg = ''"
                 />
                 <ErrorMessage class="text-red-700 text-sm" name="email" />
               </div>
               <button
                 type="submit"
+                :disabled="loadingDisabled"
                 class="w-full disabled:bg-gray-400 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Get Verify Code
@@ -136,23 +141,48 @@
 </template>
 
 <script setup lang="ts">
+// Libs Import
 import { ErrorMessage, Field, Form } from "vee-validate";
 import * as Yup from "yup";
 
+// Variables
 const identifier = ref("");
+const responseMsg = ref("");
+const responseHasError = ref(false);
+const router = useRouter();
+const loadingDisabled = ref(false);
 
+// Login User and request OTP
 const loginUser = async () => {
+  loadingDisabled.value = true;
+  // Request OTP WERIFY
   const { auth } = await useAuth();
   auth
     .requestOTP(identifier.value, "/v1/oauth/request-otp")
     .then((res) => {
-      console.log(res);
+      if (res.succeed) {
+        responseMsg.value = "Please Verify Your Email";
+        responseHasError.value = false;
+        localStorage.setItem("OTPPayload", JSON.stringify(res.results));
+        loadingDisabled.value = false;
+        router.push("/auth/confirm");
+      }
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
+      responseMsg.value = "Something went wrong";
+      responseHasError.value = true;
+      loadingDisabled.value = false;
     });
 };
 
+// Error and success message Class
+const responseStatus = computed(() => {
+  return `text-${responseHasError.value ? "red" : "green"}-600 dark:text-${
+    responseHasError.value ? "red" : "green"
+  }-400`;
+});
+
+// Form Validation
 const schema = Yup.object({
   email: Yup.string()
     .email(

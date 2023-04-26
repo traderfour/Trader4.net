@@ -21,9 +21,7 @@
             <input
               v-model="activeBtn"
               type="checkbox"
-              value=""
               class="sr-only peer outline-none"
-              @input="changeInput"
             />
             <div
               class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
@@ -40,215 +38,38 @@
       <div
         class="mb-4 lg:mb-8 space-y-8 lg:grid lg:grid-cols-3 md:gap-12 xl:gap-16 lg:space-y-0"
       >
-        <div class="flex flex-col max-w-lg text-gray-900 dark:text-gray-400">
+        <div
+          v-for="(pricingCardItem, pricingCardIndex) in pricingItems"
+          :key="pricingCardIndex"
+          class="flex flex-col max-w-lg text-gray-900 dark:text-gray-400"
+        >
           <h3 class="font-semibold text-gray-500 uppercase dark:text-gray-400">
-            Pro
+            {{ pricingCardItem.type }}
           </h3>
           <div class="flex items-baseline my-4">
             <span
               class="mr-2 text-5xl font-extrabold text-gray-900 dark:text-white"
-              >$99
+            >
+              {{
+                pricingCardItem.currency +
+                (activeBtn === true
+                  ? pricingCardItem.price * 10
+                  : pricingCardItem.price)
+              }}
             </span>
-            <span class="text-gray-500 dark:text-gray-400">/month</span>
-          </div>
-          <p class="font-light text-gray-500 sm:text-lg dark:text-gray-300">
-            Best option for personal use and for your next generation of
-            trading.
-          </p>
-          <ul role="list" class="my-8 space-y-4 text-left">
-            <li class="flex items-center space-x-3">
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Supply Demand, Algo Portfolio, and Bridge</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Risk Management of Financial Engineering</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>No setup, monthly, or hidden fees</span>
-            </li>
-          </ul>
-          <a
-            href="#"
-            class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded text-sm px-5 py-2.5 text-center dark:focus:ring-blue-900"
-            >Get started</a
-          >
-        </div>
-        <!-- Pricing Card -->
-        <div class="flex flex-col max-w-lg text-gray-900 dark:text-gray-400">
-          <h3 class="font-semibold text-gray-500 uppercase dark:text-gray-400">
-            Advance
-          </h3>
-          <div class="flex items-baseline my-4">
-            <span
-              class="mr-2 text-5xl font-extrabold text-gray-900 dark:text-white"
-              >$999</span
+            <span class="text-gray-500 dark:text-gray-400"
+              >/{{ activeBtn === true ? "Yearly" : "Monthly" }}</span
             >
-            <span class="text-gray-500 dark:text-gray-400">/month</span>
           </div>
           <p class="font-light text-gray-500 sm:text-lg dark:text-gray-300">
-            Best option for advance users, AI lovers, to start as Algo Trader.
+            {{ pricingCardItem.subtitle }}
           </p>
-          <!-- List -->
           <ul role="list" class="my-8 space-y-4 text-left">
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Support from Trading Framework</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Data & Support Priority</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Rich Feature Access to Algo Trading</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Cloud StrategyQuant X Servers</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Money Management & Trading Plan</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>AI Assitant & AI Coaching</span>
-            </li>
-          </ul>
-          <a
-            href="#"
-            class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded text-sm px-5 py-2.5 text-center dark:focus:ring-blue-900"
-            >Get started</a
-          >
-        </div>
-        <!-- Pricing Card -->
-        <div class="flex flex-col max-w-lg text-gray-900 dark:text-gray-400">
-          <h3 class="font-semibold text-gray-500 uppercase dark:text-gray-400">
-            Corporate
-          </h3>
-          <div class="flex items-baseline my-4">
-            <span
-              class="mr-2 text-5xl font-extrabold text-gray-900 dark:text-white"
-              >$3999</span
+            <li
+              v-for="(featureItem, featureIndex) in pricingCardItem.features"
+              :key="featureIndex"
+              class="flex items-center space-x-3"
             >
-            <span class="text-gray-500 dark:text-gray-400">/month</span>
-          </div>
-          <p class="font-light text-gray-500 sm:text-lg dark:text-gray-300">
-            Best option for companies to get trading as a service and/or
-            infrastructure.
-          </p>
-          <!-- List -->
-          <ul role="list" class="my-8 space-y-4 text-left">
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
               <svg
                 class="flex-shrink-0 w-5 h-5 text-green-500"
                 fill="currentColor"
@@ -261,174 +82,15 @@
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span>Trend Friend, Tchimoku, and Dashboard X</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Cash Flows and Portfolio Management</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>ML Processing & FaaS</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span> >0.9 Fitness Guarantee in Algo Trading</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Full Report + AI Recommendations</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Up to 100 Algorithms/Basket</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Under One Hour Support</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Custom Cluster for Services</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>1,000,000 Daily APIs Credit</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Auto Live Stream and Social Integrations</span>
-            </li>
-            <li class="flex items-center space-x-3">
-              <!-- Icon -->
-              <svg
-                class="flex-shrink-0 w-5 h-5 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-              <span>Custom Cloud Images</span>
+              <span>{{ featureItem }}</span>
             </li>
           </ul>
-          <a
-            href="#"
+          <NuxtLink
+            :to="pricingCardItem.link"
             class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded text-sm px-5 py-2.5 text-center dark:focus:ring-blue-900"
-            >Get started</a
           >
+            Get started
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -2551,17 +2213,68 @@
     </div>
   </section>
 </template>
-<script>
-import { onMounted } from "vue";
+<script lang="ts" setup>
 import { initFlowbite } from "flowbite";
 // initialize components based on data attribute selectors
 onMounted(() => {
   initFlowbite();
 });
 
-const activeBtn = ref();
+const activeBtn = ref(false);
 
-const changeInput = () => {
-  console.log(activeBtn.value);
-};
+const pricingItems = ref<PricingCard[]>([
+  {
+    type: "Pro",
+    price: 99,
+    currency: "$",
+    period: "month",
+    link: "/",
+    subtitle:
+      "Best option for personal use and for your next generation of trading.",
+    features: [
+      "Supply Demand, Algo Portfolio, and Bridge",
+      "Risk Management of Financial Engineering",
+      "No setup, monthly, or hidden fees",
+    ],
+  },
+  {
+    type: "ADVANCE",
+    price: 999,
+    currency: "$",
+    period: "month",
+    link: "/",
+    subtitle:
+      "Best option for advance users, AI lovers, to start as Algo Trader.",
+    features: [
+      "Support from Trading Framework",
+      "Data & Support Priority",
+      "Rich Feature Access to Algo Trading",
+      "Cloud StrategyQuant X Servers",
+      "Money Management & Trading Plan",
+      "AI Assitant & AI Coaching",
+    ],
+  },
+  {
+    type: "CORPORATE",
+    price: 3999,
+    currency: "$",
+    period: "month",
+    link: "/",
+    subtitle:
+      "Best option for companies to get trading as a service and/or infrastructure.",
+    features: [
+      "Trend Friend, Tchimoku, and Dashboard X",
+      "Cash Flows and Portfolio Management",
+      "ML Processing & FaaS",
+      ">0.9 Fitness Guarantee in Algo Trading",
+      "Full Report + AI Recommendations",
+      "Up to 100 Algorithms/Basket",
+      "Under One Hour Support",
+      "Custom Cluster for Services",
+      "1,000,000 Daily APIs Credit",
+      "Auto Live Stream and Social Integrations",
+      "Custom Cloud Images",
+    ],
+  },
+]);
 </script>
