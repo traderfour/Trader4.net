@@ -342,22 +342,10 @@
 <script setup lang="ts">
 import { ErrorMessage, Field, Form as VForm } from "vee-validate";
 import * as Yup from "yup";
-interface Product {
-  title: string;
-  slogan: string;
-  logo?: null | string;
-  cover?: null | string;
-  type: number;
-  introduction: string;
-  description: string;
-  categories: string[];
-  tags: string[];
-  platforms: string[];
-}
-interface Types {
-  name: string;
-  value: number;
-}
+
+const { fetchCategories, categories, fetchMarkets, markets,fetchPlatforms } =
+  useProductStore();
+
 const types = ref<Types[]>([
   {
     name: "BOT",
@@ -427,12 +415,14 @@ const form = Yup.object().shape({
   platforms: Yup.array().of(Yup.string()).required().label("Platforms"),
 });
 
-const categories = ref<Category[]>();
-
-onMounted(async () => {
-  const { data }: { data: any } = await useApi("/v1/categories");
-  categories.value = data.results as Category[];
+onMounted(() => {
+  nextTick(() => {
+    fetchCategories();
+    fetchMarkets();
+    fetchPlatforms();
+  });
 });
+
 const onFileChange = (e: any) => {
   var files = e.target.files || e.dataTransfer.files;
   if (!files.length) return;

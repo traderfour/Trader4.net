@@ -239,12 +239,12 @@
   </div>
 </template>
 <script lang="ts" setup>
-const tags = ref<Category[]>();
+const tags = ref<ICategory[]>();
 
 const { data }: { data: any } = await useApi("/v1/categories");
 
 if (data) {
-  tags.value = data.results as Category[];
+  tags.value = data.results as ICategory[];
 }
 const tagBox = ref<Ref | null>(null);
 
