@@ -242,8 +242,10 @@
 const tags = ref<Category[]>();
 
 const { data }: { data: any } = await useApi("/v1/categories");
-// const { data, error } = await useFetch(`${baseUrl}/v1/categories`);
-tags.value = data.results as Category[];
+
+if (data) {
+  tags.value = data.results as Category[];
+}
 const tagBox = ref<Ref | null>(null);
 
 const { locale } = useI18n();

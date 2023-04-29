@@ -158,7 +158,7 @@ const loginUser = async () => {
   // Request OTP WERIFY
   const { auth } = await useAuth();
   auth
-    .requestOTP(identifier.value, "/v1/oauth/request-otp")
+    .requestOTP(identifier.value, "/v1/account/request-otp")
     .then((res) => {
       if (res.succeed) {
         responseMsg.value = "Please Verify Your Email";
