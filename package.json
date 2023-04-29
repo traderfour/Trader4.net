@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run build-submodules && nuxt build",
     "dev": "nuxt dev",
+    "dev:next": "nuxt dev --dotenv .env.staging",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
