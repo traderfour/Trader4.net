@@ -85,7 +85,7 @@ const loginUser = async () => {
   // Verify OTP WERIFY
   const { auth, user } = await useAuth();
   auth
-    .verifyOTP(OTPPayload, "/v1/oauth/verify-otp")
+    .verifyOTP(OTPPayload, "/v1/account/verify-otp")
     .then((res) => {
       if (res.succeed) {
         localStorage.removeItem("OTPPayload");
