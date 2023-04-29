@@ -195,4 +195,15 @@ const schema = Yup.object({
       "Email address should look like hi@trader4.net, not sure?, Contact Us."
     ),
 });
+
+// Get QR
+const { auth } = await useAuth();
+auth
+  .getQRSession("/v1/account/qr")
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 </script>
