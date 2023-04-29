@@ -129,11 +129,8 @@
             </Form>
           </div>
         </div>
-        <div class="lg:col-span-6 lg:flex hidden justify-end">
-          <img
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/authentication/illustration.svg"
-            alt="illustration"
-          />
+        <div class="lg:col-span-6 lg:flex hidden justify-center">
+          <img :src="qrSvgSRC" alt="QR" />
         </div>
       </div>
     </section>
@@ -151,6 +148,7 @@ const responseMsg = ref("");
 const responseHasError = ref(false);
 const router = useRouter();
 const loadingDisabled = ref(false);
+const qrSvgSRC = ref("");
 
 // Login User and request OTP
 const loginUser = async () => {
@@ -196,12 +194,12 @@ const schema = Yup.object({
     ),
 });
 
-// Get QR
+// Get QR Session
 const { auth } = await useAuth();
 auth
   .getQRSession("/v1/account/qr")
   .then((res) => {
-    console.log(res);
+    qrSvgSRC.value = res.results.url;
   })
   .catch((err) => {
     console.log(err);
