@@ -5,7 +5,7 @@
         Add a new event
       </h2>
       <VForm
-        id="products_create"
+        id="trading_account_create"
         class="form"
         novalidate
         @submit="submitForm()"
@@ -91,92 +91,6 @@
                 <ErrorMessage name="description" />
               </div>
             </div>
-
-            <div class="flex flex-row gap-4">
-              <div class="flex basis-1/2 items-center justify-center">
-                <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                >
-                  Logo
-                  <div
-                    class="flex flex-col items-center justify-center pt-5 pb-6"
-                    v-show="!model.logo"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-10 h-10 mb-3 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                      ></path>
-                    </svg>
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 5 MB)
-                    </p>
-                  </div>
-                  <input
-                    id="dropzone-file"
-                    type="file"
-                    class="hidden"
-                    @change="onFileChange($event)"
-                  />
-                </label>
-              </div>
-              <div class="flex basis-1/2 items-center justify-center">
-                <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                >
-                  Cover
-                  <div
-                    class="flex flex-col items-center justify-center pt-5 pb-6"
-                    v-show="!model.logo"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="w-10 h-10 mb-3 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                      ></path>
-                    </svg>
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 5 MB)
-                    </p>
-                  </div>
-                  <input
-                    id="dropzone-file"
-                    type="file"
-                    class="hidden"
-                    @change="onFileChange($event)"
-                  />
-                </label>
-              </div>
-            </div>
-            <div class="flex flex-row gap-4"></div>
           </div>
           <div class="mb-4 space-y-4">
             <div>
@@ -343,128 +257,56 @@
 import { ErrorMessage, Field, Form as VForm } from "vee-validate";
 import * as Yup from "yup";
 interface TradingAcoounts {
-  name: string;
   broker_id: string;
   platform_id: string;
+  server_id: string;
   identity: string;
   secret?: string;
   read_only_secret?: string;
-  server: string;
-  link: string;
-  public: boolean;
 }
-const { fetchCategories, categories, fetchMarkets, markets, fetchPlatforms } =
-  useProductStore();
 
-const types = ref<Types[]>([
-  {
-    name: "BOT",
-    value: 13000,
-  },
-  {
-    name: "INDICATOR",
-    value: 13001,
-  },
-  {
-    name: "SYSTEM",
-    value: 13002,
-  },
-  {
-    name: "SCRIPT",
-    value: 13003,
-  },
-  {
-    name: "TEMPLATE",
-    value: 13004,
-  },
-  {
-    name: "ALGORITHM",
-    value: 13005,
-  },
-  {
-    name: "ARTIFICIAL_INTELLIGENCE",
-    value: 13006,
-  },
-  {
-    name: "PORTFOLIO",
-    value: 13007,
-  },
-  {
-    name: "AI_LIVE",
-    value: 13008,
-  },
-  {
-    name: "FUNDED_ACCOUNT",
-    value: 13009,
-  },
-  {
-    name: "TRADING_SIGNAL",
-    value: 13010,
-  },
-  {
-    name: "TRADING_STRATEGY",
-    value: 13011,
-  },
-  {
-    name: "COURSE",
-    value: 13012,
-  },
-]);
+const { fetchBrokers, brokers, fetchPlatforms } = useMarketStore();
+
 const model = reactive<TradingAcoounts>({} as TradingAcoounts);
 // Validations Account Details
 const form = Yup.object().shape({
-  name: Yup.string().max(128).label("Name"),
   broker_id: Yup.string().required().label("broker_id"),
   platform_id: Yup.string().required().label("platform_id"),
   identity: Yup.string().required().label("identity"),
+  //@ts-ignore
   secret: Yup.string()
-    .requiredIf(model.read_only_secret, "Secret Or ReadOnly Secret Required!")
-    .label("Secret"),
+    .label("Secret")
+    .when("model.read_only_secret", {
+      is: (val: any) => !val,
+      then: Yup.string().required("Secret Or ReadOnly Secret Required!"),
+    }),
+  //@ts-ignore
   read_only_secret: Yup.string()
-    .requiredIf(model.read_only_secret, "Secret Or ReadOnly Secret Required!")
-    .required()
-    .label("Introduction"),
-  server: Yup.string().required().label("server"),
-  link: Yup.array().of(Yup.string()).required().file().label("Categories"),
-  public: Yup.boolean().label("public"),
+    .label("model.read_only_secret")
+    .when("secret", {
+      is: (val: any) => !val,
+      then: Yup.string().required("Secret Or ReadOnly Secret Required!"),
+    }),
+  server_id: Yup.string().required().label("server"),
 });
 
 //yu add method check if antoher  field is empty required this field
-Yup.addMethod(Yup.mixed, "requiredIf", function (ref: any, message: string) {
+Yup.addMethod(Yup.string, "requiredIf", function (ref: any, message: string) {
   return this.test("requiredIf", message, function (value: any) {
     const otherValue = this.resolve(ref);
     return !otherValue || !!value;
   });
 });
 
-Yup.addMethod(Yup.mixed, "file", function () {
-  return this.test("file", "File is required", (value) => {
-    return value && value.length > 0;
-  });
-});
-// Yub add method for file size lower than 5MB
-Yup.addMethod(Yup.mixed, "fileSize", function (size: number) {
-  return this.test("fileSize", "File is too large", (value) => {
-    return value && value[0].size <= size;
-  });
-});
-
 onMounted(() => {
   nextTick(() => {
-    fetchCategories();
-    fetchMarkets();
+    fetchBrokers();
     fetchPlatforms();
   });
 });
 
-const onFileChange = (e: any) => {
-  var files = e.target.files || e.dataTransfer.files;
-  if (!files.length) return;
-  model.value.logo = files[0];
-  console.log(e.target.files || e.dataTransfer.files);
-};
 const submitForm = async () => {
-  console.log("submitForm", model.value);
+  console.log("submitForm", model);
 };
 </script>
 
