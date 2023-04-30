@@ -9,9 +9,11 @@
         class="form"
         novalidate
         @submit="submitForm()"
-        :validation-schema="form">
+        :validation-schema="form"
+      >
         <div
-          class="gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 sm:mb-2">
+          class="gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 sm:mb-2"
+        >
           <div class="mb-4 space-y-4 xl:col-span-2">
             <div class="flex flex-row gap-4">
               <div class="md:basis-1/2">
@@ -20,7 +22,8 @@
                   type="text"
                   name="title"
                   class="custom-input"
-                  v-model="model.title" />
+                  v-model="model.title"
+                />
                 <div class="text-red-500 text-sm p-1">
                   <ErrorMessage name="title" />
                 </div>
@@ -31,11 +34,13 @@
                   as="select"
                   name="type"
                   class="custom-input"
-                  v-model="model.type">
+                  v-model="model.type"
+                >
                   <option
                     :value="item.value"
                     v-for="(item, index) in types"
-                    :key="index">
+                    :key="index"
+                  >
                     {{ item.name }}
                   </option>
                 </Field>
@@ -52,7 +57,8 @@
                 type="text"
                 name="slogan"
                 class="custom-input"
-                v-model="model.slogan" />
+                v-model="model.slogan"
+              />
               <div class="text-red-500 text-sm p-1">
                 <ErrorMessage name="slogan" />
               </div>
@@ -65,7 +71,8 @@
                 type="text"
                 name="introduction"
                 class="custom-input"
-                v-model="model.introduction" />
+                v-model="model.introduction"
+              />
               <div class="text-red-500 text-sm p-1">
                 <ErrorMessage name="introduction" />
               </div>
@@ -78,7 +85,8 @@
                 type="text"
                 name="description"
                 class="custom-input"
-                v-model="model.description" />
+                v-model="model.description"
+              />
               <div class="text-red-500 text-sm p-1">
                 <ErrorMessage name="description" />
               </div>
@@ -88,15 +96,18 @@
               <div class="flex basis-1/2 items-center justify-center">
                 <label
                   for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                >
                   Logo
                   <div
                     class="flex flex-col items-center justify-center pt-5 pb-6"
-                    v-show="!model.logo">
+                    v-show="!model.logo"
+                  >
                     <Icon
                       class="w-10 h-10 mb-3 text-gray-400 me-2"
                       name="mdi:cloud-upload-outline"
-                      size="23px" />
+                      size="23px"
+                    />
 
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span class="font-semibold">Click to upload</span> or drag
@@ -106,25 +117,34 @@
                       SVG, PNG, JPG or GIF (MAX. 5 MB)
                     </p>
                   </div>
-                  <input
+                  <Field
+                    name="logoImg"
                     id="dropzone-file"
                     type="file"
                     class="hidden"
-                    @change="onFileChange($event)" />
+                    @change="onFileChange($event)"
+                  />
+                  <div class="text-red-500 text-sm p-1">
+                    <ErrorMessage name="logoImg" />
+                  </div>
                 </label>
               </div>
+
               <div class="flex basis-1/2 items-center justify-center">
                 <label
                   for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                >
                   Cover
                   <div
                     class="flex flex-col items-center justify-center pt-5 pb-6"
-                    v-show="!model.logo">
+                    v-show="!model.logo"
+                  >
                     <Icon
                       class="w-10 h-10 mb-3 text-gray-400 me-2"
                       name="mdi:cloud-upload-outline"
-                      size="23px" />
+                      size="23px"
+                    />
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span class="font-semibold">Click to upload</span> or drag
                       and drop
@@ -137,7 +157,8 @@
                     id="dropzone-file"
                     type="file"
                     class="hidden"
-                    @change="onFileChange($event)" />
+                    @change="onFileChange($event)"
+                  />
                 </label>
               </div>
             </div>
@@ -154,10 +175,12 @@
                   id="add-guests"
                   class="block p-3 pl-4 w-full text-sm text-gray-900 bg-gray-50 rounded border outline-none border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Add guest email"
-                  required />
+                  required
+                />
                 <button
                   type="button"
-                  class="text-white absolute inline-flex items-center right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-xs px-3 py-1.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                  class="text-white absolute inline-flex items-center right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-xs px-3 py-1.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                >
                   <Icon name="mdi:plus" size="17px" class="me-2" />
                   Add
                 </button>
@@ -168,15 +191,18 @@
                 <img
                   class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png"
-                  alt="Helene Engels" />
+                  alt="Helene Engels"
+                />
                 <img
                   class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/robert-brown.png"
-                  alt="Robert Brown" />
+                  alt="Robert Brown"
+                />
                 <img
                   class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                  alt="Bonnie Green" />
+                  alt="Bonnie Green"
+                />
                 <a
                   class="flex justify-center items-center w-8 h-8 text-xs font-medium text-white bg-gray-700 rounded-full border-2 border-white hover:bg-gray-600 dark:border-gray-800"
                   href="#"
@@ -185,13 +211,15 @@
               </div>
               <button
                 type="button"
-                class="inline-flex items-center py-2 px-3 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                class="inline-flex items-center py-2 px-3 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+              >
                 <Icon name="mdi:plus" size="15px" class="me-2" />
                 Add member
               </button>
               <button
                 type="button"
-                class="inline-flex items-center py-2 px-3 ml-2 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 sm:ml-0 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                class="inline-flex items-center py-2 px-3 ml-2 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 sm:ml-0 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+              >
                 <Icon name="mdi:clock-outline" size="16px" class="me-2" />
                 Find a time
               </button>
@@ -208,7 +236,8 @@
                     type="checkbox"
                     value=""
                     name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
                   <label
                     for="guest-permission-1-checkbox"
                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -221,7 +250,8 @@
                     type="checkbox"
                     value=""
                     name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
                   <label
                     for="guest-permission-2-checkbox"
                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -235,7 +265,8 @@
                     type="checkbox"
                     value=""
                     name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                  />
                   <label
                     for="guest-permission-3-checkbox"
                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -248,7 +279,8 @@
         </div>
         <button
           type="submit"
-          class="text-white justify-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+          class="text-white justify-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+        >
           Add new event
         </button>
       </VForm>
@@ -330,6 +362,13 @@ const form = Yup.object().shape({
   categories: Yup.array().of(Yup.string()).required().label("Categories"),
   tags: Yup.array().of(Yup.string()).required().label("Tags"),
   platforms: Yup.array().of(Yup.string()).required().label("Platforms"),
+  logoImg: Yup.mixed<FileList>() // Pass in the type of `fileUpload`
+    .test("logoImg", "Only documents up to 5MB are permitted.", (files) => {
+      !files || // Check if `files` is defined
+        files.length === 0 || // Check if `files` is not an empty list
+        Array.from(files).every((file) => file.size <= 5_000_000);
+    })
+    .required(),
 });
 
 onMounted(() => {
