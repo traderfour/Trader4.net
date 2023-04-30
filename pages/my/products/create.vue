@@ -9,12 +9,9 @@
         class="form"
         novalidate
         @submit="submitForm()"
-        :validation-schema="form"
-      >
-        <div
-          class="gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 sm:mb-2"
-        >
-          <div class="mb-4 space-y-4 xl:col-span-2">
+        :validation-schema="form">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="mb-4 space-y-4 lg:col-span-2 col-span-full">
             <div class="flex flex-row gap-4">
               <div class="md:basis-1/2">
                 <label for="title" class="custom-input-label">Title</label>
@@ -22,8 +19,7 @@
                   type="text"
                   name="title"
                   class="custom-input"
-                  v-model="model.title"
-                />
+                  v-model="model.title" />
                 <div class="text-red-500 text-sm p-1">
                   <ErrorMessage name="title" />
                 </div>
@@ -34,13 +30,11 @@
                   as="select"
                   name="type"
                   class="custom-input"
-                  v-model="model.type"
-                >
+                  v-model="model.type">
                   <option
                     :value="item.value"
                     v-for="(item, index) in types"
-                    :key="index"
-                  >
+                    :key="index">
                     {{ item.name }}
                   </option>
                 </Field>
@@ -57,8 +51,7 @@
                 type="text"
                 name="slogan"
                 class="custom-input"
-                v-model="model.slogan"
-              />
+                v-model="model.slogan" />
               <div class="text-red-500 text-sm p-1">
                 <ErrorMessage name="slogan" />
               </div>
@@ -71,8 +64,7 @@
                 type="text"
                 name="introduction"
                 class="custom-input"
-                v-model="model.introduction"
-              />
+                v-model="model.introduction" />
               <div class="text-red-500 text-sm p-1">
                 <ErrorMessage name="introduction" />
               </div>
@@ -85,29 +77,24 @@
                 type="text"
                 name="description"
                 class="custom-input"
-                v-model="model.description"
-              />
+                v-model="model.description" />
               <div class="text-red-500 text-sm p-1">
                 <ErrorMessage name="description" />
               </div>
             </div>
 
-            <div class="flex flex-row gap-4">
-              <div class="flex basis-1/2 items-center justify-center">
+            <div class="md:flex flex-row gap-4">
+              <label class="custom-input-label mt-3"> Logo</label>
+              <div class="basis-1/2 items-center justify-center">
                 <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                >
-                  Logo
+                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                   <div
-                    class="flex flex-col items-center justify-center pt-5 pb-6"
-                    v-show="!model.logo"
-                  >
+                    v-show="!logoFile"
+                    class="flex flex-col items-center justify-center pt-5 pb-6">
                     <Icon
                       class="w-10 h-10 mb-3 text-gray-400 me-2"
                       name="mdi:cloud-upload-outline"
-                      size="23px"
-                    />
+                      size="23px" />
 
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span class="font-semibold">Click to upload</span> or drag
@@ -117,34 +104,42 @@
                       SVG, PNG, JPG or GIF (MAX. 5 MB)
                     </p>
                   </div>
+
+                  <div v-show="logoFile" class="flex">
+                    <p
+                      id="logoImage"
+                      class="flex text-md text-gray-500 dark:text-gray-400"></p>
+                    <Icon
+                      @click="removeLogo"
+                      class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
+                      name="mdi:close" />
+                  </div>
+
                   <Field
+                    accept=".jpg, .jpeg, .png"
+                    id="logoPicker"
                     name="logoImg"
-                    id="dropzone-file"
                     type="file"
                     class="hidden"
-                    @change="onFileChange($event)"
-                  />
-                  <div class="text-red-500 text-sm p-1">
-                    <ErrorMessage name="logoImg" />
-                  </div>
+                    @change="onFileChange($event)" />
                 </label>
+                <div class="text-red-500 text-sm p-1">
+                  <ErrorMessage name="logoImg" />
+                </div>
               </div>
 
-              <div class="flex basis-1/2 items-center justify-center">
+              <label class="custom-input-label mt-3"> Cover</label>
+
+              <div class="basis-1/2 items-center justify-center">
                 <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                >
-                  Cover
+                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                   <div
-                    class="flex flex-col items-center justify-center pt-5 pb-6"
-                    v-show="!model.logo"
-                  >
+                    v-show="!coverFile"
+                    class="flex flex-col items-center justify-center pt-5 pb-6">
                     <Icon
                       class="w-10 h-10 mb-3 text-gray-400 me-2"
                       name="mdi:cloud-upload-outline"
-                      size="23px"
-                    />
+                      size="23px" />
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span class="font-semibold">Click to upload</span> or drag
                       and drop
@@ -153,18 +148,37 @@
                       SVG, PNG, JPG or GIF (MAX. 5 MB)
                     </p>
                   </div>
-                  <input
-                    id="dropzone-file"
+                  <!-- <p class="text-gray-800" id="coverImage">
+                    <Icon
+                      class="w-10 h-10 mb-3 text-gray-400 me-2"
+                      name="mdi:cloud-upload-outline"
+                      size="23px" />
+                  </p> -->
+                  <div v-show="coverFile" class="flex">
+                    <p
+                      id="coverImage"
+                      class="flex text-md text-gray-500 dark:text-gray-400"></p>
+                    <Icon
+                      @click="removeCover"
+                      class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
+                      name="mdi:close" />
+                  </div>
+                  <Field
+                    accept=".jpg, .jpeg, .png "
+                    id="coverPicker"
+                    name="coverImg"
                     type="file"
                     class="hidden"
-                    @change="onFileChange($event)"
-                  />
+                    @change="onFileChange($event)" />
                 </label>
+                <div class="text-red-500 text-sm p-1">
+                  <ErrorMessage name="coverImg" />
+                </div>
               </div>
             </div>
             <div class="flex flex-row gap-4"></div>
           </div>
-          <div class="mb-4 space-y-4">
+          <div class="mb-4 space-y-4 lg:col-span-1 col-span-full">
             <div>
               <label for="add-guests" class="custom-input-label"
                 >Add guests</label
@@ -175,12 +189,10 @@
                   id="add-guests"
                   class="block p-3 pl-4 w-full text-sm text-gray-900 bg-gray-50 rounded border outline-none border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Add guest email"
-                  required
-                />
+                  required />
                 <button
                   type="button"
-                  class="text-white absolute inline-flex items-center right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-xs px-3 py-1.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                >
+                  class="text-white absolute inline-flex items-center right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-xs px-3 py-1.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                   <Icon name="mdi:plus" size="17px" class="me-2" />
                   Add
                 </button>
@@ -191,18 +203,15 @@
                 <img
                   class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png"
-                  alt="Helene Engels"
-                />
+                  alt="Helene Engels" />
                 <img
                   class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/robert-brown.png"
-                  alt="Robert Brown"
-                />
+                  alt="Robert Brown" />
                 <img
                   class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                  alt="Bonnie Green"
-                />
+                  alt="Bonnie Green" />
                 <a
                   class="flex justify-center items-center w-8 h-8 text-xs font-medium text-white bg-gray-700 rounded-full border-2 border-white hover:bg-gray-600 dark:border-gray-800"
                   href="#"
@@ -211,15 +220,13 @@
               </div>
               <button
                 type="button"
-                class="inline-flex items-center py-2 px-3 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
+                class="inline-flex items-center py-2 px-3 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                 <Icon name="mdi:plus" size="15px" class="me-2" />
                 Add member
               </button>
               <button
                 type="button"
-                class="inline-flex items-center py-2 px-3 ml-2 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 sm:ml-0 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-              >
+                class="inline-flex items-center py-2 px-3 ml-2 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 sm:ml-0 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                 <Icon name="mdi:clock-outline" size="16px" class="me-2" />
                 Find a time
               </button>
@@ -236,8 +243,7 @@
                     type="checkbox"
                     value=""
                     name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
+                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                   <label
                     for="guest-permission-1-checkbox"
                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -250,8 +256,7 @@
                     type="checkbox"
                     value=""
                     name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
+                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                   <label
                     for="guest-permission-2-checkbox"
                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -265,8 +270,7 @@
                     type="checkbox"
                     value=""
                     name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
+                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                   <label
                     for="guest-permission-3-checkbox"
                     class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -279,8 +283,7 @@
         </div>
         <button
           type="submit"
-          class="text-white justify-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-        >
+          class="text-white justify-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
           Add new event
         </button>
       </VForm>
@@ -369,7 +372,26 @@ const form = Yup.object().shape({
         Array.from(files).every((file) => file.size <= 5_000_000);
     })
     .required(),
+
+  coverImg: Yup.mixed<FileList>() // Pass in the type of `fileUpload`
+    .test("coverImg", "Only documents up to 5MB are permitted.", (files) => {
+      !files || // Check if `files` is defined
+        files.length === 0 || // Check if `files` is not an empty list
+        Array.from(files).every((file) => file.size <= 5_000_000);
+    })
+    .required(),
 });
+
+const coverFile = ref();
+
+const removeCover = () => {
+  coverFile.value = "";
+};
+
+const logoFile = ref();
+const removeLogo = () => {
+  logoFile.value = "";
+};
 
 onMounted(() => {
   nextTick(() => {
@@ -377,6 +399,44 @@ onMounted(() => {
     fetchMarkets();
     fetchPlatforms();
   });
+
+  const logoImage = document.getElementById("logoImage");
+  const logoPicker = document.getElementById("logoPicker");
+  if (logoPicker) {
+    logoPicker.addEventListener("change", (event) => {
+      //@ts-ignore
+      const files = event.target.files;
+      //@ts-ignore
+      logoImage.textContent = "";
+
+      for (const file of files) {
+        const p = document.createElement("p");
+        p.textContent = file.name;
+        logoFile.value = file.name;
+        //@ts-ignore
+        logoImage.appendChild(p);
+      }
+    });
+  }
+
+  const coverImage = document.getElementById("coverImage");
+  const coverPicker = document.getElementById("coverPicker");
+  if (coverPicker) {
+    coverPicker.addEventListener("change", (event) => {
+      //@ts-ignore
+      const files = event.target.files;
+      //@ts-ignore
+      coverImage.textContent = "";
+
+      for (const file of files) {
+        const p = document.createElement("p");
+        p.textContent = file.name;
+        coverFile.value = file.name;
+        //@ts-ignore
+        coverImage.appendChild(p);
+      }
+    });
+  }
 });
 
 const onFileChange = (e: any) => {
@@ -385,6 +445,7 @@ const onFileChange = (e: any) => {
   model.value.logo = files[0];
   console.log(e.target.files || e.dataTransfer.files);
 };
+
 const submitForm = async () => {
   console.log("submitForm", model.value);
 };
