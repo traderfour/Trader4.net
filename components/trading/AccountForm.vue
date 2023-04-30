@@ -17,7 +17,7 @@
             v-model="model.identity"
           />
           <div class="text-red-500 text-sm p-1">
-            <ErrorMessage name="identity" />
+            <VErrorMessage name="identity" />
           </div>
         </div>
         <div class="flex md:flex-row flex-col  gap-4 my-3">
@@ -39,7 +39,7 @@
             </VField>
             <div class="text-red-500 text-sm p-1">
               <div class="fv-help-block">
-                <ErrorMessage name="broker_id" />
+                <VErrorMessage name="broker_id" />
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@
             </VField>
             <div class="text-red-500 text-sm p-1">
               <div class="fv-help-block">
-                <ErrorMessage name="platform_id" />
+                <VErrorMessage name="platform_id" />
               </div>
             </div>
           </div>
@@ -85,7 +85,7 @@
             </VField>
             <div class="text-red-500 text-sm p-1">
               <div class="fv-help-block">
-                <ErrorMessage name="server_id" />
+                <VErrorMessage name="server_id" />
               </div>
             </div>
           </div>
@@ -100,7 +100,7 @@
               v-model="model.secret"
             />
             <div class="text-red-500 text-sm p-1">
-              <ErrorMessage name="secret" />
+              <VErrorMessage name="secret" />
             </div>
           </div>
           <div class="basis-1/2">
@@ -114,7 +114,7 @@
               v-model="model.read_only_secret"
             />
             <div class="text-red-500 text-sm p-1">
-              <ErrorMessage name="read_only_secret" />
+              <VErrorMessage name="read_only_secret" />
             </div>
           </div>
         </div>
