@@ -10,7 +10,7 @@ export const useMarketStore = () => {
     const categories = useState<ICategory[]>("categories", () => []);
     const markets = useState<IMarkets[]>("markets", () => []);
     const platforms = useState<any>("platforms", () => []);
-    const brokers = useState<any>("brokers", () => []);
+    const brokers = useState<IBroker[]>("brokers", () => []);
   
     //getters
   
@@ -29,7 +29,7 @@ export const useMarketStore = () => {
     };
     const fetchBrokers = async () => {
       const { data }: { data: any } = await useApi("/v1/market/brokers");
-      brokers.value = data?.results as any;
+      brokers.value = data?.results as IBroker[];
       console.log("brokers", brokers.value);
     };
   
