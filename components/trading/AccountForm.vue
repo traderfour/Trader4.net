@@ -20,7 +20,7 @@
             <VErrorMessage name="identity" />
           </div>
         </div>
-        <div class="flex md:flex-row flex-col  gap-4 my-3">
+        <div class="flex md:flex-row flex-col gap-4 my-3">
           <div class="md:basis-1/3 basis-full">
             <label for="broker_id" class="custom-input-label">Broker </label>
             <VField
@@ -133,7 +133,8 @@ import * as Yup from "yup";
 
 // Validations Account Details
 const emit = defineEmits({
-  submit: (event: "submit", ...args: TradingAcoounts[]) => true,
+  // submit with type
+  submit: (value: TradingAcoounts) => true,
 });
 const { fetchBrokers, brokers, fetchPlatforms, platforms } = useMarketStore();
 
