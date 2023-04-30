@@ -23,14 +23,10 @@
   "dependencies": {
     "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
     "@nuxtjs/color-mode": "^3.2.0",
-    "@pinia/nuxt": "^0.4.9",
+    "@vee-validate/nuxt": "^4.8.6",
     "@werify/id-ts": "^1.2.0",
-    "element-plus": "^2.3.4",
     "flowbite": "^1.6.5",
-    "flowbite-vue": "^0.0.10",
     "nuxt-icon": "^0.3.3",
-    "pinia": "^2.0.35",
-    "vee-validate": "^4.8.5",
     "yup": "^1.1.1"
   }
 }
