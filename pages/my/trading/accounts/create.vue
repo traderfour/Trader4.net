@@ -5,7 +5,6 @@
         Add a new trading account
       </h2>
       <section class="md:w-2/3">
-
         <TradingAccountForm @submit="submitFrom" />
       </section>
     </div>
@@ -13,11 +12,13 @@
 </template>
 
 <script setup lang="ts">
+const { createTradingAccount } = useTradingStore();
 
-const submitFrom = (data: any) => {
-  console.log(data)
-}
-
+const submitFrom = async (data: any) => {
+  console.log(data);
+  const res = await createTradingAccount(data as TradingAcoounts);
+  console.log(res);
+};
 </script>
 
 <style scoped></style>
