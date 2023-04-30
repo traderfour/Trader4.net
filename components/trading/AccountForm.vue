@@ -10,7 +10,7 @@
       <div class="mb-4">
         <div class="gap-4 my-3">
           <label for="identity" class="custom-input-label">Identity</label>
-          <Field
+          <VField
             type="text"
             name="identity"
             class="custom-input"
@@ -23,7 +23,7 @@
         <div class="flex md:flex-row flex-col  gap-4 my-3">
           <div class="md:basis-1/3 basis-full">
             <label for="broker_id" class="custom-input-label">Broker </label>
-            <Field
+            <VField
               as="select"
               name="broker_id"
               class="custom-input"
@@ -36,7 +36,7 @@
               >
                 {{ item.name }}
               </option>
-            </Field>
+            </VField>
             <div class="text-red-500 text-sm p-1">
               <div class="fv-help-block">
                 <ErrorMessage name="broker_id" />
@@ -47,7 +47,7 @@
             <label for="platform_id" class="custom-input-label"
               >Platform ID</label
             >
-            <Field
+            <VField
               as="select"
               name="platform_id"
               class="custom-input"
@@ -60,7 +60,7 @@
               >
                 {{ item.name }}
               </option>
-            </Field>
+            </VField>
             <div class="text-red-500 text-sm p-1">
               <div class="fv-help-block">
                 <ErrorMessage name="platform_id" />
@@ -69,7 +69,7 @@
           </div>
           <div class="md:basis-1/3 basis-full">
             <label for="server_id" class="custom-input-label">Server ID</label>
-            <Field
+            <VField
               as="select"
               name="server_id"
               class="custom-input"
@@ -82,7 +82,7 @@
               >
                 {{ item.name }}
               </option>
-            </Field>
+            </VField>
             <div class="text-red-500 text-sm p-1">
               <div class="fv-help-block">
                 <ErrorMessage name="server_id" />
@@ -93,7 +93,7 @@
         <div class="flex flex-row gap-4 my-3">
           <div class="basis-1/2">
             <label for="secret" class="custom-input-label">Secret</label>
-            <Field
+            <VField
               type="text"
               name="secret"
               class="custom-input"
@@ -107,7 +107,7 @@
             <label for="read_only_secret" class="custom-input-label"
               >Read Only Secret</label
             >
-            <Field
+            <VField
               type="text"
               name="read_only_secret"
               class="custom-input"
@@ -129,7 +129,6 @@
   </VForm>
 </template>
 <script setup lang="ts">
-import { ErrorMessage, Field, Form as VForm } from "vee-validate";
 import * as Yup from "yup";
 
 // Validations Account Details

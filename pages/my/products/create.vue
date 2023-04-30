@@ -18,19 +18,19 @@
             <div class="flex flex-row gap-4">
               <div class="md:basis-1/2">
                 <label for="title" class="custom-input-label">Title</label>
-                <Field
+                <VField
                   type="text"
                   name="title"
                   class="custom-input"
                   v-model="model.title"
                 />
                 <div class="text-red-500 text-sm p-1">
-                  <ErrorMessage name="title" />
+                  <VErrorMessage name="title" />
                 </div>
               </div>
               <div class="md:basis-1/2">
                 <label for="title" class="custom-input-label">Type</label>
-                <Field
+                <VField
                   as="select"
                   name="type"
                   class="custom-input"
@@ -43,52 +43,52 @@
                   >
                     {{ item.name }}
                   </option>
-                </Field>
+                </VField>
                 <div class="text-red-500 text-sm p-1">
                   <div class="fv-help-block">
-                    <ErrorMessage name="type" />
+                    <VErrorMessage name="type" />
                   </div>
                 </div>
               </div>
             </div>
             <div>
               <label for="slogan" class="custom-input-label">Slogan</label>
-              <Field
+              <VField
                 type="text"
                 name="slogan"
                 class="custom-input"
                 v-model="model.slogan"
               />
               <div class="text-red-500 text-sm p-1">
-                <ErrorMessage name="slogan" />
+                <VErrorMessage name="slogan" />
               </div>
             </div>
             <div>
               <label for="description" class="custom-input-label"
                 >Introduction</label
               >
-              <Field
+              <VField
                 type="text"
                 name="introduction"
                 class="custom-input"
                 v-model="model.introduction"
               />
               <div class="text-red-500 text-sm p-1">
-                <ErrorMessage name="introduction" />
+                <VErrorMessage name="introduction" />
               </div>
             </div>
             <div>
               <label for="description" class="custom-input-label"
                 >Description</label
               >
-              <Field
+              <VField
                 type="text"
                 name="description"
                 class="custom-input"
                 v-model="model.description"
               />
               <div class="text-red-500 text-sm p-1">
-                <ErrorMessage name="description" />
+                <VErrorMessage name="description" />
               </div>
             </div>
 
@@ -103,21 +103,12 @@
                     class="flex flex-col items-center justify-center pt-5 pb-6"
                     v-show="!model.logo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="w-10 h-10 mb-3 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                      ></path>
-                    </svg>
+                    <Icon
+                      class="w-10 h-10 mb-3 text-gray-400 me-2"
+                      name="mdi:cloud-upload-outline"
+                      size="23px"
+                    />
+
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span class="font-semibold">Click to upload</span> or drag
                       and drop
@@ -126,14 +117,19 @@
                       SVG, PNG, JPG or GIF (MAX. 5 MB)
                     </p>
                   </div>
-                  <input
+                  <VField
+                    name="logoImg"
                     id="dropzone-file"
                     type="file"
                     class="hidden"
                     @change="onFileChange($event)"
                   />
+                  <div class="text-red-500 text-sm p-1">
+                    <VErrorMessage name="logoImg" />
+                  </div>
                 </label>
               </div>
+
               <div class="flex basis-1/2 items-center justify-center">
                 <label
                   for="dropzone-file"
@@ -144,21 +140,11 @@
                     class="flex flex-col items-center justify-center pt-5 pb-6"
                     v-show="!model.logo"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="w-10 h-10 mb-3 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                      ></path>
-                    </svg>
+                    <Icon
+                      class="w-10 h-10 mb-3 text-gray-400 me-2"
+                      name="mdi:cloud-upload-outline"
+                      size="23px"
+                    />
                     <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span class="font-semibold">Click to upload</span> or drag
                       and drop
@@ -195,18 +181,7 @@
                   type="button"
                   class="text-white absolute inline-flex items-center right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-xs px-3 py-1.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
-                  <svg
-                    class="w-4 h-4 -ml-0.5 mr-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
+                  <Icon name="mdi:plus" size="17px" class="me-2" />
                   Add
                 </button>
               </div>
@@ -238,40 +213,14 @@
                 type="button"
                 class="inline-flex items-center py-2 px-3 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
               >
-                <svg
-                  aria-hidden="true"
-                  class="mr-1 -ml-1 w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
+                <Icon name="mdi:plus" size="15px" class="me-2" />
                 Add member
               </button>
               <button
                 type="button"
                 class="inline-flex items-center py-2 px-3 ml-2 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 sm:ml-0 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
               >
-                <svg
-                  aria-hidden="true"
-                  class="mr-1 -ml-1 w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
+                <Icon name="mdi:clock-outline" size="16px" class="me-2" />
                 Find a time
               </button>
             </div>
@@ -340,10 +289,9 @@
 </template>
 
 <script setup lang="ts">
-import { ErrorMessage, Field, Form as VForm } from "vee-validate";
 import * as Yup from "yup";
 
-const { fetchCategories, categories, fetchMarkets, markets,fetchPlatforms } =
+const { fetchCategories, categories, fetchMarkets, markets, fetchPlatforms } =
   useProductStore();
 
 const types = ref<Types[]>([
@@ -413,6 +361,13 @@ const form = Yup.object().shape({
   categories: Yup.array().of(Yup.string()).required().label("Categories"),
   tags: Yup.array().of(Yup.string()).required().label("Tags"),
   platforms: Yup.array().of(Yup.string()).required().label("Platforms"),
+  logoImg: Yup.mixed<FileList>() // Pass in the type of `fileUpload`
+    .test("logoImg", "Only documents up to 5MB are permitted.", (files) => {
+      !files || // Check if `files` is defined
+        files.length === 0 || // Check if `files` is not an empty list
+        Array.from(files).every((file) => file.size <= 5_000_000);
+    })
+    .required(),
 });
 
 onMounted(() => {
