@@ -41,14 +41,20 @@
               <button
                 :disabled="loadingDisabled"
                 type="submit"
-                class="w-full disabled:bg-gray-400 text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
               >
-                Sign in
+                <Icon
+                  v-if="loadingDisabled"
+                  class="animate-spin"
+                  size="1.5rem"
+                  name="mdi:loading"
+                />
+                <span v-else>Sign in</span>
               </button>
             </Form>
           </div>
         </div>
-        <div class="lg:col-span-6 lg:flex hidden justify-end">
+        <div class="lg:col-span-6 lg:flex hidden justify-center">
           <img
             src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/authentication/illustration.svg"
             alt="illustration"
@@ -95,12 +101,12 @@ const loginUser = async () => {
         );
         localStorage.setItem("user", JSON.stringify(res.results));
         user.value = res.results as any;
-        loadingDisabled.value = false;
         location.replace("/");
       }
     })
     .catch(() => {
-      responseMsg.value = "Something went wrong Please Check your code";
+      responseMsg.value =
+        "Something went wrong Please Check your code & try again";
       responseHasError.value = true;
       loadingDisabled.value = false;
     });
