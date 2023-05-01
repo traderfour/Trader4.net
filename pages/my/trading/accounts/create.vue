@@ -4,7 +4,7 @@
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add a new trading account
       </h2>
-      <section class="md:w-2/3">
+      <section class="">
         <TradingAccountForm @submit="submitFrom" />
       </section>
     </div>
