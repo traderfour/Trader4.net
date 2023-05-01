@@ -11,6 +11,12 @@
           Here at Trader4 we focus on markets where technology, innovation, and
           capital can unlock long-term value and drive economic growth.
         </p>
+        <div
+          class="p-4 mb-4 w-fit text-sm text-green-800 rounded bg-green-100 dark:bg-gray-800 dark:text-green-400"
+          role="alert"
+        >
+          Annually you have up to 16% off, which is 2 months <b>free</b>
+        </div>
         <div class="flex items-center">
           <span
             class="text-base font-medium text-gray-900 dark:text-white me-3"
@@ -28,10 +34,8 @@
             ></div>
           </label>
 
-          <span
-            class="text-base font-medium text-gray-900 dark:text-white m-4"
-          >
-            Yearly
+          <span class="text-base font-medium text-gray-900 dark:text-white m-4">
+            Annually
           </span>
         </div>
       </div>
@@ -58,7 +62,7 @@
               }}
             </span>
             <span class="text-gray-500 dark:text-gray-400"
-              >/{{ activeBtn === true ? "Yearly" : "Monthly" }}</span
+              >/{{ activeBtn === true ? "Annually" : "Monthly" }}</span
             >
           </div>
           <p class="font-light text-gray-500 sm:text-lg dark:text-gray-300">
@@ -103,7 +107,7 @@
       >
         <a
           href="https://trader4.net/"
-          class="flex items-center mb-2 border-gray-200 md:pe-7 md:me-4  md:border-e md:mb-0 dark:border-gray-600"
+          class="flex items-center mb-2 border-gray-200 md:pe-7 md:me-4 md:border-e md:mb-0 dark:border-gray-600"
         >
           <img
             src="https://flowbite.com/docs/images/logo.svg"
@@ -112,8 +116,9 @@
           />
           <span
             class="self-center text-lg font-semibold whitespace-nowrap dark:text-white"
-            >T4 Enterprise</span
           >
+            T4 Enterprise
+          </span>
         </a>
         <p
           class="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400"
@@ -2213,13 +2218,7 @@
     </div>
   </section>
 </template>
-<script lang="ts" setup>
-import { initFlowbite } from "flowbite";
-// initialize components based on data attribute selectors
-onMounted(() => {
-  initFlowbite();
-});
-
+<script setup lang="ts">
 const activeBtn = ref(false);
 
 const pricingItems = ref<PricingCard[]>([
