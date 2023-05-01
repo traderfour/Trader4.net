@@ -173,23 +173,27 @@
                   </div>
                 </div>
               </template>
-              <div class="flex justify-between my-4">
+              <div class="my-4">
                 <button
                   v-if="index !== 0"
                   @click="prevStep()"
-                  class="px-5 py-2.5 sm:py-3.5 text-sm font-medium text-center text-white rounded bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  type="button"
+                  class="px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   prev
                 </button>
                 <button
                   v-if="index !== 3"
                   type="submit"
-                  class="px-5 py-2.5 sm:py-3.5 text-sm font-medium text-center text-white rounded bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  class="float-right px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Next
                 </button>
 
-                <button v-if="index === 3" type="submit">Finish</button>
+                <button 
+                v-if="index === 3"
+                 type="submit"
+                  class="float-right px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Finish</button>
               </div>
 
               <pre>{{ values }}</pre>
@@ -209,25 +213,21 @@ const steps = reactive([
     title: "Markets",
     icon: "iconsminds-air-balloon-1",
     active: true,
-    validated: false,
   },
   {
     title: "Server",
     icon: "iconsminds-air-balloon-1",
     active: false,
-    validated: false,
   },
   {
     title: "Secret",
     icon: "iconsminds-air-balloon-1",
     active: false,
-    validated: false,
   },
   {
     title: "Identify",
     icon: "iconsminds-air-balloon-1",
     active: false,
-    validated: false,
   },
 ]);
 
@@ -240,14 +240,13 @@ function nextStep(values: any) {
   }
 
   steps[index.value].active = false;
-  steps[index.value].validated = true;
   steps[index.value + 1].active = true;
   index.value++;
 }
 function prevStep() {
-  console.log("prevStep", index.value);
+  // console.log("prevStep", index.value);
   steps[index.value].active = false;
-  steps[index.value].validated = true;
+
   steps[index.value - 1].active = true;
   index.value--;
 }
