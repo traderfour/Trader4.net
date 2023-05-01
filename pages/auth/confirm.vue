@@ -69,11 +69,11 @@
 // Imports
 import { IVerifyOTPPayload } from "@werify/id-ts/dist/modules/public/verifyOTP/interfaces/IVerifyOTP";
 import * as Yup from "yup";
+import { saveToken } from "~/composables/JwtService";
 
 // Variables
 const responseMsg = ref("");
 const responseHasError = ref(false);
-const router = useRouter();
 const code = ref("");
 const loadingDisabled = ref(false);
 
@@ -88,7 +88,7 @@ const loginUser = async () => {
   OTPPayload.otp = code.value;
 
   // Verify OTP WERIFY
-  const { auth, user } = await useAuth();
+  const { auth } = await useAuth();
   auth
     .verifyOTP(OTPPayload, "/v1/account/verify-otp")
     .then((res) => {
@@ -98,8 +98,7 @@ const loginUser = async () => {
           "token",
           `${res.results.token_type} ${res.results.access_token}`
         );
-        localStorage.setItem("user", JSON.stringify(res.results));
-        user.value = res.results as any;
+        saveToken(JSON.stringify(res.results));
         location.replace("/");
       }
     })
