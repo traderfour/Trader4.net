@@ -229,13 +229,21 @@ const pricingTableItems = [
     corporate: { icon: "mdi-close", color: "red-500" },
   },
   {
-    general: { tooltipText: "a simple tooltip from support", text: "Support" },
+    general: {
+      tooltipText: "a simple tooltip from support with a drawer (help center)",
+      text: "Support",
+      hasDrawer: true,
+    },
     pro: ["Ticket", "Email (24 Hours)"],
     advance: ["Ticket", "Email", "Phone (8 Hours)"],
     corporate: ["Ticket", "Email", "Phone (>One Hour)"],
   },
   {
-    general: "Markets",
+    general: {
+      tooltipText:
+        "a simple tooltip from markets without a drawer (help center)",
+      text: "Markets",
+    },
     pro: ["Forex ", "Stocks", "Crypto"],
     advance: ["Forex ", "Stocks", "Crypto", "Commodities", "Indices"],
     corporate: [

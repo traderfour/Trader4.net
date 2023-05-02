@@ -51,22 +51,35 @@
             </span>
             <!-- if Has sub texts array like ["Ticket", "Email (24 Hours)"] -->
 
-            <!-- if has tooltips -->
+            <!-- if has tooltips or Drawer -->
             <span v-else-if="item.tooltipText" class="dark:text-gray-400">
+              <SideDrawer
+                v-if="item.hasDrawer"
+                :drawer-id="`drawer-${item.text}`"
+              />
               <div class="flex items-center space-x-1">
                 <span>
                   {{ item.text }}
                 </span>
                 <Icon
-                  data-tooltip-target="tooltip-default"
+                  :data-tooltip-target="`tooltip-${item.text}`"
                   type="button"
                   name="mdi:help-circle"
                   class="outline-none"
+                  :data-drawer-target="
+                    item.hasDrawer ? `drawer-${item.text}` : undefined
+                  "
+                  :data-drawer-show="
+                    item.hasDrawer ? `drawer-${item.text}` : undefined
+                  "
+                  :aria-controls="
+                    item.hasDrawer ? `drawer-${item.text}` : undefined
+                  "
                 />
               </div>
 
               <div
-                id="tooltip-default"
+                :id="`tooltip-${item.text}`"
                 role="tooltip"
                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
               >
