@@ -116,7 +116,6 @@
                   </div>
 
                   <Field
-                    accept=".jpg, .jpeg, .png"
                     id="logoPicker"
                     name="logoImg"
                     type="file"
@@ -164,7 +163,6 @@
                       name="mdi:close" />
                   </div>
                   <Field
-                    accept=".jpg, .jpeg, .png "
                     id="coverPicker"
                     name="coverImg"
                     type="file"
@@ -295,6 +293,9 @@
 import { ErrorMessage, Field, Form as VForm } from "vee-validate";
 import * as Yup from "yup";
 
+const FILE_SIZE = 5242880; // 5MB in bytes
+const SUPPORTED_FORMATS = ["image/svg", "image/jpg", "image/png", "image/gif"];
+
 const { fetchCategories, categories, fetchMarkets, markets, fetchPlatforms } =
   useProductStore();
 
@@ -365,21 +366,32 @@ const form = Yup.object().shape({
   categories: Yup.array().of(Yup.string()).required().label("Categories"),
   tags: Yup.array().of(Yup.string()).required().label("Tags"),
   platforms: Yup.array().of(Yup.string()).required().label("Platforms"),
-  logoImg: Yup.mixed<FileList>() // Pass in the type of `fileUpload`
-    .test("logoImg", "Only documents up to 5MB are permitted.", (files) => {
-      !files || // Check if `files` is defined
-        files.length === 0 || // Check if `files` is not an empty list
-        Array.from(files).every((file) => file.size <= 5_000_000);
-    })
-    .required(),
 
-  coverImg: Yup.mixed<FileList>() // Pass in the type of `fileUpload`
-    .test("coverImg", "Only documents up to 5MB are permitted.", (files) => {
-      !files || // Check if `files` is defined
-        files.length === 0 || // Check if `files` is not an empty list
-        Array.from(files).every((file) => file.size <= 5_000_000);
-    })
-    .required(),
+  logoImg: Yup.mixed()
+    .required("A file is required")
+    .test(
+      "fileSize",
+      "Only documents up to 5MB are permitted.",
+      (files) => files && files.size <= FILE_SIZE
+    )
+    .test(
+      "fileFormat",
+      "Unsupported Format",
+      (files) => files && SUPPORTED_FORMATS.includes(files.type)
+    ),
+
+  coverImg: Yup.mixed()
+    .required("A file is required")
+    .test(
+      "fileSize",
+      "Only documents up to 5MB are permitted.",
+      (files) => files && files.size <= FILE_SIZE
+    )
+    .test(
+      "fileFormat",
+      "Unsupported Format",
+      (files) => files && SUPPORTED_FORMATS.includes(files.type)
+    ),
 });
 
 const coverFile = ref();
