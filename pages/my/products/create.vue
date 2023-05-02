@@ -83,94 +83,96 @@
               </div>
             </div>
 
-            <div class="md:flex flex-row gap-4">
-              <label class="custom-input-label mt-3"> Logo</label>
-              <div class="basis-1/2 items-center justify-center">
-                <label
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                  <div
-                    v-show="!logoFile"
-                    class="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Icon
-                      class="w-10 h-10 mb-3 text-gray-400 me-2"
-                      name="mdi:cloud-upload-outline"
-                      size="23px" />
+            <div class="md:flex flex-row gap-4 w-full">
+              <div class="row md:w-1/2">
+                <label class="custom-input-label mt-3"> Logo</label>
+                <div class="basis-1/2 items-center justify-center">
+                  <label
+                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <div
+                      v-show="!logoFile"
+                      class="flex flex-col items-center justify-center pt-5 pb-6">
+                      <Icon
+                        class="w-10 h-10 mb-3 text-gray-400 me-2"
+                        name="mdi:cloud-upload-outline"
+                        size="23px" />
 
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 5 MB)
-                    </p>
+                      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span class="font-semibold">Click to upload</span> or
+                        drag and drop
+                      </p>
+                      <p class="text-xs text-gray-500 dark:text-gray-400">
+                        SVG, PNG, JPG or GIF (MAX. 5 MB)
+                      </p>
+                    </div>
+
+                    <div v-show="logoFile" class="flex">
+                      <p
+                        id="logoImage"
+                        class="flex text-md text-gray-500 dark:text-gray-400"></p>
+                      <Icon
+                        @click="removeLogo"
+                        class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
+                        name="mdi:close" />
+                    </div>
+
+                    <Field
+                      id="logoPicker"
+                      name="logoImg"
+                      type="file"
+                      class="hidden"
+                      @change="onFileChange($event)" />
+                  </label>
+                  <div class="text-red-500 text-sm p-1">
+                    <ErrorMessage name="logoImg" />
                   </div>
-
-                  <div v-show="logoFile" class="flex">
-                    <p
-                      id="logoImage"
-                      class="flex text-md text-gray-500 dark:text-gray-400"></p>
-                    <Icon
-                      @click="removeLogo"
-                      class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
-                      name="mdi:close" />
-                  </div>
-
-                  <Field
-                    id="logoPicker"
-                    name="logoImg"
-                    type="file"
-                    class="hidden"
-                    @change="onFileChange($event)" />
-                </label>
-                <div class="text-red-500 text-sm p-1">
-                  <ErrorMessage name="logoImg" />
                 </div>
               </div>
-
-              <label class="custom-input-label mt-3"> Cover</label>
-
-              <div class="basis-1/2 items-center justify-center">
-                <label
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                  <div
-                    v-show="!coverFile"
-                    class="flex flex-col items-center justify-center pt-5 pb-6">
-                    <Icon
-                      class="w-10 h-10 mb-3 text-gray-400 me-2"
-                      name="mdi:cloud-upload-outline"
-                      size="23px" />
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 5 MB)
-                    </p>
-                  </div>
-                  <!-- <p class="text-gray-800" id="coverImage">
+              <div class="row md:w-1/2">
+                <label class="custom-input-label mt-3"> Cover</label>
+                <div class="basis-1/2 items-center justify-center">
+                  <label
+                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <div
+                      v-show="!coverFile"
+                      class="flex flex-col items-center justify-center pt-5 pb-6">
+                      <Icon
+                        class="w-10 h-10 mb-3 text-gray-400 me-2"
+                        name="mdi:cloud-upload-outline"
+                        size="23px" />
+                      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span class="font-semibold">Click to upload</span> or
+                        drag and drop
+                      </p>
+                      <p class="text-xs text-gray-500 dark:text-gray-400">
+                        SVG, PNG, JPG or GIF (MAX. 5 MB)
+                      </p>
+                    </div>
+                    <!-- <p class="text-gray-800" id="coverImage">
                     <Icon
                       class="w-10 h-10 mb-3 text-gray-400 me-2"
                       name="mdi:cloud-upload-outline"
                       size="23px" />
                   </p> -->
-                  <div v-show="coverFile" class="flex">
-                    <p
-                      id="coverImage"
-                      class="flex text-md text-gray-500 dark:text-gray-400"></p>
-                    <Icon
-                      @click="removeCover"
-                      class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
-                      name="mdi:close" />
+                    <div v-show="coverFile" class="flex">
+                      <p
+                        id="coverImage"
+                        class="flex text-md text-gray-500 dark:text-gray-400"></p>
+                      <Icon
+                        @click="removeCover"
+                        class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
+                        name="mdi:close" />
+                    </div>
+                    <Field
+                      id="coverPicker"
+                      name="coverImg"
+                      type="file"
+                      class="hidden"
+                      @change="onFileChange($event)" />
+                  </label>
+                  <div class="text-red-500 text-sm p-1">
+                    <ErrorMessage name="coverImg" />
                   </div>
-                  <Field
-                    id="coverPicker"
-                    name="coverImg"
-                    type="file"
-                    class="hidden"
-                    @change="onFileChange($event)" />
-                </label>
-                <div class="text-red-500 text-sm p-1">
-                  <ErrorMessage name="coverImg" />
                 </div>
               </div>
             </div>
