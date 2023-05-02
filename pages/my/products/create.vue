@@ -121,7 +121,7 @@
                       name="logoImg"
                       type="file"
                       class="hidden"
-                      @change="onFileChange($event)" />
+                      @change="onFileChangeLogo($event)" />
                   </label>
                   <div class="text-red-500 text-sm p-1">
                     <ErrorMessage name="logoImg" />
@@ -168,7 +168,7 @@
                       name="coverImg"
                       type="file"
                       class="hidden"
-                      @change="onFileChange($event)" />
+                      @change="onFileChangeCover($event)" />
                   </label>
                   <div class="text-red-500 text-sm p-1">
                     <ErrorMessage name="coverImg" />
@@ -374,11 +374,13 @@ const form = Yup.object().shape({
     .test(
       "fileSize",
       "Only documents up to 5MB are permitted.",
+      //@ts-ignore
       (files) => files && files.size <= FILE_SIZE
     )
     .test(
       "fileFormat",
       "Unsupported Format",
+      //@ts-ignore
       (files) => files && SUPPORTED_FORMATS.includes(files.type)
     ),
 
@@ -387,11 +389,13 @@ const form = Yup.object().shape({
     .test(
       "fileSize",
       "Only documents up to 5MB are permitted.",
+      //@ts-ignore
       (files) => files && files.size <= FILE_SIZE
     )
     .test(
       "fileFormat",
       "Unsupported Format",
+      //@ts-ignore
       (files) => files && SUPPORTED_FORMATS.includes(files.type)
     ),
 });
@@ -453,10 +457,16 @@ onMounted(() => {
   }
 });
 
-const onFileChange = (e: any) => {
+const onFileChangeLogo = (e: any) => {
   var files = e.target.files || e.dataTransfer.files;
   if (!files.length) return;
   model.value.logo = files[0];
+  console.log(e.target.files || e.dataTransfer.files);
+};
+const onFileChangeCover = (e: any) => {
+  var files = e.target.files || e.dataTransfer.files;
+  if (!files.length) return;
+  model.value.cover = files[0];
   console.log(e.target.files || e.dataTransfer.files);
 };
 
