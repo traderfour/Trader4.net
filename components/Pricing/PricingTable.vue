@@ -53,10 +53,14 @@
 
             <!-- if has tooltips or Drawer -->
             <span v-else-if="item.tooltipText" class="dark:text-gray-400">
+              <!-- Side Drawer Component -->
               <SideDrawer
                 v-if="item.hasDrawer"
                 :drawer-id="`drawer-${item.text}`"
               />
+              <!-- Side Drawer Component -->
+
+              <!-- Tooltip Icon and Text -->
               <div class="flex items-center space-x-1">
                 <span>
                   {{ item.text }}
@@ -86,6 +90,7 @@
                 {{ item.tooltipText }}
                 <div class="tooltip-arrow" data-popper-arrow></div>
               </div>
+              <!-- Tooltip Icon and Text -->
             </span>
             <!-- if has tooltips -->
 
