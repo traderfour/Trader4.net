@@ -1,16 +1,16 @@
 <template>
   <div class="relative">
-    <div class="flex flex-wrap flex-col border rounded p-2">
+    <div tabindex="1" class="flex flex-wrap flex-col border rounded p-2">
       <div>
         <div
-          v-for="tag in selectedTags"
-          :key="tag"
+          v-for="(tag, idx) in selectedTags"
+          :key="idx"
           class="inline-flex items-center px-3 py-1 m-1 bg-gray-200 rounded"
         >
           <span class="text-sm font-semibold text-gray-700 mr-2">{{
             tag
           }}</span>
-          <button @click="removeTag(tag)" class="-mt-1">
+          <button @click="removeTag(tag as string)" class="-mt-1">
             <Icon name="mdi:close" />
           </button>
         </div>
@@ -22,7 +22,8 @@
         @keydown.escape="inputValue = ''"
         class="flex-grow my-2 w-full h-8 px-2 text-sm text-gray-700 dark:text-white dark:placeholder:text-gray-100 placeholder-gray-500 bg-transparent border-b border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-100 focus:border-transparent"
         placeholder="Add tag..."
-        @click="showOptions = true"
+        @focus="showOptions = true"
+        @blur="closeOptions"
       />
     </div>
     <ul
@@ -84,6 +85,12 @@ function filterOptions(query: string) {
   return props.options.filter((option) =>
     option[props.fieldName.label].toLowerCase().includes(query.toLowerCase())
   );
+}
+
+function closeOptions() {
+  setTimeout(() => {
+    showOptions.value = false;
+  }, 100);
 }
 watch(
   () => inputValue.value,
