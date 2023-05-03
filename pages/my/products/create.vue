@@ -178,23 +178,16 @@
             </div>
             <div class="flex flex-row gap-4"></div>
           </div>
-          <div class="mb-4 mt-6 space-y-4 lg:col-span-1 col-span-full">
+          <div class="mb-4 space-y-4 lg:col-span-1 col-span-full">
             <div>
               <label for="categories" class="custom-input-label">
                 Category</label
               >
               <SharedMultiSelectTagging
-                :options="[
-                  { title: 'Vue js', id: 'vue' },
-                  { title: 'Angular', id: 'angular' },
-                  { title: 'React', id: 'react' },
-                  { title: 'Svelte', id: 'svelte' },
-                  { title: 'Ember', id: 'ember' },
-                  { title: 'Laravel', id: 'laravel' },
-                ]"
+                :options="categories"
                 :field-name="{
                   label: 'title',
-                  key: 'id',
+                  key: 'uuid',
                 }" />
             </div>
             <div>
@@ -202,33 +195,20 @@
                 Platform</label
               >
               <SharedMultiSelectTagging
-                :options="[
-                  { title: 'Vue js', id: 'vue' },
-                  { title: 'Angular', id: 'angular' },
-                  { title: 'React', id: 'react' },
-                  { title: 'Svelte', id: 'svelte' },
-                  { title: 'Ember', id: 'ember' },
-                  { title: 'Laravel', id: 'laravel' },
-                ]"
+                :options="platforms"
                 :field-name="{
                   label: 'title',
-                  key: 'id',
+                  key: 'uuid',
                 }" />
             </div>
+
             <div>
               <label for="markets" class="custom-input-label"> Market</label>
               <SharedMultiSelectTagging
-                :options="[
-                  { title: 'Vue js', id: 'vue' },
-                  { title: 'Angular', id: 'angular' },
-                  { title: 'React', id: 'react' },
-                  { title: 'Svelte', id: 'svelte' },
-                  { title: 'Ember', id: 'ember' },
-                  { title: 'Laravel', id: 'laravel' },
-                ]"
+                :options="markets"
                 :field-name="{
-                  label: 'title',
-                  key: 'id',
+                  label: 'name',
+                  key: 'uuid',
                 }" />
             </div>
           </div>
@@ -338,7 +318,8 @@ const form = Yup.object().shape({
   description: Yup.string().required().max(1024).label("Description"),
   categories: Yup.array().of(Yup.string()).required().label("Categories"),
   tags: Yup.array().of(Yup.string()).required().label("Tags"),
-  platforms: Yup.array().of(Yup.string()).required().label("Platforms"),
+  platforms: Yup.string().required().label("Platforms"),
+  markets: Yup.string().required().label("Markets"),
 
   logoImg: Yup.mixed()
     .required("A file is required")
