@@ -179,105 +179,50 @@
             <div class="flex flex-row gap-4"></div>
           </div>
           <div class="mb-4 mt-6 space-y-4 lg:col-span-1 col-span-full">
-            <div>
-              <label for="add-guests" class="custom-input-label"
-                >Add guests</label
-              >
-              <div class="relative">
-                <input
-                  type="text"
-                  id="add-guests"
-                  class="block p-3 pl-4 w-full text-sm text-gray-900 bg-gray-50 rounded border outline-none border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Add guest email"
-                  required />
-                <button
-                  type="button"
-                  class="text-white absolute inline-flex items-center right-2.5 bottom-2.5 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-xs px-3 py-1.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                  <Icon name="mdi:plus" size="17px" class="me-2" />
-                  Add
-                </button>
-              </div>
-            </div>
-            <div class="items-center md:flex md:space-x-4">
-              <div class="flex flex-shrink-0 mb-4 -space-x-4 md:mb-0">
-                <img
-                  class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png"
-                  alt="Helene Engels" />
-                <img
-                  class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/robert-brown.png"
-                  alt="Robert Brown" />
-                <img
-                  class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-800"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                  alt="Bonnie Green" />
-                <a
-                  class="flex justify-center items-center w-8 h-8 text-xs font-medium text-white bg-gray-700 rounded-full border-2 border-white hover:bg-gray-600 dark:border-gray-800"
-                  href="#"
-                  >+9</a
-                >
-              </div>
-              <button
-                type="button"
-                class="inline-flex items-center py-2 px-3 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                <Icon name="mdi:plus" size="15px" class="me-2" />
-                Add member
-              </button>
-              <button
-                type="button"
-                class="inline-flex items-center py-2 px-3 ml-2 text-xs font-medium text-gray-900 bg-white rounded border border-gray-200 sm:ml-0 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                <Icon name="mdi:clock-outline" size="16px" class="me-2" />
-                Find a time
-              </button>
+            <div class="">
+              <SharedMultiSelectTagging
+                :options="[
+                  { title: 'Vue js', id: 'vue' },
+                  { title: 'Angular', id: 'angular' },
+                  { title: 'React', id: 'react' },
+                  { title: 'Svelte', id: 'svelte' },
+                  { title: 'Ember', id: 'ember' },
+                  { title: 'Laravel', id: 'laravel' },
+                ]"
+                :field-name="{
+                  label: 'title',
+                  key: 'id',
+                }" />
             </div>
             <div>
-              <label
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Guest Permissions</label
-              >
-              <div class="space-y-3">
-                <div class="flex items-center mr-4">
-                  <input
-                    id="guest-permission-1-checkbox"
-                    type="checkbox"
-                    value=""
-                    name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                  <label
-                    for="guest-permission-1-checkbox"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >Modify event</label
-                  >
-                </div>
-                <div class="flex items-center mr-4">
-                  <input
-                    id="guest-permission-2-checkbox"
-                    type="checkbox"
-                    value=""
-                    name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                  <label
-                    for="guest-permission-2-checkbox"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >Invite others</label
-                  >
-                </div>
-                <div class="flex items-center mr-4">
-                  <input
-                    checked
-                    id="guest-permission-3-checkbox"
-                    type="checkbox"
-                    value=""
-                    name="guest-permission-checkbox"
-                    class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                  <label
-                    for="guest-permission-3-checkbox"
-                    class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >See guest list</label
-                  >
-                </div>
-              </div>
+              <SharedMultiSelectTagging
+                :options="[
+                  { title: 'Vue js', id: 'vue' },
+                  { title: 'Angular', id: 'angular' },
+                  { title: 'React', id: 'react' },
+                  { title: 'Svelte', id: 'svelte' },
+                  { title: 'Ember', id: 'ember' },
+                  { title: 'Laravel', id: 'laravel' },
+                ]"
+                :field-name="{
+                  label: 'title',
+                  key: 'id',
+                }" />
+            </div>
+            <div>
+              <SharedMultiSelectTagging
+                :options="[
+                  { title: 'Vue js', id: 'vue' },
+                  { title: 'Angular', id: 'angular' },
+                  { title: 'React', id: 'react' },
+                  { title: 'Svelte', id: 'svelte' },
+                  { title: 'Ember', id: 'ember' },
+                  { title: 'Laravel', id: 'laravel' },
+                ]"
+                :field-name="{
+                  label: 'title',
+                  key: 'id',
+                }" />
             </div>
           </div>
         </div>

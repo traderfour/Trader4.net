@@ -14,16 +14,13 @@
           </button>
         </div>
       </div>
-
       <input
         v-model="inputValue"
         @keyup.enter="addTag()"
         @keydown.escape="inputValue = ''"
         class="custom-input"
         placeholder="Add tag..."
-        @click="showOptions = !showOptions"
-        @blur="closeDropdown = false"
-        tabindex="0" />
+        @click="showOptions = !showOptions" />
     </div>
     <ul
       v-if="showOptions"
