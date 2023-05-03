@@ -292,7 +292,7 @@
 import * as Yup from "yup";
 
 const { fetchCategories, categories, fetchMarkets, markets, fetchPlatforms } =
-  useProductStore();
+  useMarketStore();
 
 const types = ref<Types[]>([
   {
