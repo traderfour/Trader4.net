@@ -1,12 +1,11 @@
 <template>
   <div class="relative">
-    <div class="flex flex-wrap flex-col border rounded p-2">
+    <div class="flex flex-wrap flex-col rounded px-2 py-1">
       <div>
         <div
           v-for="tag in selectedTags"
           :key="tag"
-          class="inline-flex items-center px-3 py-1 m-1 bg-gray-200 rounded"
-        >
+          class="inline-flex items-center px-3 py-1 m-1 bg-gray-200 rounded">
           <span class="text-sm font-semibold text-gray-700 mr-2">{{
             tag
           }}</span>
@@ -20,23 +19,22 @@
         v-model="inputValue"
         @keyup.enter="addTag()"
         @keydown.escape="inputValue = ''"
-        class="flex-grow my-2 w-full h-8 px-2 text-sm text-gray-700 dark:text-white dark:placeholder:text-gray-100 placeholder-gray-500 bg-transparent border-b border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-100 focus:border-transparent"
+        class="custom-input"
         placeholder="Add tag..."
-        @click="showOptions = true"
-      />
+        @click="showOptions = !showOptions"
+        @blur="closeDropdown = false"
+        tabindex="0" />
     </div>
     <ul
       v-if="showOptions"
-      class="absolute z-10 py-1 mt-1 bg-white rounded-md shadow-lg px-5"
-    >
+      class="absolute w-full z-10 py-1 mt-1 dark:bg-gray-700 bg-white rounded-sm shadow-lg">
       <li
         v-for="option in filterOptions(inputValue).filter(
           (option) => !selectedTags.includes(option[props.fieldName.key])
         )"
         :key="option[props.fieldName.key]"
         @click="selectOption(option[props.fieldName.key])"
-        class="px-3 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100"
-      >
+        class="px-3 py-1 text-sm text-gray-700 hover:text-white dark:text-white cursor-pointer hover:bg-blue-500">
         {{ option[props.fieldName.label] }}
       </li>
     </ul>
@@ -96,3 +94,8 @@ watch(
   }
 );
 </script>
+<style scoped>
+.custom-input {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
+}
+</style>
