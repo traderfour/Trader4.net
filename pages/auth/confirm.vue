@@ -94,11 +94,12 @@ const loginUser = async () => {
     .then((res) => {
       if (res.succeed) {
         localStorage.removeItem("OTPPayload");
-        localStorage.setItem(
-          "token",
-          `${res.results.token_type} ${res.results.access_token}`
-        );
-        saveToken(JSON.stringify(res.results));
+        // localStorage.setItem(
+        //   "token",
+        //   `${res.results.token_type} ${res.results.access_token}`
+        // );
+        // saveToken(JSON.stringify(res.results));
+        useCookie("user", { secure: true }).value = JSON.stringify(res.results);
         location.replace("/");
       }
     })
