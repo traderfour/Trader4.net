@@ -1,5 +1,4 @@
 <template>
-  
   <!-- Start block -->
   <section class="bg-gray-50 dark:bg-gray-900 antialiased rounded">
     <div class="mx-auto">
@@ -111,7 +110,6 @@
               data-modal-toggle="createProductModal"
               class="flex items-center justify-center ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-            
               <svg
                 class="h-3.5 w-3.5 me-1.5 -ms-1"
                 fill="currentColor"
@@ -3830,6 +3828,4 @@
     </div>
   </div>
 </template>
-<script>
-
-</script>
+<script></script>
