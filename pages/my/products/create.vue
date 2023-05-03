@@ -16,19 +16,19 @@
             <div class="flex flex-row gap-4">
               <div class="md:basis-1/2">
                 <label for="title" class="custom-input-label">Title</label>
-                <Field
+                <VField
                   type="text"
                   name="title"
                   class="custom-input"
                   v-model="model.title"
                 />
                 <div class="text-red-500 text-sm p-1">
-                  <ErrorMessage name="title" />
+                  <VErrorMessage name="title" />
                 </div>
               </div>
               <div class="md:basis-1/2">
                 <label for="title" class="custom-input-label">Type</label>
-                <Field
+                <VField
                   as="select"
                   name="type"
                   class="custom-input"
@@ -41,52 +41,52 @@
                   >
                     {{ item.name }}
                   </option>
-                </Field>
+                </VField>
                 <div class="text-red-500 text-sm p-1">
                   <div class="fv-help-block">
-                    <ErrorMessage name="type" />
+                    <VErrorMessage name="type" />
                   </div>
                 </div>
               </div>
             </div>
             <div>
               <label for="slogan" class="custom-input-label">Slogan</label>
-              <Field
+              <VField
                 type="text"
                 name="slogan"
                 class="custom-input"
                 v-model="model.slogan"
               />
               <div class="text-red-500 text-sm p-1">
-                <ErrorMessage name="slogan" />
+                <VErrorMessage name="slogan" />
               </div>
             </div>
             <div>
               <label for="description" class="custom-input-label"
                 >Introduction</label
               >
-              <Field
+              <VField
                 type="text"
                 name="introduction"
                 class="custom-input"
                 v-model="model.introduction"
               />
               <div class="text-red-500 text-sm p-1">
-                <ErrorMessage name="introduction" />
+                <VErrorMessage name="introduction" />
               </div>
             </div>
             <div>
               <label for="description" class="custom-input-label"
                 >Description</label
               >
-              <Field
+              <VField
                 type="text"
                 name="description"
                 class="custom-input"
                 v-model="model.description"
               />
               <div class="text-red-500 text-sm p-1">
-                <ErrorMessage name="description" />
+                <VErrorMessage name="description" />
               </div>
             </div>
 
@@ -136,7 +136,7 @@
                     />
                   </label>
                   <div class="text-red-500 text-sm p-1">
-                    <ErrorMessage name="logoImg" />
+                    <VErrorMessage name="logoImg" />
                   </div>
                 </div>
               </div>
@@ -320,7 +320,6 @@
 </template>
 
 <script setup lang="ts">
-import { ErrorMessage, Field, Form as VForm } from "vee-validate";
 import * as Yup from "yup";
 
 interface FilesType {
@@ -340,7 +339,7 @@ const SUPPORTED_FORMATS = [
 ];
 
 const { fetchCategories, categories, fetchMarkets, markets, fetchPlatforms } =
-  useProductStore();
+  useMarketStore();
 
 const types = ref<Types[]>([
   {
