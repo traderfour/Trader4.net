@@ -179,7 +179,10 @@
             <div class="flex flex-row gap-4"></div>
           </div>
           <div class="mb-4 mt-6 space-y-4 lg:col-span-1 col-span-full">
-            <div class="">
+            <div>
+              <label for="categories" class="custom-input-label">
+                Category</label
+              >
               <SharedMultiSelectTagging
                 :options="[
                   { title: 'Vue js', id: 'vue' },
@@ -195,6 +198,9 @@
                 }" />
             </div>
             <div>
+              <label for="platforms" class="custom-input-label">
+                Platform</label
+              >
               <SharedMultiSelectTagging
                 :options="[
                   { title: 'Vue js', id: 'vue' },
@@ -210,6 +216,7 @@
                 }" />
             </div>
             <div>
+              <label for="markets" class="custom-input-label"> Market</label>
               <SharedMultiSelectTagging
                 :options="[
                   { title: 'Vue js', id: 'vue' },
@@ -237,6 +244,7 @@
 </template>
 
 <script setup lang="ts">
+import { ErrorMessage, Field, Form as VForm } from "vee-validate";
 import * as Yup from "yup";
 
 interface FilesType {
@@ -255,8 +263,14 @@ const SUPPORTED_FORMATS = [
   "image/gif",
 ];
 
-const { fetchCategories, categories, fetchMarkets, markets, fetchPlatforms } =
-  useMarketStore();
+const {
+  fetchCategories,
+  categories,
+  fetchMarkets,
+  markets,
+  fetchPlatforms,
+  platforms,
+} = useMarketStore();
 
 const types = ref<Types[]>([
   {

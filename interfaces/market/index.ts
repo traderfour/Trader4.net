@@ -49,3 +49,20 @@ interface IBroker {
   has_web_trading: boolean;
   status: number;
 }
+
+interface IPlatforms {
+  id: string;
+  title: string;
+  slug: null | string;
+  icon: null | string;
+  cover: null | string;
+  description: null | string;
+  content: null | string;
+  url: null | string;
+  privacy_policy: null | string;
+  terms_of_use: null | string;
+  address: null | string;
+  permissions: null | string;
+  oss: null | string;
+  status: number;
+}
