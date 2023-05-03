@@ -11,10 +11,8 @@
         @submit="submitForm()"
         :validation-schema="form"
       >
-        <div
-          class="gap-4 sm:grid sm:grid-cols-2 xl:grid-cols-3 sm:gap-6 sm:mb-2"
-        >
-          <div class="mb-4 space-y-4 xl:col-span-2">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="mb-4 space-y-4 lg:col-span-2 col-span-full">
             <div class="flex flex-row gap-4">
               <div class="md:basis-1/2">
                 <label for="title" class="custom-input-label">Title</label>
@@ -92,79 +90,112 @@
               </div>
             </div>
 
-            <div class="flex flex-row gap-4">
-              <div class="flex basis-1/2 items-center justify-center">
-                <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                >
-                  Logo
-                  <div
-                    class="flex flex-col items-center justify-center pt-5 pb-6"
-                    v-show="!model.logo"
+            <div class="md:flex flex-row gap-4 w-full">
+              <div class="row md:w-1/2">
+                <label class="custom-input-label mt-3"> Logo</label>
+                <div class="basis-1/2 items-center justify-center">
+                  <label
+                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                   >
-                    <Icon
-                      class="w-10 h-10 mb-3 text-gray-400 me-2"
-                      name="mdi:cloud-upload-outline"
-                      size="23px"
-                    />
+                    <div
+                      v-show="!logoFile"
+                      class="flex flex-col items-center justify-center pt-5 pb-6"
+                    >
+                      <Icon
+                        class="w-10 h-10 mb-3 text-gray-400 me-2"
+                        name="mdi:cloud-upload-outline"
+                        size="23px"
+                      />
 
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 5 MB)
-                    </p>
-                  </div>
-                  <VField
-                    name="logoImg"
-                    id="dropzone-file"
-                    type="file"
-                    class="hidden"
-                    @change="onFileChange($event)"
-                  />
+                      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span class="font-semibold">Click to upload</span> or
+                        drag and drop
+                      </p>
+                      <p class="text-xs text-gray-500 dark:text-gray-400">
+                        SVG, PNG, JPG or GIF (MAX. 5 MB)
+                      </p>
+                    </div>
+
+                    <div v-show="logoFile" class="flex">
+                      <p class="flex text-md text-gray-500 dark:text-gray-400">
+                        {{ logoFile }}
+                      </p>
+                      <Icon
+                        @click="removeLogo"
+                        class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
+                        name="mdi:close"
+                      />
+                    </div>
+
+                    <Field
+                      id="logoPicker"
+                      name="logoImg"
+                      type="file"
+                      class="hidden"
+                      @change="onFileChangeLogo($event)"
+                    />
+                  </label>
                   <div class="text-red-500 text-sm p-1">
                     <VErrorMessage name="logoImg" />
                   </div>
-                </label>
+                </div>
               </div>
-
-              <div class="flex basis-1/2 items-center justify-center">
-                <label
-                  for="dropzone-file"
-                  class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                >
-                  Cover
-                  <div
-                    class="flex flex-col items-center justify-center pt-5 pb-6"
-                    v-show="!model.logo"
+              <div class="row md:w-1/2">
+                <label class="custom-input-label mt-3"> Cover</label>
+                <div class="basis-1/2 items-center justify-center">
+                  <label
+                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                   >
+                    <div
+                      v-show="!coverFile"
+                      class="flex flex-col items-center justify-center pt-5 pb-6"
+                    >
+                      <Icon
+                        class="w-10 h-10 mb-3 text-gray-400 me-2"
+                        name="mdi:cloud-upload-outline"
+                        size="23px"
+                      />
+                      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span class="font-semibold">Click to upload</span> or
+                        drag and drop
+                      </p>
+                      <p class="text-xs text-gray-500 dark:text-gray-400">
+                        SVG, PNG, JPG or GIF (MAX. 5 MB)
+                      </p>
+                    </div>
+                    <!-- <p class="text-gray-800" id="coverImage">
                     <Icon
                       class="w-10 h-10 mb-3 text-gray-400 me-2"
                       name="mdi:cloud-upload-outline"
-                      size="23px"
+                      size="23px" />
+                  </p> -->
+                    <div v-show="coverFile" class="flex">
+                      <p class="flex text-md text-gray-500 dark:text-gray-400">
+                        {{ coverFile }}
+                      </p>
+                      <Icon
+                        @click="removeCover"
+                        class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
+                        name="mdi:close"
+                      />
+                    </div>
+                    <Field
+                      id="coverPicker"
+                      name="coverImg"
+                      type="file"
+                      class="hidden"
+                      @change="onFileChangeCover($event)"
                     />
-                    <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span class="font-semibold">Click to upload</span> or drag
-                      and drop
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                      SVG, PNG, JPG or GIF (MAX. 5 MB)
-                    </p>
+                  </label>
+                  <div class="text-red-500 text-sm p-1">
+                    <ErrorMessage name="coverImg" />
                   </div>
-                  <input
-                    id="dropzone-file"
-                    type="file"
-                    class="hidden"
-                    @change="onFileChange($event)"
-                  />
-                </label>
+                </div>
               </div>
             </div>
             <div class="flex flex-row gap-4"></div>
           </div>
-          <div class="mb-4 space-y-4">
+          <div class="mb-4 space-y-4 lg:col-span-1 col-span-full">
             <div>
               <label for="add-guests" class="custom-input-label"
                 >Add guests</label
@@ -291,6 +322,22 @@
 <script setup lang="ts">
 import * as Yup from "yup";
 
+interface FilesType {
+  name: string;
+  size: number;
+  type: string;
+  file: File;
+}
+const FILE_SIZE = 5242880; // 5MB in bytes
+const SUPPORTED_FORMATS = [
+  "image/svg",
+  "image/jpg",
+  "image/jpeg",
+  "image/png",
+  "image/svg+xml",
+  "image/gif",
+];
+
 const { fetchCategories, categories, fetchMarkets, markets, fetchPlatforms } =
   useMarketStore();
 
@@ -361,14 +408,44 @@ const form = Yup.object().shape({
   categories: Yup.array().of(Yup.string()).required().label("Categories"),
   tags: Yup.array().of(Yup.string()).required().label("Tags"),
   platforms: Yup.array().of(Yup.string()).required().label("Platforms"),
-  logoImg: Yup.mixed<FileList>() // Pass in the type of `fileUpload`
-    .test("logoImg", "Only documents up to 5MB are permitted.", (files) => {
-      !files || // Check if `files` is defined
-        files.length === 0 || // Check if `files` is not an empty list
-        Array.from(files).every((file) => file.size <= 5_000_000);
-    })
-    .required(),
+
+  logoImg: Yup.mixed()
+    .required("A file is required")
+    .test(
+      "fileSize",
+      "Only documents up to 5MB are permitted.",
+      (files) => files && files.size <= FILE_SIZE
+    )
+    .test(
+      "fileFormat",
+      "Unsupported Format",
+      (files) => files && SUPPORTED_FORMATS.includes(files.type)
+    ),
+
+  coverImg: Yup.mixed()
+    .required("A file is required")
+    .test(
+      "fileSize",
+      "Only documents up to 5MB are permitted.",
+      (files) => files && files.size <= FILE_SIZE
+    )
+    .test(
+      "fileFormat",
+      "Unsupported Format",
+      (files) => files && SUPPORTED_FORMATS.includes(files.type)
+    ),
 });
+
+const coverFile = ref();
+
+const removeCover = () => {
+  coverFile.value = "";
+};
+
+const logoFile = ref();
+const removeLogo = () => {
+  logoFile.value = "";
+};
 
 onMounted(() => {
   nextTick(() => {
@@ -378,12 +455,20 @@ onMounted(() => {
   });
 });
 
-const onFileChange = (e: any) => {
+const onFileChangeLogo = (e: any) => {
   var files = e.target.files || e.dataTransfer.files;
+  console.log(e.target.files || e.dataTransfer.files);
   if (!files.length) return;
   model.value.logo = files[0];
-  console.log(e.target.files || e.dataTransfer.files);
+  logoFile.value = files[0].name;
 };
+const onFileChangeCover = (e: any) => {
+  var files = e.target.files || e.dataTransfer.files;
+  if (!files.length) return;
+  model.value.cover = files[0];
+  coverFile.value = files[0].name;
+};
+
 const submitForm = async () => {
   console.log("submitForm", model.value);
 };
