@@ -184,6 +184,7 @@
                 Category</label
               >
               <SharedMultiSelectTagging
+                v-model="model.categories"
                 :options="categories"
                 :field-name="{
                   label: 'title',
@@ -195,6 +196,7 @@
                 Platform</label
               >
               <SharedMultiSelectTagging
+                v-model="model.platforms"
                 :options="platforms"
                 :field-name="{
                   label: 'title',
@@ -205,6 +207,7 @@
             <div>
               <label for="markets" class="custom-input-label"> Market</label>
               <SharedMultiSelectTagging
+                v-model="model.markets"
                 :options="markets"
                 :field-name="{
                   label: 'name',

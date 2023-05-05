@@ -9,6 +9,7 @@ interface Product {
   categories: string[];
   tags: string[];
   platforms: string[];
+  markets: string[];
 }
 interface Types {
   name: string;

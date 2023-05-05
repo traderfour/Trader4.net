@@ -64,6 +64,9 @@ const props = defineProps({
       };
     },
   },
+  modelValue: {
+    type: Array,
+  },
 });
 const selectedTags = ref<string[]>([]);
 const inputValue = ref("");
@@ -77,7 +80,8 @@ function addTag() {
 }
 
 function removeTag(tag: string) {
-  selectedTags.value = selectedTags.value.filter((t) => t !== tag);
+  // selectedTags.value = selectedTags.value.filter((t) => t !== tag);
+  selectedTags.value.splice(selectedTags.value.indexOf(tag), 1);
 }
 
 function selectOption(option: string) {
@@ -90,6 +94,12 @@ function filterOptions(query: string) {
     option[props.fieldName.label].toLowerCase().includes(query.toLowerCase())
   );
 }
+
+const emit = defineEmits(["update:modelValue"]);
+watch(selectedTags.value, (newValue, oldValue) => {
+  emit("update:modelValue", newValue);
+});
+
 watch(
   () => inputValue.value,
   (newValue) => {
