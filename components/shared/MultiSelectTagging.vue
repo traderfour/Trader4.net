@@ -1,18 +1,20 @@
 <template>
   <div class="relative">
-    <div
-      class="flex flex-wrap flex-col rounded-t-lg border dark:border-gray-700">
+    <div class="flex flex-wrap flex-col rounded border dark:border-gray-700">
       <div>
         <div
           v-for="tag in selectedTags"
           :key="tag[props.fieldName.key]"
-          class="inline-flex items-center px-2 py-1 m-1 bg-gray-200 rounded">
+          class="inline-flex items-center px-1 py-1 m-1 bg-gray-200 rounded">
           <span class="text-xs font-semibold text-gray-700 me-2">{{
             tag[props.fieldName.label]
           }}</span>
-          <button @click="removeTag(tag)" class="-mt-1">
+          <button
+            @click="removeTag(tag)"
+            class="-mt-1 t-3 w-4 h-6 pe-3 relative">
             <Icon
-              class="dark:hover:bg-gray-300 hover:bg-gray-300 text-gray-700 rounded"
+              size="13"
+              class="dark:hover:bg-gray-300 hover:bg-gray-300 rounded text-gray-700 absolute top-2"
               name="mdi:close" />
           </button>
         </div>
@@ -34,7 +36,7 @@
     </div>
     <ul
       v-if="showOptions"
-      class="absolute w-full max-h-40 rounded-b-sm overflow-y-auto z-10 py-1 dark:bg-gray-700 bg-white shadow-lg">
+      class="absolute w-full max-h-40 rounded overflow-y-auto z-10 py-1 dark:bg-gray-700 bg-white shadow-lg">
       <li
         v-for="option in filterOptions(inputValue).filter(
           (option) => !selectedTags.includes(option[props.fieldName.key])
@@ -113,6 +115,6 @@ watch(
 </script>
 <style scoped>
 .custom-input {
-  @apply bg-white  text-gray-900 text-sm rounded-t-lg outline-none  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
+  @apply bg-white  text-gray-900 text-sm rounded  outline-none  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
 }
 </style>
