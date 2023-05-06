@@ -16,6 +16,7 @@ interface Types {
   value: number;
 }
 interface ICategory {
+  uuid: string;
   icon: string;
   id: string;
   slug: string;

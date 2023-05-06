@@ -79,9 +79,18 @@ const props = defineProps({
     type: Array,
   },
 });
+
+// emits 
+const emit = defineEmits(["update:modelValue"]);
+
+// data
 const selectedTags = ref<string[]>([]);
 const inputValue = ref<string>("");
 const showOptions = ref<boolean>(false);
+
+//deep clone the options with ref
+const options = reactive<Array<any>>(props.options.map((option) => option));
+
 
 function addTag() {
   if (inputValue.value && !selectedTags.value.includes(inputValue.value)) {
@@ -93,26 +102,34 @@ function addTag() {
 function removeTag(tag: string) {
   // selectedTags.value = selectedTags.value.filter((t) => t !== tag);
   selectedTags.value.splice(selectedTags.value.indexOf(tag), 1);
+
+  // add removed tag to options push to same index
+  options.splice(props.options.indexOf(tag), 0, tag);
+
 }
 
 function selectOption(option: string) {
   selectedTags.value.push(option);
   showOptions.value = false;
+
+  //remove selected option from options
+  options.splice(options.indexOf(option), 1);
 }
 
 function filterOptions(query: string) {
-  return props.options.filter((option) =>
+  return options.filter((option) =>
     option[props.fieldName.label].toLowerCase().includes(query.toLowerCase())
   );
 }
 
+// computed
 const filterResult = computed(() => {
   return filterOptions(inputValue.value).filter(
     (option) => !selectedTags.value.includes(option[props.fieldName.key])
   );
 });
 
-const emit = defineEmits(["update:modelValue"]);
+
 watch(selectedTags.value, (newValue, oldValue) => {
   emit("update:modelValue", newValue);
 });
