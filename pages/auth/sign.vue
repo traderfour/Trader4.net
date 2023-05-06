@@ -133,10 +133,20 @@
           </div>
           <div
             v-else
-            class="w-fit dark:bg-slate-800 dark:border dark:border-slate-600 p-4 rounded"
+            class="w-fit relative dark:bg-slate-800 dark:border dark:border-slate-600 p-4 rounded"
           >
-            <!-- <p class="text-center mb-4">Scan QR Code</p> -->
-            <img :src="qrSvgSRC" alt="QR" />
+            <button
+              v-if="refreshQr"
+              class="rounded bg-gray-200 hover:bg-gray-300 dark:bg-slate-700 dark:hover:bg-slate-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+              @click="getQR"
+            >
+              <Icon name="mdi:refresh" size="3rem" class="text-blue-600" />
+            </button>
+            <img
+              :class="refreshQr ? 'opacity-20' : ''"
+              :src="qrSvgSRC"
+              alt="QR"
+            />
           </div>
         </div>
       </div>
@@ -155,6 +165,8 @@ const responseHasError = ref(false);
 const router = useRouter();
 const loadingDisabled = ref(false);
 const qrSvgSRC = ref("");
+const refreshQr = ref(false);
+const qrCodeExpire = ref("");
 const isLoadingQR = ref(false);
 
 // Login User and request OTP
@@ -202,16 +214,39 @@ const schema = Yup.object({
 });
 
 // Get QR Session
-isLoadingQR.value = true;
-const { auth } = await useAuth();
-auth
-  .getQRSession("/v1/account/qr")
-  .then((res) => {
-    isLoadingQR.value = false;
-    qrSvgSRC.value = res.results.url;
-  })
-  .catch((err) => {
-    isLoadingQR.value = false;
-    console.log(err);
-  });
+const getQR = async () => {
+  isLoadingQR.value = true;
+  refreshQr.value = false;
+  const { auth } = await useAuth();
+  auth
+    .getQRSession("/v1/account/qr")
+    .then((res) => {
+      isLoadingQR.value = false;
+      refreshQr.value = false;
+      qrSvgSRC.value = res.results.url;
+      qrCodeExpire.value = res.results.expired_at;
+      checkTimer();
+    })
+    .catch(() => {
+      isLoadingQR.value = false;
+      refreshQr.value = true;
+    });
+};
+getQR();
+
+// Timer for refresh QR code
+let interval = null as any;
+const checkTimer = () => {
+  const startTime = new Date().getTime();
+  interval = setInterval(function () {
+    if (
+      new Date().getTime() - startTime > // current time - start time = elapsed time
+      new Date(qrCodeExpire.value as string).getTime() - startTime // expired time - start time = remaining time
+    ) {
+      clearInterval(interval); //stop the interval
+      refreshQr.value = true; //show refresh button
+      return;
+    }
+  }, 1000);
+};
 </script>
