@@ -1,16 +1,14 @@
 <template>
   <div class="relative">
- 
     <section class="custom-multi-select">
-      
-      <div class="flex flex-wrap flex-col rounded border dark:border-gray-700 ">
+      <div class="flex flex-wrap flex-col rounded border dark:border-gray-700">
         <div>
           <div
             v-for="tag in selectedTags"
             :key="tag[props.fieldName.key]"
             class="inline-flex items-center px-1 py-1 m-1 bg-gray-200 rounded dark:bg-gray-500 dark:text-gray-100"
           >
-            <span class="text-xs font-semibold  me-2">{{
+            <span class="text-xs font-semibold me-2">{{
               tag[props.fieldName.label]
             }}</span>
             <button
@@ -19,7 +17,7 @@
             >
               <Icon
                 size="13"
-                class="dark:hover:bg-gray-700 hover:bg-gray-300 rounded  absolute top-2"
+                class="dark:hover:bg-gray-700 hover:bg-gray-300 rounded absolute top-2"
                 name="mdi:close"
               />
             </button>
@@ -36,11 +34,11 @@
           />
         </div>
         <Icon
-        @click="showOptions = !showOptions"
-        :class="showOptions ? 'rotate-180' : 'rotate-0'"
-        class="absolute dark:text-white text-gray-900 text-lg right-2 top-3"
-        name="mdi:chevron-down"
-      />
+          @click="showOptions = !showOptions"
+          :class="showOptions ? 'rotate-180' : 'rotate-0'"
+          class="absolute dark:text-white text-gray-900 text-lg right-2 top-3"
+          name="mdi:chevron-down"
+        />
       </div>
       <ul v-if="showOptions" class="list-items">
         <li
@@ -80,7 +78,7 @@ const props = defineProps({
   },
 });
 
-// emits 
+// emits
 const emit = defineEmits(["update:modelValue"]);
 
 // data
@@ -89,8 +87,16 @@ const inputValue = ref<string>("");
 const showOptions = ref<boolean>(false);
 
 //deep clone the options with ref
-const options = reactive<Array<any>>(props.options.map((option) => option));
+const options = reactive<Array<any>>([]);
 
+// watch props options
+watch(
+  () => props.options,
+  (newValue) => {
+    options.splice(0, options.length, ...newValue);
+  },
+  { immediate: true }
+);
 
 function addTag() {
   if (inputValue.value && !selectedTags.value.includes(inputValue.value)) {
@@ -105,7 +111,6 @@ function removeTag(tag: string) {
 
   // add removed tag to options push to same index
   options.splice(props.options.indexOf(tag), 0, tag);
-
 }
 
 function selectOption(option: string) {
@@ -129,7 +134,6 @@ const filterResult = computed(() => {
   );
 });
 
-
 watch(selectedTags.value, (newValue, oldValue) => {
   emit("update:modelValue", newValue);
 });
@@ -149,7 +153,7 @@ watch(
 .custom-multi-select {
   @apply bg-white  text-gray-900 text-sm rounded  outline-none  block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
 }
-.custom-input{
+.custom-input {
   @apply w-full p-2 outline-none  block rounded  text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
 }
 .list-items {
