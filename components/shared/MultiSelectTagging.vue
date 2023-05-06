@@ -1,6 +1,9 @@
 <template>
   <div class="relative">
     <section class="custom-multi-select">
+      <SharedOnClickOutside
+        :clickOutside="() => (showOptions = false)"
+      >
       <div class="flex flex-wrap flex-col rounded border dark:border-gray-700">
         <div>
           <div
@@ -40,19 +43,21 @@
           name="mdi:chevron-down"
         />
       </div>
-      <ul v-if="showOptions" class="list-items">
-        <li
-          v-for="option in filterResult"
-          :key="option[props.fieldName.key]"
-          @click="selectOption(option)"
-          class="item"
-        >
-          {{ option[props.fieldName.label] }}
-        </li>
-      </ul>
-      <ul class="list-items" v-if="showOptions && !filterResult.length">
-        <li class="item text-center">No item found</li>
-      </ul>
+  
+        <ul v-if="showOptions" class="list-items">
+          <li
+            v-for="option in filterResult"
+            :key="option[props.fieldName.key]"
+            @click="selectOption(option)"
+            class="item"
+          >
+            {{ option[props.fieldName.label] }}
+          </li>
+        </ul>
+        <ul class="list-items" v-if="showOptions && !filterResult.length">
+          <li class="item text-center">No item found</li>
+        </ul>
+      </SharedOnClickOutside>
     </section>
   </div>
 </template>
@@ -157,7 +162,7 @@ watch(
   @apply w-full p-2 outline-none  block rounded  text-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500;
 }
 .list-items {
-  @apply absolute w-full max-h-40 rounded overflow-y-auto z-10 py-1 dark:bg-gray-700 bg-white shadow-lg;
+  @apply absolute w-full max-h-40 mb-5 rounded overflow-y-auto z-10 py-1 dark:bg-gray-700 bg-white shadow-lg;
 }
 .list-items .item {
   @apply px-3 py-1 text-sm text-gray-700 hover:text-white dark:text-white cursor-pointer hover:bg-blue-500;
