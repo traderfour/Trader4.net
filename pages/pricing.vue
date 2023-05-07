@@ -132,12 +132,85 @@
       </div>
     </div>
 
-    <!-- Table Comes Here -->
-    <PricingTable :headers="pricingTableHeaders" :items="pricingTableItems" />
+    <!-- Tables Comes Here -->
+    <!-- General -->
+    <PricingTable
+      :headers="GeneralTableData().headers"
+      :items="GeneralTableData().items"
+    />
+    <!-- General -->
+
+    <!-- Products -->
+    <PricingTable
+      :headers="ProductsTableData().headers"
+      :items="ProductsTableData().items"
+    />
+    <!-- Products -->
+
+    <!-- Financial Engineering -->
+    <PricingTable
+      :headers="FinancialEngineeringTableData().headers"
+      :items="FinancialEngineeringTableData().items"
+    />
+    <!-- Financial Engineering -->
+
+    <!-- Open APIs -->
+    <PricingTable
+      :headers="OpenApisTableData().headers"
+      :items="OpenApisTableData().items"
+    />
+    <!-- Open APIs -->
+
+    <!-- Bridge -->
+    <PricingTable
+      :headers="BridgeTableData().headers"
+      :items="BridgeTableData().items"
+    />
+    <!-- Bridge -->
+
+    <!-- Bazaar -->
+    <PricingTable
+      :headers="BazaarTableData().headers"
+      :items="BazaarTableData().items"
+    />
+    <!-- Bazaar -->
+
+    <!-- Algo Trade -->
+    <PricingTable
+      :headers="AlgoTradeTableData().headers"
+      :items="AlgoTradeTableData().items"
+    />
+    <!-- Algo Trade -->
+
+    <!-- AI -->
+    <PricingTable
+      :headers="AITableData().headers"
+      :items="AITableData().items"
+    />
+    <!-- AI -->
+
+    <!-- Cloud Infrastructure -->
+    <PricingTable
+      :headers="CloudInfraTable().headers"
+      :items="CloudInfraTable().items"
+      has-buttons
+    />
+    <!-- Cloud Infrastructure -->
   </section>
 </template>
 
 <script setup lang="ts">
+// import data
+import { GeneralTableData } from "@/data/pricing/GeneralTable";
+import { ProductsTableData } from "@/data/pricing/ProductsTable";
+import { FinancialEngineeringTableData } from "@/data/pricing/FinancialEngineeringTable";
+import { OpenApisTableData } from "@/data/pricing/OpenApisTable";
+import { BridgeTableData } from "@/data/pricing/BridgeTable";
+import { BazaarTableData } from "@/data/pricing/BazaarTable";
+import { AlgoTradeTableData } from "@/data/pricing/AlgoTradingTable";
+import { AITableData } from "@/data/pricing/AITable";
+import { CloudInfraTable } from "@/data/pricing/CloudInfraTable";
+
 const activeBtn = ref(false);
 
 const pricingItems = ref<PricingCard[]>([
@@ -195,67 +268,4 @@ const pricingItems = ref<PricingCard[]>([
     ],
   },
 ]);
-
-const pricingTableHeaders: ITableHeader[] = [
-  {
-    text: "General",
-    value: "general",
-  },
-  {
-    text: "Professional Edition",
-    value: "pro",
-  },
-  {
-    text: "Advance Edition",
-    value: "advance",
-  },
-  {
-    text: "Corporate Edition",
-    value: "corporate",
-  },
-];
-
-const pricingTableItems = [
-  {
-    general: "Live Connection",
-    pro: { icon: "mdi-check", color: "green-500" },
-    advance: { icon: "mdi-check", color: "green-500" },
-    corporate: { icon: "mdi-close", color: "red-500" },
-  },
-  {
-    general: "Data Priority",
-    pro: { icon: "mdi-check", color: "green-500" },
-    advance: { icon: "mdi-check", color: "green-500" },
-    corporate: { icon: "mdi-close", color: "red-500" },
-  },
-  {
-    general: {
-      tooltipText: "a simple tooltip from support with a drawer (help center)",
-      text: "Support",
-      hasDrawer: true,
-    },
-    pro: ["Ticket", "Email (24 Hours)"],
-    advance: ["Ticket", "Email", "Phone (8 Hours)"],
-    corporate: ["Ticket", "Email", "Phone (>One Hour)"],
-  },
-  {
-    general: {
-      tooltipText:
-        "a simple tooltip from markets without a drawer (help center)",
-      text: "Markets",
-    },
-    pro: ["Forex ", "Stocks", "Crypto"],
-    advance: ["Forex ", "Stocks", "Crypto", "Commodities", "Indices"],
-    corporate: [
-      "Forex ",
-      "Stocks",
-      "Crypto",
-      "Commodities",
-      "Indices",
-      "Futures",
-      "Bond",
-      "Options",
-    ],
-  },
-];
 </script>

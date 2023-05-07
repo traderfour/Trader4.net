@@ -102,6 +102,7 @@
 
         <!-- Buy Now Buttons -->
         <div
+          v-if="hasButtons"
           class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700"
         >
           <div class="text-gray-500 dark:text-gray-400"></div>
@@ -137,5 +138,6 @@
 defineProps<{
   headers: ITableHeader[];
   items: any;
+  hasButtons?: boolean;
 }>();
 </script>
