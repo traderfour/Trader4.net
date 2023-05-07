@@ -47,6 +47,7 @@ export const BridgeTableData = () => {
         tooltipText:
           "a simple tooltip from ML Processing without a drawer (help center)",
         text: "ML Processing",
+        hasDrawer: false,
       },
       pro: { icon: "mdi-close", color: "red-500" },
       advance: { icon: "mdi-close", color: "red-500" },
@@ -57,6 +58,7 @@ export const BridgeTableData = () => {
         tooltipText:
           "a simple tooltip from Business Logics (FaaS) without a drawer (help center)",
         text: "Business Logics (FaaS)",
+        hasDrawer: false,
       },
       pro: { icon: "mdi-close", color: "red-500" },
       advance: { icon: "mdi-close", color: "red-500" },

@@ -55,7 +55,7 @@
             <span v-else-if="item.tooltipText" class="dark:text-gray-400">
               <!-- Side Drawer Component -->
               <SideDrawer
-                v-show="item.hasDrawer"
+                v-if="item.hasDrawer && item.hasDrawer === true"
                 :drawer-id="`drawer-${item.text}`"
               />
               <!-- Side Drawer Component -->

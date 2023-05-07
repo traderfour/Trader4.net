@@ -42,6 +42,7 @@ export const OpenApisTableData = () => {
         tooltipText:
           "a simple tooltip from markets without a drawer (help center)",
         text: "Markets",
+        hasDrawer: true,
       },
       pro: ["Forex ", "Stocks", "Crypto"],
       advance: ["Forex ", "Stocks", "Crypto", "Commodities", "Indices"],

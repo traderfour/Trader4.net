@@ -47,6 +47,7 @@ export const FinancialEngineeringTableData = () => {
         tooltipText:
           "a simple tooltip from Trading Plan without a drawer (help center)",
         text: "Trading Plan",
+        hasDrawer: true,
       },
       pro: { icon: "mdi-check", color: "green-500" },
       advance: { icon: "mdi-check", color: "green-500" },
@@ -57,6 +58,7 @@ export const FinancialEngineeringTableData = () => {
         tooltipText:
           "a simple tooltip from Trading Plan without a drawer (help center)",
         text: "Cash Flow",
+        hasDrawer: true,
       },
       pro: { icon: "mdi-check", color: "green-500" },
       advance: { icon: "mdi-check", color: "green-500" },

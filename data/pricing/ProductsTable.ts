@@ -47,6 +47,7 @@ export const ProductsTableData = () => {
         tooltipText:
           "a simple tooltip from Dashboard X without a drawer (help center)",
         text: "Dashboard X",
+        hasDrawer: true,
       },
       pro: { icon: "mdi-check", color: "green-500" },
       advance: { icon: "mdi-check", color: "green-500" },
@@ -57,6 +58,7 @@ export const ProductsTableData = () => {
         tooltipText:
           "a simple tooltip from Dashboard X without a drawer (help center)",
         text: "Tchimoku",
+        hasDrawer: true,
       },
       pro: { icon: "mdi-check", color: "green-500" },
       advance: { icon: "mdi-check", color: "green-500" },
