@@ -61,15 +61,9 @@
               <!-- Side Drawer Component -->
 
               <!-- Tooltip Icon and Text -->
-              <div class="flex items-center space-x-1">
-                <span>
-                  {{ item.text }}
-                </span>
-                <Icon
-                  :data-tooltip-target="`tooltip-${item.text}`"
-                  type="button"
-                  name="mdi:help-circle"
-                  class="outline-none"
+              <div>
+                <span
+                  class="flex items-center cursor-pointer"
                   :data-drawer-target="
                     item.hasDrawer ? `drawer-${item.text}` : undefined
                   "
@@ -79,7 +73,15 @@
                   :aria-controls="
                     item.hasDrawer ? `drawer-${item.text}` : undefined
                   "
-                />
+                >
+                  {{ item.text }}
+                  <Icon
+                    :data-tooltip-target="`tooltip-${item.text}`"
+                    type="button"
+                    name="mdi:help-circle"
+                    class="outline-none ml-1"
+                  />
+                </span>
               </div>
 
               <div
