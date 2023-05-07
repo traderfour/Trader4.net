@@ -135,8 +135,6 @@
 </template>
 
 <script setup lang="ts">
-import SideDrawer from "../global/SideDrawer.vue";
-
 defineProps<{
   headers: ITableHeader[];
   items: any;
