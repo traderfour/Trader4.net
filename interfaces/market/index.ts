@@ -9,12 +9,14 @@ interface Product {
   categories: string[];
   tags: string[];
   platforms: string[];
+  markets: string[];
 }
 interface Types {
   name: string;
   value: number;
 }
 interface ICategory {
+  uuid: string;
   icon: string;
   id: string;
   slug: string;
@@ -47,5 +49,22 @@ interface IBroker {
   has_demo_account: boolean;
   has_mobile_trading: boolean;
   has_web_trading: boolean;
+  status: number;
+}
+
+interface IPlatforms {
+  id: string;
+  title: string;
+  slug: null | string;
+  icon: null | string;
+  cover: null | string;
+  description: null | string;
+  content: null | string;
+  url: null | string;
+  privacy_policy: null | string;
+  terms_of_use: null | string;
+  address: null | string;
+  permissions: null | string;
+  oss: null | string;
   status: number;
 }
