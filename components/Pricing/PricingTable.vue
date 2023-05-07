@@ -54,7 +54,7 @@
             <!-- if has tooltips or Drawer -->
             <span v-else-if="item.tooltipText" class="dark:text-gray-400">
               <!-- Side Drawer Component -->
-              <SideDrawer
+              <side-drawer
                 v-if="item.hasDrawer && item.hasDrawer === true"
                 :drawer-id="`drawer-${item.text}`"
               />
@@ -135,6 +135,8 @@
 </template>
 
 <script setup lang="ts">
+import SideDrawer from "../global/SideDrawer.vue";
+
 defineProps<{
   headers: ITableHeader[];
   items: any;
