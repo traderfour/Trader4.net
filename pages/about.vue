@@ -79,12 +79,7 @@
           night, fueled by their passion for innovation and their desire to make
           a mark in the industry. They poured their hearts and souls into the
           project, fine-tuning the software until it was ready for release.
-          <button
-            class="text-blue-500 dark:text-gray-200 hover:underline"
-            @click="readMoreStatus = !readMoreStatus"
-          >
-            {{ readMoreStatus ? "read less" : "read more" }}
-          </button>
+
           <span v-if="readMoreStatus">
             <br />
             Initially, they faced numerous challenges as they tried to get their
@@ -109,6 +104,13 @@
             young entrepreneurs to pursue their dreams and make their mark in
             the world.
           </span>
+          <br />
+          <button
+            class="text-blue-500 dark:text-gray-200 hover:underline"
+            @click="readMoreStatus = !readMoreStatus"
+          >
+            {{ readMoreStatus ? "read less" : "read more" }}
+          </button>
         </p>
       </div>
       <div class="grid grid-cols-2 gap-4 mt-8">
