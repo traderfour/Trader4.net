@@ -1,10 +1,23 @@
 <template>
   <div class="py-8 px-4 lg:py-16 lg:px-6">
+    <!-- Headers -->
+    <div
+      id="table-header"
+      class="hidden md:grid grid-cols-4 gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-t border-b border-gray-200 rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white sticky"
+    >
+      <div
+        v-for="(headerItem, headerIndex) in headers"
+        :key="`header-${headerIndex}`"
+      >
+        {{ headerItem.text }}
+      </div>
+    </div>
+    <!-- Headers -->
     <div id="detailed-pricing" class="overflow-x-auto mt-8 w-full">
       <div class="overflow-hidden lg:min-w-fit min-w-max">
         <!-- Headers -->
         <div
-          class="grid grid-cols-4 gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-t border-b border-gray-200 rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white sticky top-0"
+          class="md:hidden grid grid-cols-4 gap-x-16 p-4 text-sm font-medium text-gray-900 bg-gray-100 border-t border-b border-gray-200 rounded dark:bg-gray-800 dark:border-gray-700 dark:text-white"
         >
           <div
             v-for="(headerItem, headerIndex) in headers"
@@ -18,6 +31,7 @@
         <!-- Items -->
         <div
           v-for="(tableItem, tableIndex) in items"
+          :key="tableIndex"
           class="grid grid-cols-4 gap-x-16 py-5 px-4 text-sm text-gray-700 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-200 rounded dark:hover:bg-slate-700"
         >
           <div
@@ -142,4 +156,16 @@ defineProps<{
   items: any;
   hasButtons?: boolean;
 }>();
+
+onBeforeMount(() => {
+  // Main Header Component
+  const mainHeaderHeight = document.getElementById("main-header")?.clientHeight;
+
+  // All Table Headers Array
+  const tableHeaders = document.querySelectorAll("#table-header");
+  tableHeaders.forEach((header: any) => {
+    // Style top of header Height
+    header.style.top = `${mainHeaderHeight}px`;
+  });
+});
 </script>
