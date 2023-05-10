@@ -11,12 +11,15 @@
           Here at Trader4 we focus on markets where technology, innovation, and
           capital can unlock long-term value and drive economic growth.
         </p>
+
         <div
           class="p-4 mb-4 w-fit text-sm text-green-800 rounded bg-green-100 dark:bg-gray-800 dark:text-green-400"
           role="alert"
         >
-          Annually you have up to 16% off, which is 2 months <b>free</b>
+          Annually you have up to 16% off, which is 2 months
+          <b>free </b>😍
         </div>
+
         <div class="flex items-center">
           <span
             class="text-base font-medium text-gray-900 dark:text-white me-3"
@@ -37,6 +40,24 @@
           <span class="text-base font-medium text-gray-900 dark:text-white m-4">
             Annually
           </span>
+
+          <div class="-mt-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 50 49"
+              width="50"
+              height="49"
+            >
+              <path
+                fill="currentColor"
+                d="M36.99 11.6a.7.7 0 0 1 .6-.84.8.8 0 0 1 .9.63l-1.5.2Zm1.5-.21a19.55 19.55 0 0 1-7.51 19.77c-5.57 4.2-13.23 5.5-19.64 1.8l.72-1.26c5.72 3.3 12.7 2.22 17.94-1.72a18.17 18.17 0 0 0 6.99-18.39l1.5-.2Z"
+              ></path>
+              <path
+                fill="currentColor"
+                d="m10.02 36.23 4.22-7.3-6.44 1.15 2.22 6.15Z"
+              ></path>
+            </svg>
+          </div>
         </div>
       </div>
       <div
@@ -138,7 +159,7 @@
 </template>
 
 <script setup lang="ts">
-const activeBtn = ref(false);
+const activeBtn = ref(true);
 
 const pricingItems = ref<PricingCard[]>([
   {

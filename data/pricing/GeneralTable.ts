@@ -23,13 +23,13 @@ export const GeneralTableData = () => {
       general: "Live Connection",
       pro: { icon: "mdi-check", color: "green-500" },
       advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       general: "Data Priority",
-      pro: { icon: "mdi-check", color: "green-500" },
+      pro: { icon: "mdi-close", color: "red-500" },
       advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       general: {

@@ -21,13 +21,12 @@ interface IFooter {
 }
 
 export default defineAppConfig({
-
   config: {
     header: {
       logo: "/img/h-logo.svg",
       darkLogo: "/img/h-logo-dark.svg",
       menu: [
-        { title: "Price", link: "/price" },
+        { title: "Pricing", link: "/pricing" },
         { title: "Help", link: "/help" },
       ],
       megaMenu: true,

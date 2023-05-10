@@ -23,13 +23,7 @@ export const FinancialEngineeringTableData = () => {
       financial: "Risk Management",
       pro: { icon: "mdi-check", color: "green-500" },
       advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
-    },
-    {
-      financial: "Data Priority",
-      pro: { icon: "mdi-check", color: "green-500" },
-      advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       financial: {
@@ -38,9 +32,9 @@ export const FinancialEngineeringTableData = () => {
         text: "Money Management",
         hasDrawer: true,
       },
-      pro: { icon: "mdi-check", color: "green-500" },
+      pro: { icon: "mdi-close", color: "red-500" },
       advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       financial: {
@@ -49,9 +43,9 @@ export const FinancialEngineeringTableData = () => {
         text: "Trading Plan",
         hasDrawer: true,
       },
-      pro: { icon: "mdi-check", color: "green-500" },
+      pro: { icon: "mdi-close", color: "red-500" },
       advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       financial: {
@@ -60,15 +54,15 @@ export const FinancialEngineeringTableData = () => {
         text: "Cash Flow",
         hasDrawer: true,
       },
-      pro: { icon: "mdi-check", color: "green-500" },
-      advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      pro: { icon: "mdi-close", color: "red-500" },
+      advance: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       financial: "Portfolio Management",
-      pro: { icon: "mdi-check", color: "green-500" },
-      advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      pro: { icon: "mdi-close", color: "red-500" },
+      advance: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       general: "Analytics & Reports",

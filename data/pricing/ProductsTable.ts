@@ -23,13 +23,13 @@ export const ProductsTableData = () => {
       products: "Supply Demand",
       pro: { icon: "mdi-check", color: "green-500" },
       advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       products: "Algo Portfolio",
       pro: { icon: "mdi-check", color: "green-500" },
       advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       products: {
@@ -38,9 +38,9 @@ export const ProductsTableData = () => {
         text: "Trend Friend",
         hasDrawer: true,
       },
-      pro: { icon: "mdi-check", color: "green-500" },
+      pro: { icon: "mdi-close", color: "red-500" },
       advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       products: {
@@ -49,9 +49,9 @@ export const ProductsTableData = () => {
         text: "Dashboard X",
         hasDrawer: true,
       },
-      pro: { icon: "mdi-check", color: "green-500" },
-      advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      pro: { icon: "mdi-close", color: "red-500" },
+      advance: { icon: "mdi-close", color: "red-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
     {
       products: {
@@ -60,9 +60,9 @@ export const ProductsTableData = () => {
         text: "Tchimoku",
         hasDrawer: true,
       },
-      pro: { icon: "mdi-check", color: "green-500" },
-      advance: { icon: "mdi-check", color: "green-500" },
-      corporate: { icon: "mdi-close", color: "red-500" },
+      pro: { icon: "mdi-close", color: "red-500" },
+      advance: { icon: "mdi-close", color: "rex-500" },
+      corporate: { icon: "mdi-check", color: "green-500" },
     },
   ];
 
