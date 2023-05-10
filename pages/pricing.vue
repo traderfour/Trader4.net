@@ -68,8 +68,9 @@ const pricingItems = ref<PricingCard[]>([
       "Risk Management of Financial Engineering",
       "No setup, monthly, or hidden fees",
     ],
-    badge: `You save $24.00 a year`,
-    tooltip: "a tooltip for showing in badge",
+    badge: `You save $198.00 a year`,
+    tooltip:
+      "Compared to paying monthly. The full monthly price is $99. The monthly price within the yearly subscription is $82.5.",
   },
   {
     type: "ADVANCE",
@@ -87,8 +88,9 @@ const pricingItems = ref<PricingCard[]>([
       "Money Management & Trading Plan",
       "AI Assitant & AI Coaching",
     ],
-    badge: `You save $60.00 a year`,
-    tooltip: "a tooltip for showing in badge in advance",
+    badge: `You save $1998.00 a year`,
+    tooltip:
+      "Compared to paying monthly. The full monthly price is $999. The monthly price within the yearly subscription is $832.5.",
   },
   {
     type: "CORPORATE",
@@ -111,8 +113,9 @@ const pricingItems = ref<PricingCard[]>([
       "Auto Live Stream and Social Integrations",
       "Custom Cloud Images",
     ],
-    badge: `You save $120.00 a year`,
-    tooltip: "a tooltip for showing in badge",
+    badge: `You save $7998.00 a year`,
+    tooltip:
+      "Compared to paying monthly. The full monthly price is $3990. The monthly price within the yearly subscription is $3332.5.",
   },
 ]);
 </script>
