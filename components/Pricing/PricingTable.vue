@@ -158,7 +158,7 @@ defineProps<{
   hasButtons?: boolean;
 }>();
 
-onBeforeMount(() => {
+onMounted(() => {
   // Main Header Component
   const mainHeaderHeight = document.getElementById("main-header")?.clientHeight;
 
