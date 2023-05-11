@@ -16,21 +16,28 @@
     </div>
 
     <div
-      class="flex items-start p-4 bg-white border justify-center border-gray-100 top-6 dark:bg-gray-700 dark:border-gray-600"
+      class="flex items-center p-4 bg-white border justify-center border-gray-100 top-6 dark:bg-gray-700 dark:border-gray-600"
     >
       <div
         class="flex flex-col items-center mb-3 mr-4 md:items-center md:flex-row md:mb-0"
       >
-        <a
-          href="https://trader4.net/"
-          class="flex items-center mb-2 border-gray-200 md:pe-7 md:me-4 md:border-e md:mb-0 dark:border-gray-600"
-        >
-          <span
-            class="self-center text-lg font-semibold whitespace-nowrap dark:text-white"
-          >
-            T4 Enterprise
-          </span>
-        </a>
+        <div class="border-gray-200 border-e me-2">
+          <div class="flex items-center mr-2">
+            <img
+              width="70"
+              class="block dark:hidden"
+              src="/img/logo-plain.svg"
+              alt="Trader4 Logo"
+            />
+            <img
+              width="70"
+              class="hidden dark:block"
+              src="/img/logo-plain-dark.svg"
+              alt="Trader4 Logo"
+            />
+            Enterprise
+          </div>
+        </div>
         <p
           class="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400"
         >
