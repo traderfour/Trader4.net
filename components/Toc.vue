@@ -43,7 +43,7 @@ const flattenLinks = (links) => {
 
 <style scoped>
 .toc {
-  @apply p-4 bg-slate-50 border border-slate-200 rounded-lg dark:bg-gray-800 dark:border-gray-700;
+  @apply p-4 bg-slate-50 rounded dark:bg-gray-800 dark:border-gray-700 bg-gray-100;
   @apply max-h-[calc(100vh-6rem)] overflow-auto;
 }
 
