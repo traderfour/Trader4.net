@@ -3,7 +3,6 @@
 <script setup>
 // define links prop
 defineProps(["links"]);
-
 // flatten TOC links nested arrays to one array
 const flattenLinks = (links) => {
   let _links = links
@@ -17,8 +16,6 @@ const flattenLinks = (links) => {
     })
     .flat(1);
 
-  console.log({ _links });
-
   return _links;
 };
 </script>
@@ -30,7 +27,12 @@ const flattenLinks = (links) => {
     </header>
     <ul class="toc-links">
       <!-- render each link with depth class -->
-      <li v-for="link of flattenLinks(links)" :key="link.id" :class="`toc-link _${link.depth}`">
+      <li
+        v-for="link of flattenLinks(links)"
+        :key="link.id"
+        :class="`toc-link _${link.depth}`"
+      >
+        <!-- check if active add class -->
         <a :href="`#${link.id}`">
           {{ link.text }}
         </a>
@@ -41,7 +43,7 @@ const flattenLinks = (links) => {
 
 <style scoped>
 .toc {
-  @apply p-4 bg-slate-50 border border-slate-200 rounded-lg dark:bg-gray-600 ;
+  @apply p-4 bg-slate-50 border border-slate-200 rounded-lg dark:bg-gray-800 dark:border-gray-700;
   @apply max-h-[calc(100vh-6rem)] overflow-auto;
 }
 
@@ -50,7 +52,7 @@ const flattenLinks = (links) => {
 }
 
 .toc-links {
-  @apply flex flex-col gap-2 px-2 ;
+  @apply flex flex-col gap-2 px-2;
 }
 
 .toc-link {
@@ -58,7 +60,7 @@ const flattenLinks = (links) => {
 }
 
 .toc-link._3 {
-  @apply pl-3 ;
+  @apply pl-3;
 }
 
 .toc-link._4 {
