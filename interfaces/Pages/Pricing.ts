@@ -5,5 +5,7 @@ interface PricingCard {
   period: string;
   subtitle: string;
   features: string[];
+  badge?: string;
+  tooltip?: string;
   link: string;
 }
