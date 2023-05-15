@@ -88,18 +88,21 @@
 <script>
 import { ref } from "@vue/reactivity";
 
-import { setLabraries } from "../composables/useLabraries";
-
+import { setLabraries } from "@/composables/useLabraries";
 
 export default {
   name: "SelectLibraries",
 
   props: {
-    libraries: { type: Object },
+    libraries: {
+      type: Array,
+      default: () => [],
+    },
   },
   setup(props, { slots }) {
     const router = useRouter();
-    const dir = 'ltr'
+    const route = useRoute();
+    const dir = "ltr";
 
     const openTab = ref(0);
     const index = ref(0);
@@ -107,12 +110,12 @@ export default {
     function toggleTabs(tabNumber, name, { pageY }) {
       openTab.value = tabNumber;
       index.value = tabNumber;
-      router.go(`${router.route.path}?lang=${name.toLowerCase()}&pos=${pageY}`);
+      router.go(`${route.path}?lang=${name.toLowerCase()}&pos=${pageY}`);
       nextTick(() => {
         window.location.reload();
       });
     }
-    onBeforeMount(() => {
+  /*   onBeforeMount(() => {
       setLabraries(props.libraries);
     });
     onMounted(() => {
@@ -137,12 +140,10 @@ export default {
         });
       } else {
         router.go(
-          `${
-            router.route.path
-          }?lang=${props.libraries[0].name.toLowerCase()}&pos=${0}`
+          `${route.path}?lang=${props.libraries[0].name.toLowerCase()}&pos=${0}`
         );
       }
-    }
+    } */
 
     return {
       dir,

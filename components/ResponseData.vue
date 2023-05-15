@@ -6,7 +6,7 @@
 import { ref } from 'vue'
 import VueJsonPretty from "vue-json-pretty";
 import "vue-json-pretty/lib/styles.css";
-import { withBase } from "vitepress";
+// import { withBase } from "vitepress";
 
 export default {
   name: 'ResponseData',
@@ -23,7 +23,7 @@ export default {
       await new Promise((r) => setTimeout(r, 2000));
       try {
         console.log()
-        const res = await fetch(withBase(window.location.origin + '/' + props.jfile + '.json'), { method: 'GET' });
+        const res = await fetch(window.location.origin + '/' + props.jfile + '.json', { method: 'GET' });
         data.value = await res.json();
       } catch (e) {
         console.error(e);

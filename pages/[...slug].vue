@@ -41,14 +41,18 @@ console.log(isCurrentRoute(data.value?.article));
 const toggleCollapse = (link) => {
   link.isOpen = !link.isOpen;
 };
+const toggleChildCollapse = (link) => {
+  link.isOpen = !link.isOpen;
+};
 // destrucure `prev` and `next` value from data
 const [prev, next] = data.value?.surround;
 </script>
 <template>
   <main class="prose flex flex-row">
     <!-- create navigation ul with tailwind -->
-    <ul class="flex flex-col w-1/5">
-      <div
+
+    <div class="flex flex-col w-1/5 overflow-y-scroll">
+      <ul
         class="fixed shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800 h-fit w-56"
       >
         <li
@@ -87,27 +91,90 @@ const [prev, next] = data.value?.surround;
               :key="sublink._path"
               class="py-1"
             >
-              <NuxtLink
-                :to="sublink._path"
-                class="block text-sm text-gray-800 dark:text-gray-100 pl-2"
+              <div
+                @click="toggleChildCollapse(sublink)"
+                class="flex items-center cursor-pointer"
               >
-                <span
-                  class="hover:text-blue-500 px-2 rounded"
-                  :class="{ ' text-blue-500': isCurrentRoute(sublink) }"
-                >
-                  {{ sublink.title }}
+                <span class="mr-2" v-if="sublink.children">
+                  <svg
+                    :class="{ 'rotate-90': sublink.isOpen }"
+                    class="w-4 h-4 transition-transform duration-300 transform"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
                 </span>
-              </NuxtLink>
+                <NuxtLink
+                  :to="sublink._path"
+                  class="block text-sm text-gray-800 dark:text-gray-100 pl-2"
+                >
+                  <span
+                    class="hover:text-blue-500 px-2 rounded"
+                    :class="{ ' text-blue-500': isCurrentRoute(sublink) }"
+                  >
+                    {{ sublink.title }}
+                  </span>
+                </NuxtLink>
+              </div>
+              <ul v-show="sublink.isOpen" class="pl-2 mt-2">
+                <li
+                  v-for="sublink2 of sublink.children"
+                  :key="sublink2._path"
+                  class="py-1"
+                >
+                  <div
+                    @click="toggleChildCollapse(sublink)"
+                    class="flex items-center cursor-pointer"
+                  >
+                    <span class="mr-2" v-if="sublink2.children">
+                      <svg
+                        :class="{ 'rotate-90': sublink2.isOpen }"
+                        class="w-4 h-4 transition-transform duration-300 transform"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </span>
+                    <NuxtLink
+                      :to="sublink2._path"
+                      class="block text-sm text-gray-800 dark:text-gray-100 pl-2"
+                    >
+                      <span
+                        class="hover:text-blue-500 px-2 rounded"
+                        :class="{ ' text-blue-500': isCurrentRoute(sublink) }"
+                      >
+                        {{ sublink2.title }}
+                      </span>
+                    </NuxtLink>
+                  </div>
+                </li>
+              </ul>
             </li>
           </ul>
         </li>
-      </div>
-    </ul>
+      </ul>
+    </div>
 
-    <div class="w-3/5 "  >
-      <ContentDoc  class="dark:bg-gray-800 bg-gray-100 p-4 rounded"/>
+    <div class="w-3/5">
+      <ContentDoc class="dark:bg-gray-800 bg-gray-100 p-4 rounded" />
       <!-- PrevNext Component -->
-      <PrevNext :prev="prev" :next="next" class="dark:bg-gray-800 bg-gray-100 p-4 rounded my-5" />
+      <PrevNext
+        :prev="prev"
+        :next="next"
+        class="dark:bg-gray-800 bg-gray-100 p-4 rounded my-5"
+      />
     </div>
     <aside class="mx-2 w-1/5">
       <div class="fixed w-72">
