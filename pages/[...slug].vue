@@ -77,12 +77,16 @@ const [prev, next] = data.value?.surround;
         </ul>
       </li>
     </ul>
-
-    <div class="basis-2/4">
+   
+    <div class="w-3/5">
       <ContentDoc />
       <!-- PrevNext Component -->
       <PrevNext :prev="prev" :next="next" />
     </div>
+    <aside class="aside mx-2 w-1/5">
+        <!-- Toc Component -->
+        <Toc :links="data?.article.body.toc.links" />
+      </aside>
 
     <!--     <ContentNavigation v-slot="{ navigation }">
       <ul>

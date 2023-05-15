@@ -9,14 +9,16 @@ defineProps(["prev", "next"]);
 <template>
   <ul class="prev-next-cont">
     <li class="link-item prev">
-      <NuxtLink v-if="prev" :to="prev._path">
+      <NuxtLink v-if="prev" :to="prev._path" class="hover:text-blue-500 "  >
         
+        <Icon name="mdi:chevron-left" class="w-5 h-5 mt-1" />
         <span> {{ prev.title }} </span>
       </NuxtLink>
     </li>
     <li class="link-item next">
-      <NuxtLink v-if="next" :to="next._path">
+      <NuxtLink v-if="next" :to="next._path" class="hover:text-blue-500 " >
         <span> {{ next.title }} </span>
+        <Icon name="mdi:chevron-right" class="w-5 h-5 mt-1" />
        
       </NuxtLink>
     </li>
