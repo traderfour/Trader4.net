@@ -49,7 +49,7 @@ const [prev, next] = data.value?.surround;
     <!-- create navigation ul with tailwind -->
     <ul class="flex flex-col w-1/5">
       <div
-        class="fixed shadow rounded px-2 py-6 m-4 bg-gray-100 dark:bg-gray-800 h-fit w-48"
+        class="fixed shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800 h-fit w-56"
       >
         <li
           v-for="link of navigation"
@@ -104,10 +104,10 @@ const [prev, next] = data.value?.surround;
       </div>
     </ul>
 
-    <div class="w-3/5">
-      <ContentDoc />
+    <div class="w-3/5 "  >
+      <ContentDoc  class="dark:bg-gray-800 bg-gray-100 p-4 rounded"/>
       <!-- PrevNext Component -->
-      <PrevNext :prev="prev" :next="next" />
+      <PrevNext :prev="prev" :next="next" class="dark:bg-gray-800 bg-gray-100 p-4 rounded my-5" />
     </div>
     <aside class="mx-2 w-1/5">
       <div class="fixed w-72">
