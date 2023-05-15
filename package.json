@@ -24,8 +24,10 @@
   "dependencies": {
     "@nuxt-themes/docus": "^1.11.1",
     "@vee-validate/nuxt": "^4.8.6",
+    "@vueuse/core": "^10.1.2",
     "@werify/id-ts": "^1.2.0",
     "flowbite": "^1.6.5",
+    "vue-json-pretty": "^2.2.4",
     "yup": "^1.1.1"
   }
 }
