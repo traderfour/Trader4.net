@@ -1,6 +1,7 @@
 <template>
+  <!-- v-if="lang?.toLowerCase() === langFromQuery" -->
     <div
-      v-if="lang?.toLowerCase() === langFromQuery"
+      
       class="rounded-lg my-5 grid gap-6 md:grid-cols-2 grid-cols-1"
       :style="dir === 'rtl' ? 'direction:rtl' : ''"
     >
@@ -110,15 +111,15 @@ export default {
 
     const langFromQuery = ref("");
 
-    onMounted(() => {
-      nextTick(() => {
-        loading.value = false;
-        const urlSearchParams = new URLSearchParams(window.location.search);
-        const params = Object.fromEntries(urlSearchParams.entries());
+    // onMounted(() => {
+    //   nextTick(() => {
+    //     loading.value = false;
+    //     const urlSearchParams = new URLSearchParams(window.location.search);
+    //     const params = Object.fromEntries(urlSearchParams.entries());
 
-        langFromQuery.value = params.lang;
-      });
-    });
+    //     langFromQuery.value = params.lang;
+    //   });
+    // });
     function toggleTabs(name, { pageY }) {
       showDropDown.value = false;
       router.go(

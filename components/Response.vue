@@ -51,7 +51,7 @@
 </template>
 <script>
 
-import {useData} from "vitepress";
+
 import ResponseData from "./ResponseData.vue";
 
 export default {
@@ -63,7 +63,7 @@ export default {
     jfile: { type: String },
   },
   setup(props) {
-    const { dir } = useData();
+    const dir = 'ltr'
     return { dir, props }
   },
 };
