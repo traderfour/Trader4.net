@@ -25,7 +25,7 @@ const isCurrentRoute = (link) => {
   return route.path === link._path;
 };
 if (data.value?.article) {
-  // show collapse in pranet
+  // show collapse in pranet in each childs
   const parent = navigation.value?.find((link) => {
     return link.children?.some((child) => {
       return child._path === data.value?.article?._path;
@@ -34,8 +34,20 @@ if (data.value?.article) {
   if (parent) {
     parent.isOpen = true;
   }
+ 
 }
-console.log(isCurrentRoute(data.value?.article));
+
+//get height of content component
+const contentHeight = ref(0);
+const content = ref(null);
+onMounted(() => {
+  contentHeight.value = content.value.clientHeight;
+  console.log(contentHeight.value)
+});
+
+
+
+
 
 // toggle collapse item
 const toggleCollapse = (link) => {
@@ -51,9 +63,10 @@ const [prev, next] = data.value?.surround;
   <main class="prose flex flex-row">
     <!-- create navigation ul with tailwind -->
 
-    <div class="flex flex-col w-1/5 overflow-y-scroll">
+    <nav class="flex flex-col w-1/5 sticky top-40 h-3/4 doc-sidebar">
       <ul
-        class="fixed shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800 h-fit w-56"
+        class="shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800"
+
       >
         <li
           v-for="link of navigation"
@@ -95,7 +108,7 @@ const [prev, next] = data.value?.surround;
                 @click="toggleChildCollapse(sublink)"
                 class="flex items-center cursor-pointer"
               >
-                <span class="mr-2" v-if="sublink.children">
+                <span class="" v-if="sublink.children">
                   <svg
                     :class="{ 'rotate-90': sublink.isOpen }"
                     class="w-4 h-4 transition-transform duration-300 transform"
@@ -112,7 +125,7 @@ const [prev, next] = data.value?.surround;
                 </span>
                 <NuxtLink
                   :to="sublink._path"
-                  class="block text-sm text-gray-800 dark:text-gray-100 pl-2"
+                  class="block text-sm text-gray-800 dark:text-gray-100"
                 >
                   <span
                     class="hover:text-blue-500 px-2 rounded"
@@ -129,10 +142,10 @@ const [prev, next] = data.value?.surround;
                   class="py-1"
                 >
                   <div
-                    @click="toggleChildCollapse(sublink)"
+                    @click="toggleChildCollapse(sublink2)"
                     class="flex items-center cursor-pointer"
                   >
-                    <span class="mr-2" v-if="sublink2.children">
+                    <span class="" v-if="sublink2.children">
                       <svg
                         :class="{ 'rotate-90': sublink2.isOpen }"
                         class="w-4 h-4 transition-transform duration-300 transform"
@@ -149,7 +162,7 @@ const [prev, next] = data.value?.surround;
                     </span>
                     <NuxtLink
                       :to="sublink2._path"
-                      class="block text-sm text-gray-800 dark:text-gray-100 pl-2"
+                      class="block text-sm text-gray-800 dark:text-gray-100"
                     >
                       <span
                         class="hover:text-blue-500 px-2 rounded"
@@ -165,9 +178,9 @@ const [prev, next] = data.value?.surround;
           </ul>
         </li>
       </ul>
-    </div>
+    </nav>
 
-    <div class="w-3/5">
+    <div class="w-3/5" ref="content">
       <ContentDoc class="dark:bg-gray-800 bg-gray-100 p-4 rounded" />
       <!-- PrevNext Component -->
       <PrevNext
@@ -176,11 +189,16 @@ const [prev, next] = data.value?.surround;
         class="dark:bg-gray-800 bg-gray-100 p-4 rounded my-5"
       />
     </div>
-    <aside class="mx-2 w-1/5">
-      <div class="fixed w-72">
+    <aside class="mx-2 w-1/5 sticky top-40 h-3/4 ">
+      <div class="">
         <!-- Toc Component -->
         <Toc :links="data?.article.body.toc.links" />
       </div>
     </aside>
   </main>
 </template>
+<style scoped>
+.doc-sidebar{
+  @apply max-h-[calc(100vh-6rem)] overflow-auto;
+}
+</style>
