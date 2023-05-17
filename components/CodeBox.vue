@@ -72,7 +72,7 @@
                 :value="item.name"
                 v-for="(item, index) in labraries"
                 v-show="item.name?.toLowerCase() !== langFromQuery"
-                class="block px-4 py-2 text-sm hover:bg-gray-700 dark:text-gray-300 cursor-pointer"
+                class="block px-4 py-2 text-sm hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-gray-300 cursor-pointer"
                 :key="index"
                 @click="toggleTabs(item.name, $event)"
               >

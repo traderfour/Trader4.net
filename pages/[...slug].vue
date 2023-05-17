@@ -180,8 +180,8 @@ const [prev, next] = data.value?.surround;
       </ul>
     </nav>
 
-    <div  :class="!contentBar ? 'w-4/5' : 'w-3/5'" ref="content">
-      <ContentDoc class="dark:bg-gray-800 bg-gray-100 p-4 rounded" />
+    <div class="h-3/4"  :class="!contentBar ? 'w-4/5' : 'w-3/5'" ref="content">
+      <ContentDoc class="dark:bg-gray-800 bg-gray-100 p-4 rounded " />
       <!-- PrevNext Component -->
       <PrevNext
         :prev="prev"
