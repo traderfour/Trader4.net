@@ -52,12 +52,12 @@
                 <div v-show="openTab === index">
                   <pre
                     class="text-sm"
-                  ><span class="disable-copy text-gray-400"> $ </span>{{libraries[openTab].code}}</pre>
+                  ><span class="disable-copy text-gray-400"> $ </span>{{libraries[openTab]?.code}}</pre>
                 </div>
                 <div class="flex flex-row justify-between items-center">
                   <div class="i-carbon-logo-github cursor-pointer" />
                   <a
-                    :href="libraries[openTab].link"
+                    :href="libraries[openTab]?.link"
                     target="_blank"
                     class="!text-gray-600 decoration-none !dark:text-white text-sm mx-1"
                     >Github</a
@@ -110,25 +110,19 @@ export default {
     function toggleTabs(tabNumber, name, { pageY }) {
       openTab.value = tabNumber;
       index.value = tabNumber;
-      router.go(`${route.path}?lang=${name.toLowerCase()}&pos=${pageY}`);
-      nextTick(() => {
-        window.location.reload();
-      });
+      router.push(`${route.path}?lang=${name.toLowerCase()}&pos=${pageY}`);
     }
-  /*   onBeforeMount(() => {
+    onBeforeMount(() => {
       setLabraries(props.libraries);
     });
     onMounted(() => {
-      const urlSearchParams = new URLSearchParams(window.location.search);
-      const params = Object.fromEntries(urlSearchParams.entries());
-      handeleNavigationOnLangChange(params);
+      handeleNavigationOnLangChange(route.query);
     });
     function handeleNavigationOnLangChange(params) {
       if (params.lang) {
         const findQueryIndex = props.libraries.findIndex((item) => {
           return item.name.toLowerCase() === params.lang;
         });
-
         openTab.value = findQueryIndex;
         index.value = findQueryIndex;
         nextTick(() => {
@@ -139,12 +133,18 @@ export default {
           });
         });
       } else {
-        router.go(
+        router.push(
           `${route.path}?lang=${props.libraries[0].name.toLowerCase()}&pos=${0}`
         );
       }
-    } */
-
+    }
+    watch(
+      () => route.query.lang,
+      (val) => {
+        console.log('route change in select library',route.query)
+        handeleNavigationOnLangChange(route.query)
+      }
+    );
     return {
       dir,
       openTab,

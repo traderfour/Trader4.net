@@ -1,10 +1,10 @@
 <template>
-  <!-- v-if="lang?.toLowerCase() === langFromQuery" -->
-    <div
-      
-      class="rounded-lg my-5 grid gap-6 md:grid-cols-2 grid-cols-1"
-      :style="dir === 'rtl' ? 'direction:rtl' : ''"
-    >
+  <div
+    v-if="lang?.toLowerCase() === langFromQuery"
+    class="rounded-lg my-5 grid gap-6 md:grid-cols-2 grid-cols-1"
+    :style="dir === 'rtl' ? 'direction:rtl' : ''"
+  >
+    <ClientOnly>
       <div class="col-span-1">
         <slot />
         <span class="text-xs schema">
@@ -89,7 +89,8 @@
           <slot name="code" />
         </section>
       </div>
-    </div>
+    </ClientOnly>
+  </div>
 </template>
 <script>
 import { labraries } from "@/composables/useLabraries";
@@ -105,35 +106,37 @@ export default {
   setup(props, { slots }) {
     const dir = "ltr";
     const router = useRouter();
+    const route = useRoute();
+    const langFromQuery = ref("");
+
     const showDropDown = ref(false);
     const dropDownItems = ref(null);
     const loading = ref(true);
 
-    const langFromQuery = ref("");
-
-    // onMounted(() => {
-    //   nextTick(() => {
-    //     loading.value = false;
-    //     const urlSearchParams = new URLSearchParams(window.location.search);
-    //     const params = Object.fromEntries(urlSearchParams.entries());
-
-    //     langFromQuery.value = params.lang;
-    //   });
-    // });
+    onMounted(() => {
+      langFromQuery.value = route.query?.lang;
+      console.log(langFromQuery.value);
+      nextTick(() => {
+        loading.value = false;
+      });
+    });
     function toggleTabs(name, { pageY }) {
       showDropDown.value = false;
-      router.go(
-        `${router.route.path}?lang=${name?.toLowerCase()}&pos=${pageY - 100}`
+      router.push(
+        `${route.path}?lang=${name?.toLowerCase()}&pos=${pageY - 100}`
       );
-      nextTick(() => {
-        window.location.reload();
-      });
     }
 
     onClickOutside(dropDownItems, () => {
       showDropDown.value = false;
     });
 
+    watch(
+      () => route.query.lang,
+      (val) => {
+        langFromQuery.value = val;
+      }
+    );
     // Change color for each method
     const checkMethod = computed(() => {
       switch (props.method) {
