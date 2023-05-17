@@ -34,7 +34,6 @@ if (data.value?.article) {
   if (parent) {
     parent.isOpen = true;
   }
- 
 }
 
 //get height of content component
@@ -42,12 +41,8 @@ const contentHeight = ref(0);
 const content = ref(null);
 onMounted(() => {
   contentHeight.value = content.value.clientHeight;
-  console.log(contentHeight.value)
+  console.log(contentHeight.value);
 });
-
-
-
-
 
 // toggle collapse item
 const toggleCollapse = (link) => {
@@ -56,6 +51,14 @@ const toggleCollapse = (link) => {
 const toggleChildCollapse = (link) => {
   link.isOpen = !link.isOpen;
 };
+// check contentBar if it is in viewport
+const contentBar = computed(() => {
+  if (data.value?.article?.contentBar === false) {
+    return false;
+  } else {
+    return true;
+  }
+});
 // destrucure `prev` and `next` value from data
 const [prev, next] = data.value?.surround;
 </script>
@@ -64,10 +67,7 @@ const [prev, next] = data.value?.surround;
     <!-- create navigation ul with tailwind -->
 
     <nav class="flex flex-col w-1/5 sticky top-40 h-3/4 doc-sidebar">
-      <ul
-        class="shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800"
-
-      >
+      <ul class="shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800">
         <li
           v-for="link of navigation"
           :key="link._path"
@@ -180,7 +180,7 @@ const [prev, next] = data.value?.surround;
       </ul>
     </nav>
 
-    <div class="w-3/5" ref="content">
+    <div  :class="!contentBar ? 'w-4/5' : 'w-3/5'" ref="content">
       <ContentDoc class="dark:bg-gray-800 bg-gray-100 p-4 rounded" />
       <!-- PrevNext Component -->
       <PrevNext
@@ -189,7 +189,7 @@ const [prev, next] = data.value?.surround;
         class="dark:bg-gray-800 bg-gray-100 p-4 rounded my-5"
       />
     </div>
-    <aside class="mx-2 w-1/5 sticky top-40 h-3/4 ">
+    <aside class="mx-2 w-1/5 sticky top-40 h-3/4" v-if="contentBar">
       <div class="">
         <!-- Toc Component -->
         <Toc :links="data?.article.body.toc.links" />
@@ -198,7 +198,7 @@ const [prev, next] = data.value?.surround;
   </main>
 </template>
 <style scoped>
-.doc-sidebar{
+.doc-sidebar {
   @apply max-h-[calc(100vh-6rem)] overflow-auto;
 }
 </style>
