@@ -192,7 +192,8 @@ const [prev, next] = data.value?.surround;
     <aside class="mx-2 w-1/5 sticky top-40 h-3/4" v-if="contentBar">
       <div class="">
         <!-- Toc Component -->
-        <Toc :links="data?.article.body.toc.links" />
+        <TableOfContent :links="data?.article.body.toc.links" />
+        <!-- <Toc :links="data?.article.body.toc.links" /> -->
       </div>
     </aside>
   </main>
