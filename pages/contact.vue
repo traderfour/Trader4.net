@@ -45,7 +45,7 @@
                                 <p class="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">By submitting this form, you confirm that you have read and agree to our <NuxtLink class="font-normal text-gray-900 underline hover:no-underline dark:text-white" to="/terms">Terms of Service</NuxtLink> and <NuxtLink class="font-normal text-gray-900 underline hover:no-underline dark:text-white" to="/privacy">Privacy Policy</NuxtLink>.</p>
                             </div>
                         </div>
-                        <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send Message</button>
+                        <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded !bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send Message</button>
                     </form>
                 </div>
             </div>
