@@ -176,6 +176,7 @@ export default defineAppConfig({
               { title: "Team Trading", link: "/product/team-trading" },
               { title: "Pythia", link: "/product/pythia" },
               { title: "Open API", link: "/product/open-api" },
+              { title: "Laboratory", link: "/product/laboratory" },
             ]
         },
         {
