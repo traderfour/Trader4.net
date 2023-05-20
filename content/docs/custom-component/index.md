@@ -4,7 +4,7 @@ contentBar: false
 ---
 
 <!-- import custom file in markdown -->
-:content-doc{path="/custom-component/_shared/select-libraries"}
+:content-doc{path="/docs/custom-component/_shared/select-libraries"}
 
 
 
