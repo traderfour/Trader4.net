@@ -3,6 +3,7 @@ const { data: navigation } = await useAsyncData("navigation", () =>
   fetchContentNavigation()
 );
 const { path } = useRoute();
+console.log(path)
 const { data } = await useAsyncData(`content-${path}`, async () => {
   // fetch document where the document path matches with the cuurent route
   let article = queryContent().where({ _path: path }).findOne();
