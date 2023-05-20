@@ -141,7 +141,7 @@ const [prev, next]: any = data.value?.surround;
                 >
                   <span
                     class="hover:text-blue-500 px-2 rounded"
-                    :class="{ ' text-blue-500': isCurrentRoute(sublink) }"
+                    :class="{ 'text-blue-500': isCurrentRoute(sublink) }"
                   >
                     {{ sublink.title }}
                   </span>
