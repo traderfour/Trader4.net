@@ -1,6 +1,8 @@
 import { reactive } from "vue";
 
-export let labraries = reactive<string[]>([]);
+//create libraries with useState nuxt
+export const labraries = useState<string[]>(() => []);
+// set libraries
 export const setLabraries = (data: string[]): void => {
-  labraries = data;
+  labraries.value = data;
 };

@@ -64,7 +64,7 @@
             </button>
             <!-- Dropdown menu -->
             <div
-              v-show="showDropDown"
+              v-if="showDropDown"
               ref="dropDownItems"
               class="absolute right-0 py-2 mt-2 rounded-md shadow-xl z-10 dark:bg-gray-800 bg-gray-200 text-gray-800"
             >
@@ -108,14 +108,13 @@ export default {
     const router = useRouter();
     const route = useRoute();
     const langFromQuery = ref("");
+    langFromQuery.value = route.query?.lang;
 
     const showDropDown = ref(false);
     const dropDownItems = ref(null);
     const loading = ref(true);
 
     onMounted(() => {
-      langFromQuery.value = route.query?.lang;
-      console.log(langFromQuery.value);
       nextTick(() => {
         loading.value = false;
       });
@@ -126,11 +125,9 @@ export default {
         `${route.path}?lang=${name?.toLowerCase()}&pos=${pageY - 100}`
       );
     }
-
     onClickOutside(dropDownItems, () => {
       showDropDown.value = false;
     });
-
     watch(
       () => route.query.lang,
       (val) => {
