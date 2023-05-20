@@ -1,5 +1,5 @@
 <template>
-    <section class="bg-white dark:bg-gray-900">
+    <section>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                 Careers
@@ -22,185 +22,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr v-for="position in openPositions"
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    FCO Assistant
+                  {{ position.title }}
                 </th>
                 <td class="px-6 py-4">
-                    Finance
+                  {{ position.unit }}
                 </td>
                 <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Business Development Manager
-                </th>
-                <td class="px-6 py-4">
-                    Sales (Europe)
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Rust Developer
-                </th>
-                <td class="px-6 py-4">
-                    Information Technology
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Go Developer
-                </th>
-                <td class="px-6 py-4">
-                    Information Technology
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Svelte Developer
-                </th>
-                <td class="px-6 py-4">
-                    Information Technology
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Sales Manager
-                </th>
-                <td class="px-6 py-4">
-                    Sales (Africa)
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Sales Manager
-                </th>
-                <td class="px-6 py-4">
-                    Sales (Middle East)
-                </td>
-                <td class="px-6 py-4">
-                    Remote - Dubai
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Growth Hacker
-                </th>
-                <td class="px-6 py-4">
-                    Marketing
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    QA Assistant
-                </th>
-                <td class="px-6 py-4">
-                    Information Technology
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    UI Designer
-                </th>
-                <td class="px-6 py-4">
-                    Information Technology
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Laravel Developer
-                </th>
-                <td class="px-6 py-4">
-                    Information Technology
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    VueJS Developer
-                </th>
-                <td class="px-6 py-4">
-                    Information Technology
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
-                </td>
-                <td class="px-6 py-4">
-                    <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
-                </td>
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Scala Developer
-                </th>
-                <td class="px-6 py-4">
-                    Information Technology
-                </td>
-                <td class="px-6 py-4">
-                    Remote - London
+                  {{ position.office }}
                 </td>
                 <td class="px-6 py-4">
                     <NuxtLink to="/contact" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Send Resume</NuxtLink>
@@ -216,4 +47,16 @@ import { initFlowbite } from "flowbite";
 onMounted(() => {
     initFlowbite();
 });
+const openPositions = [
+  {'title': 'Marketing Expert', 'unit': 'Marketing', 'office': 'Remote - Rabat'},
+  {'title': 'Marketing Expert', 'unit': 'Marketing', 'office': 'Remote - London'},
+  {'title': 'Marketing Expert', 'unit': 'Marketing', 'office': 'Remote - Dubai'},
+  {'title': 'Algo Trading Engineer', 'unit': 'Information Technology', 'office': 'Hybrid - London'},
+  {'title': 'Golang Developer', 'unit': 'Information Technology', 'office': 'Remote - London'},
+  {'title': 'CTO Assistant', 'unit': 'Information Technology', 'office': 'Hybrid - London'},
+  {'title': 'Business Development', 'unit': 'Operation', 'office': 'Hybrid - London'},
+  {'title': 'Sales Manager', 'unit': 'Sales', 'office': 'Hybrid - London'},
+  {'title': 'Sales Manager', 'unit': 'Sales', 'office': 'Hybrid - Rabat'},
+  {'title': 'Sales Manager', 'unit': 'Sales', 'office': 'Hybrid - Dubai'},
+]
 </script>

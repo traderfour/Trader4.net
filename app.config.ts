@@ -59,7 +59,7 @@ export default defineAppConfig({
         { title: "Pricing", link: "/pricing" },
         { title: "Help", link: "/help" },
       ],
-      megaMenu: true,
+      megaMenu: false,
       hideSearchBar: false,
       hideLanguageSelector: false,
       languageList: [
@@ -71,18 +71,29 @@ export default defineAppConfig({
         {
           lang: "fa",
           flagSrc: "/img/icon/ir.svg",
-          text: "Farsi",
+          text: "فارسی",
         },
         {
           lang: "ar",
           flagSrc: "/img/icon/ar.svg",
-          text: "Arabic",
+          text: "العربية",
         },
         {
           lang: "tr",
           flagSrc: "/img/icon/tr.svg",
-          text: "Turkish",
+          text: "Türkçe",
         },
+        {
+          lang: "de",
+          flagSrc: "/img/icon/tr.svg",
+          text: "Deutsch",
+        },
+        {
+          lang: "es",
+          flagSrc: "/img/icon/tr.svg",
+          text: "Español",
+        },
+
       ],
       hideThemeSelector: false,
       loginButton: {
@@ -116,25 +127,16 @@ export default defineAppConfig({
     </p>`,
       socials: [
         {
-          icon: "mdi:twitter-circle",
-          link: "https://twitter.com/briofyapp",
-        },
-
-        {
-          icon: "mdi:instagram",
-          link: "https://www.instagram.com/briofyapp",
-        },
-        {
           icon: "mdi:linkedin",
-          link: "https://www.linkedin.com/company/briofyapp",
+          link: "https://www.linkedin.com/company/trader4/",
         },
         {
           icon: "mdi:youtube",
-          link: "https://www.youtube.com/channel/UCQ1Z6X0Z4ZqZ5Z4XZ2Z2Z2A",
+          link: "https://www.youtube.com/@traderfour",
         },
         {
           icon: "mdi:github",
-          link: "https://github.com/Briofy",
+          link: "https://github.com/traderfour",
         },
       ],
       footerLinks: [
@@ -144,7 +146,7 @@ export default defineAppConfig({
             { title: "About", link: "/about" },
             { title: "Contact", link: "/contact" },
             { title: "Pricing", link: "/pricing" },
-            { title: "News", link: "/blog/news" },
+            { title: "Newsroom", link: "/blog/news-room" },
             { title: "Blog", link: "/blog" },
             { title: "Careers", link: "/careers" },
             { title: "Privacy Policy", link: "/privacy" },
@@ -155,16 +157,27 @@ export default defineAppConfig({
         {
           title: "Products",
           links: [
-            { title: "Marketplace", link: "/marketplace" },
-            { title: "Bridge", link: "/bridge" },
-            { title: "Bazaar", link: "/bazaar" },
-            { title: "Financial Engineering", link: "/financial-engineering" },
-            { title: "Algo Trading", link: "/algo-trading" },
-            { title: "Cloud Trading", link: "/cloud-trading" },
-            { title: "Trading Framework", link: "/cloud-trading" },
-            { title: "License System", link: "/license-system" },
-            { title: "Open API", link: "/open-api" },
+            { title: "Market", link: "/product/market" },
+            { title: "Bridge", link: "/product/bridge" },
+            { title: "Bazaar", link: "/product/bazaar" },
+            { title: "Financial Engineering", link: "/product/financial-engineering" },
+            { title: "Marketplace", link: "/product/marketplace" },
+            { title: "Algo Trading", link: "/product/algo-trading" },
+            { title: "Cloud Trading", link: "/product/cloud-trading" },
+            { title: "Trading Framework", link: "/product/trading-framework" },
+            { title: "License System", link: "/product/license-system" },
           ],
+        },
+        {
+            links: [
+              { title: "Portfolio", link: "/product/portfolio" },
+              { title: "TradeHub", link: "/product/tradehub" },
+              { title: "ChartHub", link: "/product/charthub" },
+              { title: "Team Trading", link: "/product/team-trading" },
+              { title: "Pythia", link: "/product/pythia" },
+              { title: "Open API", link: "/product/open-api" },
+              { title: "Laboratory", link: "/product/laboratory" },
+            ]
         },
         {
           title: "Support",
@@ -199,25 +212,15 @@ export default defineAppConfig({
           ],
         },
         {
-          title: "Our Family",
+          title: "From Family",
           links: [
-            { title: "Briofy", link: "https://briofy.net", target: "_blank" },
+            { title: "Dalan Capital", link: "https://dalan.capital", target: "_blank" },
             { title: "Werify", link: "https://werify.net", target: "_blank" },
             { title: "Bulutly", link: "https://bulutly.net", target: "_blank" },
             { title: "AzPays", link: "https://azpays.net", target: "_blank" },
-            {
-              title: "Streamfy",
-              link: "https://streamfy.net",
-              target: "_blank",
-            },
-            { title: "Learnfy", link: "https://learnfy.net", target: "_blank" },
-            { title: "Mehrify", link: "https://mehrify.net", target: "_blank" },
-            { title: "Carefy", link: "https://carefy.net", target: "_blank" },
-            {
-              title: "More from Briofy",
-              link: "https://briofy.net/products",
-              target: "_blank",
-            },
+            { title: "Pasles", link: "https://pasles.net", target: "_blank" },
+            { title: "Daric", link: "https://daric.vc", target: "_blank" },
+            { title: "More from Briofy", link: "https://briofy.net/products", target: "_blank"},
           ],
         },
       ],
