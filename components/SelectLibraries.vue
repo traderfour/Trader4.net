@@ -10,15 +10,15 @@
 
       <div class="col-span-1">
         <div
-          class="w-full border-b-2 box-border bg-gray-100 text-black dark:bg-gray-700 rounded-lg"
+          class="w-full box-border bg-gray-200 text-black dark:bg-gray-700 rounded-lg"
         >
           <div
-            class="pt-3 px-4 text-gray-500 dark:text-white text-xs uppercase"
+            class="pt-3 px-4 py-5 text-gray-500 dark:text-white text-xs uppercase"
           >
             Client Libraries
           </div>
           <ul
-            class="mb-0 list-none border cursor-pointer flex items-center"
+            class="mb-4 list-none cursor-pointer flex items-center"
             style="list-style-type: none"
           >
             <li
@@ -43,7 +43,7 @@
             </li>
           </ul>
           <div
-            class="min-w-0 break-words bg-gray-50 w-full mb-6 shadow-lg rounded-b-lg dark:bg-gray-800 dark:text-white"
+            class="min-w-0 break-words bg-gray-50 w-full py-4 shadow-lg rounded-b-lg dark:bg-gray-900 dark:text-white"
           >
             <div class="px-3 py-1 flex-auto">
               <div
@@ -59,9 +59,10 @@
                   <a
                     :href="libraries[openTab]?.link"
                     target="_blank"
-                    class="!text-gray-600 decoration-none !dark:text-white text-sm mx-1"
-                    >Github</a
+                    class="dark:text-gray-100 decoration-none !dark:text-white text-sm mx-1"
                   >
+                    <Icon name="mdi:github" size="20" />
+                  </a>
                   <!--  <div v-if="isSupported" class="mt-1">
                   <button @click="copy(libraries[openTab].code)">
                     <span v-if="!copied"
@@ -86,8 +87,6 @@
   </div>
 </template>
 <script>
-import { ref } from "@vue/reactivity";
-
 import { setLabraries } from "@/composables/useLabraries";
 
 export default {
@@ -141,8 +140,8 @@ export default {
     watch(
       () => route.query.lang,
       (val) => {
-        console.log('route change in select library',route.query)
-        handeleNavigationOnLangChange(route.query)
+        console.log("route change in select library", route.query);
+        handeleNavigationOnLangChange(route.query);
       }
     );
     return {

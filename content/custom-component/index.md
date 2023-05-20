@@ -1,5 +1,6 @@
 ---
 title: custom-component
+contentBar: false
 ---
 
 # Account

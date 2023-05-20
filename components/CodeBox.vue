@@ -84,7 +84,7 @@
           </div>
         </section>
         <section
-          class="code-section flex justify-between flex-col p-2 dark:bg-gray-800 text-gray-800 bg-gray-50 rounded-b-lg max-h-screen"
+          class="code-section flex justify-between flex-col dark:bg-gray-800 text-gray-800 bg-gray-50 rounded-b-lg max-h-screen"
         >
           <slot name="code" />
         </section>
@@ -178,5 +178,10 @@ export default {
   font-family: monospace, monospace, sans-serif;
   font-size: 0.9em;
   color: #a3acb9;
+}
+.code-section .highlight-bash {
+  margin: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
 }
 </style>
