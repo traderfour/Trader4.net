@@ -13,7 +13,7 @@
           </ul>
         </span>
       </div>
-      <div class="col-span-1">
+      <div class="col-span-1 sticky top-36 h-fit">
         <section
           class="flex justify-between flex-row p-2 text-black dark:bg-gray-700 bg-gray-200 rounded-t-lg"
         >
