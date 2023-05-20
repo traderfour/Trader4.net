@@ -3,28 +3,30 @@
     <header class="toc-header">
       <h3 class="text-xl font-bold">Table of contents</h3>
     </header>
-    <ul class="toc-links">
-      <li
-        v-for="link in links"
-        :key="link.text"
-        :class="[{ 'ml-3': link.depth === 3 }, `toc-link _${link.depth}`]"
-      >
-        <a
-          :href="`#${link.id}`"
-          class="block py-1 font-medium text-sm"
-          :class="[
-            activeHeadings.includes(link.id)
-              ? 'text-primary-500 dark:text-primary-400'
-              : 'hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300',
-          ]"
-          @click.prevent="scrollToHeading(link.id)"
+    <ClientOnly>
+      <ul class="toc-links">
+        <li
+          v-for="link in links"
+          :key="link.text"
+          :class="[{ 'ml-3': link.depth === 3 }, `toc-link _${link.depth}`]"
         >
-          {{ link.text }}
-        </a>
+          <a
+            :href="`#${link.id}`"
+            class="block py-1 font-medium text-sm"
+            :class="[
+              activeHeadings.includes(link.id)
+                ? 'text-primary-500 dark:text-primary-400'
+                : 'hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300',
+            ]"
+            @click.prevent="scrollToHeading(link.id)"
+          >
+            {{ link.text }}
+          </a>
 
-        <DocsTocLinks v-if="link.children" :links="link.children" />
-      </li>
-    </ul>
+          <DocsTocLinks v-if="link.children" :links="link.children" />
+        </li>
+      </ul>
+    </ClientOnly>
   </nav>
 </template>
 
@@ -54,7 +56,7 @@ watch(
           ...document.querySelectorAll("h3"),
         ]);
       }
-    }, 300);
+    }, 500);
   },
   { immediate: true }
 );
