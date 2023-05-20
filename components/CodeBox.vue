@@ -1,10 +1,10 @@
 <template>
-  <!-- v-if="lang?.toLowerCase() === langFromQuery" -->
-    <div
-      
-      class="rounded-lg my-5 grid gap-6 md:grid-cols-2 grid-cols-1"
-      :style="dir === 'rtl' ? 'direction:rtl' : ''"
-    >
+  <div
+    v-if="lang?.toLowerCase() === langFromQuery"
+    class="rounded-lg my-5 grid gap-6 md:grid-cols-2 grid-cols-1"
+    :style="dir === 'rtl' ? 'direction:rtl' : ''"
+  >
+    <ClientOnly>
       <div class="col-span-1">
         <slot />
         <span class="text-xs schema">
@@ -13,7 +13,7 @@
           </ul>
         </span>
       </div>
-      <div class="col-span-1">
+      <div class="col-span-1 sticky top-36 h-fit">
         <section
           class="flex justify-between flex-row p-2 text-black dark:bg-gray-700 bg-gray-200 rounded-t-lg"
         >
@@ -72,7 +72,7 @@
                 :value="item.name"
                 v-for="(item, index) in labraries"
                 v-show="item.name?.toLowerCase() !== langFromQuery"
-                class="block px-4 py-2 text-sm hover:bg-gray-700 dark:text-gray-300 cursor-pointer"
+                class="block px-4 py-2 text-sm hover:bg-gray-300 dark:hover:bg-gray-700 dark:text-gray-300 cursor-pointer"
                 :key="index"
                 @click="toggleTabs(item.name, $event)"
               >
@@ -84,12 +84,13 @@
           </div>
         </section>
         <section
-          class="code-section flex justify-between flex-col p-2 dark:bg-gray-800 text-gray-800 bg-gray-50 rounded-b-lg max-h-screen"
+          class="code-section flex justify-between flex-col dark:bg-gray-800 text-gray-800 bg-gray-50 rounded-b-lg max-h-screen"
         >
           <slot name="code" />
         </section>
       </div>
-    </div>
+    </ClientOnly>
+  </div>
 </template>
 <script>
 import { labraries } from "@/composables/useLabraries";
@@ -105,35 +106,37 @@ export default {
   setup(props, { slots }) {
     const dir = "ltr";
     const router = useRouter();
+    const route = useRoute();
+    const langFromQuery = ref("");
+
     const showDropDown = ref(false);
     const dropDownItems = ref(null);
     const loading = ref(true);
 
-    const langFromQuery = ref("");
-
-    // onMounted(() => {
-    //   nextTick(() => {
-    //     loading.value = false;
-    //     const urlSearchParams = new URLSearchParams(window.location.search);
-    //     const params = Object.fromEntries(urlSearchParams.entries());
-
-    //     langFromQuery.value = params.lang;
-    //   });
-    // });
+    onMounted(() => {
+      langFromQuery.value = route.query?.lang;
+      console.log(langFromQuery.value);
+      nextTick(() => {
+        loading.value = false;
+      });
+    });
     function toggleTabs(name, { pageY }) {
       showDropDown.value = false;
-      router.go(
-        `${router.route.path}?lang=${name?.toLowerCase()}&pos=${pageY - 100}`
+      router.push(
+        `${route.path}?lang=${name?.toLowerCase()}&pos=${pageY - 100}`
       );
-      nextTick(() => {
-        window.location.reload();
-      });
     }
 
     onClickOutside(dropDownItems, () => {
       showDropDown.value = false;
     });
 
+    watch(
+      () => route.query.lang,
+      (val) => {
+        langFromQuery.value = val;
+      }
+    );
     // Change color for each method
     const checkMethod = computed(() => {
       switch (props.method) {
@@ -175,5 +178,10 @@ export default {
   font-family: monospace, monospace, sans-serif;
   font-size: 0.9em;
   color: #a3acb9;
+}
+.code-section .highlight-bash {
+  margin: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
 }
 </style>

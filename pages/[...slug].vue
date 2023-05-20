@@ -1,8 +1,25 @@
 <script setup lang="ts">
-const { data: navigation } = await useAsyncData("navigation", () =>
+import { NavItem, ParsedContent } from "@nuxt/content/dist/runtime/types";
+
+const { data: navigationPure } = await useAsyncData("navigation", () =>
   fetchContentNavigation()
 );
+interface Navigation {
+  _path: string;
+  title: string;
+  children: Navigation[];
+  isOpen: boolean;
+}
+
+let navigation: NavItem[] = [];
+if (!navigationPure.value) {
+  navigation = [];
+} else {
+  navigation = navigationPure.value[0]?.children || [];
+}
+
 const { path } = useRoute();
+console.log(path);
 const { data } = await useAsyncData(`content-${path}`, async () => {
   // fetch document where the document path matches with the cuurent route
   let article = queryContent().where({ _path: path }).findOne();
@@ -21,12 +38,12 @@ const { data } = await useAsyncData(`content-${path}`, async () => {
 
 // show items in collapse if the current route is the same as the link path
 const route = useRoute();
-const isCurrentRoute = (link) => {
+const isCurrentRoute = (link: NavItem) => {
   return route.path === link._path;
 };
 if (data.value?.article) {
   // show collapse in pranet in each childs
-  const parent = navigation.value?.find((link) => {
+  const parent = navigation?.find((link) => {
     return link.children?.some((child) => {
       return child._path === data.value?.article?._path;
     });
@@ -34,40 +51,35 @@ if (data.value?.article) {
   if (parent) {
     parent.isOpen = true;
   }
- 
 }
 
 //get height of content component
 const contentHeight = ref(0);
-const content = ref(null);
-onMounted(() => {
-  contentHeight.value = content.value.clientHeight;
-  console.log(contentHeight.value)
-});
-
-
-
-
 
 // toggle collapse item
-const toggleCollapse = (link) => {
+const toggleCollapse = (link: NavItem) => {
   link.isOpen = !link.isOpen;
 };
-const toggleChildCollapse = (link) => {
+const toggleChildCollapse = (link: NavItem) => {
   link.isOpen = !link.isOpen;
 };
+// check contentBar if it is in viewport
+const contentBar = computed(() => {
+  if (data.value?.article?.contentBar === false) {
+    return false;
+  } else {
+    return true;
+  }
+});
 // destrucure `prev` and `next` value from data
-const [prev, next] = data.value?.surround;
+const [prev, next]: any = data.value?.surround;
 </script>
 <template>
   <main class="prose flex flex-row">
     <!-- create navigation ul with tailwind -->
 
     <nav class="flex flex-col w-1/5 sticky top-40 h-3/4 doc-sidebar">
-      <ul
-        class="shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800"
-
-      >
+      <ul class="shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800">
         <li
           v-for="link of navigation"
           :key="link._path"
@@ -180,7 +192,7 @@ const [prev, next] = data.value?.surround;
       </ul>
     </nav>
 
-    <div class="w-3/5" ref="content">
+    <div class="h-3/4" :class="!contentBar ? 'w-4/5' : 'w-3/5'">
       <ContentDoc class="dark:bg-gray-800 bg-gray-100 p-4 rounded" />
       <!-- PrevNext Component -->
       <PrevNext
@@ -189,16 +201,17 @@ const [prev, next] = data.value?.surround;
         class="dark:bg-gray-800 bg-gray-100 p-4 rounded my-5"
       />
     </div>
-    <aside class="mx-2 w-1/5 sticky top-40 h-3/4 ">
+    <aside class="mx-2 w-1/5 sticky top-40 h-3/4" v-if="contentBar">
       <div class="">
         <!-- Toc Component -->
-        <Toc :links="data?.article.body.toc.links" />
+        <TableOfContent :links="data?.article.body.toc.links" />
+        <!-- <Toc :links="data?.article.body.toc.links" /> -->
       </div>
     </aside>
   </main>
 </template>
 <style scoped>
-.doc-sidebar{
+.doc-sidebar {
   @apply max-h-[calc(100vh-6rem)] overflow-auto;
 }
 </style>

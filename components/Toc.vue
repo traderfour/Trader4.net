@@ -18,6 +18,12 @@ const flattenLinks = (links) => {
 
   return _links;
 };
+const scrollIntoLink = (id) => {
+  let el = document.getElementById(id);
+  el.scrollIntoView({ behavior: "smooth" });
+  //active style
+
+};
 </script>
 
 <template>
@@ -33,7 +39,7 @@ const flattenLinks = (links) => {
         :class="`toc-link _${link.depth}`"
       >
         <!-- check if active add class -->
-        <a :href="`#${link.id}`">
+        <a @click="scrollIntoLink(link.id)">
           {{ link.text }}
         </a>
       </li>
@@ -43,7 +49,7 @@ const flattenLinks = (links) => {
 
 <style scoped>
 .toc {
-  @apply p-4 bg-slate-50 rounded dark:bg-gray-800 dark:border-gray-700 bg-gray-100;
+  @apply py-4 px-2 bg-slate-50 rounded dark:bg-gray-800 dark:border-gray-700 bg-gray-100;
   @apply max-h-[calc(100vh-6rem)] overflow-auto;
 }
 
@@ -52,15 +58,15 @@ const flattenLinks = (links) => {
 }
 
 .toc-links {
-  @apply flex flex-col gap-2 px-2;
+  @apply flex flex-col gap-2 px-1;
 }
 
 .toc-link {
-  @apply text-slate-500 dark:text-gray-50;
+  @apply text-slate-500 dark:text-gray-50 px-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded;
 }
 
 .toc-link._3 {
-  @apply pl-3;
+  @apply pl-3 text-sm;
 }
 
 .toc-link._4 {

@@ -10,15 +10,15 @@
 
       <div class="col-span-1">
         <div
-          class="w-full border-b-2 box-border bg-gray-100 text-black dark:bg-gray-700 rounded-lg"
+          class="w-full box-border bg-gray-200 text-black dark:bg-gray-700 rounded-lg"
         >
           <div
-            class="pt-3 px-4 text-gray-500 dark:text-white text-xs uppercase"
+            class="pt-3 px-4 py-5 text-gray-500 dark:text-white text-xs uppercase"
           >
             Client Libraries
           </div>
           <ul
-            class="mb-0 list-none border cursor-pointer flex items-center"
+            class="mb-4 list-none cursor-pointer flex items-center"
             style="list-style-type: none"
           >
             <li
@@ -43,7 +43,7 @@
             </li>
           </ul>
           <div
-            class="min-w-0 break-words bg-gray-50 w-full mb-6 shadow-lg rounded-b-lg dark:bg-gray-800 dark:text-white"
+            class="min-w-0 break-words bg-gray-50 w-full py-4 shadow-lg rounded-b-lg dark:bg-gray-900 dark:text-white"
           >
             <div class="px-3 py-1 flex-auto">
               <div
@@ -52,16 +52,17 @@
                 <div v-show="openTab === index">
                   <pre
                     class="text-sm"
-                  ><span class="disable-copy text-gray-400"> $ </span>{{libraries[openTab].code}}</pre>
+                  ><span class="disable-copy text-gray-400"> $ </span>{{libraries[openTab]?.code}}</pre>
                 </div>
                 <div class="flex flex-row justify-between items-center">
                   <div class="i-carbon-logo-github cursor-pointer" />
                   <a
-                    :href="libraries[openTab].link"
+                    :href="libraries[openTab]?.link"
                     target="_blank"
-                    class="!text-gray-600 decoration-none !dark:text-white text-sm mx-1"
-                    >Github</a
+                    class="dark:text-gray-100 decoration-none !dark:text-white text-sm mx-1"
                   >
+                    <Icon name="mdi:github" size="20" />
+                  </a>
                   <!--  <div v-if="isSupported" class="mt-1">
                   <button @click="copy(libraries[openTab].code)">
                     <span v-if="!copied"
@@ -86,8 +87,6 @@
   </div>
 </template>
 <script>
-import { ref } from "@vue/reactivity";
-
 import { setLabraries } from "@/composables/useLabraries";
 
 export default {
@@ -110,25 +109,19 @@ export default {
     function toggleTabs(tabNumber, name, { pageY }) {
       openTab.value = tabNumber;
       index.value = tabNumber;
-      router.go(`${route.path}?lang=${name.toLowerCase()}&pos=${pageY}`);
-      nextTick(() => {
-        window.location.reload();
-      });
+      router.push(`${route.path}?lang=${name.toLowerCase()}&pos=${pageY}`);
     }
-  /*   onBeforeMount(() => {
+    onBeforeMount(() => {
       setLabraries(props.libraries);
     });
     onMounted(() => {
-      const urlSearchParams = new URLSearchParams(window.location.search);
-      const params = Object.fromEntries(urlSearchParams.entries());
-      handeleNavigationOnLangChange(params);
+      handeleNavigationOnLangChange(route.query);
     });
     function handeleNavigationOnLangChange(params) {
       if (params.lang) {
         const findQueryIndex = props.libraries.findIndex((item) => {
           return item.name.toLowerCase() === params.lang;
         });
-
         openTab.value = findQueryIndex;
         index.value = findQueryIndex;
         nextTick(() => {
@@ -139,12 +132,18 @@ export default {
           });
         });
       } else {
-        router.go(
+        router.push(
           `${route.path}?lang=${props.libraries[0].name.toLowerCase()}&pos=${0}`
         );
       }
-    } */
-
+    }
+    watch(
+      () => route.query.lang,
+      (val) => {
+        console.log("route change in select library", route.query);
+        handeleNavigationOnLangChange(route.query);
+      }
+    );
     return {
       dir,
       openTab,
