@@ -6,23 +6,25 @@
         :style="dir === 'rtl' ? 'direction:rtl' : ''"
       >
         <section class="mx-2 col-span-1 text-sm">
-          <h2>Schema</h2>
+          <h2 class="text-xl">Schema</h2>
           <span class="text-xs schema">
             <ul>
-              <li>
+              <li class="my-2 text-sm">
                 <code>succeed</code> <span>Boolean</span>
                 <p>The status of request.</p>
               </li>
-              <li>
+              <li class="my-2 text-sm">
                 <code>message</code> <span>String</span>
                 <p>The message of request.</p>
               </li>
-              <li>
+              <li class="my-2 text-sm">
                 <code>result</code> <span>JSON Array</span>
                 <p>The result of request.</p>
               </li>
-              <slot name="result" />
-              <li>
+              <div class="result">
+                <slot name="result" />
+              </div>
+              <li class="meta">
                 <code>meta</code> <span>JSON Array</span>
                 <p>The meta of request.</p>
                 <slot name="meta" />
@@ -84,7 +86,38 @@ export default {
   color: #858585;
   font-weight: bolder;
 }
+.schema {
+  /* add style for schema code like stripe documention */
+  font-family: monospace, monospace, sans-serif;
+}
 .schema p {
-  line-height: 0.01em !important;
+  /* add style for schema code like stripe documention */
+  font-family: monospace, monospace, sans-serif;
+  font-size: 0.82em;
+  color: #858585;
+  font-weight: bolder;
+  line-height: 1rem !important;
+}
+.result {
+  margin-bottom: 1rem;
+}
+.result hr {
+  @apply my-3 dark:border-gray-700 border-gray-200;
+}
+.result ul {
+  @apply list-none mx-0 px-0 my-0;
+}
+.result ul li {
+  @apply text-sm  list-none font-light;
+  line-height: 1.5rem !important;
+}
+.result ul li span {
+  @apply text-xs  font-normal;
+}
+.result ul li code {
+  @apply text-xs  font-normal mx-0 bg-gray-200 dark:bg-gray-700 dark:text-white px-1 rounded-sm;
+}
+.result ul li p {
+  @apply text-sm  list-none font-light;
 }
 </style>

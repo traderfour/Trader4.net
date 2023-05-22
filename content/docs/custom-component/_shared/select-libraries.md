@@ -1,5 +1,3 @@
----
----
 
 ::SelectLibraries{:libraries='[{"name":"Restful","link":"https://api.trader4.net","code":"https://api.trader4.net"},{"name":"Python","link":"https://github.com/trader4/python","code":"pip install trader4"},{"name":"PHP","link":"https://github.com/trader4/php","code":"composer require trader4/trader4-php"},{"name":"Node.js","link":"https://npmjs.com/trader4","code":"npm install trader4"},{"name":"Go","link":"https://golang.com/trader4","code":"go @install trader4"}]'}
 
