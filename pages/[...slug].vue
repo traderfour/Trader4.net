@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NavItem, ParsedContent } from "@nuxt/content/dist/runtime/types";
+import { NavItem } from "@nuxt/content/dist/runtime/types";
 
 const { data: navigationPure } = await useAsyncData("navigation", () =>
   fetchContentNavigation()
@@ -53,9 +53,6 @@ if (data.value?.article) {
   }
 }
 
-//get height of content component
-const contentHeight = ref(0);
-
 // toggle collapse item
 const toggleCollapse = (link: NavItem) => {
   link.isOpen = !link.isOpen;
@@ -73,12 +70,29 @@ const contentBar = computed(() => {
 });
 // destrucure `prev` and `next` value from data
 const [prev, next]: any = data.value?.surround;
+
+const topPosition = ref(150);
+const getHeaderHeight = () => {
+  const header = document.querySelector("header");
+  if (header) {
+    return header.clientHeight;
+  } else {
+    return 0;
+  }
+};
+
+onMounted(() => {
+  topPosition.value = getHeaderHeight() + 10;
+});
 </script>
 <template>
   <main class="prose flex flex-row">
     <!-- create navigation ul with tailwind -->
 
-    <nav class="flex flex-col w-1/5 sticky top-40 h-3/4 doc-sidebar">
+    <nav
+      :style="topPosition > 0 ? 'top: ' + topPosition + 'px' : ''"
+      class="flex flex-col w-1/5 sticky h-3/4 doc-sidebar"
+    >
       <ul class="shadow rounded px-2 py-6 mx-2 bg-gray-100 dark:bg-gray-800">
         <li
           v-for="link of navigation"
@@ -192,7 +206,9 @@ const [prev, next]: any = data.value?.surround;
       </ul>
     </nav>
 
-    <div class="h-3/4" :class="!contentBar ? 'w-4/5' : 'w-3/5'">
+    <div class="h-3/4 sticky"
+
+     :class="!contentBar ? 'w-4/5' : 'w-3/5'">
       <ContentDoc class="dark:bg-gray-800 bg-gray-100 p-4 rounded" />
       <!-- PrevNext Component -->
       <PrevNext
@@ -201,7 +217,11 @@ const [prev, next]: any = data.value?.surround;
         class="dark:bg-gray-800 bg-gray-100 p-4 rounded my-5"
       />
     </div>
-    <aside class="mx-2 w-1/5 sticky top-40 h-3/4" v-if="contentBar">
+    <aside
+      class="mx-2 w-1/5 sticky h-3/4"
+      :style="topPosition > 0 ? 'top: ' + topPosition + 'px' : ''"
+      v-if="contentBar"
+    >
       <div class="">
         <!-- Toc Component -->
         <TableOfContent :links="data?.article.body.toc.links" />
