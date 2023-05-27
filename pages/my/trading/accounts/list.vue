@@ -1537,7 +1537,7 @@
                 id="name"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Type product name"
-                required=""
+                required
               />
             </div>
             <div>
@@ -1549,7 +1549,7 @@
                 id="category"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected="">Select category</option>
+                <option selected>Select category</option>
                 <option value="TV">TV/Monitors</option>
                 <option value="PC">PC</option>
                 <option value="GA">Gaming/Console</option>
@@ -1568,7 +1568,7 @@
                 id="brand"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Product brand"
-                required=""
+                required
               />
             </div>
             <div>
@@ -1583,7 +1583,7 @@
                 id="price"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="$2999"
-                required=""
+                required
               />
             </div>
             <div class="grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4">
@@ -1599,7 +1599,7 @@
                   id="weight"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="12"
-                  required=""
+                  required
                 />
               </div>
               <div>
@@ -1614,7 +1614,7 @@
                   id="length"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="105"
-                  required=""
+                  required
                 />
               </div>
               <div>
@@ -1629,7 +1629,7 @@
                   id="breadth"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="15"
-                  required=""
+                  required
                 />
               </div>
               <div>
@@ -1644,7 +1644,7 @@
                   id="width"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="23"
-                  required=""
+                  required
                 />
               </div>
             </div>
@@ -1692,7 +1692,7 @@
             </div>
             <div class="flex items-center mr-4">
               <input
-                checked=""
+                checked
                 id="inline-checked-checkbox"
                 type="checkbox"
                 value=""
@@ -1845,7 +1845,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="Apple iMac 27&ldquo;"
             placeholder="Type product name"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2047,7 +2047,7 @@
                 rows="8"
                 class="block w-full px-0 text-sm text-gray-800 bg-white border-0 outline-none dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                 placeholder="Write product description here"
-                required=""
+                required
               >
     Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US</textarea
               >
@@ -2256,7 +2256,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="Apple"
             placeholder="Product Brand"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2268,7 +2268,7 @@
             id="category"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option selected="">Electronics</option>
+            <option selected>Electronics</option>
             <option value="TV">TV/Monitors</option>
             <option value="PC">PC</option>
             <option value="GA">Gaming/Console</option>
@@ -2288,7 +2288,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="12"
             placeholder="Ex. 12"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2304,7 +2304,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="105"
             placeholder="Ex. 105"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2320,7 +2320,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="15"
             placeholder="Ex. 15"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2336,7 +2336,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="23"
             placeholder="Ex. 23"
-            required=""
+            required
           />
         </div>
       </div>

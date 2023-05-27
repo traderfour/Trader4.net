@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@nuxt-themes/docus": "^1.11.1",
+    "@tinymce/tinymce-vue": "^5.1.0",
     "@vee-validate/nuxt": "^4.8.6",
     "@vueuse/core": "^10.1.2",
     "@werify/id-ts": "^1.2.0",
