@@ -28,7 +28,10 @@
     "@vee-validate/nuxt": "^4.8.6",
     "@vueuse/core": "^10.1.2",
     "@werify/id-ts": "^1.2.0",
+    "filepond": "^4.30.4",
+    "filepond-plugin-image-preview": "^4.6.11",
     "flowbite": "^1.6.5",
+    "vue-filepond": "^7.0.3",
     "vue-json-pretty": "^2.2.4",
     "yup": "^1.1.1"
   }
