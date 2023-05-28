@@ -53,9 +53,7 @@
               placeholder="Exceprt"
             />
           </div>
-          <!-- <ClientOnly>
-            <ImageUploader />
-          </ClientOnly> -->
+          <ImageUploader />
           <div>
             <label
               for="category"

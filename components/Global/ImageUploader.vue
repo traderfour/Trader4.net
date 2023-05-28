@@ -1,24 +1,42 @@
 <template>
-  <div id="app">
+  <ClientOnly>
     <file-pond
-      name="test"
+      name="file"
       ref="pond"
-      class-name="my-pond"
-      label-idle="Drop files here..."
-      allow-multiple="true"
+      :label-idle="lableIdle"
+      :allow-multiple="isMultiple"
       accepted-file-types="image/jpeg, image/png"
-      v-bind:files="myFiles"
-      v-on:init="handleFilePondInit"
+      :files="myFiles"
+      :server="{
+        url: `${baseURL}/v1/my/account/`,
+        process: {
+          url: 'attachments',
+          method: 'POST',
+          headers: {
+            // @ts-ignore
+            Authorization: useCookie('user').value.access_token,
+          },
+          ondata: (formData:FormData) => {
+                formData.append('type', '11001');
+                return formData;
+            },
+        },
+      }"
+      @init="handleFilePondInit"
+      @processfile="processfile"
     />
-  </div>
+  </ClientOnly>
 </template>
 
-<script>
+<script setup lang="ts">
+const baseURL = useRuntimeConfig().public.baseUrl;
 // Import FilePond
 import vueFilePond from "vue-filepond";
 
 // Import plugins
-// import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.esm.js";
+// @ts-ignore
+import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.esm.js";
+// @ts-ignore
 import FilePondPluginImagePreview from "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.esm.js";
 
 // Import styles
@@ -31,21 +49,33 @@ const FilePond = vueFilePond(
   FilePondPluginImagePreview
 );
 
-export default {
-  name: "app",
-  data: function () {
-    return { myFiles: ["index.html"] };
+defineProps({
+  lableIdle: {
+    type: String,
   },
-  methods: {
-    handleFilePondInit: function () {
-      console.log("FilePond has initialized");
+  isMultiple: {
+    type: Boolean,
+    default: false,
+  },
+});
 
-      // example of instance method call on pond reference
-      this.$refs.pond.getFiles();
-    },
-  },
-  components: {
-    FilePond,
-  },
+const pond = ref();
+const myFiles = ref([]);
+const handleFilePondInit = () => {
+  console.log("FilePond has initialized");
+
+  // example of instance method call on pond reference
+  pond.value.getFiles();
+};
+
+// * when everything was ok
+const processfile = (error: any, file: any) => {
+  console.log(JSON.parse(file.serverId));
 };
 </script>
+
+<style>
+.filepond--credits {
+  display: none !important;
+}
+</style>
