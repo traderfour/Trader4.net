@@ -1,14 +1,13 @@
 <template>
-  <ClientOnly>
-    <file-pond
-      name="file"
-      ref="pond"
-      :label-idle="lableIdle"
-      :allow-multiple="isMultiple"
-      maxFileSize="5MB"
-      :accepted-file-types="acceptedFileType"
-      :files="myFiles"
-      :server="{
+  <file-pond
+    name="file"
+    ref="pond"
+    :label-idle="lableIdle"
+    :allow-multiple="isMultiple"
+    maxFileSize="5MB"
+    :accepted-file-types="acceptedFileType"
+    :files="myFiles"
+    :server="{
         url: `${baseURL}/v1/my/account/`,
         process: {
           url: 'attachments',
@@ -23,10 +22,9 @@
             },
         },
       }"
-      @init="handleFilePondInit"
-      @processfile="processfile"
-    />
-  </ClientOnly>
+    @init="handleFilePondInit"
+    @processfile="processfile"
+  />
 </template>
 
 <script setup lang="ts">
