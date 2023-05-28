@@ -4,7 +4,7 @@
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add a new product
       </h2>
-      <form action="#">
+      <VForm :validation-schema="postSchema" @submit="addPost">
         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <div class="sm:col-span-2">
             <label
@@ -13,14 +13,15 @@
             >
               Title
             </label>
-            <input
+            <VField
+              v-model="postData.title"
               type="text"
               name="title"
               id="title"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Type product name"
-              required
             />
+            <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
           <div class="w-full">
             <label
@@ -30,6 +31,7 @@
               Slogan
             </label>
             <input
+              v-model="postData.slogan"
               type="text"
               name="slogan"
               id="slogan"
@@ -53,24 +55,19 @@
               placeholder="Exceprt"
             />
           </div>
-          <!-- <ClientOnly>
-            <ImageUploader />
-          </ClientOnly> -->
           <div>
             <label
-              for="category"
+              for="public"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Category</label
+              >Public</label
             >
             <select
+              v-model="postData.is_public"
               id="category"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
             >
-              <option selected>Select category</option>
-              <option value="TV">TV/Monitors</option>
-              <option value="PC">PC</option>
-              <option value="GA">Gaming/Console</option>
-              <option value="PH">Phones</option>
+              <option :value="false">Private</option>
+              <option :value="true">Public</option>
             </select>
           </div>
           <div>
@@ -88,22 +85,102 @@
               required
             />
           </div>
+          <!-- Logo & cover -->
+          <ImageUploader
+            lable-idle="Logo here"
+            @on-uploaded-successfully="
+              ($event) => {
+                postData.logo_id = $event.results.uuid;
+              }
+            "
+            accepted-file-type="image/jpeg, image/png"
+          />
+
+          <ImageUploader
+            lable-idle="Cover here"
+            @on-uploaded-successfully="
+              ($event) => {
+                postData.cover_id = $event.results.uuid;
+              }
+            "
+            accepted-file-type="image/jpeg, image/png"
+          />
           <div class="sm:col-span-2">
             <ClientOnly>
-              <Editor />
+              <Editor v-model="postData.content" />
             </ClientOnly>
+            <span v-if="hasContentError" class="text-red-700 text-sm">
+              Content is Required
+            </span>
           </div>
         </div>
         <button
-          class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+          type="submit"
+          class="items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
+          :disabled="loadingDisabled"
         >
-          Add Post +
+          <Icon
+            v-if="loadingDisabled"
+            class="animate-spin"
+            size="1.5rem"
+            name="mdi:loading"
+          />
+          <span v-else>Add Post +</span>
         </button>
-      </form>
+      </VForm>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import Editor from "@tinymce/tinymce-vue";
+import * as Yup from "yup";
+
+const postData = ref({
+  title: "",
+  slogan: "",
+  logo_id: "",
+  cover_id: "",
+  excerpt: "",
+  content: "",
+  comments: 0,
+  type: 0,
+  is_public: true,
+  attachments: "",
+  categories: "",
+  tags: "",
+  platforms: "",
+});
+
+const hasContentError = ref(false);
+const loadingDisabled = ref(false);
+
+const addPost = () => {
+  loadingDisabled.value = true;
+  if (postData.value.content) {
+    usePostsStore()
+      .createPost(postData.value)
+      .then((res) => {
+        loadingDisabled.value = false;
+        console.log(res);
+      })
+      .catch((err) => {
+        loadingDisabled.value = false;
+        console.log(err);
+      });
+  } else {
+    hasContentError.value = true;
+  }
+};
+
+// Form Validation
+const postSchema = Yup.object({
+  title: Yup.string().required("Title is Required"),
+});
 </script>
+
+<style>
+.tox-notifications-container {
+  display: none;
+}
+</style>
