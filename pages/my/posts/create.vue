@@ -95,7 +95,15 @@
               }
             "
           />
-          <ImageUploader lable-idle="Cover here" />
+
+          <ImageUploader
+            lable-idle="Cover here"
+            @on-uploaded-successfully="
+              ($event) => {
+                postData.cover_id = $event.results.uuid;
+              }
+            "
+          />
           <div class="sm:col-span-2">
             <ClientOnly>
               <Editor v-model="postData.content" />
