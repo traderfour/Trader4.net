@@ -5,6 +5,7 @@
       ref="pond"
       :label-idle="lableIdle"
       :allow-multiple="isMultiple"
+      maxFileSize="5MB"
       accepted-file-types="image/jpeg, image/png"
       :files="myFiles"
       :server="{
@@ -39,6 +40,7 @@ import vueFilePond from "vue-filepond";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.esm.js";
 // @ts-ignore
 import FilePondPluginImagePreview from "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.esm.js";
+import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
 
 // Import styles
 import "filepond/dist/filepond.min.css";
@@ -47,7 +49,8 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css
 // Create FilePond component
 const FilePond = vueFilePond(
   FilePondPluginFileValidateType,
-  FilePondPluginImagePreview
+  FilePondPluginImagePreview,
+  FilePondPluginFileValidateSize
 );
 
 defineProps({
