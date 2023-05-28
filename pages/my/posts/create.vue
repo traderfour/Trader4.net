@@ -4,7 +4,7 @@
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add a new product
       </h2>
-      <form action="#">
+      <form @submit.prevent="addPost">
         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <div class="sm:col-span-2">
             <label
@@ -14,6 +14,7 @@
               Title
             </label>
             <input
+              v-model="postData.title"
               type="text"
               name="title"
               id="title"
@@ -30,6 +31,7 @@
               Slogan
             </label>
             <input
+              v-model="postData.slogan"
               type="text"
               name="slogan"
               id="slogan"
@@ -53,22 +55,20 @@
               placeholder="Exceprt"
             />
           </div>
-          <ImageUploader />
           <div>
             <label
-              for="category"
+              for="public"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Category</label
+              >Public</label
             >
             <select
+              v-model="postData.is_public"
               id="category"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
             >
               <option selected>Select category</option>
-              <option value="TV">TV/Monitors</option>
-              <option value="PC">PC</option>
-              <option value="GA">Gaming/Console</option>
-              <option value="PH">Phones</option>
+              <option :value="false">Private</option>
+              <option :value="true">Public</option>
             </select>
           </div>
           <div>
@@ -86,14 +86,25 @@
               required
             />
           </div>
+          <!-- Logo & cover -->
+          <ImageUploader
+            lable-idle="Logo here"
+            @on-uploaded-successfully="
+              ($event) => {
+                postData.logo_id = $event.results.uuid;
+              }
+            "
+          />
+          <ImageUploader lable-idle="Cover here" />
           <div class="sm:col-span-2">
             <ClientOnly>
-              <Editor />
+              <Editor v-model="postData.content" />
             </ClientOnly>
           </div>
         </div>
         <button
-          class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+          type="submit"
+          class="items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800"
         >
           Add Post +
         </button>
@@ -104,4 +115,34 @@
 
 <script setup lang="ts">
 import Editor from "@tinymce/tinymce-vue";
+
+const postData = ref({
+  title: "",
+  slogan: "",
+  logo_id: "",
+  cover_id: "",
+  excerpt: "",
+  content: "",
+  comments: 0,
+  type: 0,
+  is_public: "",
+  attachments: "",
+  categories: "",
+  tags: "",
+  platforms: "",
+});
+
+const addPost = () => {
+  usePostsStore()
+    .createPost(postData.value)
+    .then((res) => {
+      console.log(res);
+    });
+};
 </script>
+
+<style>
+.tox-notifications-container {
+  display: none;
+}
+</style>

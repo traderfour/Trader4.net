@@ -29,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+const emit = defineEmits(["onUploadedSuccessfully"]);
 const baseURL = useRuntimeConfig().public.baseUrl;
 // Import FilePond
 import vueFilePond from "vue-filepond";
@@ -71,6 +72,7 @@ const handleFilePondInit = () => {
 // * when everything was ok
 const processfile = (error: any, file: any) => {
   console.log(JSON.parse(file.serverId));
+  emit("onUploadedSuccessfully", JSON.parse(file.serverId));
 };
 </script>
 
