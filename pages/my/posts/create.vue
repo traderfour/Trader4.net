@@ -93,6 +93,7 @@
                 postData.logo_id = $event.results.uuid;
               }
             "
+            accepted-file-type="image/jpeg, image/png"
           />
 
           <ImageUploader
@@ -102,6 +103,7 @@
                 postData.cover_id = $event.results.uuid;
               }
             "
+            accepted-file-type="image/jpeg, image/png"
           />
           <div class="sm:col-span-2">
             <ClientOnly>
@@ -114,9 +116,16 @@
         </div>
         <button
           type="submit"
-          class="items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800"
+          class="items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
+          :disabled="loadingDisabled"
         >
-          Add Post +
+          <Icon
+            v-if="loadingDisabled"
+            class="animate-spin"
+            size="1.5rem"
+            name="mdi:loading"
+          />
+          <span v-else>Add Post +</span>
         </button>
       </VForm>
     </div>
@@ -144,13 +153,20 @@ const postData = ref({
 });
 
 const hasContentError = ref(false);
+const loadingDisabled = ref(false);
 
 const addPost = () => {
+  loadingDisabled.value = true;
   if (postData.value.content) {
     usePostsStore()
       .createPost(postData.value)
       .then((res) => {
+        loadingDisabled.value = false;
         console.log(res);
+      })
+      .catch((err) => {
+        loadingDisabled.value = false;
+        console.log(err);
       });
   } else {
     hasContentError.value = true;

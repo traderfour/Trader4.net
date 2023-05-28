@@ -6,7 +6,7 @@
       :label-idle="lableIdle"
       :allow-multiple="isMultiple"
       maxFileSize="5MB"
-      accepted-file-types="image/jpeg, image/png"
+      :accepted-file-types="acceptedFileType"
       :files="myFiles"
       :server="{
         url: `${baseURL}/v1/my/account/`,
@@ -60,6 +60,9 @@ defineProps({
   isMultiple: {
     type: Boolean,
     default: false,
+  },
+  acceptedFileType: {
+    type: String,
   },
 });
 
