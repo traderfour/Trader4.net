@@ -1,6 +1,11 @@
 import { apiTS } from "@traderfour/api-ts";
 export const usePostsStore = () => {
   const baseURL = useRuntimeConfig().public.baseUrl;
+  const api = apiTS();
+
+  const addPost = () => {
+    api.myTs.posts.store();
+  };
 
   const createPost = async (payload: any) => {
     const { data } = await useApi("/v1/my/posts", {
