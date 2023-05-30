@@ -1,5 +1,5 @@
 ---
-title: custom-component
+title: APIs Docs
 contentBar: false
 ---
 

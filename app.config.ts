@@ -185,7 +185,7 @@ export default defineAppConfig({
             { title: "F.A.Q", link: "/faq" },
             { title: "Documentation", link: "/documentation" },
             { title: "How To", link: "/how-to" },
-            { title: "API Docs", link: "/docs/api" },
+            { title: "APIs Docs", link: "/docs/apis" },
             {
               title: "Status System",
               link: "https://status.trader4.net",
