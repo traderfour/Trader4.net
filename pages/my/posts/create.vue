@@ -72,21 +72,27 @@
           </div>
           <div>
             <label
-              for="item-weight"
+              for="public"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Item Weight (kg)</label
             >
-            <input
-              type="number"
-              name="item-weight"
-              id="item-weight"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="12"
-              required
-            />
+              Comments
+            </label>
+            <select
+              v-model="postData.comments"
+              id="category"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            >
+              <option :value="19000">Public</option>
+              <option :value="19001">Private</option>
+              <option :value="19002">Closed</option>
+              <option :value="19003">Subscribers</option>
+            </select>
           </div>
+
           <!-- Logo & cover -->
           <ImageUploader
+            id="logo"
+            key="logo"
             lable-idle="Logo here"
             @on-uploaded-successfully="
               ($event) => {
@@ -97,6 +103,8 @@
           />
 
           <ImageUploader
+            id="cover"
+            key="cover"
             lable-idle="Cover here"
             @on-uploaded-successfully="
               ($event) => {
@@ -143,8 +151,8 @@ const postData = ref({
   cover_id: "",
   excerpt: "",
   content: "",
-  comments: 0,
-  type: 0,
+  comments: 19000,
+  type: 13014,
   is_public: true,
   attachments: "",
   categories: "",
@@ -156,8 +164,8 @@ const hasContentError = ref(false);
 const loadingDisabled = ref(false);
 
 const addPost = () => {
-  loadingDisabled.value = true;
   if (postData.value.content) {
+    loadingDisabled.value = true;
     usePostsStore()
       .createPost(postData.value)
       .then((res) => {

@@ -1,11 +1,11 @@
-// import { myTs } from "@traderfour/api-ts";
+import { apiTS } from "@traderfour/api-ts";
 export const usePostsStore = () => {
-  // const myFunctions = myTs();
-  // myFunctions.config.baseURL = baseURL + "v1";
+  const baseURL = useRuntimeConfig().public.baseUrl;
+  const api = apiTS();
 
-  // myFunctions.categories.posts().then((res) => {
-  //   console.log(res);
-  // });
+  const addPost = () => {
+    api.myTs.posts.store();
+  };
 
   const createPost = async (payload: any) => {
     const { data } = await useApi("/v1/my/posts", {
