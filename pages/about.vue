@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white dark:bg-gray-900">
+  <section>
     <div
       class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-12"
     >
@@ -61,7 +61,7 @@
       </div>
     </div>
   </section>
-  <section class="bg-white dark:bg-gray-900">
+  <section class=" ">
     <div
       class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6"
     >
@@ -127,7 +127,7 @@
       </div>
     </div>
   </section>
-  <section class="bg-white dark:bg-gray-900">
+  <section class=" ">
     <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
       <div class="grid gap-8 lg:grid-cols-2">
         <NuxtLink
@@ -467,7 +467,7 @@
       </div>
     </div>
   </section>
-  <section class="bg-white dark:bg-gray-900">
+  <section class=" ">
     <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-xl">
       <h2
         class="mb-4 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl"
@@ -734,7 +734,7 @@
     </div>
   </section>
 
-  <section class="bg-white dark:bg-gray-900">
+  <section class=" ">
     <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
       <h2
         class="mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white"
@@ -997,7 +997,7 @@
       </div>
     </div>
   </section>
-  <section class="bg-white dark:bg-gray-900">
+  <section class=" ">
     <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
       <div class="mx-auto max-w-screen-sm text-center">
         <h2

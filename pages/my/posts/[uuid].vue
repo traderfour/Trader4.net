@@ -1,5 +1,5 @@
 <template>
-  <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900">
+  <main class="pt-8 pb-16 lg:pt-16 lg:pb-24">
     <div class="flex justify-between px-4 mx-auto">
       <div class="hidden mb-6 xl:block lg:w-52">
         <div class="sticky" id="aside-item">
@@ -1785,7 +1785,7 @@
     </div>
   </aside>
 
-  <section class="bg-white dark:bg-gray-900">
+  <section class=" ">
     <div class="p-4 py-12 mx-auto max-w-screen-xl text-center lg:py-24">
       <h2
         class="mx-auto mb-6 max-w-2xl text-2xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white"

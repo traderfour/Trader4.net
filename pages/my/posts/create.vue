@@ -1,5 +1,5 @@
 <template>
-  <section class="py-8 bg-white dark:bg-gray-900 lg:py-0">
+  <section class="py-8 lg:py-0">
     <div class="lg:flex">
       <div
         class="hidden w-full max-w-md p-12 lg:h-screen lg:block bg-primary-600"

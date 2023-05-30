@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white dark:bg-gray-900">
+  <section class=" ">
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add a new event

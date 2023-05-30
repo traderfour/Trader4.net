@@ -1,6 +1,6 @@
 <template>
   <!-- Block start -->
-  <section class="py-8 bg-white dark:bg-gray-900 lg:py-0">
+  <section class="py-8 lg:py-0">
     <div class="lg:flex">
       <div class="flex items-center mx-auto px-4 md:px-8 xl:px-0">
         <div class="w-full">
@@ -185,15 +185,18 @@
                 <button
                   v-if="index !== 3"
                   type="submit"
-                  class="float-right px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded !bg-primary-600 hover:bg-primary-700  focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  class="float-right px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded !bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Next
                 </button>
 
-                <button 
-                v-if="index === 3"
-                 type="submit"
-                  class="float-right px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded !bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Finish</button>
+                <button
+                  v-if="index === 3"
+                  type="submit"
+                  class="float-right px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded !bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                >
+                  Finish
+                </button>
               </div>
 
               <pre>{{ values }}</pre>

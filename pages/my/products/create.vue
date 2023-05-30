@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white dark:bg-gray-900">
+  <section class=" ">
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add a new event
@@ -9,7 +9,8 @@
         class="form"
         novalidate
         @submit="submitForm()"
-        :validation-schema="form">
+        :validation-schema="form"
+      >
         <div class="grid grid-cols-3 gap-4">
           <div class="mb-4 space-y-4 lg:col-span-2 col-span-full">
             <div class="flex flex-row gap-4">
@@ -19,7 +20,8 @@
                   type="text"
                   name="title"
                   class="custom-input"
-                  v-model="model.title" />
+                  v-model="model.title"
+                />
                 <div class="text-red-500 text-sm p-1">
                   <VErrorMessage name="title" />
                 </div>
@@ -30,11 +32,13 @@
                   as="select"
                   name="type"
                   class="custom-input"
-                  v-model="model.type">
+                  v-model="model.type"
+                >
                   <option
                     :value="item.value"
                     v-for="(item, index) in types"
-                    :key="index">
+                    :key="index"
+                  >
                     {{ item.name }}
                   </option>
                 </VField>
@@ -51,7 +55,8 @@
                 type="text"
                 name="slogan"
                 class="custom-input"
-                v-model="model.slogan" />
+                v-model="model.slogan"
+              />
               <div class="text-red-500 text-sm p-1">
                 <VErrorMessage name="slogan" />
               </div>
@@ -64,7 +69,8 @@
                 type="text"
                 name="introduction"
                 class="custom-input"
-                v-model="model.introduction" />
+                v-model="model.introduction"
+              />
               <div class="text-red-500 text-sm p-1">
                 <VErrorMessage name="introduction" />
               </div>
@@ -77,7 +83,8 @@
                 type="text"
                 name="description"
                 class="custom-input"
-                v-model="model.description" />
+                v-model="model.description"
+              />
               <div class="text-red-500 text-sm p-1">
                 <VErrorMessage name="description" />
               </div>
@@ -88,14 +95,17 @@
                 <label class="custom-input-label mt-3"> Logo</label>
                 <div class="basis-1/2 items-center justify-center">
                   <label
-                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                  >
                     <div
                       v-show="!logoFile"
-                      class="flex flex-col items-center justify-center pt-5 pb-6">
+                      class="flex flex-col items-center justify-center pt-5 pb-6"
+                    >
                       <Icon
                         class="w-10 h-10 mb-3 text-gray-400 me-2"
                         name="mdi:cloud-upload-outline"
-                        size="23px" />
+                        size="23px"
+                      />
 
                       <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                         <span class="font-semibold">Click to upload</span> or
@@ -113,7 +123,8 @@
                       <Icon
                         @click="removeLogo"
                         class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
-                        name="mdi:close" />
+                        name="mdi:close"
+                      />
                     </div>
 
                     <Field
@@ -121,7 +132,8 @@
                       name="logoImg"
                       type="file"
                       class="hidden"
-                      @change="onFileChangeLogo($event)" />
+                      @change="onFileChangeLogo($event)"
+                    />
                   </label>
                   <div class="text-red-500 text-sm p-1">
                     <VErrorMessage name="logoImg" />
@@ -132,14 +144,17 @@
                 <label class="custom-input-label mt-3"> Cover</label>
                 <div class="basis-1/2 items-center justify-center">
                   <label
-                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                  >
                     <div
                       v-show="!coverFile"
-                      class="flex flex-col items-center justify-center pt-5 pb-6">
+                      class="flex flex-col items-center justify-center pt-5 pb-6"
+                    >
                       <Icon
                         class="w-10 h-10 mb-3 text-gray-400 me-2"
                         name="mdi:cloud-upload-outline"
-                        size="23px" />
+                        size="23px"
+                      />
                       <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
                         <span class="font-semibold">Click to upload</span> or
                         drag and drop
@@ -161,14 +176,16 @@
                       <Icon
                         @click="removeCover"
                         class="w-5 h-5 mx-1 my-1 dark:hover:bg-gray-500 hover:bg-gray-200 rounded-sm text-gray-500 dark:text-gray-100 me-2"
-                        name="mdi:close" />
+                        name="mdi:close"
+                      />
                     </div>
                     <Field
                       id="coverPicker"
                       name="coverImg"
                       type="file"
                       class="hidden"
-                      @change="onFileChangeCover($event)" />
+                      @change="onFileChangeCover($event)"
+                    />
                   </label>
                   <div class="text-red-500 text-sm p-1">
                     <ErrorMessage name="coverImg" />
@@ -189,7 +206,8 @@
                 :field-name="{
                   label: 'title',
                   key: 'uuid',
-                }" />
+                }"
+              />
             </div>
             <div>
               <label for="platforms" class="custom-input-label">
@@ -201,7 +219,8 @@
                 :field-name="{
                   label: 'title',
                   key: 'uuid',
-                }" />
+                }"
+              />
             </div>
 
             <div>
@@ -212,13 +231,15 @@
                 :field-name="{
                   label: 'name',
                   key: 'uuid',
-                }" />
+                }"
+              />
             </div>
           </div>
         </div>
         <button
           type="submit"
-          class="text-white justify-center !bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+          class="text-white justify-center !bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+        >
           Add new event
         </button>
       </VForm>
