@@ -6,7 +6,7 @@
       </h2>
       <VForm :validation-schema="postSchema" @submit="addPost">
         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-          <div class="sm:col-span-2">
+          <div class="w-full">
             <label
               for="title"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -25,68 +25,232 @@
           </div>
           <div class="w-full">
             <label
-              for="slogan"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Slogan
-            </label>
-            <input
-              v-model="postData.slogan"
-              type="text"
-              name="slogan"
-              id="slogan"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Slogan"
-              required
-            />
-          </div>
-          <div class="w-full">
-            <label
               for="exceprt"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Exceprt
-            </label>
-            <input
-              type="text"
-              name="exceprt"
-              id="exceprt"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Exceprt"
-            />
-          </div>
-          <div>
-            <label
-              for="public"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Public</label
-            >
-            <select
-              v-model="postData.is_public"
-              id="category"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            >
-              <option :value="false">Private</option>
-              <option :value="true">Public</option>
-            </select>
-          </div>
-          <div>
-            <label
-              for="public"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Comments
             </label>
-            <select
-              v-model="postData.comments"
-              id="category"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+
+            <div class="flex space-x-3">
+              <div>
+                <input
+                  v-model="postData.comments"
+                  type="radio"
+                  id="public"
+                  name="comments"
+                  :value="19000"
+                  class="hidden peer"
+                />
+                <label for="public" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock-open" />
+                  <span class="w-full">Public</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div>
+                <input
+                  v-model="postData.comments"
+                  type="radio"
+                  id="private"
+                  name="comments"
+                  :value="19001"
+                  class="hidden peer"
+                />
+                <label for="private" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Private</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div>
+                <input
+                  v-model="postData.comments"
+                  type="radio"
+                  id="closed"
+                  name="comments"
+                  :value="19002"
+                  class="hidden peer"
+                />
+                <label for="closed" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Closed</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div>
+                <input
+                  v-model="postData.comments"
+                  type="radio"
+                  id="subscribers"
+                  name="comments"
+                  :value="19003"
+                  class="hidden peer"
+                />
+                <label for="subscribers" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Subscribers</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="w-full">
+              <label
+                for="is_public"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Public
+              </label>
+
+              <div class="flex flex-wrap space-x-3">
+                <div>
+                  <input
+                    v-model="postData.is_public"
+                    type="radio"
+                    id="public-access"
+                    name="is_public"
+                    :value="true"
+                    class="hidden peer"
+                  />
+                  <label for="public-access" class="radio-button">
+                    <Icon class="w-6 h-6 mr-2" name="mdi:lock-open" />
+                    <span class="w-full">Public</span>
+                    <Icon name="mdi:arrow-right" />
+                  </label>
+                </div>
+                <div>
+                  <input
+                    v-model="postData.is_public"
+                    type="radio"
+                    id="private-access"
+                    name="is_public"
+                    :value="false"
+                    class="hidden peer"
+                  />
+                  <label for="private-access" class="radio-button">
+                    <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                    <span class="w-full">Private</span>
+                    <Icon name="mdi:arrow-right" />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              <option :value="19000">Public</option>
-              <option :value="19001">Private</option>
-              <option :value="19002">Closed</option>
-              <option :value="19003">Subscribers</option>
-            </select>
+              Type
+            </label>
+            <div class="flex flex-wrap">
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="post-type"
+                  name="type"
+                  :value="13000"
+                  class="hidden peer"
+                />
+                <label for="public-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock-open" />
+                  <span class="w-full">Public</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="post-type"
+                  name="type"
+                  :value="13001"
+                  class="hidden peer"
+                />
+                <label for="private-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Private</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="post-type"
+                  name="type"
+                  :value="13001"
+                  class="hidden peer"
+                />
+                <label for="private-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Private</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="post-type"
+                  name="type"
+                  :value="13001"
+                  class="hidden peer"
+                />
+                <label for="private-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Private</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="post-type"
+                  name="type"
+                  :value="13001"
+                  class="hidden peer"
+                />
+                <label for="private-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Private</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="post-type"
+                  name="type"
+                  :value="13001"
+                  class="hidden peer"
+                />
+                <label for="private-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Private</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="post-type"
+                  name="type"
+                  :value="13001"
+                  class="hidden peer"
+                />
+                <label for="private-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Private</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+            </div>
           </div>
 
           <!-- Logo & cover -->
@@ -152,7 +316,7 @@ const postData = ref({
   excerpt: undefined,
   content: undefined,
   comments: 19000,
-  type: 13014,
+  type: 13000,
   is_public: true,
   attachments: undefined,
   categories: undefined,
@@ -163,11 +327,14 @@ const postData = ref({
 const hasContentError = ref(false);
 const loadingDisabled = ref(false);
 const store = usePostsStore();
+const router = useRouter();
 
 const addPost = () => {
   if (postData.value.content) {
     loadingDisabled.value = true;
-    store.addPost(postData.value);
+    store.createPost(postData.value).then((res) => {
+      router.push("/my/posts");
+    });
   } else {
     hasContentError.value = true;
   }
@@ -182,5 +349,8 @@ const postSchema = Yup.object({
 <style>
 .tox-notifications-container {
   display: none;
+}
+.radio-button {
+  @apply inline-flex items-center justify-center w-full p-5 text-gray-500 border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 bg-gray-50 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700;
 }
 </style>
