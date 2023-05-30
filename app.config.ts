@@ -107,14 +107,14 @@ export default defineAppConfig({
       subnavLinks: [
         { title: "Finance", link: "/my/finance", icon: "mdi:finance" },
         {
-          title: "Products",
-          link: "/my/products",
-          icon: "mdi:package-variant-closed",
-        },
-        {
           title: "Trading Accounts",
           link: "/my/finance/transactions",
           icon: "mdi:account-settings-variant",
+        },
+        {
+          title: "Posts",
+          link: "/my/posts/",
+          icon: "mdi:pencil",
         },
       ],
       hideThemeSelector: false,
