@@ -2,7 +2,7 @@
   <section>
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-        Add a new product
+        Add a new post
       </h2>
       <VForm :validation-schema="postSchema" @submit="addPost">
         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
