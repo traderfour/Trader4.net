@@ -208,6 +208,7 @@
             "
             accepted-file-type="image/jpeg, image/png"
           />
+          <!-- * Logo & cover -->
 
           <div class="col-span-full">
             <ClientOnly>
@@ -217,6 +218,7 @@
               Content is Required
             </span>
           </div>
+          <!-- * tiny MCE -->
         </div>
         <button
           type="submit"
