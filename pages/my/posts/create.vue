@@ -6,7 +6,7 @@
       </h2>
       <VForm :validation-schema="postSchema" @submit="addPost">
         <div class="grid gap-4 sm:grid-cols-12 sm:gap-6 items-start">
-          <div class="w-full lg:col-span-4 col-span-full">
+          <div class="w-full lg:col-span-6 col-span-full">
             <label
               for="title"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -25,7 +25,7 @@
           </div>
 
           <!-- * comments -->
-          <div class="w-full lg:col-span-5 col-span-full">
+          <div class="w-full lg:col-span-6 col-span-full">
             <label
               for="exceprt"
               class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -98,8 +98,34 @@
           </div>
           <!-- * comments -->
 
-          <!-- * public -->
-          <div class="w-full lg:col-span-3 col-span-full">
+          <!-- * post type -->
+          <div class="w-full lg:col-span-6 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Type
+            </label>
+            <select
+              v-model="postData.type"
+              type="text"
+              id="type"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Type product name"
+            >
+              <option
+                v-for="(typeItem, typeIndex) in postTypes"
+                :key="typeIndex"
+                :value="typeItem.value"
+              >
+                {{ typeItem.text }}
+              </option>
+            </select>
+          </div>
+          <!-- * post type -->
+
+          <!-- * publish -->
+          <div class="w-full lg:col-span-6 col-span-full">
             <label
               for="is_public"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -140,33 +166,7 @@
               </div>
             </div>
           </div>
-          <!-- * public -->
-
-          <!-- * post type -->
-          <div class="w-full col-span-full">
-            <label
-              for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Type
-            </label>
-            <select
-              v-model="postData.type"
-              type="text"
-              id="type"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Type product name"
-            >
-              <option
-                v-for="(typeItem, typeIndex) in postTypes"
-                :key="typeIndex"
-                :value="typeItem.value"
-              >
-                {{ typeItem.text }}
-              </option>
-            </select>
-          </div>
-          <!-- * post type -->
+          <!-- * publish -->
 
           <!-- * Logo & cover -->
           <ImageUploader
@@ -208,6 +208,7 @@
             "
             accepted-file-type="image/jpeg, image/png"
           />
+
           <div class="col-span-full">
             <ClientOnly>
               <Editor v-model="postData.content" />
