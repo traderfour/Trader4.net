@@ -95,6 +95,7 @@
             </div>
           </div>
           <div>
+            <!-- * public -->
             <div class="w-full">
               <label
                 for="is_public"
@@ -137,6 +138,9 @@
               </div>
             </div>
           </div>
+          <!-- * public -->
+
+          <!-- * post type -->
           <div>
             <label
               for="type"
@@ -149,14 +153,14 @@
                 <input
                   v-model="postData.type"
                   type="radio"
-                  id="post-type"
+                  id="bot"
                   name="type"
                   :value="13000"
                   class="hidden peer"
                 />
-                <label for="public-access" class="radio-button">
+                <label for="bot" class="radio-button">
                   <Icon class="w-6 h-6 mr-2" name="mdi:lock-open" />
-                  <span class="w-full">Public</span>
+                  <span class="w-full">Bot</span>
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
@@ -164,14 +168,14 @@
                 <input
                   v-model="postData.type"
                   type="radio"
-                  id="post-type"
                   name="type"
+                  id="indicator"
                   :value="13001"
                   class="hidden peer"
                 />
-                <label for="private-access" class="radio-button">
+                <label for="indicator" class="radio-button">
                   <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
-                  <span class="w-full">Private</span>
+                  <span class="w-full">Indicator</span>
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
@@ -179,14 +183,14 @@
                 <input
                   v-model="postData.type"
                   type="radio"
-                  id="post-type"
                   name="type"
-                  :value="13001"
+                  id="system"
+                  :value="13002"
                   class="hidden peer"
                 />
-                <label for="private-access" class="radio-button">
+                <label for="system" class="radio-button">
                   <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
-                  <span class="w-full">Private</span>
+                  <span class="w-full">System</span>
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
@@ -194,14 +198,14 @@
                 <input
                   v-model="postData.type"
                   type="radio"
-                  id="post-type"
+                  id="script"
                   name="type"
-                  :value="13001"
+                  :value="13003"
                   class="hidden peer"
                 />
-                <label for="private-access" class="radio-button">
+                <label for="script" class="radio-button">
                   <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
-                  <span class="w-full">Private</span>
+                  <span class="w-full">Script</span>
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
@@ -209,14 +213,14 @@
                 <input
                   v-model="postData.type"
                   type="radio"
-                  id="post-type"
+                  id="template"
                   name="type"
-                  :value="13001"
+                  :value="13004"
                   class="hidden peer"
                 />
-                <label for="private-access" class="radio-button">
+                <label for="template" class="radio-button">
                   <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
-                  <span class="w-full">Private</span>
+                  <span class="w-full">Template</span>
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
@@ -224,14 +228,14 @@
                 <input
                   v-model="postData.type"
                   type="radio"
-                  id="post-type"
+                  id="algo"
                   name="type"
-                  :value="13001"
+                  :value="13005"
                   class="hidden peer"
                 />
-                <label for="private-access" class="radio-button">
+                <label for="algo" class="radio-button">
                   <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
-                  <span class="w-full">Private</span>
+                  <span class="w-full">Algorithm</span>
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
@@ -239,21 +243,233 @@
                 <input
                   v-model="postData.type"
                   type="radio"
-                  id="post-type"
+                  id="ai"
                   name="type"
-                  :value="13001"
+                  :value="13006"
                   class="hidden peer"
                 />
-                <label for="private-access" class="radio-button">
+                <label for="ai" class="radio-button">
                   <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
-                  <span class="w-full">Private</span>
+                  <span class="w-full">Artificial Intellignece</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="portfolio"
+                  name="type"
+                  :value="13007"
+                  class="hidden peer"
+                />
+                <label for="portfolio" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Portfolio</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="ai-live"
+                  name="type"
+                  :value="13008"
+                  class="hidden peer"
+                />
+                <label for="ai-live" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">AI Live</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="funded-account"
+                  name="type"
+                  :value="13009"
+                  class="hidden peer"
+                />
+                <label for="funded-account" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Funded Account</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="trading-signal"
+                  name="type"
+                  :value="13010"
+                  class="hidden peer"
+                />
+                <label for="trading-signal" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Trading Signal</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="trading-strategy"
+                  name="type"
+                  :value="13011"
+                  class="hidden peer"
+                />
+                <label for="trading-strategy" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Trading Strategy</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="course"
+                  name="type"
+                  :value="13012"
+                  class="hidden peer"
+                />
+                <label for="course" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Course</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="video"
+                  name="type"
+                  :value="13013"
+                  class="hidden peer"
+                />
+                <label for="video" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Video</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="article"
+                  name="type"
+                  :value="13014"
+                  class="hidden peer"
+                />
+                <label for="article" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Article</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="podcast"
+                  name="type"
+                  :value="13015"
+                  class="hidden peer"
+                />
+                <label for="podcast" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Podcast</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="short-video"
+                  name="type"
+                  :value="13016"
+                  class="hidden peer"
+                />
+                <label for="short-video" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Short Video</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="data"
+                  name="type"
+                  :value="13017"
+                  class="hidden peer"
+                />
+                <label for="data" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Data</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="model"
+                  name="type"
+                  :value="13018"
+                  class="hidden peer"
+                />
+                <label for="model" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Model</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="live-stream"
+                  name="type"
+                  :value="13019"
+                  class="hidden peer"
+                />
+                <label for="live-stream" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Live Stream</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="postData.type"
+                  type="radio"
+                  id="other"
+                  name="type"
+                  :value="13020"
+                  class="hidden peer"
+                />
+                <label for="other" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Other</span>
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
             </div>
           </div>
+          <!-- * post type -->
 
-          <!-- Logo & cover -->
+          <!-- * Logo & cover -->
           <ImageUploader
             id="logo"
             key="logo"
