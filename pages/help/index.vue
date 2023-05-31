@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white dark:bg-gray-900 rounded">
+  <section class="rounded">
     <div class="py-8 px-4 mx-auto sm:py-16 lg:px-6">
       <div class="mx-auto text-center mb-8 lg:mb-16">
         <h2
@@ -18,10 +18,10 @@
         >
         <div class="relative">
           <div
-            class="flex absolute inset-y-0 left-0 rtl:right-0  items-center ps-3 pointer-events-none"
+            class="flex absolute inset-y-0 left-0 rtl:right-0 items-center ps-3 pointer-events-none"
           >
             <svg
-              class="w-6 h-6  text-gray-500 dark:text-gray-400"
+              class="w-6 h-6 text-gray-500 dark:text-gray-400"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"

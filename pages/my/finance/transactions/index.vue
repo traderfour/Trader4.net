@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-gray-50 dark:bg-gray-900">
+  <section>
     <div class="mx-auto">
       <div
         class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded overflow-hidden"

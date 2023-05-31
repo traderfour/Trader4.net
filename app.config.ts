@@ -5,9 +5,18 @@ interface IHeader {
     title: string;
     link: string;
   }[];
+  subnavLinks?: {
+    icon: string;
+    title: string;
+    link: string;
+  }[];
   megaMenu: boolean | string[];
+  hideSubnavLink?: boolean;
   hideSearchBar: boolean;
   hideLanguageSelector: boolean;
+  hideNotifications: boolean;
+  hideappMenu: boolean;
+  hideUserInfo: boolean;
   languageList: {
     lang: string;
     flagSrc: string;
@@ -42,13 +51,13 @@ interface IFooter {
 }
 export default defineAppConfig({
   docus: {
-    title: 'Trader4 Documentation',
-    description: 'Trader4 Docs',
-    url: 'http://trader4.net/docs',
-    image: '/social-card-preview.png',
+    title: "Trader4 Documentation",
+    description: "Trader4 Docs",
+    url: "http://trader4.net/docs",
+    image: "/social-card-preview.png",
     socials: {
-      twitter: '@trader4',
-      github: 'traderfour',
+      twitter: "@trader4",
+      github: "traderfour",
     },
   },
   config: {
@@ -93,7 +102,20 @@ export default defineAppConfig({
           flagSrc: "/img/icon/tr.svg",
           text: "Español",
         },
-
+      ],
+      hideSubnavLink: false,
+      subnavLinks: [
+        { title: "Finance", link: "/my/finance", icon: "mdi:finance" },
+        {
+          title: "Trading Accounts",
+          link: "/my/finance/transactions",
+          icon: "mdi:account-settings-variant",
+        },
+        {
+          title: "Posts",
+          link: "/my/posts/",
+          icon: "mdi:pencil",
+        },
       ],
       hideThemeSelector: false,
       loginButton: {
@@ -160,7 +182,10 @@ export default defineAppConfig({
             { title: "Market", link: "/product/market" },
             { title: "Bridge", link: "/product/bridge" },
             { title: "Bazaar", link: "/product/bazaar" },
-            { title: "Financial Engineering", link: "/product/financial-engineering" },
+            {
+              title: "Financial Engineering",
+              link: "/product/financial-engineering",
+            },
             { title: "Marketplace", link: "/product/marketplace" },
             { title: "Algo Trading", link: "/product/algo-trading" },
             { title: "Cloud Trading", link: "/product/cloud-trading" },
@@ -169,15 +194,15 @@ export default defineAppConfig({
           ],
         },
         {
-            links: [
-              { title: "Portfolio", link: "/product/portfolio" },
-              { title: "TradeHub", link: "/product/tradehub" },
-              { title: "ChartHub", link: "/product/charthub" },
-              { title: "Team Trading", link: "/product/team-trading" },
-              { title: "Pythia", link: "/product/pythia" },
-              { title: "Open API", link: "/product/open-api" },
-              { title: "Laboratory", link: "/product/laboratory" },
-            ]
+          links: [
+            { title: "Portfolio", link: "/product/portfolio" },
+            { title: "TradeHub", link: "/product/tradehub" },
+            { title: "ChartHub", link: "/product/charthub" },
+            { title: "Team Trading", link: "/product/team-trading" },
+            { title: "Pythia", link: "/product/pythia" },
+            { title: "Open API", link: "/product/open-api" },
+            { title: "Laboratory", link: "/product/laboratory" },
+          ],
         },
         {
           title: "Support",
@@ -214,13 +239,21 @@ export default defineAppConfig({
         {
           title: "From Family",
           links: [
-            { title: "Dalan Capital", link: "https://dalan.capital", target: "_blank" },
+            {
+              title: "Dalan Capital",
+              link: "https://dalan.capital",
+              target: "_blank",
+            },
             { title: "Werify", link: "https://werify.net", target: "_blank" },
             { title: "Bulutly", link: "https://bulutly.net", target: "_blank" },
             { title: "AzPays", link: "https://azpays.net", target: "_blank" },
             { title: "Pasles", link: "https://pasles.net", target: "_blank" },
             { title: "Daric", link: "https://daric.vc", target: "_blank" },
-            { title: "More from Briofy", link: "https://briofy.net/products", target: "_blank"},
+            {
+              title: "More from Briofy",
+              link: "https://briofy.net/products",
+              target: "_blank",
+            },
           ],
         },
       ],

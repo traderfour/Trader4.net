@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white dark:bg-gray-900 rounded">
+  <section class="rounded">
     <div class="py-8 px-4 mx-auto lg:p-10">
       <div class="max-w-screen-md mb-8 lg:mb-16">
         <h2
