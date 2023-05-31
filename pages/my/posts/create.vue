@@ -23,6 +23,8 @@
             />
             <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
+
+          <!-- * comments -->
           <div class="w-full">
             <label
               for="exceprt"
@@ -31,8 +33,8 @@
               Comments
             </label>
 
-            <div class="flex space-x-3">
-              <div>
+            <div class="flex flex-wrap space-x-3">
+              <div class="m-1">
                 <input
                   v-model="postData.comments"
                   type="radio"
@@ -47,7 +49,7 @@
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
-              <div>
+              <div class="m-1">
                 <input
                   v-model="postData.comments"
                   type="radio"
@@ -62,7 +64,7 @@
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
-              <div>
+              <div class="m-1">
                 <input
                   v-model="postData.comments"
                   type="radio"
@@ -77,7 +79,7 @@
                   <Icon name="mdi:arrow-right" />
                 </label>
               </div>
-              <div>
+              <div class="m-1">
                 <input
                   v-model="postData.comments"
                   type="radio"
@@ -94,55 +96,54 @@
               </div>
             </div>
           </div>
+          <!-- * comments -->
 
           <!-- * public -->
-          <div>
-            <div class="w-full">
-              <label
-                for="is_public"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Public
-              </label>
+          <div class="w-full">
+            <label
+              for="is_public"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Public
+            </label>
 
-              <div class="flex flex-wrap space-x-3">
-                <div>
-                  <input
-                    v-model="postData.is_public"
-                    type="radio"
-                    id="public-access"
-                    name="is_public"
-                    :value="true"
-                    class="hidden peer"
-                  />
-                  <label for="public-access" class="radio-button">
-                    <Icon class="w-6 h-6 mr-2" name="mdi:lock-open" />
-                    <span class="w-full">Public</span>
-                    <Icon name="mdi:arrow-right" />
-                  </label>
-                </div>
-                <div>
-                  <input
-                    v-model="postData.is_public"
-                    type="radio"
-                    id="private-access"
-                    name="is_public"
-                    :value="false"
-                    class="hidden peer"
-                  />
-                  <label for="private-access" class="radio-button">
-                    <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
-                    <span class="w-full">Private</span>
-                    <Icon name="mdi:arrow-right" />
-                  </label>
-                </div>
+            <div class="flex flex-wrap space-x-3">
+              <div>
+                <input
+                  v-model="postData.is_public"
+                  type="radio"
+                  id="public-access"
+                  name="is_public"
+                  :value="true"
+                  class="hidden peer"
+                />
+                <label for="public-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock-open" />
+                  <span class="w-full">Public</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
+              </div>
+              <div>
+                <input
+                  v-model="postData.is_public"
+                  type="radio"
+                  id="private-access"
+                  name="is_public"
+                  :value="false"
+                  class="hidden peer"
+                />
+                <label for="private-access" class="radio-button">
+                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
+                  <span class="w-full">Private</span>
+                  <Icon name="mdi:arrow-right" />
+                </label>
               </div>
             </div>
           </div>
           <!-- * public -->
 
           <!-- * post type -->
-          <div>
+          <div class="w-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
