@@ -105,17 +105,12 @@ export default defineAppConfig({
       ],
       hideSubnavLink: false,
       subnavLinks: [
-        { title: "Finance", link: "/my/finance", icon: "mdi:finance" },
-        {
-          title: "Trading Accounts",
-          link: "/my/finance/transactions",
-          icon: "mdi:account-settings-variant",
-        },
-        {
-          title: "Posts",
-          link: "/my/posts/",
-          icon: "mdi:pencil",
-        },
+        {icon:"mdi:home",title:"Home",link:"/my/"},
+        {icon:"mdi:pencil",title:"Posts",link:"/my/posts/"},
+        {icon:"mdi:account-settings-variant",title:"Trading Accounts",link:"/my/finance/transactions"},
+        {icon:"mdi:finance",title:"Finance",link:"/my/finance"},
+        {icon:"mdi:account",title:"Profile",link:"/my/profile"},
+        {icon:"mdi:account-settings",title:"Settings",link:"/my/settings"},
       ],
       hideThemeSelector: false,
       loginButton: {

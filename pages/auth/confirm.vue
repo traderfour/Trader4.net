@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="bg-gray-50 dark:bg-gray-900">
+    <section>
       <div class="grid py-10 mx-auto lg:py-16 grid-cols-12 items-center">
         <div
           class="lg:col-span-6 col-span-full md:max-w-lg w-full mx-auto rounded"
@@ -9,9 +9,9 @@
             class="p-6 space-y-4 bg-white dark:bg-transparent lg:space-y-6 sm:p-8"
           >
             <h1
-              class="text-xl font-bold leading-tight tracking-tight text-gray-900 sm:text-2xl dark:text-white"
+              class="text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl dark:text-white"
             >
-              Confirm Code
+              Confirm
             </h1>
             <VForm
               class="space-y-4 lg:space-y-6"
@@ -25,7 +25,7 @@
                 <label
                   for="code"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >Confirm Code</label
+                  >Enter Verification Code</label
                 >
                 <VField
                   v-model="code"
@@ -49,16 +49,20 @@
                   size="1.5rem"
                   name="mdi:loading"
                 />
-                <span v-else>Sign in</span>
+                <span v-else>Login to Account</span>
               </button>
             </VForm>
           </div>
         </div>
         <div class="lg:col-span-6 lg:flex hidden justify-center">
-          <img
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/authentication/illustration.svg"
-            alt="illustration"
-          />
+          <client-only>
+            <Vue3Lottie
+                animationLink="https://assets10.lottiefiles.com/packages/lf20_zl2c0cuv.json"
+                :height="200"
+                :width="200"
+            />
+          </client-only>
+
         </div>
       </div>
     </section>
@@ -70,6 +74,7 @@
 import { IVerifyOTPPayload } from "@werify/id-ts/dist/modules/public/verifyOTP/interfaces/IVerifyOTP";
 import * as Yup from "yup";
 import { saveToken } from "~/composables/JwtService";
+import {Vue3Lottie} from "vue3-lottie";
 
 // Variables
 const responseMsg = ref("");
@@ -100,7 +105,7 @@ const loginUser = async () => {
         // );
         // saveToken(JSON.stringify(res.results));
         useCookie("user", { secure: true }).value = JSON.stringify(res.results);
-        location.replace("/");
+        location.replace("/my/");
       }
     })
     .catch(() => {

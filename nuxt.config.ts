@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   ssr: false,
   modules: [
@@ -27,8 +28,4 @@ export default defineNuxtConfig({
     // "github:traderfour/base-trader4-layers", // Extend from a git repository
     "base-layers", // Extend from a local directory
   ],
-  routeRules: {
-    // Render these routes with SPA
-    "/my/**": { ssr: false },
-  },
 });

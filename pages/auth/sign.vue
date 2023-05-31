@@ -1,14 +1,13 @@
 <template>
   <div>
-    <section class="bg-gray-50 dark:bg-gray-900">
+    <section>
       <div class="grid items-center mx-auto lg:py-16 py-10 grid-cols-12">
-        <!-- Login Form -->
         <div class="lg:col-span-6 col-span-full rounded order-2 lg:order-1">
           <div
             class="p-6 space-y-4 lg:space-y-6 bg-white mx-auto md:max-w-lg w-full dark:bg-transparent sm:p-8"
           >
             <h1
-              class="text-xl font-bold leading-tight tracking-tight text-gray-900 sm:text-2xl dark:text-white"
+              class="text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-3xl dark:text-white"
             >
               Welcome Back
             </h1>
