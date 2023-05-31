@@ -5,8 +5,8 @@
         Add a new post
       </h2>
       <VForm :validation-schema="postSchema" @submit="addPost">
-        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-          <div class="w-full">
+        <div class="grid gap-4 sm:grid-cols-12 sm:gap-6 items-start">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="title"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -25,10 +25,10 @@
           </div>
 
           <!-- * comments -->
-          <div class="w-full">
+          <div class="w-full lg:col-span-5 col-span-full">
             <label
               for="exceprt"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
             >
               Comments
             </label>
@@ -99,12 +99,12 @@
           <!-- * comments -->
 
           <!-- * public -->
-          <div class="w-full">
+          <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="is_public"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Public
+              Publish
             </label>
 
             <div class="flex flex-wrap space-x-3">
@@ -143,7 +143,7 @@
           <!-- * public -->
 
           <!-- * post type -->
-          <div class="w-full">
+          <div class="w-full col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -473,6 +473,7 @@
 
           <!-- * Logo & cover -->
           <ImageUploader
+            class="md:col-span-4 col-span-full"
             id="logo"
             key="logo"
             lable-idle="Logo here"
@@ -485,6 +486,7 @@
           />
 
           <ImageUploader
+            class="md:col-span-4 col-span-full"
             id="cover"
             key="cover"
             lable-idle="Cover here"
@@ -497,6 +499,7 @@
           />
 
           <ImageUploader
+            class="col-span-4"
             id="attachments"
             key="attachments"
             :is-multiple="true"
@@ -508,7 +511,7 @@
             "
             accepted-file-type="image/jpeg, image/png"
           />
-          <div class="sm:col-span-2">
+          <div class="col-span-full">
             <ClientOnly>
               <Editor v-model="postData.content" />
             </ClientOnly>
@@ -519,7 +522,7 @@
         </div>
         <button
           type="submit"
-          class="items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
+          class="items-center px-8 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
           :disabled="loadingDisabled"
         >
           <Icon
@@ -546,7 +549,7 @@ const postData = ref({
   cover_id: undefined,
   excerpt: undefined,
   content: undefined,
-  comments: 19000,
+  comments: 19001,
   type: 13000,
   is_public: true,
   attachments: [] || undefined,
@@ -582,6 +585,6 @@ const postSchema = Yup.object({
   display: none;
 }
 .radio-button {
-  @apply inline-flex items-center justify-center w-full p-5 text-gray-500 border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 bg-gray-50 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700;
+  @apply inline-flex items-center justify-center w-full p-2 text-gray-500 border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 bg-gray-50 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700;
 }
 </style>
