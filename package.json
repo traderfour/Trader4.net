@@ -24,7 +24,6 @@
     "nuxt-icon": "^0.3.3"
   },
   "dependencies": {
-    "@lottiefiles/vue-lottie-player": "^1.1.0",
     "@nuxt-themes/docus": "^1.11.1",
     "@tinymce/tinymce-vue": "^5.1.0",
     "@traderfour/api-ts": "^1.0.0-alpha.2",
