@@ -94,8 +94,9 @@
               </div>
             </div>
           </div>
+
+          <!-- * public -->
           <div>
-            <!-- * public -->
             <div class="w-full">
               <label
                 for="is_public"
@@ -148,7 +149,7 @@
             >
               Type
             </label>
-            <div class="flex flex-wrap">
+            <div class="flex w-full flex-wrap">
               <div class="m-1">
                 <input
                   v-model="postData.type"
@@ -493,6 +494,19 @@
             "
             accepted-file-type="image/jpeg, image/png"
           />
+
+          <ImageUploader
+            id="attachments"
+            key="attachments"
+            :is-multiple="true"
+            lable-idle="attachments here (multiple)"
+            @on-uploaded-successfully="
+              ($event) => {
+                postData.attachments.push($event.results.uuid as never);
+              }
+            "
+            accepted-file-type="image/jpeg, image/png"
+          />
           <div class="sm:col-span-2">
             <ClientOnly>
               <Editor v-model="postData.content" />
@@ -534,7 +548,7 @@ const postData = ref({
   comments: 19000,
   type: 13000,
   is_public: true,
-  attachments: undefined,
+  attachments: [] || undefined,
   categories: undefined,
   tags: undefined,
   platforms: undefined,
