@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     payloadExtraction: false
   },
   modules: [
+    "@zadigetvoltaire/nuxt-gtm",
     [
       "@vee-validate/nuxt",
       {
@@ -21,6 +22,11 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  gtm: {
+    id: "GTM-PXF5DHD",
+    defer: true,
+  },
+
   runtimeConfig: {
     public: {
       baseUrl: process.env.BASE_URL,

@@ -1,11 +1,12 @@
 import { apiTS } from "@traderfour/api-ts";
 export const usePostsStore = () => {
-  const baseURL = useRuntimeConfig().public.baseUrl;
+  // const baseURL = useRuntimeConfig().public.baseUrl;
   const api = apiTS();
+  const posts = useState("posts", () => []);
 
-  const addPost = () => {
-    api.myTs.posts.store();
-  };
+  // const addPost = () => {
+  //   api.myTs.posts.store();
+  // };
 
   const createPost = async (payload: any) => {
     const { data } = await useApi("/v1/my/posts", {
@@ -14,8 +15,10 @@ export const usePostsStore = () => {
       headers: { Authorization: useCookie("user").value.access_token },
       body: JSON.stringify(payload),
     });
-    console.log(data);
+  };
+  const getPosts = async () => {
+    return await useApi("/v1/posts");
   };
 
-  return { createPost };
+  return { createPost, getPosts };
 };
