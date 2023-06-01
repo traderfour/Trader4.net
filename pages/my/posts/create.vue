@@ -115,8 +115,20 @@
           </div>
           <!-- * post type -->
 
-          <!-- * publish -->
+          <!-- * tags -->
           <div class="w-full lg:col-span-6 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Tags
+            </label>
+            <SharedTagInput v-model="postData.tags" />
+          </div>
+          <!-- * tags -->
+
+          <!-- * publish -->
+          <!-- <div class="w-full lg:col-span-6 col-span-full">
             <label
               for="is_public"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -152,25 +164,8 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- * publish -->
-
-          <div class="col-span-full">
-            <!-- * categories -->
-            <SharedMultiSelectTagging
-              v-model="postData.tags"
-              :options="categories"
-              :field-name="{
-                label: 'title',
-                key: 'uuid',
-              }"
-            />
-            <!-- * categories -->
-
-            <!-- * tags -->
-            <SharedTagInput v-model="postData.tags" />
-            <!-- * tags -->
-          </div>
 
           <!-- * Logo & cover -->
           <ImageUploader
