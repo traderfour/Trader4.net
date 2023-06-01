@@ -210,9 +210,7 @@
           <!-- * Logo & cover -->
 
           <div class="col-span-full">
-            <ClientOnly>
-              <Editor v-model="postData.content" />
-            </ClientOnly>
+            <Editor v-model="postData.content" />
             <span v-if="hasContentError" class="text-red-700 text-sm">
               Content is Required
             </span>
