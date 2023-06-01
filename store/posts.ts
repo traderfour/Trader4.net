@@ -9,7 +9,7 @@ export const usePostsStore = () => {
   // };
 
   const createPost = async (payload: any) => {
-    const { data } = await useApi("/v1/my/posts", {
+    return await useApi("/v1/my/posts", {
       method: "post",
       // @ts-ignore
       headers: { Authorization: useCookie("user").value.access_token },

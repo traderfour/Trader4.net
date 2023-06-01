@@ -2,7 +2,7 @@
   <section>
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-        Add a new post
+        Add Post
       </h2>
       <VForm :validation-schema="postSchema" @submit="addPost">
         <div class="grid gap-4 sm:grid-cols-12 sm:gap-6 items-start">
@@ -19,7 +19,7 @@
               name="title"
               id="title"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Type product name"
+              placeholder="What`s on your mind?"
             />
             <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
@@ -228,7 +228,7 @@
             size="1.5rem"
             name="mdi:loading"
           />
-          <span v-else>Add Post +</span>
+          <span v-else>Publish Post</span>
         </button>
       </VForm>
     </div>
@@ -246,8 +246,8 @@ const postData = ref({
   cover_id: undefined,
   excerpt: undefined,
   content: undefined,
-  comments: 19001,
-  type: 13000,
+  comments: 19000,
+  type: 13014,
   is_public: true,
   attachments: [] || undefined,
   categories: undefined,
@@ -351,7 +351,12 @@ const addPost = () => {
   if (postData.value.content) {
     loadingDisabled.value = true;
     store.createPost(postData.value).then((res) => {
-      router.push("/my/posts");
+      if (res.data.succeed && res.data.results.uuid){
+        router.push("/my/posts");
+      }else{
+        loadingDisabled.value = false;
+        hasContentError.value = true;
+      }
     });
   } else {
     hasContentError.value = true;
