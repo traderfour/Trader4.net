@@ -4,13 +4,13 @@
   "version": "1.0.0-alpha.4",
   "author": "trader4",
   "scripts": {
-    "build": "npm run build-submodules && nuxt build",
+    "build": "nuxt build",
     "dev": "nuxt dev",
     "dev:next": "nuxt dev --dotenv .env.staging",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "build-submodules": "cd base-layers && npm i && npm run build"
+    "build-submodules": "cd base-layers && yarn && yarn generate"
   },
   "devDependencies": {
     "@nuxt/content": "^2.6.0",
@@ -24,7 +24,7 @@
     "nuxt-icon": "^0.3.3"
   },
   "dependencies": {
-    "@nuxt-themes/docus": "^1.11.1",
+    "@nuxt-themes/docus": "^1.12.0",
     "@tinymce/tinymce-vue": "^5.1.0",
     "@traderfour/api-ts": "^1.0.0-alpha.2",
     "@vee-validate/nuxt": "^4.8.6",

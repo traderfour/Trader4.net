@@ -2,6 +2,9 @@
 
 export default defineNuxtConfig({
   ssr: false,
+  experimental: {
+    payloadExtraction: false
+  },
   modules: [
     "@zadigetvoltaire/nuxt-gtm",
     [

@@ -1,4 +1,4 @@
-FROM node:19.9-alpine AS build
+FROM node:18.6.0-alpine AS build
 
 # For handling Kernel signals properly
 RUN apk add --no-cache git
@@ -7,22 +7,28 @@ RUN apk add --no-cache git
 WORKDIR /usr/src/app
 
 # Copy package.json, package-lock.json
-COPY package*.json ./
+COPY . .
 
 # Install dependencies.
-RUN npm ci
+RUN yarn add @nuxt/devtools
 
-# Necessary to run before adding application code to leverage Docker cache
-RUN npm cache clean --force
+RUN cd ./base-layers && yarn && yarn generate
 
-# Add src project
-ADD . .
+RUN yarn && yarn generate
 
-# Build project
-RUN npm run build
+# nginx production environment
+FROM nginx:stable-alpine AS deploy
+
+WORKDIR /usr/src/app
+
+# Copy build directory
+COPY --from=build /usr/src/app/.output/public /usr/share/nginx/html
+
+# copy nginx confiuration file
+COPY .ci/nginx.conf /etc/nginx/conf.d/default.conf
 
 # expose port 80
-EXPOSE 3000
+EXPOSE 80
 
 # Run nginx
-CMD ["node", ".output/server/index.mjs"]
+CMD ["nginx", "-g", "daemon off;"]
