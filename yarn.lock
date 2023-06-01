@@ -630,7 +630,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nuxt-themes/docus@^1.11.1":
+"@nuxt-themes/docus@^1.12.0":
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/@nuxt-themes/docus/-/docus-1.12.0.tgz#aa1e946c610dcb32f8c3debc27f19beed449d0f3"
   integrity sha512-/YAlsKbyyjxIflFOIO3bKdM/QNsWLNRBXK11CTXod8zBlJe7lL/XqtNmbtqoNyQ+WumnkfVRA4UyKnu4W/Ya9w==
