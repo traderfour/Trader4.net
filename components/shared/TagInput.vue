@@ -5,7 +5,6 @@
         <div
           class="flex flex-wrap flex-col rounded border dark:border-gray-700"
         >
-          {{ selectedTags }}
           <div>
             <div
               v-for="tag in selectedTags"
@@ -30,30 +29,9 @@
               @keyup.enter="addTag"
               class="custom-input"
               placeholder="Add tag..."
-              @click="showOptions = !showOptions"
             />
           </div>
-          <Icon
-            @click="showOptions = !showOptions"
-            :class="showOptions ? 'rotate-180' : 'rotate-0'"
-            class="absolute dark:text-white text-gray-900 text-lg right-2 top-3"
-            name="mdi:chevron-down"
-          />
         </div>
-
-        <!-- <ul v-if="showOptions" class="list-items">
-          <li
-            v-for="option in filterResult"
-            :key="option[props.fieldName.key]"
-            @click="selectOption(option)"
-            class="item"
-          >
-            {{ option[props.fieldName.label] }}
-          </li>
-        </ul>
-        <ul class="list-items" v-if="showOptions && !filterResult.length">
-          <li class="item text-center">No item found</li>
-        </ul> -->
       </SharedOnClickOutside>
     </section>
   </div>
@@ -76,8 +54,15 @@ const showOptions = ref<boolean>(false);
 
 function addTag() {
   selectedTags.value.push(inputValue.value);
-  //   inputValue.value = "";
+  inputValue.value = "";
 }
+
+const removeTag = (tag: string) => {
+  console.log("Called");
+
+  //   const findedIndex = selectedTags.value.findIndex((x) => x === tag);
+  //   selectedTags.value.splice(findedIndex, 1);
+};
 
 watch(selectedTags.value, (newValue, oldValue) => {
   emit("update:modelValue", newValue);

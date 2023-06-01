@@ -10,7 +10,6 @@ export default defineComponent({
         return event.target === el || el.contains(event.target);
       });
       if (isClickInside) {
-        console.log("clickInside");
         return;
       }
       props.clickOutside && props.clickOutside();
