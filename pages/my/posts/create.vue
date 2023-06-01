@@ -168,7 +168,7 @@
           <!-- * publish -->
 
           <!-- * Logo & cover -->
-          <ImageUploader
+          <GlobalImageUploader
             class="md:col-span-4 col-span-full"
             id="logo"
             key="logo"
@@ -181,7 +181,7 @@
             accepted-file-type="image/jpeg, image/png"
           />
 
-          <ImageUploader
+          <GlobalImageUploader
             class="md:col-span-4 col-span-full"
             id="cover"
             key="cover"
@@ -194,7 +194,7 @@
             accepted-file-type="image/jpeg, image/png"
           />
 
-          <ImageUploader
+          <GlobalImageUploader
             class="col-span-4"
             id="attachments"
             key="attachments"
