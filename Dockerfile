@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install dependencies.
-RUN yarn dev && yarn generate
+RUN yarn install && yarn generate
 
 # nginx production environment
 FROM nginx:stable-alpine AS deploy
