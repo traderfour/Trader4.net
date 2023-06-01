@@ -44,9 +44,7 @@
                   class="hidden peer"
                 />
                 <label for="public" class="radio-button">
-                  <Icon class="w-6 h-6 mr-2" name="mdi:lock-open" />
                   <span class="w-full">Public</span>
-                  <Icon name="mdi:arrow-right" />
                 </label>
               </div>
               <div class="m-1">
@@ -59,9 +57,7 @@
                   class="hidden peer"
                 />
                 <label for="private" class="radio-button">
-                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
                   <span class="w-full">Private</span>
-                  <Icon name="mdi:arrow-right" />
                 </label>
               </div>
               <div class="m-1">
@@ -74,9 +70,7 @@
                   class="hidden peer"
                 />
                 <label for="closed" class="radio-button">
-                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
                   <span class="w-full">Closed</span>
-                  <Icon name="mdi:arrow-right" />
                 </label>
               </div>
               <div class="m-1">
@@ -89,9 +83,7 @@
                   class="hidden peer"
                 />
                 <label for="subscribers" class="radio-button">
-                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
                   <span class="w-full">Subscribers</span>
-                  <Icon name="mdi:arrow-right" />
                 </label>
               </div>
             </div>
@@ -144,9 +136,7 @@
                   class="hidden peer"
                 />
                 <label for="public-access" class="radio-button">
-                  <Icon class="w-6 h-6 mr-2" name="mdi:lock-open" />
                   <span class="w-full">Public</span>
-                  <Icon name="mdi:arrow-right" />
                 </label>
               </div>
               <div>
@@ -159,9 +149,7 @@
                   class="hidden peer"
                 />
                 <label for="private-access" class="radio-button">
-                  <Icon class="w-6 h-6 mr-2" name="mdi:lock" />
                   <span class="w-full">Private</span>
-                  <Icon name="mdi:arrow-right" />
                 </label>
               </div>
             </div>
@@ -372,6 +360,6 @@ const postSchema = Yup.object({
   display: none;
 }
 .radio-button {
-  @apply inline-flex items-center justify-center w-full p-2 text-gray-500 border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 bg-gray-50 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700;
+  @apply inline-flex items-center justify-center w-full px-4 py-2 text-gray-500 border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-primary-500 peer-checked:border-primary-600 peer-checked:text-primary-600 bg-gray-50 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700;
 }
 </style>
