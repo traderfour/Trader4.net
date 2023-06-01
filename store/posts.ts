@@ -17,8 +17,7 @@ export const usePostsStore = () => {
     });
   };
   const getPosts = async () => {
-    const { data } = await useApi("/v1/my/posts");
-    console.log(data);
+    return await useApi("/v1/posts");
   };
 
   return { createPost, getPosts };
