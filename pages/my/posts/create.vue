@@ -156,7 +156,7 @@
           <!-- * publish -->
 
           <div class="col-span-full">
-            <!-- * tags -->
+            <!-- * categories -->
             <SharedMultiSelectTagging
               v-model="postData.tags"
               :options="categories"
@@ -165,18 +165,11 @@
                 key: 'uuid',
               }"
             />
-            <!-- * tags -->
+            <!-- * categories -->
 
-            <!-- * categories -->
-            <SharedTagInput
-              v-model="postData.categories"
-              :options="categories"
-              :field-name="{
-                label: 'title',
-                key: 'uuid',
-              }"
-            />
-            <!-- * categories -->
+            <!-- * tags -->
+            <SharedTagInput v-model="postData.tags" />
+            <!-- * tags -->
           </div>
 
           <!-- * Logo & cover -->

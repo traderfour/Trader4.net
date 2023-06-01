@@ -7,20 +7,12 @@
         >
           <div>
             <div
-              v-for="tag in selectedTags"
-              class="inline-flex items-center px-1 py-1 m-1 bg-gray-200 rounded dark:bg-gray-500 dark:text-gray-100"
+              v-for="(tag, idx) in selectedTags"
+              :key="idx"
+              class="inline-flex cursor-pointer items-center px-1 py-1 m-1 bg-gray-200 rounded dark:bg-gray-500 dark:text-gray-100"
+              @click="removeTag(idx)"
             >
               <span class="text-xs font-semibold me-2">{{ tag }}</span>
-              <button
-                @click="removeTag(tag)"
-                class="-mt-1 t-3 w-4 h-6 pe-3 relative"
-              >
-                <Icon
-                  size="13"
-                  class="dark:hover:bg-gray-700 hover:bg-gray-300 rounded absolute top-2"
-                  name="mdi:close"
-                />
-              </button>
             </div>
           </div>
           <div class="relative">
@@ -57,11 +49,8 @@ function addTag() {
   inputValue.value = "";
 }
 
-const removeTag = (tag: string) => {
-  console.log("Called");
-
-  //   const findedIndex = selectedTags.value.findIndex((x) => x === tag);
-  //   selectedTags.value.splice(findedIndex, 1);
+const removeTag = (idx: number) => {
+  selectedTags.value.splice(idx, 1);
 };
 
 watch(selectedTags.value, (newValue, oldValue) => {
