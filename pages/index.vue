@@ -61,11 +61,12 @@
                   class="bg-white rounded shadow-sm dark:bg-gray-800 dark:border-gray-700 font my-2 hover:shadow-sm transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
                 >
                   <div class="relative">
-                    <img
+                    <!-- <img
                       class="w-full rounded h-44 object-cover"
                       src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                       alt="Jese Leos"
-                    />
+                    /> -->
+                    <Icon name="mdi:image" class="h-44 w-full text-gray-300" />
                     <div
                       class="mx-8 bg-white dark:bg-gray-300 w-11 h-11 flex flex-row justify-center rounded absolute -bottom-1"
                     >

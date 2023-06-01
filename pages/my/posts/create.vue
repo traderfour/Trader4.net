@@ -155,6 +155,30 @@
           </div>
           <!-- * publish -->
 
+          <div class="col-span-full">
+            <!-- * tags -->
+            <SharedMultiSelectTagging
+              v-model="postData.tags"
+              :options="categories"
+              :field-name="{
+                label: 'title',
+                key: 'uuid',
+              }"
+            />
+            <!-- * tags -->
+
+            <!-- * categories -->
+            <SharedTagInput
+              v-model="postData.categories"
+              :options="categories"
+              :field-name="{
+                label: 'title',
+                key: 'uuid',
+              }"
+            />
+            <!-- * categories -->
+          </div>
+
           <!-- * Logo & cover -->
           <ImageUploader
             class="md:col-span-4 col-span-full"
@@ -347,6 +371,23 @@ const addPost = () => {
     hasContentError.value = true;
   }
 };
+
+const {
+  fetchCategories,
+  categories,
+  fetchMarkets,
+  markets,
+  fetchPlatforms,
+  platforms,
+} = useMarketStore();
+
+onMounted(() => {
+  nextTick(() => {
+    fetchCategories();
+    fetchMarkets();
+    fetchPlatforms();
+  });
+});
 
 // Form Validation
 const postSchema = Yup.object({
