@@ -178,31 +178,31 @@ const features = [
         title: "Customizable Data",
         description:
             "With Market, you can tailor the information you receive based on your specific needs and preferences. This ensures that you receive the data that is relevant to your investment strategy.",
-        icon: "mdi:google",
+        icon: "mdi:database-edit",
     },
     {
         title: "Comprehensive Data",
         description:
             "Market provides the latest information on different markets, brokers, platforms, commissions, and quotes. You can access the data you need in real-time to make informed decisions.",
-        icon: "mdi:google",
+        icon: "mdi:circle-double",
     },
     {
         title: "Investment Information",
         description:
             "Market provides detailed information on various investment options, including stocks, bonds, mutual funds, ETFs, and more. You can access all the information you need in one place, making it easy to compare rates and identify opportunities.",
-        icon: "mdi:google",
+        icon: "mdi:database",
     },
   {
     title: "Cost Effective",
     description:
       "Market provides cost-effective solutions for accessing comprehensive market data. You can avoid the high costs associated with hiring a financial advisor or subscribing to multiple financial market data providers.",
-    icon: "mdi:google",
+    icon: "mdi:currency-usd",
   },
   {
     title: "Up-to-Date Data",
     description:
         " We pride ourselves on providing accurate and up-to-date data that is essential for making informed investment decisions.",
-    icon: "mdi:google",
+    icon: "mdi:update",
   },
 ];
 </script>
