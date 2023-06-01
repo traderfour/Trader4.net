@@ -1,5 +1,6 @@
 <template>
-  <div class="">
+  <div>
+    <!-- * tags -->
     <section class="tag-box py-4 relative mx-auto">
       <ul
         class="my-1 flex flex-row content-container space-x-4 text-sm font-semibold text-gray-600 dark:text-gray-300 scroll-smooth overflow-x-scroll lg:overflow-x-hidden"
@@ -37,57 +38,13 @@
         </button>
       </ul>
     </section>
-    <!-- <section
-      class="bg-white dark:bg-gray-800 lg:h-60 h-96 rounded mt-2 mb-5 flex flex-col md:flex-row p-2 gap-2"
-    >
-      <div class="md:basis-2/3 h-1/2 md:h-full w-full">
-        <nuxt-img
-          src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
-          fit="cover"
-          class="rounded object-cover object-center h-full w-full"
-          alt="TODO:later"
-        />
-      </div>
+    <!-- * tags -->
 
-      <div
-        class="max-w-sm md:basis-1/3 bg-white rounded dark:bg-gray-800 h-full w-full max-h-48"
-      >
-        <a href="#">
-          <nuxt-img
-            class="mx-auto rounded-t-lg h-1/2 object-cover object-center"
-            src="https://flowbite.com/docs/images/products/apple-watch.png"
-            fit="cover"
-            alt="product image"
-          />
-        </a>
-        <div class="px-5 pb-5">
-          <a href="#">
-            <h5
-              class="text-sm my-2 font-semibold tracking-tight text-gray-900 dark:text-white"
-            >
-              Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
-            </h5>
-          </a>
-
-          <div class="flex items-center justify-between">
-            <span class="text-xl mx-2 font-bold text-gray-900 dark:text-white"
-              >$599</span
-            >
-            <a
-              href="#"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >Add to cart</a
-            >
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <section class="">
+    <section>
       <div class="py-1 mx-auto">
         <div>
-          <!-- search from base-layers -->
           <div
-            v-if="search"
+            v-if="loading"
             class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           >
             <template v-for="(tag, index) in 12" :key="index">
@@ -240,7 +197,14 @@
 </template>
 <script lang="ts" setup>
 const tags = ref<ICategory[]>();
+const loading = ref(true);
 
+// * temp loading for skeleton animations
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false;
+  }, 2000);
+});
 const { data }: { data: any } = await useApi("/v1/categories");
 
 if (data) {
