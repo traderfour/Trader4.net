@@ -199,7 +199,7 @@
                           id="logitech"
                           type="checkbox"
                           value=""
-                          checked=""
+                          checked
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                         />
                         <label
@@ -226,7 +226,7 @@
                           id="asus"
                           type="checkbox"
                           value=""
-                          checked=""
+                          checked
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                         />
                         <label
@@ -266,7 +266,7 @@
                           id="canon"
                           type="checkbox"
                           value=""
-                          checked=""
+                          checked
                           class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                         />
                         <label
@@ -347,7 +347,7 @@
                       id="price-from"
                       class="bg-gray-50 border rtl:me-3 border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
-                      <option disabled="" selected="">From</option>
+                      <option disabled selected>From</option>
                       <option>$500</option>
                       <option>$2500</option>
                       <option>$5000</option></select
@@ -355,7 +355,7 @@
                       id="price-to"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
-                      <option disabled="" selected="">To</option>
+                      <option disabled selected>To</option>
                       <option>$500</option>
                       <option>$2500</option>
                       <option>$5000</option>
@@ -402,10 +402,10 @@
                         value=""
                         class="sr-only peer"
                         name="shipping"
-                        checked=""
+                        checked
                       />
                       <div
-                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checkedter:translate-x-full peer-checkedter:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked-blue-600"
                       ></div>
                       <span
                         class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -420,7 +420,7 @@
                         name="shipping"
                       />
                       <div
-                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checkedter:translate-x-full peer-checkedter:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked-blue-600"
                       ></div>
                       <span
                         class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -435,7 +435,7 @@
                         name="shipping"
                       />
                       <div
-                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checkedter:translate-x-full peer-checkedter:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked-blue-600"
                       ></div>
                       <span
                         class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -448,10 +448,10 @@
                         value=""
                         class="sr-only peer"
                         name="shipping"
-                        checked=""
+                        checked
                       />
                       <div
-                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checkedter:translate-x-full peer-checkedter:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked-blue-600"
                       ></div>
                       <span
                         class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -466,7 +466,7 @@
                         name="shipping"
                       />
                       <div
-                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                        class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checkedter:translate-x-full peer-checkedter:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked-blue-600"
                       ></div>
                       <span
                         class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -657,7 +657,7 @@
                         type="radio"
                         value=""
                         name="rating"
-                        checked=""
+                        checked
                         class="w-4 h-4 bg-gray-100 border-gray-300 text-blue-600 dark:ring-offset-gray-700 dark:bg-gray-700 dark:border-gray-600"
                       />
                       <label for="three-stars" class="flex items-center ms-2">
@@ -1107,7 +1107,6 @@
                       Preview
                     </button>
                     <button
-                      type="button"
                       data-modal-target="delete-modal"
                       data-modal-toggle="delete-modal"
                       class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded text-sm px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
@@ -1272,7 +1271,7 @@
                 id="name"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Type product name"
-                required=""
+                required
               />
             </div>
             <div>
@@ -1284,7 +1283,7 @@
                 id="category"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-                <option selected="">Select category</option>
+                <option selected>Select category</option>
                 <option value="TV">TV/Monitors</option>
                 <option value="PC">PC</option>
                 <option value="GA">Gaming/Console</option>
@@ -1303,7 +1302,7 @@
                 id="brand"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Product brand"
-                required=""
+                required
               />
             </div>
             <div>
@@ -1318,7 +1317,7 @@
                 id="price"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm outline-none rounded focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="$2999"
-                required=""
+                required
               />
             </div>
             <div class="grid gap-4 sm:col-span-2 md:gap-6 sm:grid-cols-4">
@@ -1334,7 +1333,7 @@
                   id="weight"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="12"
-                  required=""
+                  required
                 />
               </div>
               <div>
@@ -1349,7 +1348,7 @@
                   id="length"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="105"
-                  required=""
+                  required
                 />
               </div>
               <div>
@@ -1364,7 +1363,7 @@
                   id="breadth"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="15"
-                  required=""
+                  required
                 />
               </div>
               <div>
@@ -1379,7 +1378,7 @@
                   id="width"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded outline-none focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="23"
-                  required=""
+                  required
                 />
               </div>
             </div>
@@ -1427,15 +1426,15 @@
             </div>
             <div class="flex items-center me-4">
               <input
-                checked=""
-                id="inline-checked-checkbox"
+                checked
+                id="inline-checkedeckbox"
                 type="checkbox"
                 value=""
                 name="sellingType"
                 class="w-4 h-4 bg-gray-100 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
               <label
-                for="inline-checked-checkbox"
+                for="inline-checkedeckbox"
                 class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >Both in-store and online</label
               >
@@ -1580,7 +1579,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="Apple iMac 27&ldquo;"
             placeholder="Type product name"
-            required=""
+            required
           />
         </div>
         <div>
@@ -1782,7 +1781,7 @@
                 rows="8"
                 class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                 placeholder="Write product description here"
-                required=""
+                required
               >
       Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US</textarea
               >
@@ -1991,7 +1990,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="Apple"
             placeholder="Product Brand"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2003,7 +2002,7 @@
             id="category"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option selected="">Electronics</option>
+            <option selected>Electronics</option>
             <option value="TV">TV/Monitors</option>
             <option value="PC">PC</option>
             <option value="GA">Gaming/Console</option>
@@ -2023,7 +2022,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="12"
             placeholder="Ex. 12"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2039,7 +2038,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="105"
             placeholder="Ex. 105"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2055,7 +2054,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="15"
             placeholder="Ex. 15"
-            required=""
+            required
           />
         </div>
         <div>
@@ -2071,7 +2070,7 @@
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value="23"
             placeholder="Ex. 23"
-            required=""
+            required
           />
         </div>
       </div>
@@ -2426,4 +2425,5 @@
     </div>
   </div>
 </template>
-<script></script>
+
+<script setup lang="ts"></script>
