@@ -10,7 +10,11 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install dependencies.
-RUN yarn install && yarn generate
+RUN yarn add @nuxt/devtools
+
+RUN cd ./base-layers && yarn && yarn generate
+
+RUN yarn && yarn generate
 
 # nginx production environment
 FROM nginx:stable-alpine AS deploy
