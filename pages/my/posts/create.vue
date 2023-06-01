@@ -168,7 +168,7 @@
             <!-- * tags -->
 
             <!-- * categories -->
-            <SharedMultiSelectTagging
+            <SharedTagInput
               v-model="postData.categories"
               :options="categories"
               :field-name="{
