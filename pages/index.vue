@@ -44,7 +44,7 @@
       <div class="py-1 mx-auto">
         <div>
           <div
-            v-if="loading"
+            v-if="search || loading"
             class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
           >
             <template v-for="(tag, index) in 12" :key="index">
@@ -211,6 +211,9 @@ if (data) {
   tags.value = data.results as ICategory[];
 }
 const tagBox = ref<Ref | null>(null);
+
+const store = usePostsStore();
+store.getPosts();
 
 const { locale } = useI18n();
 const rtlLangList = [
