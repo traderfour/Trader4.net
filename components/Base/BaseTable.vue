@@ -25,8 +25,8 @@
                 data-modal-toggle="createProductModal"
                 class="flex items-center rtl:mr-2 ml-2 justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
-                <Icon name="mdi:plus" class="me-1" size="16px" />
-                Add Post
+                Add
+                <Icon name="mdi:plus" class="ms-1" size="16px" />
               </button>
             </NuxtLink>
           </div>
@@ -41,7 +41,7 @@
             <thead
               class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
-              <tr>
+              <tr v-if="tableData.length > 1">
                 <th scope="col" class="p-4">
                   <div class="flex items-center">
                     <input
@@ -59,6 +59,7 @@
             </thead>
             <tbody>
               <tr
+                v-if="tableData.length > 1"
                 class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <td class="p-4 w-4">
@@ -88,6 +89,10 @@
                   </div>
                 </th>
               </tr>
+
+              <tr v-else class="text-center">
+                No Items Found
+              </tr>
             </tbody>
           </table>
         </div>
@@ -106,6 +111,8 @@ const props = defineProps<{
 
 const fetchTable = async (page?: number) => {
   await getTableData(props.endpoint, page);
+  console.log(tableData.value);
+  console.log(metas.value);
 };
 
 fetchTable();

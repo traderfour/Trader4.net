@@ -1,7 +1,7 @@
 export const useTableStore = () => {
   const loading = ref(true);
   const tableData = ref([]);
-  const metas = ref({});
+  const metas = ref({} as ITableMeta);
 
   const createPost = async (payload: any) => {
     return await useApi("/v1/my/posts", {
