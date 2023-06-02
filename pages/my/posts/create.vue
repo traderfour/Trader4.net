@@ -293,7 +293,7 @@ const postData = ref({
   attachments: [] || undefined,
   categories: undefined,
   tags: undefined,
-  platforms: undefined,
+  platforms: [],
   markets: [],
 });
 
@@ -407,6 +407,18 @@ const postTypes = [
 
 const addPost = () => {
   if (postData.value.content) {
+    if (postData.value.markets.length >= 1) {
+      postData.value.markets = postData.value.markets.map((market) => {
+        return market["uuid"];
+      });
+    }
+
+    if (postData.value.platforms.length >= 1) {
+      postData.value.platforms = postData.value.platforms.map((platform) => {
+        return platform["uuid"];
+      });
+    }
+
     loadingDisabled.value = true;
     store
       .createPost(postData.value)
