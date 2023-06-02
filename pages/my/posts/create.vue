@@ -1,6 +1,5 @@
 <template>
-  <GlobalToast />
-  <button data-collapse-toggle="toast-danger">Toast</button>
+  <GlobalToast message="This is post add page" />
   <section>
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">

@@ -68,7 +68,7 @@
           }}
         </span>
         <span class="text-gray-500 dark:text-gray-400"
-          >/{{ activeBtn === true ? "Annually" : "Monthly" }}</span
+          >/Monthly</span
         >
       </div>
       <!-- Price and currency -->
