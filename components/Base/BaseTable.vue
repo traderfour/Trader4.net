@@ -1,7 +1,6 @@
 <template>
-  <BaseTableSkeleton v-if="loading" />
   <!-- Start block -->
-  <section v-else class="bg-gray-50 dark:bg-gray-900 antialiased rounded">
+  <section class="bg-gray-50 dark:bg-gray-900 antialiased rounded">
     <div class="mx-auto">
       <div
         class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded overflow-hidden"
@@ -21,8 +20,6 @@
           >
             <NuxtLink :to="tableButton.link">
               <button
-                id="createProductButton"
-                data-modal-toggle="createProductModal"
                 class="flex items-center rtl:mr-2 ml-2 justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
                 <Icon name="mdi:plus" class="me-1" size="16px" />
@@ -34,7 +31,9 @@
         <div
           class="flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4 border-t dark:border-gray-700"
         ></div>
-        <div class="overflow-x-auto">
+        <BaseTableSkeleton v-if="loading" />
+
+        <div v-else class="overflow-x-auto">
           <table
             class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
           >
@@ -100,8 +99,10 @@
           </table>
         </div>
         <BaseTablePagination
+          v-if="!loading"
           :currentPage="metas.current_page"
           :totalPages="10"
+          @on-change-page="fetchTable($event)"
         />
       </div>
     </div>
@@ -126,10 +127,10 @@ const fetchTable = async (page?: number) => {
   Object.keys(tableData.value[0]).forEach((element) => {
     if (props.headerFilters.length > 0) {
       props.headerFilters.forEach((filterItem: ITableHeaderItem) => {
-        if (element === filterItem.value) {
+        if (element === filterItem.key) {
           tableHeaders.value.push({
             text: filterItem.text,
-            value: element,
+            key: element,
             align: filterItem.align,
             index: filterItem.index,
           });
@@ -140,25 +141,15 @@ const fetchTable = async (page?: number) => {
     } else {
       tableHeaders.value.push({
         text: element,
-        value: element,
+        key: element,
       });
     }
   });
 
   let tableHeadersValues: string[] = [];
   tableHeaders.value.forEach((tableHeaderItem) =>
-    tableHeadersValues.push(tableHeaderItem.value)
+    tableHeadersValues.push(tableHeaderItem.key)
   );
-
-  // tableData.value.forEach((singleItem) => {
-  //   Object.keys(singleItem).forEach((singleKey) => {
-  //     tableHeadersValues.forEach((singleHeader) => {
-  //       if (singleKey === singleHeader) {
-  //         console.log(singleItem);
-  //       }
-  //     });
-  //   });
-  // });
 
   // * generate table headers
 };

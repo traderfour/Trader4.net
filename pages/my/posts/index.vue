@@ -10,8 +10,8 @@
 
 <script setup lang="ts">
 const headerFilters = ref([
-  { text: "logo", index: 1, value: "logo" },
-  { text: "title", index: 2, value: "title" },
-  { text: "slogan", index: 3, value: "slogan" },
+  { text: "logo", index: 1, key: "logo" },
+  { text: "title", index: 2, key: "title" },
+  { text: "slogan", index: 3, key: "slogan" },
 ]);
 </script>

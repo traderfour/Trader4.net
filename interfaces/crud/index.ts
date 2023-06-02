@@ -16,7 +16,7 @@ interface ITableMeta {
 
 interface ITableHeaderItem {
   text: string;
-  value: string;
+  key: string;
   index?: number;
   align?: number;
 }
