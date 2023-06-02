@@ -350,10 +350,10 @@ const postTypes = [
 const addPost = () => {
   if (postData.value.content) {
     loadingDisabled.value = true;
-    store.createPost(postData.value).then((res) => {
-      if (res.data.succeed && res.data.results.uuid){
+    store.createPost(postData.value).then((res: any) => {
+      if (res.data.succeed && res.data.results.uuid) {
         router.push("/my/posts");
-      }else{
+      } else {
         loadingDisabled.value = false;
         hasContentError.value = true;
       }
