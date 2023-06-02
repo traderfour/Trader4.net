@@ -1,11 +1,7 @@
 <template>
   <div>
-    <BaseTableSkeleton v-if="loading" />
-    <BaseTable v-else />
+    <BaseTable endpoint="/my/posts" />
   </div>
 </template>
 
-<script setup lang="ts">
-const { loading, posts, getMyPosts } = usePostsStore();
-getMyPosts();
-</script>
+<script setup lang="ts"></script>

@@ -1,15 +1,6 @@
-// import { apiTS } from "@traderfour/api-ts";
-export const usePostsStore = () => {
-  // const baseURL = useRuntimeConfig().public.baseUrl;
-  // const api = apiTS();
-  // const posts = useState("posts", () => []);
-
-  // const addPost = () => {
-  //   api.myTs.posts.store();
-  // };
-
+export const useTableStore = () => {
   const loading = ref(true);
-  const posts = ref([]);
+  const tableData = ref([]);
   const metas = ref({});
 
   const createPost = async (payload: any) => {
@@ -25,17 +16,17 @@ export const usePostsStore = () => {
     return await useApi("/v1/posts");
   };
 
-  const getMyPosts = async (page?: number) => {
+  const getTableData = async (endpoint: string, page?: number) => {
     loading.value = true;
-    await useApi(`/v1/my/posts${page ? "?page=" + page : ""}`, {
+    await useApi(`/v1${endpoint}/${page ? "?page=" + page : ""}`, {
       // @ts-ignore
       headers: { Authorization: useCookie("user").value.access_token },
-    }).then(({ data }) => {
+    }).then(({ data }: any) => {
       loading.value = false;
-      posts.value = data.results;
+      tableData.value = data.results;
       metas.value = data.metas;
     });
   };
 
-  return { createPost, getPosts, getMyPosts, posts, loading, metas };
+  return { createPost, getPosts, getTableData, tableData, loading, metas };
 };
