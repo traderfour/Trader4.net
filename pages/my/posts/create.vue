@@ -1,5 +1,5 @@
 <template>
-  <GlobalToast message="This is post add page" />
+  <!-- <GlobalToast message="This is post add page" /> -->
   <section>
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
@@ -92,7 +92,7 @@
           <!-- * comments -->
 
           <!-- * post type -->
-          <div class="w-full lg:col-span-6 col-span-full">
+          <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -108,16 +108,54 @@
               <option
                 v-for="(typeItem, typeIndex) in postTypes"
                 :key="typeIndex"
-                :value="typeItem.value"
+                :value="typeItem.type"
               >
-                {{ typeItem.text }}
+                {{ typeItem.title }}
               </option>
             </select>
           </div>
           <!-- * post type -->
 
+          <!-- * market -->
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Market
+            </label>
+            <SharedMultiSelectTagging
+              v-model="postData.markets"
+              :options="markets"
+              :field-name="{
+                label: 'name',
+                key: 'uuid',
+              }"
+            />
+          </div>
+          <!-- * market -->
+
+          <!-- * platform -->
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Market
+            </label>
+            <SharedMultiSelectTagging
+              v-model="postData.platforms"
+              :options="platforms"
+              :field-name="{
+                label: 'title',
+                key: 'uuid',
+              }"
+            />
+          </div>
+          <!-- * platform -->
+
           <!-- * tags -->
-          <div class="w-full lg:col-span-6 col-span-full">
+          <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -237,6 +275,8 @@
 </template>
 
 <script setup lang="ts">
+const { $toast } = useNuxtApp();
+
 import Editor from "@tinymce/tinymce-vue";
 import * as Yup from "yup";
 
@@ -254,97 +294,114 @@ const postData = ref({
   categories: undefined,
   tags: undefined,
   platforms: undefined,
+  markets: [],
 });
 
 const hasContentError = ref(false);
 const loadingDisabled = ref(false);
 const store = usePostsStore();
 const router = useRouter();
+const {
+  fetchCategories,
+  categories,
+  fetchMarkets,
+  markets,
+  fetchPlatforms,
+  platforms,
+} = useMarketStore();
+
+onMounted(() => {
+  nextTick(() => {
+    fetchCategories();
+    fetchMarkets();
+    fetchPlatforms();
+  });
+});
 
 const postTypes = [
   {
-    text: "Bot",
-    value: 13000,
+    title: "Bot",
+    type: 13000,
   },
   {
-    text: "Indicator",
-    value: 13001,
+    title: "Indicator",
+    type: 13001,
   },
   {
-    text: "System",
-    value: 13002,
+    title: "System",
+    type: 13002,
   },
   {
-    text: "Script",
-    value: 13003,
+    title: "Script",
+    type: 13003,
   },
   {
-    text: "Template",
-    value: 13004,
+    title: "Template",
+    type: 13004,
   },
   {
-    text: "Algorithm",
-    value: 13005,
+    title: "Algorithm",
+    type: 13005,
   },
   {
-    text: "Artificial Intelligence",
-    value: 13006,
+    title: "Artificial Intelligence",
+    type: 13006,
   },
   {
-    text: "Portfolio",
-    value: 13007,
+    title: "Portfolio",
+    type: 13007,
   },
   {
-    text: "Ai Live",
-    value: 13008,
+    title: "Ai Live",
+    type: 13008,
   },
   {
-    text: "Funded Account",
-    value: 13009,
+    title: "Funded Account",
+    type: 13009,
   },
   {
-    text: "Trading Signal",
-    value: 13010,
+    title: "Trading Signal",
+    type: 13010,
   },
   {
-    text: "Trading Strategy",
-    value: 13011,
+    title: "Trading Strategy",
+    type: 13011,
   },
   {
-    text: "Course",
-    value: 13012,
+    title: "Course",
+    type: 13012,
   },
   {
-    text: "Video",
-    value: 13013,
+    title: "Video",
+    type: 13013,
   },
   {
-    text: "Article",
-    value: 13014,
+    title: "Article",
+    type: 13014,
   },
   {
-    text: "Podcast",
-    value: 13015,
+    title: "Podcast",
+    type: 13015,
   },
   {
-    text: "Short Video",
-    value: 13016,
+    title: "Short Video",
+    type: 13016,
   },
   {
-    text: "Data",
-    value: 13017,
+    title: "Data",
+    type: 13017,
   },
   {
-    text: "Moel",
-    value: 13018,
+    title: "Moel",
+    type: 13018,
   },
   {
-    text: "Live Stream",
-    value: 13019,
+    title: "Live Stream",
+    type: 13019,
   },
   {
-    text: "Other",
-    value: 13020,
+    title: "Other",
+    type: 13020,
   },
 ];
 
@@ -355,6 +412,9 @@ const addPost = () => {
       .createPost(postData.value)
       .then((res: any) => {
         if (res.data.succeed && res.data.results.uuid) {
+          $toast.success("Post Created Successfully", {
+            position: "top-right",
+          });
           router.push("/my/posts");
         } else {
           loadingDisabled.value = false;
@@ -362,7 +422,9 @@ const addPost = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        $toast.error(err.toString(), {
+          position: "top-right",
+        });
         loadingDisabled.value = false;
       });
   } else {

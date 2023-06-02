@@ -557,12 +557,7 @@
   resolved "https://registry.npmjs.org/@intlify/shared/-/shared-9.3.0-beta.16.tgz"
   integrity sha512-kXbm4svALe3lX+EjdJxfnabOphqS4yQ1Ge/iIlR8tvUiYRCoNz3hig1M4336iY++Dfx5ytEQJPNjIcknNIuvig==
 
-"@intlify/shared@9.3.0-beta.19":
-  version "9.3.0-beta.19"
-  resolved "https://registry.npmjs.org/@intlify/shared/-/shared-9.3.0-beta.19.tgz"
-  integrity sha512-+lhQggrLvlQ/O5OmIYAc9gadcYXMoaDi0Doef+X/f6TLZFr9PTMjOpBWmpwNNHi026e54jckntUn6GzqDtIN4w==
-
-"@intlify/shared@next":
+"@intlify/shared@9.3.0-beta.19", "@intlify/shared@next":
   version "9.3.0-beta.19"
   resolved "https://registry.yarnpkg.com/@intlify/shared/-/shared-9.3.0-beta.19.tgz#090bdd5d6ed1eabbb92ee2f2ead2668edc576596"
   integrity sha512-+lhQggrLvlQ/O5OmIYAc9gadcYXMoaDi0Doef+X/f6TLZFr9PTMjOpBWmpwNNHi026e54jckntUn6GzqDtIN4w==
@@ -8870,6 +8865,11 @@ vue-template-compiler@^2.7.14:
   dependencies:
     de-indent "^1.0.2"
     he "^1.2.0"
+
+vue-toast-notification@^3.0:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/vue-toast-notification/-/vue-toast-notification-3.1.1.tgz#334e9e71996c884a58c70a0fa011424f767d87bb"
+  integrity sha512-DXEE38NxXFCNinKI+MyZBMWsaqE9Lwxg9GkMVkzKXY1ACCeNztBXuUiSvKMe36dnnYd1qnlP+cWNSvHlkt5xNA==
 
 vue3-lottie@^2.7.0:
   version "2.7.0"

@@ -39,6 +39,7 @@
     "flowbite": "^1.6.5",
     "vue-filepond": "^7.0.3",
     "vue-json-pretty": "^2.2.4",
+    "vue-toast-notification": "^3.0",
     "vue3-lottie": "^2.7.0",
     "yup": "^1.1.1"
   }
