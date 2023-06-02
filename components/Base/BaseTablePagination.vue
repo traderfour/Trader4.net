@@ -10,7 +10,7 @@
       <span class="font-semibold text-gray-900 dark:text-white">1000</span>
     </span>
     <ul class="inline-flex items-stretch -space-x-px">
-      <li>
+      <li @click="pervPage">
         <a
           href="#"
           class="flex items-center justify-center h-full py-1.5 px-3 ms-0 text-gray-500 bg-white rounded-s-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -19,15 +19,18 @@
           <Icon name="mdi:chevron-left" class="w-5 h-5" />
         </a>
       </li>
-      <li>
+      <li v-for="i in totalPages" @click="changePage(i)">
         <a
           href="#"
           class="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >1</a
+          :class="
+            i === activePage ? '!bg-gray-500 dark:!bg-gray-700 !text-white' : ''
+          "
+          >{{ i }}</a
         >
       </li>
 
-      <li>
+      <li @click="nextPage">
         <a
           href="#"
           class="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-e-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -41,8 +44,30 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   currentPage: number;
   totalPages: number;
 }>();
+const emit = defineEmits(["onChangePage"]);
+
+const activePage = ref(1);
+
+const changePage = (page: number) => {
+  activePage.value = page;
+  emit("onChangePage", page);
+};
+
+const nextPage = () => {
+  if (activePage.value !== props.totalPages) {
+    ++activePage.value;
+    emit("onChangePage", activePage.value);
+  }
+};
+
+const pervPage = () => {
+  if (activePage.value !== 1) {
+    --activePage.value;
+    emit("onChangePage", activePage.value);
+  }
+};
 </script>

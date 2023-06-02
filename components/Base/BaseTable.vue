@@ -1,7 +1,6 @@
 <template>
-  <BaseTableSkeleton v-if="loading" />
   <!-- Start block -->
-  <section v-else class="bg-gray-50 dark:bg-gray-900 antialiased rounded">
+  <section class="bg-gray-50 dark:bg-gray-900 antialiased rounded">
     <div class="mx-auto">
       <div
         class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded overflow-hidden"
@@ -34,7 +33,9 @@
         <div
           class="flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4 border-t dark:border-gray-700"
         ></div>
-        <div class="overflow-x-auto">
+        <BaseTableSkeleton v-if="loading" />
+
+        <div v-else class="overflow-x-auto">
           <table
             class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
           >
@@ -100,8 +101,10 @@
           </table>
         </div>
         <BaseTablePagination
+          v-if="!loading"
           :currentPage="metas.current_page"
           :totalPages="10"
+          @on-change-page="fetchTable($event)"
         />
       </div>
     </div>
@@ -149,17 +152,6 @@ const fetchTable = async (page?: number) => {
   tableHeaders.value.forEach((tableHeaderItem) =>
     tableHeadersValues.push(tableHeaderItem.value)
   );
-
-  // tableData.value.forEach((singleItem) => {
-  //   Object.keys(singleItem).forEach((singleKey) => {
-  //     tableHeadersValues.forEach((singleHeader) => {
-  //       if (singleKey === singleHeader) {
-  //         console.log(singleItem);
-  //       }
-  //     });
-  //   });
-  // });
-
   // * generate table headers
 };
 
