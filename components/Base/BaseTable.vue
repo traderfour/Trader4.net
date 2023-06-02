@@ -127,10 +127,10 @@ const fetchTable = async (page?: number) => {
   Object.keys(tableData.value[0]).forEach((element) => {
     if (props.headerFilters.length > 0) {
       props.headerFilters.forEach((filterItem: ITableHeaderItem) => {
-        if (element === filterItem.value) {
+        if (element === filterItem.key) {
           tableHeaders.value.push({
             text: filterItem.text,
-            value: element,
+            key: element,
             align: filterItem.align,
             index: filterItem.index,
           });
@@ -141,15 +141,16 @@ const fetchTable = async (page?: number) => {
     } else {
       tableHeaders.value.push({
         text: element,
-        value: element,
+        key: element,
       });
     }
   });
 
   let tableHeadersValues: string[] = [];
   tableHeaders.value.forEach((tableHeaderItem) =>
-    tableHeadersValues.push(tableHeaderItem.value)
+    tableHeadersValues.push(tableHeaderItem.key)
   );
+
   // * generate table headers
 };
 
