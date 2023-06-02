@@ -24,6 +24,7 @@
     "nuxt-icon": "^0.3.3"
   },
   "dependencies": {
+    "@google-pay/button-element": "^3.0.9",
     "@nuxt-themes/docus": "^1.12.0",
     "@nuxt/devtools": "^0.5.5",
     "@tinymce/tinymce-vue": "^5.1.0",

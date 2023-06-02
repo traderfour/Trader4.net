@@ -63,7 +63,7 @@
           {{
             pricingCardItem.currency +
             (activeBtn === true
-              ? pricingCardItem.price * 10
+              ? Math.round(pricingCardItem.price * 0.83)
               : pricingCardItem.price)
           }}
         </span>

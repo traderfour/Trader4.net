@@ -141,8 +141,12 @@
             <a
               href="#"
               class="text-white block w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded text-sm px-5 py-2.5 text-center dark:focus:ring-blue-900"
-              >Buy now</a
-            >
+              >Buy now</a>
+
+              <google-pay-button
+                environment="TEST"
+                :paymentRequest.prop="data.paymentRequest">
+              </google-pay-button>
           </div>
         </div>
         <!-- Buy Now Buttons -->
@@ -152,6 +156,49 @@
 </template>
 
 <script setup lang="ts">
+import "@google-pay/button-element";
+const data = (
+  {
+    buttonColor: "default",
+    buttonType: "buy",
+    isCustomSize: false,
+    buttonWidth: 240,
+    buttonHeight: 40,
+    isTop: window === window.top,
+
+    paymentRequest: {
+      apiVersion: 2,
+      apiVersionMinor: 0,
+      allowedPaymentMethods: [
+        {
+          type: "CARD",
+          parameters: {
+            allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+            allowedCardNetworks: ["AMEX", "VISA", "MASTERCARD"]
+          },
+          tokenizationSpecification: {
+            type: "PAYMENT_GATEWAY",
+            parameters: {
+              gateway: "example",
+              gatewayMerchantId: "exampleGatewayMerchantId"
+            }
+          }
+        }
+      ],
+      merchantInfo: {
+        merchantId: "12345678901234567890",
+        merchantName: "Demo Merchant"
+      },
+      transactionInfo: {
+        totalPriceStatus: "FINAL",
+        totalPriceLabel: "Total",
+        totalPrice: "100.00",
+        currencyCode: "USD",
+        countryCode: "US"
+      }
+    }
+  });
+
 defineProps<{
   headers: ITableHeader[];
   items: any;
