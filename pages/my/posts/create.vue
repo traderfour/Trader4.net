@@ -1,4 +1,6 @@
 <template>
+  <GlobalToast />
+  <button data-collapse-toggle="toast-danger">Toast</button>
   <section>
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
@@ -350,35 +352,25 @@ const postTypes = [
 const addPost = () => {
   if (postData.value.content) {
     loadingDisabled.value = true;
-    store.createPost(postData.value).then((res: any) => {
-      if (res.data.succeed && res.data.results.uuid) {
-        router.push("/my/posts");
-      } else {
+    store
+      .createPost(postData.value)
+      .then((res: any) => {
+        if (res.data.succeed && res.data.results.uuid) {
+          router.push("/my/posts");
+        } else {
+          loadingDisabled.value = false;
+          hasContentError.value = true;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
         loadingDisabled.value = false;
-        hasContentError.value = true;
-      }
-    });
+      });
   } else {
+    loadingDisabled.value = false;
     hasContentError.value = true;
   }
 };
-
-const {
-  fetchCategories,
-  categories,
-  fetchMarkets,
-  markets,
-  fetchPlatforms,
-  platforms,
-} = useMarketStore();
-
-onMounted(() => {
-  nextTick(() => {
-    fetchCategories();
-    fetchMarkets();
-    fetchPlatforms();
-  });
-});
 
 // Form Validation
 const postSchema = Yup.object({
