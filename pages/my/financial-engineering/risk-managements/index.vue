@@ -1,10 +1,10 @@
 <template>
   <div>
     <BaseTable
-      :table-button="{ link: '/my/posts/create', text: 'Add' }"
-      endpoint="/my/posts"
+      :table-button="{ link: '/my/financial-engineering/risk-managements/create', text: 'Add' }"
+      endpoint="/my/financial-engineering/risk-managements"
       :header-filters="headerFilters"
-      title="Posts"
+      title="Risk Managements"
     />
   </div>
 </template>

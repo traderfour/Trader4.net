@@ -4,9 +4,7 @@
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Connect Your Trading Account
       </h2>
-      <section class="">
-        <TradingAccountForm @submit="submitFrom" />
-      </section>
+      <TradingAccountForm @submit="submitFrom" />
     </div>
   </section>
 </template>

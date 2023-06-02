@@ -32,7 +32,7 @@
               @keyup.enter="addTag()"
               @keydown.escape="inputValue = ''"
               class="custom-input"
-              placeholder="Add tag..."
+              :placeholder="props.placeholder"
               @click="showOptions = !showOptions"
             />
           </div>
@@ -64,6 +64,10 @@
 
 <script lang="ts" setup>
 const props = defineProps({
+  placeholder: {
+    type: String,
+    default: "Add tags...",
+  },
   options: {
     type: Array as () => Array<any>,
     default: () => [],

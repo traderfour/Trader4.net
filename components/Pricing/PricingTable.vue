@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 lg:px-6">
+  <div class="">
     <!-- Headers -->
     <div
       id="table-header"

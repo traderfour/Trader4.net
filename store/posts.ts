@@ -25,6 +25,10 @@ export const usePostsStore = () => {
     return await useApi("/v1/posts");
   };
 
+  const getPost = async (slogan: string) => {
+    return await useApi(`/v1/posts/${slogan}`);
+  };
+
   const getMyPosts = async (page?: number) => {
     loading.value = true;
     await useApi(`/v1/my/posts${page ? "?page=" + page : ""}`, {
@@ -37,5 +41,5 @@ export const usePostsStore = () => {
     });
   };
 
-  return { createPost, getPosts, getMyPosts, posts, loading, metas };
+  return { createPost, getPosts, getPost, getMyPosts, posts, loading, metas };
 };

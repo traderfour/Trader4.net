@@ -213,7 +213,7 @@ import * as Yup from "yup";
 // create 4 steps forms data
 const steps = reactive([
   {
-    title: "Markets",
+    title: "Market",
     icon: "iconsminds-air-balloon-1",
     active: true,
   },

@@ -10,10 +10,9 @@
         >
           <div class="flex-1 flex items-center space-x-2">
             <h5>
-              <span class="text-gray-500">All Items:</span>
-              <span class="dark:text-white">123456</span>
+              <span class="dark:text-white font-bold text-xl">{{props.title}}</span>
             </h5>
-            <h5 class="text-gray-500 dark:text-gray-400 ml-1">1-100 (436)</h5>
+            <h5 class="text-gray-500 dark:text-gray-400 ml-1 rtl:mr-1">({{ metas.last_page * metas.per_page }})</h5>
           </div>
           <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
@@ -29,7 +28,7 @@
           </div>
         </div>
         <div
-          class="flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4 py-4 border-t dark:border-gray-700"
+          class="flex flex-col md:flex-row items-stretch md:items-center md:space-x-3 space-y-3 md:space-y-0 justify-between mx-4"
         ></div>
         <BaseTableSkeleton v-if="loading" />
 
@@ -52,12 +51,12 @@
                   </div>
                 </th> -->
                 <th
-                  v-for="(headerItem, headerIndex) in tableHeaders"
-                  :key="headerIndex"
+                  v-for="item in props.headerFilters"
+                  :key="item.key"
                   scope="col"
                   class="p-4"
                 >
-                  {{ headerItem.text }}
+                  {{ item.text }}
                 </th>
               </tr>
             </thead>
@@ -93,7 +92,10 @@
               </template>
 
               <tr v-else class="text-center text-lg">
-                No Items Found
+                No data found
+                <client-only>
+                  <!-- <Vue3Lottie animationLink="https://assets6.lottiefiles.com/packages/lf20_rc6CDU.json" :width="200" :height="200" /> -->
+                </client-only>
               </tr>
             </tbody>
           </table>
@@ -101,7 +103,8 @@
         <BaseTablePagination
           v-if="!loading"
           :currentPage="metas.current_page"
-          :totalPages="10"
+          :totalPages="metas.last_page"
+          :perPage="metas.per_page"
           @on-change-page="fetchTable($event)"
         />
       </div>
@@ -110,49 +113,35 @@
 </template>
 
 <script lang="ts" setup>
+import { Vue3Lottie } from 'vue3-lottie';
+
 const { loading, getTableData, tableData, metas } = useTableStore();
-const tableHeaders = ref([] as ITableHeaderItem[]);
 const tableItems = ref([]);
-let tableHeadersValues: string[] = [];
 
 const props = defineProps<{
   endpoint: string;
   tableButton: { text: string; link: string };
   headerFilters: ITableHeaderItem[];
+  title: string;
 }>();
 
 const fetchTable = async (page?: number) => {
+  tableData.value = [];
+  tableItems.value = [];
   await getTableData(props.endpoint, page);
-  tableHeaders.value.forEach((tableHeaderItem) =>
-    tableHeadersValues.push(tableHeaderItem.key)
-  );
-  Object.keys(tableData.value[0]).forEach((element) => {
-    if (props.headerFilters.length > 0) {
-      props.headerFilters.forEach((filterItem: ITableHeaderItem) => {
-        if (element === filterItem.key) {
-          tableHeaders.value.push({
-            text: filterItem.text,
-            key: element,
-            align: filterItem.align,
-            index: filterItem.index,
-          });
-          // @ts-ignore
-          tableHeaders.value.sort((a, b) => a.index - b.index);
-        }
-      });
-    } else {
-      tableHeaders.value.push({
-        text: element,
-        key: element,
-      });
-    }
-  });
   tableData.value.forEach((tableItem: any) => {
     //@TODO: Fix performance issue
-    tableHeadersValues.forEach((filterItem: ITableHeaderItem) => {
-      });
+    let dataItems = [];
+    props.headerFilters.forEach((filterItem: ITableHeaderItem) => {
+      if (Object.keys(tableItem).includes(filterItem.key) && tableItem[filterItem.key] !== null) {
+        dataItems[filterItem.key] = tableItem[filterItem.key];
+      }else{
+        dataItems[filterItem.key] = '';
+      }
     });
-  }
+    tableItems.value.push(dataItems);
+  });
+}
 
 fetchTable();
 </script>

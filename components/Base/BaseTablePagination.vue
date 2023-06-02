@@ -5,9 +5,9 @@
   >
     <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
       Showing
-      <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
+      <span class="font-semibold text-gray-900 dark:text-white">{{ showing }}</span>
       of
-      <span class="font-semibold text-gray-900 dark:text-white">1000</span>
+      <span class="font-semibold text-gray-900 dark:text-white">{{perPage * totalPages}}</span>
     </span>
     <ul class="inline-flex items-stretch -space-x-px">
       <li @click="pervPage">
@@ -47,7 +47,12 @@
 const props = defineProps<{
   currentPage: number;
   totalPages: number;
+  perPage: number;
 }>();
+let showing = computed(() => {
+  return props.currentPage * props.perPage;
+});
+console.log(props);
 const emit = defineEmits(["onChangePage"]);
 
 const activePage = ref(1);
