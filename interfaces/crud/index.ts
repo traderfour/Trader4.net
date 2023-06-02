@@ -13,3 +13,10 @@ interface ITableMeta {
   to: null;
   total: number;
 }
+
+interface ITableHeaderItem {
+  text: string;
+  value: string;
+  index?: number;
+  align?: number;
+}

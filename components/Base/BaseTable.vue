@@ -41,8 +41,8 @@
             <thead
               class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
-              <tr v-if="tableData.length > 1">
-                <th scope="col" class="p-4">
+              <tr v-if="tableData.length >= 1">
+                <!-- <th scope="col" class="p-4">
                   <div class="flex items-center">
                     <input
                       id="checkbox-all"
@@ -51,44 +51,47 @@
                     />
                     <label for="checkbox-all" class="sr-only">checkbox</label>
                   </div>
+                </th> -->
+                <th
+                  v-for="(headerItem, headerIndex) in tableHeaders"
+                  :key="headerIndex"
+                  scope="col"
+                  class="p-4"
+                >
+                  {{ headerItem.text }}
                 </th>
-                <th scope="col" class="p-4">Product</th>
-                <th scope="col" class="p-4">Product</th>
-                <th scope="col" class="p-4">Product</th>
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-if="tableData.length > 1"
-                class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <td class="p-4 w-4">
-                  <div class="flex items-center">
-                    <input
-                      id="checkbox-table-search-1"
-                      type="checkbox"
-                      onclick="event.stopPropagation()"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label for="checkbox-table-search-1" class="sr-only"
-                      >checkbox</label
-                    >
-                  </div>
-                </td>
-                <th
-                  scope="row"
-                  class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              <template v-if="tableData.length >= 1">
+                <tr
+                  v-for="(tableTr, tableTrIndex) in tableItems"
+                  :key="`tr-${tableTrIndex}`"
+                  class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <div class="flex items-center me-3">
-                    <img
-                      src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png"
-                      alt="iMac Front Image"
-                      class="h-8 w-auto me-3"
-                    />
-                    Apple iMac 27&#34;
-                  </div>
-                </th>
-              </tr>
+                  <!-- <td class="p-4 w-4">
+                    <div class="flex items-center">
+                      <input
+                        id="checkbox-table-search-1"
+                        type="checkbox"
+                        onclick="event.stopPropagation()"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                      <label for="checkbox-table-search-1" class="sr-only"
+                        >checkbox</label
+                      >
+                    </div>
+                  </td> -->
+
+                  <td
+                    class="w-4 p-4"
+                    v-for="(tableTd, tableTdIndex) in Object.values(tableTr)"
+                    :key="`td-${tableTdIndex}`"
+                  >
+                    {{ tableTd }}
+                  </td>
+                </tr>
+              </template>
 
               <tr v-else class="text-center text-lg">
                 No Items Found
@@ -107,15 +110,57 @@
 
 <script lang="ts" setup>
 const { loading, getTableData, tableData, metas } = useTableStore();
+const tableHeaders = ref([] as ITableHeaderItem[]);
+const tableItems = ref([]);
 
 const props = defineProps<{
   endpoint: string;
   tableButton: { text: string; link: string };
+  headerFilters: ITableHeaderItem[];
 }>();
 
 const fetchTable = async (page?: number) => {
   await getTableData(props.endpoint, page);
-  console.log(tableData.value);
+
+  // * generate table headers
+  Object.keys(tableData.value[0]).forEach((element) => {
+    if (props.headerFilters.length > 0) {
+      props.headerFilters.forEach((filterItem: ITableHeaderItem) => {
+        if (element === filterItem.value) {
+          tableHeaders.value.push({
+            text: filterItem.text,
+            value: element,
+            align: filterItem.align,
+            index: filterItem.index,
+          });
+          // @ts-ignore
+          tableHeaders.value.sort((a, b) => a.index - b.index);
+        }
+      });
+    } else {
+      tableHeaders.value.push({
+        text: element,
+        value: element,
+      });
+    }
+  });
+
+  let tableHeadersValues: string[] = [];
+  tableHeaders.value.forEach((tableHeaderItem) =>
+    tableHeadersValues.push(tableHeaderItem.value)
+  );
+
+  // tableData.value.forEach((singleItem) => {
+  //   Object.keys(singleItem).forEach((singleKey) => {
+  //     tableHeadersValues.forEach((singleHeader) => {
+  //       if (singleKey === singleHeader) {
+  //         console.log(singleItem);
+  //       }
+  //     });
+  //   });
+  // });
+
+  // * generate table headers
 };
 
 fetchTable();
