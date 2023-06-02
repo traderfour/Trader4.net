@@ -49,6 +49,15 @@ interface IFooter {
     link: string;
   }[];
 }
+interface IAnnouncement {
+  title: string;
+  badge: string;
+  link: ILink;
+}
+interface ILink {
+  text: string;
+  src: string;
+}
 export default defineAppConfig({
   docus: {
     title: "Trader4 Documentation",
@@ -65,6 +74,8 @@ export default defineAppConfig({
       logo: "/img/h-logo.svg",
       darkLogo: "/img/h-logo-dark.svg",
       menu: [
+        { title: "Home", link: "/" },
+        { title: "Pro", link: "/pro" },
         { title: "Pricing", link: "/pricing" },
         { title: "Help", link: "/help" },
       ],
@@ -255,5 +266,13 @@ export default defineAppConfig({
         },
       ],
     } as IFooter,
+    announcement: {
+      title: "Get Trader4 Pro Today, rich feature version of Trader4 for limited time!",
+      badge: "20% Off",
+      link: {
+        text: "Pro Version",
+        src: "pro",
+      },
+    } as IAnnouncement,
   },
 });
