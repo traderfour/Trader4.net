@@ -40,4 +40,9 @@
   </nav>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  currentPage: number;
+  totalPages: number;
+}>();
+</script>

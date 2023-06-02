@@ -19,13 +19,13 @@
           <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
           >
-            <NuxtLink to="/my/posts/create">
+            <NuxtLink :to="tableButton.link">
               <button
                 id="createProductButton"
                 data-modal-toggle="createProductModal"
                 class="flex items-center rtl:mr-2 ml-2 justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
-                Add
+                {{ tableButton.text }}
                 <Icon name="mdi:plus" class="ms-1" size="16px" />
               </button>
             </NuxtLink>
@@ -90,13 +90,16 @@
                 </th>
               </tr>
 
-              <tr v-else class="text-center">
+              <tr v-else class="text-center text-lg">
                 No Items Found
               </tr>
             </tbody>
           </table>
         </div>
-        <BaseTablePagination />
+        <BaseTablePagination
+          :currentPage="metas.current_page"
+          :totalPages="10"
+        />
       </div>
     </div>
   </section>
@@ -107,12 +110,11 @@ const { loading, getTableData, tableData, metas } = useTableStore();
 
 const props = defineProps<{
   endpoint: string;
+  tableButton: { text: string; link: string };
 }>();
 
 const fetchTable = async (page?: number) => {
   await getTableData(props.endpoint, page);
-  console.log(tableData.value);
-  console.log(metas.value);
 };
 
 fetchTable();

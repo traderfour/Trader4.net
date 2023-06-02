@@ -1,6 +1,9 @@
 <template>
   <div>
-    <BaseTable endpoint="/my/posts" />
+    <BaseTable
+      :table-button="{ link: '/my/posts/create', text: 'Add Post' }"
+      endpoint="/my/posts"
+    />
   </div>
 </template>
 
