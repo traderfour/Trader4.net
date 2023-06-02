@@ -71,6 +71,8 @@ export default defineAppConfig({
       megaMenu: false,
       hideSearchBar: false,
       hideLanguageSelector: false,
+      hideNotifications: true,
+      hideappMenu: true,
       languageList: [
         {
           lang: "en",
@@ -107,7 +109,7 @@ export default defineAppConfig({
       subnavLinks: [
         {icon:"mdi:home",title:"Dashboard",link:"/my/"},
         {icon:"mdi:pencil",title:"Posts",link:"/my/posts/"},
-        {icon:"mdi:account-settings-variant",title:"Trading",link:"/my/trading/"},
+        {icon:"mdi:trending-up",title:"Trading",link:"/my/trading/"},
         {icon:"mdi:finance",title:"Financial Engineering",link:"/my/financial-engineering/"},
         {icon:"mdi:cloud",title:"Cloud",link:"/my/cloud/"},
         {icon:"mdi:account",title:"Profile",link:"/my/profile"},
