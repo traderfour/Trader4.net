@@ -1,4 +1,6 @@
 <template>
+  <GlobalToast />
+  <button data-collapse-toggle="toast-danger">Toast</button>
   <section>
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
@@ -262,87 +264,87 @@ const router = useRouter();
 
 const postTypes = [
   {
-    text: "BOT",
+    text: "Bot",
     value: 13000,
   },
   {
-    text: "INDICATOR",
+    text: "Indicator",
     value: 13001,
   },
   {
-    text: "SYSTEM",
+    text: "System",
     value: 13002,
   },
   {
-    text: "SCRIPT",
+    text: "Script",
     value: 13003,
   },
   {
-    text: "TEMPLATE",
+    text: "Template",
     value: 13004,
   },
   {
-    text: "ALGORITHM",
+    text: "Algorithm",
     value: 13005,
   },
   {
-    text: "ARTIFICIAL_INTELLIGENCE",
+    text: "Artificial Intelligence",
     value: 13006,
   },
   {
-    text: "PORTFOLIO",
+    text: "Portfolio",
     value: 13007,
   },
   {
-    text: "AI_LIVE",
+    text: "Ai Live",
     value: 13008,
   },
   {
-    text: "FUNDED_ACCOUNT",
+    text: "Funded Account",
     value: 13009,
   },
   {
-    text: "TRADING_SIGNAL",
+    text: "Trading Signal",
     value: 13010,
   },
   {
-    text: "TRADING_STRATEGY",
+    text: "Trading Strategy",
     value: 13011,
   },
   {
-    text: "COURSE",
+    text: "Course",
     value: 13012,
   },
   {
-    text: "VIDEO",
+    text: "Video",
     value: 13013,
   },
   {
-    text: "ARTICLE",
+    text: "Article",
     value: 13014,
   },
   {
-    text: "PODCAST",
+    text: "Podcast",
     value: 13015,
   },
   {
-    text: "SHORT_VIDEO",
+    text: "Short Video",
     value: 13016,
   },
   {
-    text: "DATA",
+    text: "Data",
     value: 13017,
   },
   {
-    text: "MODEL",
+    text: "Moel",
     value: 13018,
   },
   {
-    text: "LIVE_STREAM",
+    text: "Live Stream",
     value: 13019,
   },
   {
-    text: "OTHER",
+    text: "Other",
     value: 13020,
   },
 ];
@@ -350,35 +352,25 @@ const postTypes = [
 const addPost = () => {
   if (postData.value.content) {
     loadingDisabled.value = true;
-    store.createPost(postData.value).then((res) => {
-      if (res.data.succeed && res.data.results.uuid){
-        router.push("/my/posts");
-      }else{
+    store
+      .createPost(postData.value)
+      .then((res: any) => {
+        if (res.data.succeed && res.data.results.uuid) {
+          router.push("/my/posts");
+        } else {
+          loadingDisabled.value = false;
+          hasContentError.value = true;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
         loadingDisabled.value = false;
-        hasContentError.value = true;
-      }
-    });
+      });
   } else {
+    loadingDisabled.value = false;
     hasContentError.value = true;
   }
 };
-
-const {
-  fetchCategories,
-  categories,
-  fetchMarkets,
-  markets,
-  fetchPlatforms,
-  platforms,
-} = useMarketStore();
-
-onMounted(() => {
-  nextTick(() => {
-    fetchCategories();
-    fetchMarkets();
-    fetchPlatforms();
-  });
-});
 
 // Form Validation
 const postSchema = Yup.object({

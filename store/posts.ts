@@ -8,6 +8,10 @@ export const usePostsStore = () => {
   //   api.myTs.posts.store();
   // };
 
+  const loading = ref(true);
+  const posts = ref([]);
+  const metas = ref({});
+
   const createPost = async (payload: any) => {
     return await useApi("/v1/my/posts", {
       method: "post",
@@ -16,9 +20,22 @@ export const usePostsStore = () => {
       body: JSON.stringify(payload),
     });
   };
+
   const getPosts = async () => {
     return await useApi("/v1/posts");
   };
 
-  return { createPost, getPosts };
+  const getMyPosts = async (page?: number) => {
+    loading.value = true;
+    await useApi(`/v1/my/posts${page ? "?page=" + page : ""}`, {
+      // @ts-ignore
+      headers: { Authorization: useCookie("user").value.access_token },
+    }).then(({ data }) => {
+      loading.value = false;
+      posts.value = data.results;
+      metas.value = data.metas;
+    });
+  };
+
+  return { createPost, getPosts, getMyPosts, posts, loading, metas };
 };
