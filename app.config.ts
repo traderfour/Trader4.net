@@ -271,7 +271,7 @@ export default defineAppConfig({
       badge: "20% Off",
       link: {
         text: "Pro Version",
-        src: "pro",
+        src: "/pro",
       },
     } as IAnnouncement,
   },

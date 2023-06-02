@@ -113,6 +113,7 @@
 const { loading, getTableData, tableData, metas } = useTableStore();
 const tableHeaders = ref([] as ITableHeaderItem[]);
 const tableItems = ref([]);
+let tableHeadersValues: string[] = [];
 
 const props = defineProps<{
   endpoint: string;
@@ -122,8 +123,9 @@ const props = defineProps<{
 
 const fetchTable = async (page?: number) => {
   await getTableData(props.endpoint, page);
-
-  // * generate table headers
+  tableHeaders.value.forEach((tableHeaderItem) =>
+    tableHeadersValues.push(tableHeaderItem.key)
+  );
   Object.keys(tableData.value[0]).forEach((element) => {
     if (props.headerFilters.length > 0) {
       props.headerFilters.forEach((filterItem: ITableHeaderItem) => {
@@ -145,14 +147,12 @@ const fetchTable = async (page?: number) => {
       });
     }
   });
-
-  let tableHeadersValues: string[] = [];
-  tableHeaders.value.forEach((tableHeaderItem) =>
-    tableHeadersValues.push(tableHeaderItem.key)
-  );
-
-  // * generate table headers
-};
+  tableData.value.forEach((tableItem: any) => {
+    //@TODO: Fix performance issue
+    tableHeadersValues.forEach((filterItem: ITableHeaderItem) => {
+      });
+    });
+  }
 
 fetchTable();
 </script>
