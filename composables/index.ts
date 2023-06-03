@@ -4,3 +4,4 @@ export { useAuth } from "../store/useAuth";
 export { useTradingStore } from "../store/trading";
 export { usePostsStore } from "../store/posts";
 export { useTableStore } from "../store/crud";
+export { useRiskStore } from "../store/risk-managements";
