@@ -72,15 +72,12 @@
                   :key="`tr-${tableTrIndex}`"
                   class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <template v-if="tableTr[tableTrIndex] === 'uuid'">
-                    <td
-                      v-for="(tableTd, tableTdIndex) in Object.values(tableTr)"
-                      :key="`td-${tableTdIndex}`"
-                      class="w-4 p-4"
-                    >
-                      {{ tableTd }}
-                    </td>
-                  </template>
+                <td class="w-4 p-4" v-for="(key) in Object.keys(tableTr)">
+                  <img v-if="key == 'logo'" :src="`${tableTr[key] !== null && tableTr[key] != '' ? tableTr[key] : 'https://s.trader4.net/defaults/posts/logo.png'}`" class="w-10 h-10 rounded-full" />
+                  <span v-else-if="key === 'uuid'"></span>
+                  <span v-else>{{ tableTr[key] }}</span>
+                </td>
+                
 
                   <td class="w-4 p-4">
                     <div class="flex w-4 items-center space-x-3">
