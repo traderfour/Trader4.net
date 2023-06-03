@@ -17,6 +17,5 @@ const headerFilters = ref([
   { text: "type", index: 5, key: "type" },
   { text: "status", index: 6, key: "status" },
   { text: "Published At", index: 7, key: "published_at" },
-  { text: "actions", index: 9, key: "actions" },
 ]);
 </script>

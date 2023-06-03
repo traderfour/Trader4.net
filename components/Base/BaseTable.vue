@@ -62,6 +62,7 @@
                 >
                   {{ item.text }}
                 </th>
+                <th scope="col" class="p-4">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -91,6 +92,24 @@
                     :key="`td-${tableTdIndex}`"
                   >
                     {{ tableTd }}
+                  </td>
+
+                  <td class="w-4 p-4">
+                    <div class="flex w-4 items-center space-x-3">
+                      <button
+                        class="bg-red-500 hover:bg-red-700 px-4 py-2 text-white rounded flex items-center"
+                      >
+                        <Icon name="mdi:bin" size="16px" class="me-1" />
+                        Delete
+                      </button>
+                      <NuxtLink
+                        :to="`${tableButton.link}`"
+                        class="bg-blue-500 hover:bg-blue-700 px-4 py-2 text-white rounded flex items-center"
+                      >
+                        <Icon name="mdi:pencil" size="16px" class="me-1" />
+                        Edit
+                      </NuxtLink>
+                    </div>
                   </td>
                 </tr>
               </template>
@@ -145,6 +164,7 @@ const fetchTable = async (page?: number) => {
     });
     tableItems.value.push(dataItems);
   });
+  console.log(tableItems.value);
 };
 
 fetchTable();
