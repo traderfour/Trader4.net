@@ -302,8 +302,8 @@ const postData = ref({
   attachments: [] || undefined,
   categories: undefined,
   tags: undefined,
-  platforms: [] || undefined,
-  markets: [] || undefined,
+  platforms: [],
+  markets: [],
 });
 
 const hasContentError = ref(false);
@@ -420,15 +420,30 @@ const addPost = () => {
       postData.value.markets = postData.value.markets.map((market) => {
         return market["uuid"];
       });
+    } else {
+      // @ts-ignore
+      delete postData.value.markets;
     }
 
     if (postData.value.platforms.length >= 1) {
       postData.value.platforms = postData.value.platforms.map((platform) => {
         return platform["uuid"];
       });
+    } else {
+      // @ts-ignore
+      delete postData.value.platforms;
     }
 
-    console.log(postData.value);
+    if (postData.value.attachments.length >= 1) {
+      postData.value.attachments = postData.value.attachments.map(
+        (attachment) => {
+          return attachment["uuid"];
+        }
+      );
+    } else {
+      // @ts-ignore
+      delete postData.value.attachments;
+    }
 
     loadingDisabled.value = true;
     store

@@ -49,9 +49,9 @@
 
 <script setup lang="ts">
 const props = defineProps<{
-  currentPage: number;
-  totalPages: number;
-  perPage: number;
+  currentPage: number | any;
+  totalPages: number | any;
+  perPage: number | any;
 }>();
 
 const showing = computed(() => {
