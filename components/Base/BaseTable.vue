@@ -105,7 +105,6 @@
           </table>
         </div>
         <BaseTablePagination
-          v-if="!loading"
           :currentPage="metas.current_page"
           :totalPages="metas.last_page"
           :perPage="metas.per_page"
