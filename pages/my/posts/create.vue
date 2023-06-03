@@ -5,7 +5,11 @@
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add Post
       </h2>
-      <VForm :validation-schema="postSchema" @submit="addPost">
+      <VForm
+        :validation-schema="postSchema"
+        @keypress.enter.prevent
+        @keyup.enter.prevent
+      >
         <div class="grid gap-4 sm:grid-cols-12 sm:gap-6 items-start">
           <div class="w-full lg:col-span-6 col-span-full">
             <label
@@ -127,6 +131,7 @@
             <SharedMultiSelectTagging
               v-model="postData.markets"
               :options="markets"
+              key="markets"
               :field-name="{
                 label: 'name',
                 key: 'uuid',
@@ -146,6 +151,7 @@
             </label>
             <SharedMultiSelectTagging
               v-model="postData.platforms"
+              key="platforms"
               :options="platforms"
               :field-name="{
                 label: 'title',
@@ -164,7 +170,7 @@
             >
               Tags
             </label>
-            <SharedTagInput v-model="postData.tags" />
+            <SharedTagInput key="tags" v-model="postData.tags" />
           </div>
           <!-- * tags -->
 

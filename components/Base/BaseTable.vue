@@ -10,9 +10,13 @@
         >
           <div class="flex-1 flex items-center space-x-2">
             <h5>
-              <span class="dark:text-white font-bold text-xl">{{props.title}}</span>
+              <span class="dark:text-white font-bold text-xl">{{
+                props.title
+              }}</span>
             </h5>
-            <h5 class="text-gray-500 dark:text-gray-400 ml-1 rtl:mr-1">({{ metas.last_page * metas.per_page }})</h5>
+            <h5 class="text-gray-500 dark:text-gray-400 ml-1 rtl:mr-1">
+              ({{ metas.last_page * metas.per_page }})
+            </h5>
           </div>
           <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
@@ -112,9 +116,7 @@
   </section>
 </template>
 
-<script lang="ts" setup>
-import { Vue3Lottie } from 'vue3-lottie';
-
+<script setup lang="ts">
 const { loading, getTableData, tableData, metas } = useTableStore();
 const tableItems = ref([]);
 
@@ -131,17 +133,20 @@ const fetchTable = async (page?: number) => {
   await getTableData(props.endpoint, page);
   tableData.value.forEach((tableItem: any) => {
     //@TODO: Fix performance issue
-    let dataItems = [];
+    let dataItems: string[] = [];
     props.headerFilters.forEach((filterItem: ITableHeaderItem) => {
-      if (Object.keys(tableItem).includes(filterItem.key) && tableItem[filterItem.key] !== null) {
+      if (
+        Object.keys(tableItem).includes(filterItem.key) &&
+        tableItem[filterItem.key] !== null
+      ) {
         dataItems[filterItem.key] = tableItem[filterItem.key];
-      }else{
-        dataItems[filterItem.key] = '';
+      } else {
+        dataItems[filterItem.key] = "";
       }
     });
     tableItems.value.push(dataItems);
   });
-}
+};
 
 fetchTable();
 </script>

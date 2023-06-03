@@ -8,7 +8,7 @@
           <div>
             <div
               v-for="(tag, idx) in selectedTags"
-              :key="idx"
+              :key="`tag-${idx}`"
               class="inline-flex cursor-pointer hover:bg-gray-300 items-center px-1 py-1 m-1 bg-gray-200 rounded dark:bg-gray-500 dark:text-gray-100"
               @click="removeTag(idx)"
             >
@@ -20,7 +20,7 @@
               v-model="inputValue"
               @keyup.enter="addTag"
               class="custom-input"
-              placeholder="Add tag..."
+              placeholder="press ENTER to add tag"
             />
           </div>
         </div>
@@ -41,12 +41,14 @@ const emit = defineEmits(["update:modelValue"]);
 
 // data
 const selectedTags = ref<string[]>([]);
-const inputValue = ref<string>("");
+const inputValue = ref<string>();
 const showOptions = ref<boolean>(false);
 
 function addTag() {
-  selectedTags.value.push(inputValue.value);
-  inputValue.value = "";
+  if (inputValue.value) {
+    selectedTags.value.push(inputValue.value);
+    inputValue.value = "";
+  }
 }
 
 const removeTag = (idx: number) => {

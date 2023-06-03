@@ -29,7 +29,6 @@
           <div class="relative">
             <input
               v-model="inputValue"
-              @keyup.enter="addTag()"
               @keydown.escape="inputValue = ''"
               class="custom-input"
               :placeholder="props.placeholder"

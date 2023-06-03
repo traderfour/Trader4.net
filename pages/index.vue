@@ -77,7 +77,7 @@
                       /> -->
                       <Icon
                         name="mdi:account"
-                        class="w-11 h-11 text-gray-300"
+                        class="w-11 h-11 text-gray-300 dark:text-gray-800"
                       />
                     </div>
                   </div>
