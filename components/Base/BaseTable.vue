@@ -21,7 +21,7 @@
           <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
           >
-            <NuxtLink :to="tableButton.link">
+            <NuxtLink :to="props.endpoint+tableButton.link">
               <button
                 class="flex items-center rtl:mr-2 ml-2 justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
@@ -88,7 +88,7 @@
                         Delete
                       </button>
                       <NuxtLink
-                        :to="`${tableButton.link}`"
+                        :to="`${props.endpoint}${tableTr.uuid}`"
                         class="bg-blue-500 hover:bg-blue-700 px-4 py-2 text-white rounded flex items-center"
                       >
                         <Icon name="mdi:pencil" size="16px" class="me-1" />
@@ -151,7 +151,6 @@ const fetchTable = async (page?: number) => {
     });
     tableItems.value.push(dataItems);
   });
-  console.log(tableItems.value);
 };
 
 fetchTable();

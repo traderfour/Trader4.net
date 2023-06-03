@@ -1,8 +1,8 @@
 <template>
   <div>
     <BaseTable
-      :table-button="{ link: '/my/posts/create', text: 'Add' }"
-      endpoint="/my/posts"
+      :table-button="{ link: 'create', text: 'Add' }"
+      endpoint="/my/posts/"
       :header-filters="headerFilters"
       title="Posts"
     />
