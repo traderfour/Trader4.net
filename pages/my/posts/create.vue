@@ -434,17 +434,10 @@ const addPost = () => {
       delete postData.value.platforms;
     }
 
-    if (postData.value.attachments.length >= 1) {
-      postData.value.attachments = postData.value.attachments.map(
-        (attachment) => {
-          return attachment["uuid"];
-        }
-      );
-    } else {
+    if (postData.value.attachments.length < 1) {
       // @ts-ignore
       delete postData.value.attachments;
     }
-
     loadingDisabled.value = true;
     store
       .createPost(postData.value)

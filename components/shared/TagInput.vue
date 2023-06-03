@@ -12,7 +12,8 @@
               class="inline-flex cursor-pointer hover:bg-gray-300 items-center px-1 py-1 m-1 bg-gray-200 rounded dark:bg-gray-500 dark:text-gray-100"
               @click="removeTag(idx)"
             >
-              <span class="text-xs font-semibold me-2">{{ tag }}</span>
+              <span class="text-xs font-semibold me-1">{{ tag }}</span>
+              <Icon name="mdi:close" size="14px" />
             </div>
           </div>
           <div class="relative">
