@@ -72,27 +72,15 @@
                   :key="`tr-${tableTrIndex}`"
                   class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  <!-- <td class="p-4 w-4">
-                    <div class="flex items-center">
-                      <input
-                        id="checkbox-table-search-1"
-                        type="checkbox"
-                        onclick="event.stopPropagation()"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      />
-                      <label for="checkbox-table-search-1" class="sr-only"
-                        >checkbox</label
-                      >
-                    </div>
-                  </td> -->
-
-                  <td
-                    class="w-4 p-4"
-                    v-for="(tableTd, tableTdIndex) in Object.values(tableTr)"
-                    :key="`td-${tableTdIndex}`"
-                  >
-                    {{ tableTd }}
-                  </td>
+                  <template v-if="tableTr[tableTrIndex] === 'uuid'">
+                    <td
+                      v-for="(tableTd, tableTdIndex) in Object.values(tableTr)"
+                      :key="`td-${tableTdIndex}`"
+                      class="w-4 p-4"
+                    >
+                      {{ tableTd }}
+                    </td>
+                  </template>
 
                   <td class="w-4 p-4">
                     <div class="flex w-4 items-center space-x-3">
@@ -144,6 +132,8 @@ const props = defineProps<{
   headerFilters: ITableHeaderItem[];
   title: string;
 }>();
+
+props.headerFilters.push({ key: "uuid" });
 
 const fetchTable = async (page?: number) => {
   tableData.value = [];
