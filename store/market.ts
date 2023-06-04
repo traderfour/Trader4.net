@@ -30,7 +30,6 @@ export const useMarketStore = () => {
   const fetchBrokers = async () => {
     const { data }: { data: any } = await useApi("/v1/market/brokers");
     brokers.value = data?.results as IBroker[];
-    console.log("brokers", brokers.value);
   };
 
   return {

@@ -34,7 +34,7 @@ export const usePostsStore = () => {
     await useApi(`/v1/my/posts${page ? "?page=" + page : ""}`, {
       // @ts-ignore
       headers: { Authorization: useCookie("user").value.access_token },
-    }).then(({ data }) => {
+    }).then(({ data }: any) => {
       loading.value = false;
       posts.value = data.results;
       metas.value = data.metas;

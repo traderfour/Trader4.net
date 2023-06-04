@@ -198,8 +198,6 @@
                   Finish
                 </button>
               </div>
-
-              <pre>{{ values }}</pre>
             </VForm>
           </section>
         </div>
@@ -238,7 +236,7 @@ const index = ref<number>(0);
 
 function nextStep(values: any) {
   if (index.value === 3) {
-    console.log("Done: ", JSON.stringify(values, null, 2));
+    onSubmit();
     return;
   }
 
@@ -247,7 +245,6 @@ function nextStep(values: any) {
   index.value++;
 }
 function prevStep() {
-  // console.log("prevStep", index.value);
   steps[index.value].active = false;
 
   steps[index.value - 1].active = true;
@@ -256,17 +253,11 @@ function prevStep() {
 
 // Validations Account Details
 const emit = defineEmits({
-  // submit with type
   submit: (value: TradingAcoounts) => true,
 });
-const {
-  fetchMarkets,
-  markets,
-  fetchBrokers,
-  brokers,
-  fetchPlatforms,
-  platforms,
-} = useMarketStore();
+
+const { fetchMarkets, fetchBrokers, brokers, fetchPlatforms } =
+  useMarketStore();
 
 const model = reactive<TradingAcoounts>({
   broker_id: "",
@@ -276,6 +267,7 @@ const model = reactive<TradingAcoounts>({
   secret: "",
   read_only_secret: "",
 } as TradingAcoounts);
+
 // Validations Account Details
 const schemas = [
   Yup.object().shape({
@@ -317,8 +309,6 @@ onMounted(() => {
 });
 
 const onSubmit = () => {
-  console.log(JSON.stringify(model, null, 2));
-  // emit to parent
   emit("submit", model as TradingAcoounts);
 };
 </script>
