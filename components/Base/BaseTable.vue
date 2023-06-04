@@ -44,16 +44,6 @@
               class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
             >
               <tr v-if="tableData.length >= 1">
-                <!-- <th scope="col" class="p-4">
-                  <div class="flex items-center">
-                    <input
-                      id="checkbox-all"
-                      type="checkbox"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label for="checkbox-all" class="sr-only">checkbox</label>
-                  </div>
-                </th> -->
                 <th
                   v-for="item in props.headerFilters"
                   :key="item.key"
@@ -154,7 +144,6 @@ const fetchTable = async (page?: number) => {
     });
     tableItems.value.push(dataItems);
   });
-  console.log(tableItems.value);
 };
 
 fetchTable();
