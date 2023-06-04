@@ -227,7 +227,6 @@
           <!-- * tiny MCE -->
         </div>
         <button
-          @click="addPost"
           type="submit"
           class="items-center px-8 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
           :disabled="loadingDisabled || !meta.valid"
