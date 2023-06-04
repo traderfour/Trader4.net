@@ -43,6 +43,7 @@
             </label>
             <SharedMultiSelectTagging
               v-model="formData.market_id"
+              :isMultiple="false"
               :options="markets"
               key="markets"
               :field-name="{
@@ -64,7 +65,6 @@
             </label>
             <SharedMultiSelectTagging
               v-model="formData.market_id"
-              :is-multiple="false"
               :options="markets"
               key="markets"
               :field-name="{
@@ -184,7 +184,7 @@ const { markets, fetchMarkets } = useMarketStore();
 await fetchMarkets();
 
 const formData = ref({
-  market_id: undefined,
+  market_id: [],
   trading_account_id: "",
   title: "",
   description: "",
@@ -194,6 +194,13 @@ const formData = ref({
 });
 
 const createItem = () => {
+  if (formData.value.market_id.length >= 1) {
+    // @ts-ignore
+    formData.value.market_id = formData.value.market_id[0].uuid;
+  } else {
+    // @ts-ignore
+    delete formData.value.markets;
+  }
   console.log(formData.value);
 
   // create(formData.value).then((res) => {

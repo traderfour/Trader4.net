@@ -32,7 +32,7 @@
               @keydown.escape="inputValue = ''"
               class="custom-input"
               :placeholder="props.placeholder"
-              @click="showOptions = !showOptions"
+              @click="openList"
             />
           </div>
           <Icon
@@ -86,7 +86,7 @@ const props = defineProps({
     default: true,
   },
   modelValue: {
-    type: Array,
+    default: () => [],
   },
 });
 
@@ -116,6 +116,14 @@ function addTag() {
     inputValue.value = "";
   }
 }
+
+const openList = () => {
+  if (props.isMultiple) {
+    showOptions.value = !showOptions.value;
+  } else if (!props.isMultiple && selectedTags.value.length <= 0) {
+    showOptions.value = !showOptions.value;
+  }
+};
 
 function removeTag(tag: string) {
   // selectedTags.value = selectedTags.value.filter((t) => t !== tag);
