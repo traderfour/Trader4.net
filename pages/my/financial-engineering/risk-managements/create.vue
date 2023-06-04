@@ -5,7 +5,7 @@
         Add Risk Management Plan
       </h2>
       <VForm :validation-schema="riskSchema" @submit="addRisk">
-        <div class="grid gap-4 sm:grid-cols-12 sm:gap-6 items-end">
+        <div class="grid gap-4 sm:grid-cols-12 sm:gap-6 items-center">
           <div class="max-w-4xl col-span-full">
             <label
               for="title"
@@ -302,6 +302,16 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="allowed order types" />
           </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Trading Accounts
+            </label>
+            <SharedMultiSelectTagging
+              v-model="riskData.trading_account"
+              :placeholder="'Select trading accounts'" />
+          </div>
           <div class="justify-start flex lg:col-span-3 col-span-full">
             <label
               for="type"
@@ -421,7 +431,7 @@ const riskData = ref({
   max_risk: undefined,
   max_risk_mode: undefined,
   max_risk_calculation: undefined,
-  is_max_risk_relative: true, //string baqie select
+  is_max_risk_relative: true,
   max_daily_risk: undefined,
   max_daily_risk_mode: undefined,
   max_daily_risk_calculation: undefined,
@@ -449,7 +459,7 @@ const riskData = ref({
   public: true,
   trading_account: undefined,
 });
-const { tableData } = useTableStore;
+
 const hasContentError = ref(false);
 const loadingDisabled = ref(false);
 const result = ref();
@@ -464,7 +474,6 @@ const addRisk = () => {
     store
       .createRiskManagement(riskData.value)
       .then((res: any) => {
-        tableData.value = res;
         if (res.data.succeed && res.data.results.uuid) {
           //@ts-ignore
           $toast.success("Created Successfully", {
@@ -487,9 +496,6 @@ const addRisk = () => {
     hasContentError.value = true;
   }
 };
-onMounted(() => {
-  tableData;
-});
 
 // Form Validation
 const riskSchema = Yup.object({
