@@ -1,13 +1,12 @@
 <template>
-  <!-- <GlobalToast message="This is post add page" /> -->
   <section>
     <div class="py-8 px-4 mx-auto">
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add Risk Management Plan
       </h2>
-      <VForm :validation-schema="postSchema" @submit="addPost">
+      <VForm :validation-schema="riskSchema" @submit="addRisk">
         <div class="grid gap-4 sm:grid-cols-12 sm:gap-6 items-start">
-          <div class="w-full lg:col-span-6 col-span-full">
+          <div class="col-span-full">
             <label
               for="title"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -15,7 +14,7 @@
               Title
             </label>
             <VField
-              v-model="postData.title"
+              v-model="riskData.title"
               type="text"
               name="title"
               id="title"
@@ -25,238 +24,437 @@
             <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
 
-          <!-- * comments -->
-          <div class="w-full lg:col-span-6 col-span-full">
-            <label
-              for="exceprt"
-              class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Comments
-            </label>
-
-            <div class="flex flex-wrap space-x-3">
-              <div class="m-1">
-                <input
-                  v-model="postData.comments"
-                  type="radio"
-                  id="public"
-                  name="comments"
-                  :value="19000"
-                  class="hidden peer"
-                />
-                <label for="public" class="radio-button">
-                  <span class="w-full">Public</span>
-                </label>
-              </div>
-              <div class="m-1">
-                <input
-                  v-model="postData.comments"
-                  type="radio"
-                  id="private"
-                  name="comments"
-                  :value="19001"
-                  class="hidden peer"
-                />
-                <label for="private" class="radio-button">
-                  <span class="w-full">Private</span>
-                </label>
-              </div>
-              <div class="m-1">
-                <input
-                  v-model="postData.comments"
-                  type="radio"
-                  id="closed"
-                  name="comments"
-                  :value="19002"
-                  class="hidden peer"
-                />
-                <label for="closed" class="radio-button">
-                  <span class="w-full">Closed</span>
-                </label>
-              </div>
-              <div class="m-1">
-                <input
-                  v-model="postData.comments"
-                  type="radio"
-                  id="subscribers"
-                  name="comments"
-                  :value="19003"
-                  class="hidden peer"
-                />
-                <label for="subscribers" class="radio-button">
-                  <span class="w-full">Subscribers</span>
-                </label>
-              </div>
-            </div>
-          </div>
-          <!-- * comments -->
-
-          <!-- * post type -->
           <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
-              Type
+              Max Risk
             </label>
-            <select
-              v-model="postData.type"
-              id="type"
+
+            <VField
+              v-model="riskData.max_risk"
+              type="text"
+              name="max_risk"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Type product name"
+              placeholder="max risk "
+            />
+            <VErrorMessage class="text-red-700 text-sm" name="max_risk" />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Max Risk Mode</label
             >
-              <option
-                v-for="(typeItem, typeIndex) in postTypes"
-                :key="typeIndex"
-                :value="typeItem.type"
+            <input
+              v-model="riskData.max_risk_mode"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Max Risk Mode"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Max Risk Calculation</label
+            >
+            <input
+              v-model="riskData.max_risk_calculation"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Max Risk calculation"
+            />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Max Daily Risk
+            </label>
+
+            <VField
+              v-model="riskData.max_daily_risk"
+              type="text"
+              name="max_daily_risk"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="max daily risk "
+            />
+            <VErrorMessage class="text-red-700 text-sm" name="max_daily_risk" />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Max Daily Risk Mode</label
+            >
+            <input
+              v-model="riskData.max_daily_risk_mode"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="max daily risk mode"
+            />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Max Daily Risk Calculation</label
+            >
+            <input
+              v-model="riskData.max_daily_risk_calculation"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="max daily risk calculation"
+            />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Risk Per Chart
+            </label>
+
+            <VField
+              v-model="riskData.risk_per_chart"
+              type="text"
+              name="risk_per_chart"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="risk per chart "
+            />
+            <VErrorMessage class="text-red-700 text-sm" name="risk_per_chart" />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Risk Per Chart Mode</label
+            >
+
+            <input
+              v-model="riskData.risk_per_chart_mode"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="risk per chart mode"
+            />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Risk Per Chart Calculation</label
+            >
+            <input
+              v-model="riskData.risk_per_chart_calculation"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="risk per chart calculation"
+            />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Risk Per Trade
+            </label>
+
+            <VField
+              v-model="riskData.risk_per_trade"
+              type="text"
+              name="risk_per_tradet"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="risk per trade"
+            />
+            <VErrorMessage class="text-red-700 text-sm" name="risk_per_trade" />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Risk Per Trade Mode</label
+            >
+            <input
+              v-model="riskData.risk_per_trade_mode"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="risk per trade mode"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Risk Per Trade Calculation</label
+            >
+            <input
+              v-model="riskData.risk_per_trade_calculation"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="risk per trade calculation"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Risk Reward Ratio</label
+            >
+            <input
+              v-model="riskData.risk_reward_ratio"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="risk reward ratio"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Positive Correlation
+            </label>
+            <input
+              v-model="riskData.positive_correlation"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="positive correlation"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Negative Correlation</label
+            >
+            <input
+              v-model="riskData.negative_correlation"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="negative correlation"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Low Correlation</label
+            >
+            <input
+              v-model="riskData.low_correlation"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="low correlation"
+            />
+          </div>
+
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >News Trading</label
+            >
+
+            <input
+              v-model="riskData.news_trading"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="news trading"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Allowed Instruments</label
+            >
+            <input
+              v-model="riskData.allowed_instruments"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="allowed instruments"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Allowed Times</label
+            >
+            <input
+              v-model="riskData.allowed_times"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="allowed times"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Allowed Order Types</label
+            >
+
+            <input
+              v-model="riskData.allowed_order_types"
+              type="number"
+              max="100"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="allowed order types"
+            />
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Trading Accounts
+            </label>
+            <SharedMultiSelectTagging
+              v-model="riskData.trading_account"
+              :placeholder="'Select trading accounts'"
+            />
+          </div>
+          <div class="justify-start flex lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >public</label
+            >
+            <div>
+              <label
+                class="relative inline-flex items-center ms-4 cursor-pointer"
               >
-                {{ typeItem.title }}
-              </option>
-            </select>
-          </div>
-          <!-- * post type -->
-
-          <!-- * market -->
-          <div class="w-full lg:col-span-3 col-span-full">
-            <label
-              for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Market
-            </label>
-            <SharedMultiSelectTagging
-              v-model="postData.markets"
-              :options="markets"
-              :field-name="{
-                label: 'name',
-                key: 'uuid',
-              }"
-              :placeholder="'Select Markets'"
-            />
-          </div>
-          <!-- * market -->
-
-          <!-- * platform -->
-          <div class="w-full lg:col-span-3 col-span-full">
-            <label
-              for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Platforms
-            </label>
-            <SharedMultiSelectTagging
-              v-model="postData.platforms"
-              :options="platforms"
-              :field-name="{
-                label: 'title',
-                key: 'uuid',
-              }"
-              :placeholder="'Select Platforms'"
-            />
-          </div>
-          <!-- * platform -->
-
-          <!-- * tags -->
-          <div class="w-full lg:col-span-3 col-span-full">
-            <label
-              for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Tags
-            </label>
-            <SharedTagInput v-model="postData.tags" />
-          </div>
-          <!-- * tags -->
-
-          <!-- * publish -->
-          <!-- <div class="w-full lg:col-span-6 col-span-full">
-            <label
-              for="is_public"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Publish
-            </label>
-
-            <div class="flex flex-wrap space-x-3">
-              <div>
                 <input
-                  v-model="postData.is_public"
-                  type="radio"
-                  id="public-access"
-                  name="is_public"
-                  :value="true"
-                  class="hidden peer"
+                  v-model="riskData.public"
+                  type="checkbox"
+                  class="sr-only peer outline-none"
                 />
-                <label for="public-access" class="radio-button">
-                  <span class="w-full">Public</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  v-model="postData.is_public"
-                  type="radio"
-                  id="private-access"
-                  name="is_public"
-                  :value="false"
-                  class="hidden peer"
-                />
-                <label for="private-access" class="radio-button">
-                  <span class="w-full">Private</span>
-                </label>
-              </div>
+                <div
+                  class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                ></div>
+              </label>
             </div>
-          </div> -->
-          <!-- * publish -->
-
-          <!-- * Logo & cover -->
-          <GlobalImageUploader
-            class="md:col-span-4 col-span-full"
-            id="logo"
-            key="logo"
-            lable-idle="Logo here"
-            @on-uploaded-successfully="
-              ($event) => {
-                postData.logo_id = $event.results.uuid;
-              }
-            "
-            accepted-file-type="image/jpeg, image/png"
-          />
-
-          <GlobalImageUploader
-            class="md:col-span-4 col-span-full"
-            id="cover"
-            key="cover"
-            lable-idle="Cover here"
-            @on-uploaded-successfully="
-              ($event) => {
-                postData.cover_id = $event.results.uuid;
-              }
-            "
-            accepted-file-type="image/jpeg, image/png"
-          />
-
-          <GlobalImageUploader
-            class="col-span-4"
-            id="attachments"
-            key="attachments"
-            :is-multiple="true"
-            lable-idle="attachments here (multiple)"
-            @on-uploaded-successfully="
-              ($event) => {
-                postData.attachments.push($event.results.uuid as never);
-              }
-            "
-            accepted-file-type="image/jpeg, image/png"
-          />
-          <!-- * Logo & cover -->
-
-          <div class="col-span-full">
-            <Editor v-model="postData.content" />
-            <span v-if="hasContentError" class="text-red-700 text-sm">
-              Content is Required
-            </span>
           </div>
-          <!-- * tiny MCE -->
+          <div class="w-full justify-start flex lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >hedge</label
+            >
+            <div>
+              <label
+                class="relative ms-4 inline-flex items-center cursor-pointer"
+              >
+                <input
+                  v-model="riskData.hedge"
+                  type="checkbox"
+                  class="sr-only peer outline-none"
+                />
+                <div
+                  class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                ></div>
+              </label>
+            </div>
+          </div>
+          <div class="w-full justify-start flex lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Stop Loss</label
+            >
+            <div>
+              <label
+                class="relative ms-4 inline-flex items-center cursor-pointer"
+              >
+                <input
+                  v-model="riskData.required_stop_loss"
+                  type="checkbox"
+                  class="sr-only peer outline-none"
+                />
+                <div
+                  class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                ></div>
+              </label>
+            </div>
+          </div>
+          <div class="w-full justify-start flex lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Target Profit</label
+            >
+            <div>
+              <label
+                class="relative ms-4 inline-flex items-center cursor-pointer"
+              >
+                <input
+                  v-model="riskData.required_target_profit"
+                  type="checkbox"
+                  class="sr-only peer outline-none"
+                />
+                <div
+                  class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                ></div>
+              </label>
+            </div>
+          </div>
+          <div class="w-full justify-start flex lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Max Risk Relative</label
+            >
+            <div>
+              <label
+                class="relative ms-4 inline-flex items-center cursor-pointer"
+              >
+                <input
+                  v-model="riskData.is_max_risk_relative"
+                  type="checkbox"
+                  class="sr-only peer outline-none"
+                />
+                <div
+                  class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+                ></div>
+              </label>
+            </div>
+          </div>
+          <div class="w-full justify-start flex lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Trading Accounts</label
+            >
+            <div>
+              <SharedMultiSelectTagging />
+            </div>
+          </div>
         </div>
         <button
           type="submit"
@@ -269,7 +467,7 @@
             size="1.5rem"
             name="mdi:loading"
           />
-          <span v-else>Publish Post</span>
+          <span v-else>Publish</span>
         </button>
       </VForm>
     </div>
@@ -281,164 +479,63 @@ const { $toast } = useNuxtApp();
 
 import Editor from "@tinymce/tinymce-vue";
 import * as Yup from "yup";
+import { useRiskStore } from "~/store/risk-managements";
 
-const postData = ref({
+const riskData = ref({
   title: undefined,
-  slogan: undefined,
-  logo_id: undefined,
-  cover_id: undefined,
-  excerpt: undefined,
-  content: undefined,
-  comments: 19000,
-  type: 13014,
-  is_public: true,
-  attachments: [] || undefined,
-  categories: undefined,
-  tags: undefined,
-  platforms: [] || undefined,
-  markets: [] || undefined,
-});
+  max_risk: undefined,
+  max_risk_mode: undefined,
+  max_risk_calculation: undefined,
+  is_max_risk_relative: true,
+  max_daily_risk: undefined,
+  max_daily_risk_mode: undefined,
+  max_daily_risk_calculation: undefined,
 
+  risk_per_chart: undefined,
+  risk_per_chart_mode: undefined,
+
+  risk_per_chart_calculation: undefined,
+
+  risk_per_trade: undefined,
+  risk_per_trade_mode: undefined,
+
+  risk_per_trade_calculation: undefined,
+  risk_reward_ratio: undefined,
+  positive_correlation: undefined,
+  negative_correlation: undefined,
+  low_correlation: undefined,
+  hedge: false,
+  required_stop_loss: false,
+  required_target_profit: false,
+  news_trading: undefined,
+  allowed_instruments: undefined,
+  allowed_times: undefined,
+  allowed_order_types: undefined,
+  public: true,
+  trading_account: undefined,
+});
 const hasContentError = ref(false);
 const loadingDisabled = ref(false);
-const store = usePostsStore();
-const router = useRouter();
-const {
-  fetchCategories,
-  categories,
-  fetchMarkets,
-  markets,
-  fetchPlatforms,
-  platforms,
-} = useMarketStore();
-
-onMounted(() => {
-  nextTick(() => {
-    fetchCategories();
-    fetchMarkets();
-    fetchPlatforms();
-  });
-});
-
-const postTypes = [
-  {
-    title: "Bot",
-    type: 13000,
-  },
-  {
-    title: "Indicator",
-    type: 13001,
-  },
-  {
-    title: "System",
-    type: 13002,
-  },
-  {
-    title: "Script",
-    type: 13003,
-  },
-  {
-    title: "Template",
-    type: 13004,
-  },
-  {
-    title: "Algorithm",
-    type: 13005,
-  },
-  {
-    title: "Artificial Intelligence",
-    type: 13006,
-  },
-  {
-    title: "Portfolio",
-    type: 13007,
-  },
-  {
-    title: "Ai Live",
-    type: 13008,
-  },
-  {
-    title: "Funded Account",
-    type: 13009,
-  },
-  {
-    title: "Trading Signal",
-    type: 13010,
-  },
-  {
-    title: "Trading Strategy",
-    type: 13011,
-  },
-  {
-    title: "Course",
-    type: 13012,
-  },
-  {
-    title: "Video",
-    type: 13013,
-  },
-  {
-    title: "Article",
-    type: 13014,
-  },
-  {
-    title: "Podcast",
-    type: 13015,
-  },
-  {
-    title: "Short Video",
-    type: 13016,
-  },
-  {
-    title: "Data",
-    type: 13017,
-  },
-  {
-    title: "Moel",
-    type: 13018,
-  },
-  {
-    title: "Live Stream",
-    type: 13019,
-  },
-  {
-    title: "Other",
-    type: 13020,
-  },
-];
-
-const addPost = () => {
-  if (postData.value.content) {
-    if (postData.value.markets.length >= 1) {
-      postData.value.markets = postData.value.markets.map((market) => {
-        return market["uuid"];
-      });
-    }
-
-    if (postData.value.platforms.length >= 1) {
-      postData.value.platforms = postData.value.platforms.map((platform) => {
-        return platform["uuid"];
-      });
-    }
-
-    console.log(postData.value);
-
+const store = useRiskStore();
+const addRisk = () => {
+  if (riskData.value) {
     loadingDisabled.value = true;
     store
-      .createPost(postData.value)
+      .createRiskManagement(riskData.value)
       .then((res: any) => {
         if (res.data.succeed && res.data.results.uuid) {
-          $toast.success("Post Created Successfully", {
+          //@ts-ignore
+          $toast.success("Created Successfully", {
             position: "top-right",
           });
-          router.push("/my/posts");
         } else {
           loadingDisabled.value = false;
           hasContentError.value = true;
         }
       })
       .catch((err) => {
-        $toast.error(err.toString(), {
+        //@ts-ignore
+        $toast.error(err.message.toString(), {
           position: "top-right",
         });
         loadingDisabled.value = false;
@@ -450,8 +547,11 @@ const addPost = () => {
 };
 
 // Form Validation
-const postSchema = Yup.object({
+const riskSchema = Yup.object({
   title: Yup.string().required("Title is Required"),
+  max_risk: Yup.string().required("Max Risk is Required"),
+  max_daily_risk: Yup.string().required("Max Daily Risk is Required"),
+  risk_per_chart: Yup.string().required("Risk Per Chart is Required"),
 });
 </script>
 
