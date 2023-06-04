@@ -64,6 +64,7 @@
             </label>
             <SharedMultiSelectTagging
               v-model="formData.market_id"
+              :is-multiple="false"
               :options="markets"
               key="markets"
               :field-name="{

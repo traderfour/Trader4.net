@@ -81,6 +81,10 @@ const props = defineProps({
       };
     },
   },
+  isMultiple: {
+    type: Boolean,
+    default: true,
+  },
   modelValue: {
     type: Array,
   },
