@@ -130,7 +130,7 @@ export default defineAppConfig({
           icon: "mdi:pencil",
           title: "Posts",
           link: "/my/posts/",
-          submenu: [{ icon: "mdi:google", title: "test link", link: "/" }],
+          submenu: [{ icon: "mdi:pencil", title: "List", link: "/my/posts" }],
         },
         { icon: "mdi:trending-up", title: "Trading", link: "/my/trading/" },
         {
