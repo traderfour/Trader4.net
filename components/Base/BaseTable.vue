@@ -1,5 +1,4 @@
 <template>
-  <!-- Start block -->
   <section class="bg-gray-50 dark:bg-gray-900 antialiased rounded">
     <div class="mx-auto">
       <div
@@ -21,7 +20,7 @@
           <div
             class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0"
           >
-            <NuxtLink :to="props.endpoint+tableButton.link">
+            <NuxtLink :to="props.endpoint + tableButton.link">
               <button
                 class="flex items-center rtl:mr-2 ml-2 justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
               >
@@ -62,12 +61,19 @@
                   :key="`tr-${tableTrIndex}`"
                   class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                <td class="w-4 p-4" v-for="(key) in Object.keys(tableTr)">
-                  <img v-if="key == 'logo'" :src="`${tableTr[key] !== null && tableTr[key] != '' ? tableTr[key] : 'https://s.trader4.net/defaults/posts/logo.png'}`" class="w-10 h-10 rounded-full" />
-                  <span v-else-if="key === 'uuid'"></span>
-                  <span v-else>{{ tableTr[key] }}</span>
-                </td>
-                
+                  <td class="w-4 p-4" v-for="key in Object.keys(tableTr)">
+                    <img
+                      v-if="key == 'logo'"
+                      :src="`${
+                        tableTr[key] !== null && tableTr[key] != ''
+                          ? tableTr[key]
+                          : 'https://s.trader4.net/defaults/posts/logo.png'
+                      }`"
+                      class="w-10 h-10 rounded-full"
+                    />
+                    <span v-else-if="key === 'uuid'"></span>
+                    <span v-else>{{ tableTr[key] }}</span>
+                  </td>
 
                   <td class="w-4 p-4">
                     <div class="flex w-4 items-center space-x-3">

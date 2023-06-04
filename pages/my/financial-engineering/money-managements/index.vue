@@ -5,9 +5,9 @@
         link: '/create',
         text: 'Add',
       }"
-      endpoint="/my/financial-engineering/risk-managements"
+      endpoint="/my/financial-engineering/money-managements"
       :header-filters="headerFilters"
-      title="Risk Managements"
+      title="Money Managements"
     />
   </div>
 </template>

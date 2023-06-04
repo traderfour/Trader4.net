@@ -137,6 +137,24 @@ export default defineAppConfig({
           icon: "mdi:finance",
           title: "Financial Engineering",
           link: "/my/financial-engineering/",
+          submenu: [
+            {
+              title: "Risk Managements",
+              link: "/my/financial-engineering/risk-managements/",
+            },
+            {
+              title: "Trading Plans",
+              link: "/my/financial-engineering/trading-plans/",
+            },
+            {
+              title: "Money Managements",
+              link: "/my/financial-engineering/money-managements/",
+            },
+            {
+              title: "Cash Flows",
+              link: "/my/financial-engineering/cash-flows/",
+            },
+          ],
         },
         { icon: "mdi:cloud", title: "Cloud", link: "/my/cloud/" },
         { icon: "mdi:account", title: "Profile", link: "/my/profile" },
