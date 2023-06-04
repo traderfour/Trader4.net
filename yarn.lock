@@ -3560,13 +3560,6 @@ flat@^5.0.2:
   resolved "https://registry.yarnpkg.com/flat/-/flat-5.0.2.tgz#8ca6fe332069ffa9d324c327198c598259ceb241"
   integrity sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==
 
-flowbite-datepicker@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/flowbite-datepicker/-/flowbite-datepicker-1.2.2.tgz#b3430ef6077d17c9bc4792c592587365eb4e289e"
-  integrity sha512-qOKDVtwkiOa0RrhD3sRtT45H8efAtyLiswuFIAV0UBhWSRYonzL0g1gAZwHiRRKtSmbET/8RQpQXlSEmAgadkg==
-  dependencies:
-    flowbite "^1.4.5"
-
 flowbite-typography@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/flowbite-typography/-/flowbite-typography-1.0.3.tgz#837f1150437af66914a7f3332d9b7a3ae2574a48"
@@ -3576,7 +3569,7 @@ flowbite-typography@^1.0.3:
     lodash.isplainobject "^4.0.6"
     lodash.merge "^4.6.2"
 
-flowbite@^1.4.5, flowbite@^1.6.5:
+flowbite@^1.6.5:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/flowbite/-/flowbite-1.6.5.tgz#a0eb2f3f0cf5098f802004df635e2717efc52bbc"
   integrity sha512-eI4h3pIRI9d7grlYq14r0A01KUtw7189sPLLx/O2i7JyPEWpbleScfYuEc48XTeNjk1xxm/JHgZkD9kjyOWAlA==

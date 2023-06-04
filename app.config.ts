@@ -132,7 +132,16 @@ export default defineAppConfig({
           link: "/my/posts/",
           submenu: [{ icon: "mdi:pencil", title: "List", link: "/my/posts" }],
         },
-        { icon: "mdi:trending-up", title: "Trading", link: "/my/trading/" },
+        {
+          icon: "mdi:trending-up",
+          title: "Trading",
+          link: "/my/trading/",
+          submenu: [
+            { title: "Accounts", link: "/my/trading/accounts" },
+            { title: "Bridge", link: "/my/trading/bridge/list" },
+            { title: "Frameworks", link: "/my/trading/frameworks" },
+          ],
+        },
         {
           icon: "mdi:finance",
           title: "Financial Engineering",
