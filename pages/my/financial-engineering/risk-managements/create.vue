@@ -328,6 +328,18 @@
               placeholder="allowed order types"
             />
           </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Trading Accounts
+            </label>
+            <SharedMultiSelectTagging
+              v-model="riskData.trading_account"
+              :placeholder="'Select trading accounts'"
+            />
+          </div>
           <div class="justify-start flex lg:col-span-3 col-span-full">
             <label
               for="type"
@@ -474,7 +486,7 @@ const riskData = ref({
   max_risk: undefined,
   max_risk_mode: undefined,
   max_risk_calculation: undefined,
-  is_max_risk_relative: true, //string baqie select
+  is_max_risk_relative: true,
   max_daily_risk: undefined,
   max_daily_risk_mode: undefined,
   max_daily_risk_calculation: undefined,
