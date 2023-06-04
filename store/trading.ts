@@ -1,6 +1,5 @@
 import { getToken } from "~/composables/JwtService";
 
-
 export const useTradingStore = () => {
   interface Resoponse {
     message: string;
@@ -15,15 +14,13 @@ export const useTradingStore = () => {
 
   //actions
   const createTradingAccount = async (payload: TradingAcoounts) => {
-    const res = await useApi("/v1/my/trading/accounts", {
+    return await useApi("/v1/my/trading/accounts", {
       method: "POST",
+
+      // @ts-ignore
+      headers: { Authorization: useCookie("user").value.access_token },
       body: JSON.stringify(payload),
-      // send bearer token
-        headers: {
-            Authorization: `Bearer ${getToken()?.access_token as string}`,
-        },
     });
-    return res;
   };
 
   return { createTradingAccount };

@@ -1,11 +1,10 @@
 <template>
   <div>
     <BaseTable
-      :table-button="{ link: '/my/trading/accounts/connect', text: 'Connect' }"
+      :table-button="{ link: '/connect', text: 'Connect' }"
       endpoint="/my/trading/accounts"
       :header-filters="headerFilters"
-      title="Trading Accounts"
-    />
+      title="Trading Accounts" />
   </div>
 </template>
 
