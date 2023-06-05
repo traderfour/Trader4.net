@@ -124,7 +124,6 @@ export default defineAppConfig({
           icon: "mdi:home",
           title: "Dashboard",
           link: "/my/",
-          submenu: [{ icon: "mdi:google", title: "test link" }],
         },
         {
           icon: "mdi:pencil",

@@ -203,10 +203,10 @@ const createItem = () => {
   }
   console.log(formData.value);
 
-  // create(formData.value).then((res) => {
-  //   console.log(res.data);
-  //   console.log(res.error);
-  // });
+  create(formData.value).then((res) => {
+    console.log(res.data);
+    console.log(res.error);
+  });
 };
 
 // Form Validation
