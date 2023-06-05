@@ -4,7 +4,7 @@
       <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         Add Money Management Plan
       </h2>
-      <VForm :validation-schema="moneySchema" @submit="add">
+      <VForm :validation-schema="moneySchema" @submit="addData">
         <div class="grid gap-4 sm:grid-cols-9 sm:gap-6 items-start">
           <div class="col-span-full lg:col-span-6">
             <label
@@ -117,7 +117,7 @@
               </option>
             </select>
           </div>
-          <div class="w-full lg:col-span-3 col-span-full">
+          <!-- <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -126,8 +126,8 @@
             <SharedMultiSelectTagging
               v-model="moneyData.trading_account"
               :placeholder="'Select trading accounts'" />
-          </div>
-          <div class="w-full lg:col-span-3 col-span-full">
+          </div> -->
+          <!-- <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -136,7 +136,7 @@
             <SharedMultiSelectTagging
               v-model="moneyData.instrument"
               :placeholder="'Select instrument'" />
-          </div>
+          </div> -->
         </div>
         <button
           type="submit"
@@ -159,7 +159,6 @@ const { $toast } = useNuxtApp();
 
 import Editor from "@tinymce/tinymce-vue";
 import * as Yup from "yup";
-import { useRiskStore } from "~/store/risk-managements";
 
 const moneyData = ref({
   title: undefined,
@@ -168,9 +167,8 @@ const moneyData = ref({
   position_size_calculation: undefined,
   maximum_size: undefined,
   minimum_size: undefined,
-  status: undefined,
-  trading_account: {},
-  instrument: {},
+  status: "30220",
+  instruments: undefined,
 });
 const POSITION_SIZE_MODE = [
   {
@@ -216,12 +214,15 @@ const STATUS = [
 ];
 const hasContentError = ref(false);
 const loadingDisabled = ref(false);
-const store = useRiskStore();
-const add = () => {
+// const store = useRiskStore();
+const { createItem } = useMyStore();
+const addData = () => {
   if (moneyData.value) {
     loadingDisabled.value = true;
-    store
-      .createRiskManagement(moneyData.value)
+    createItem(
+      "/v1/my/financial-engineering/money-managements",
+      moneyData.value
+    )
       .then((res: any) => {
         if (res.data.succeed && res.data.results.uuid) {
           //@ts-ignore
@@ -232,6 +233,7 @@ const add = () => {
           loadingDisabled.value = false;
           hasContentError.value = true;
         }
+        loadingDisabled.value = false;
       })
       .catch((err) => {
         //@ts-ignore
