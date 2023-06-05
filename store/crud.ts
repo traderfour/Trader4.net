@@ -25,7 +25,7 @@ export const useTableStore = () => {
         headers: { Authorization: useCookie("user").value.access_token },
       }
     );
-    const res = data.value as IApiResponse;
+    const res = data as IApiResponse;
     loading.value = false;
     tableData.value = res.results;
     metas.value = res.metas;
