@@ -280,7 +280,7 @@ const addPost = () => {
   //     }
   //   }
   if (postData.value.content) {
-    if (postData.value.markets.length >= 1) {
+    if (postData.value.markets && postData.value.markets.length >= 1) {
       postData.value.markets = postData.value.markets.map((market: any) => {
         return market["uuid"];
       });
@@ -289,7 +289,7 @@ const addPost = () => {
       delete postData.value.markets;
     }
 
-    if (postData.value.platforms.length >= 1) {
+    if (postData.value.platforms && postData.value.platforms.length >= 1) {
       postData.value.platforms = postData.value.platforms.map(
         (platform: any) => {
           return platform["uuid"];
@@ -318,7 +318,7 @@ const addPost = () => {
         }
       })
       .catch((err) => {
-        $toast.error(err.toString(), {
+        $toast.error(err.data.message, {
           position: "top-right",
         });
         loadingDisabled.value = false;
