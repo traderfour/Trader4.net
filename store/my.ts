@@ -1,17 +1,14 @@
-export const useMyStore = (endpoint: string) => {
+export const useMyStore = () => {
   const loading = ref(false);
 
-  const create = async (payload: any) => {
-    console.log(payload, "From Store");
-    return await useApi(endpoint, {
-      headers: {
-        method: "post",
-        // @ts-ignore
-        Authorization: useCookie("user").value.access_token,
-        body: JSON.stringify(payload),
-      },
+  const createItem = async (route: string, payload: any) => {
+    return await useApi(route, {
+      method: "post",
+      // @ts-ignore
+      headers: { Authorization: useCookie("user").value.access_token },
+      body: JSON.stringify(payload),
     });
   };
 
-  return { create, loading };
+  return { createItem, loading };
 };

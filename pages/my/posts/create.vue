@@ -453,7 +453,7 @@ const addPost = () => {
         }
       })
       .catch((err) => {
-        $toast.error(err.toString(), {
+        $toast.error(err.data.message, {
           position: "top-right",
         });
         loadingDisabled.value = false;

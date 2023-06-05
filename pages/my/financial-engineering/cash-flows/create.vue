@@ -6,7 +6,7 @@
       </h2>
       <VForm
         :validation-schema="formSchema"
-        @submit="createItem"
+        @submit="addItem"
         @keypress.enter.prevent
         @keyup.enter.prevent
       >
@@ -176,9 +176,7 @@
 const { $toast } = useNuxtApp();
 import * as Yup from "yup";
 
-const { loading, create } = useMyStore(
-  "/v1/my/financial-engineering/cash-flows"
-);
+const { loading, createItem } = useMyStore();
 
 const { markets, fetchMarkets } = useMarketStore();
 await fetchMarkets();
@@ -193,7 +191,7 @@ const formData = ref({
   public: false,
 });
 
-const createItem = () => {
+const addItem = () => {
   if (formData.value.market_id.length >= 1) {
     // @ts-ignore
     formData.value.market_id = formData.value.market_id[0].uuid;
@@ -203,10 +201,14 @@ const createItem = () => {
   }
   console.log(formData.value);
 
-  create(formData.value).then((res) => {
-    console.log(res.data);
-    console.log(res.error);
-  });
+  createItem("/v1/my/financial-engineering/money-managements", formData.value)
+    .then((res) => {
+      console.log(res.data);
+      console.log(res.error);
+    })
+    .catch((err) => {
+      console.warn(err.data.message);
+    });
 };
 
 // Form Validation
