@@ -465,7 +465,6 @@
       </VForm>
     </div>
   </section>
-  <h1>{{ riskData }}</h1>
 </template>
 
 <script setup lang="ts">

@@ -14,8 +14,6 @@
 <script setup lang="ts">
 const headerFilters = ref([
   { text: "title", index: 1, key: "title" },
-  { text: "max_risk", index: 1, key: "max_risk" },
-  { text: "max_daily_risk", index: 3, key: "max_daily_risk" },
-  { text: "risk_per_chart", index: 4, key: "risk_per_chart" },
+  { text: "public", index: 2, key: "public" },
 ]);
 </script>
