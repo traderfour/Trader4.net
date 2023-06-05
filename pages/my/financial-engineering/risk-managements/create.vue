@@ -9,8 +9,7 @@
           <div class="col-span-full">
             <label
               for="title"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Title
             </label>
             <VField
@@ -19,16 +18,14 @@
               name="title"
               id="title"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="What`s on your mind?"
-            />
+              placeholder="What`s on your mind?" />
             <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
 
           <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Max Risk
             </label>
 
@@ -37,8 +34,7 @@
               type="text"
               name="max_risk"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="max risk "
-            />
+              placeholder="max risk " />
             <VErrorMessage class="text-red-700 text-sm" name="max_risk" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
@@ -47,13 +43,19 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Max Risk Mode</label
             >
-            <input
+            <select
               v-model="riskData.max_risk_mode"
               type="number"
               max="100"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Max Risk Mode"
-            />
+              class="bg-gray-50 border text-sm border-gray-300 text-gray-900 rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Max Risk Mode">
+              <option
+                v-for="(riskMode, riskIndex) in MAX_RISK_MODE"
+                :key="riskIndex"
+                :value="riskMode.type">
+                {{ riskMode.title }}
+              </option>
+            </select>
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -61,20 +63,25 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Max Risk Calculation</label
             >
-            <input
+            <select
               v-model="riskData.max_risk_calculation"
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Max Risk calculation"
-            />
+              placeholder="Max Risk calculation">
+              <option
+                v-for="(risktype, riskIndex) in MAX_RISK_CALCULATION"
+                :key="riskIndex"
+                :value="risktype.type">
+                {{ risktype.title }}
+              </option>
+            </select>
           </div>
 
           <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Max Daily Risk
             </label>
 
@@ -83,8 +90,7 @@
               type="text"
               name="max_daily_risk"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="max daily risk "
-            />
+              placeholder="max daily risk " />
             <VErrorMessage class="text-red-700 text-sm" name="max_daily_risk" />
           </div>
 
@@ -94,13 +100,17 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Max Daily Risk Mode</label
             >
-            <input
+            <select
               v-model="riskData.max_daily_risk_mode"
-              type="number"
-              max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="max daily risk mode"
-            />
+              placeholder="max daily risk mode">
+              <option
+                v-for="(risktype, riskIndex) in MAX_DAILY_RISK_MODE"
+                :key="riskIndex"
+                :value="risktype.type">
+                {{ risktype.title }}
+              </option>
+            </select>
           </div>
 
           <div class="w-full lg:col-span-3 col-span-full">
@@ -109,20 +119,25 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Max Daily Risk Calculation</label
             >
-            <input
+            <select
               v-model="riskData.max_daily_risk_calculation"
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="max daily risk calculation"
-            />
+              placeholder="max daily risk calculation">
+              <option
+                v-for="(risktype, riskIndex) in MAX_DAILY_RISK_CALCULATION"
+                :key="riskIndex"
+                :value="risktype.type">
+                {{ risktype.title }}
+              </option>
+            </select>
           </div>
 
           <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Risk Per Chart
             </label>
 
@@ -131,8 +146,7 @@
               type="text"
               name="risk_per_chart"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per chart "
-            />
+              placeholder="risk per chart " />
             <VErrorMessage class="text-red-700 text-sm" name="risk_per_chart" />
           </div>
 
@@ -143,13 +157,17 @@
               >Risk Per Chart Mode</label
             >
 
-            <input
+            <select
               v-model="riskData.risk_per_chart_mode"
-              type="number"
-              max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per chart mode"
-            />
+              placeholder="risk per chart mode">
+              <option
+                v-for="(risktype, riskIndex) in RISK_PER_CHART_MODE"
+                :key="riskIndex"
+                :value="risktype.type">
+                {{ risktype.title }}
+              </option>
+            </select>
           </div>
 
           <div class="w-full lg:col-span-3 col-span-full">
@@ -158,20 +176,23 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Risk Per Chart Calculation</label
             >
-            <input
+            <select
               v-model="riskData.risk_per_chart_calculation"
-              type="number"
-              max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per chart calculation"
-            />
+              placeholder="risk per chart calculation">
+              <option
+                v-for="(risktype, riskIndex) in RISK_PER_CHART_CALCULATION"
+                :key="riskIndex"
+                :value="risktype.type">
+                {{ risktype.title }}
+              </option>
+            </select>
           </div>
 
           <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Risk Per Trade
             </label>
 
@@ -180,8 +201,7 @@
               type="text"
               name="risk_per_tradet"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per trade"
-            />
+              placeholder="risk per trade" />
             <VErrorMessage class="text-red-700 text-sm" name="risk_per_trade" />
           </div>
 
@@ -191,13 +211,17 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Risk Per Trade Mode</label
             >
-            <input
+            <select
               v-model="riskData.risk_per_trade_mode"
-              type="number"
-              max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per trade mode"
-            />
+              placeholder="risk per trade mode">
+              <option
+                v-for="(risktype, riskIndex) in RISK_PER_TRADE_MODE"
+                :key="riskIndex"
+                :value="risktype.type">
+                {{ risktype.title }}
+              </option>
+            </select>
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -205,13 +229,17 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Risk Per Trade Calculation</label
             >
-            <input
+            <select
               v-model="riskData.risk_per_trade_calculation"
-              type="number"
-              max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per trade calculation"
-            />
+              placeholder="risk per trade calculation">
+              <option
+                v-for="(risktype, riskIndex) in RISK_PER_TRADE_CALCULATION"
+                :key="riskIndex"
+                :value="risktype.type">
+                {{ risktype.title }}
+              </option>
+            </select>
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -224,8 +252,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk reward ratio"
-            />
+              placeholder="risk reward ratio" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -238,8 +265,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="positive correlation"
-            />
+              placeholder="positive correlation" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -252,8 +278,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="negative correlation"
-            />
+              placeholder="negative correlation" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -266,8 +291,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="low correlation"
-            />
+              placeholder="low correlation" />
           </div>
 
           <div class="w-full lg:col-span-3 col-span-full">
@@ -282,8 +306,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="news trading"
-            />
+              placeholder="news trading" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -296,8 +319,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="allowed instruments"
-            />
+              placeholder="allowed instruments" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -310,8 +332,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="allowed times"
-            />
+              placeholder="allowed times" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -325,20 +346,17 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="allowed order types"
-            />
+              placeholder="allowed order types" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Trading Accounts
             </label>
             <SharedMultiSelectTagging
               v-model="riskData.trading_account"
-              :placeholder="'Select trading accounts'"
-            />
+              :placeholder="'Select trading accounts'" />
           </div>
           <div class="col-span-full grid grid-cols-12 space-y-5 items-end">
             <div class="justify-start flex lg:col-span-3 col-span-full">
@@ -349,16 +367,13 @@
               >
               <div>
                 <label
-                  class="relative inline-flex items-center ms-4 cursor-pointer"
-                >
+                  class="relative inline-flex items-center ms-4 cursor-pointer">
                   <input
                     v-model="riskData.public"
                     type="checkbox"
-                    class="sr-only peer outline-none"
-                  />
+                    class="sr-only peer outline-none" />
                   <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-                  ></div>
+                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 </label>
               </div>
             </div>
@@ -370,16 +385,13 @@
               >
               <div>
                 <label
-                  class="relative ms-4 inline-flex items-center cursor-pointer"
-                >
+                  class="relative ms-4 inline-flex items-center cursor-pointer">
                   <input
                     v-model="riskData.hedge"
                     type="checkbox"
-                    class="sr-only peer outline-none"
-                  />
+                    class="sr-only peer outline-none" />
                   <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-                  ></div>
+                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 </label>
               </div>
             </div>
@@ -391,16 +403,13 @@
               >
               <div>
                 <label
-                  class="relative ms-4 inline-flex items-center cursor-pointer"
-                >
+                  class="relative ms-4 inline-flex items-center cursor-pointer">
                   <input
                     v-model="riskData.required_stop_loss"
                     type="checkbox"
-                    class="sr-only peer outline-none"
-                  />
+                    class="sr-only peer outline-none" />
                   <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-                  ></div>
+                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 </label>
               </div>
             </div>
@@ -412,16 +421,13 @@
               >
               <div>
                 <label
-                  class="relative ms-4 inline-flex items-center cursor-pointer"
-                >
+                  class="relative ms-4 inline-flex items-center cursor-pointer">
                   <input
                     v-model="riskData.required_target_profit"
                     type="checkbox"
-                    class="sr-only peer outline-none"
-                  />
+                    class="sr-only peer outline-none" />
                   <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-                  ></div>
+                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 </label>
               </div>
             </div>
@@ -433,16 +439,13 @@
               >
               <div>
                 <label
-                  class="relative ms-4 inline-flex items-center cursor-pointer"
-                >
+                  class="relative ms-4 inline-flex items-center cursor-pointer">
                   <input
                     v-model="riskData.is_max_risk_relative"
                     type="checkbox"
-                    class="sr-only peer outline-none"
-                  />
+                    class="sr-only peer outline-none" />
                   <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-                  ></div>
+                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                 </label>
               </div>
             </div>
@@ -451,14 +454,12 @@
         <button
           type="submit"
           class="items-center px-8 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
-          :disabled="loadingDisabled"
-        >
+          :disabled="loadingDisabled">
           <Icon
             v-if="loadingDisabled"
             class="animate-spin"
             size="1.5rem"
-            name="mdi:loading"
-          />
+            name="mdi:loading" />
           <span v-else>Publish</span>
         </button>
       </VForm>
@@ -506,6 +507,105 @@ const riskData = ref({
   public: true,
   trading_account: undefined,
 });
+const MAX_RISK_MODE = [
+  {
+    title: "balance",
+    type: 30000,
+  },
+  {
+    title: "equity",
+    type: 30001,
+  },
+];
+const MAX_RISK_CALCULATION = [
+  {
+    title: "percentage",
+    type: 30010,
+  },
+  {
+    title: "amount",
+    type: 30011,
+  },
+  {
+    title: "lots",
+    type: 30012,
+  },
+];
+const MAX_DAILY_RISK_MODE = [
+  {
+    title: "balance",
+    type: 30020,
+  },
+  {
+    title: "equity",
+    type: 30021,
+  },
+];
+
+const MAX_DAILY_RISK_CALCULATION = [
+  {
+    title: "percentage",
+    type: 30030,
+  },
+  {
+    title: "amount",
+    type: 30031,
+  },
+  {
+    title: "lots",
+    type: 30032,
+  },
+];
+
+const RISK_PER_CHART_MODE = [
+  {
+    title: "balance",
+    type: 30060,
+  },
+  {
+    title: "equity",
+    type: 30061,
+  },
+];
+const RISK_PER_CHART_CALCULATION = [
+  {
+    title: "percentage",
+    type: 30070,
+  },
+  {
+    title: "amount",
+    type: 30071,
+  },
+  {
+    title: "lots",
+    type: 30072,
+  },
+];
+const RISK_PER_TRADE_MODE = [
+  {
+    title: "balance",
+    type: 30080,
+  },
+  {
+    title: "equity",
+    type: 30081,
+  },
+];
+const RISK_PER_TRADE_CALCULATION = [
+  {
+    title: "percentage",
+    type: 30090,
+  },
+  {
+    title: "amount",
+    type: 30091,
+  },
+  {
+    title: "lots",
+    type: 30092,
+  },
+];
+
 const hasContentError = ref(false);
 const loadingDisabled = ref(false);
 const store = useRiskStore();
