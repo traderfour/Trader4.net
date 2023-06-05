@@ -24,7 +24,7 @@ interface ICategory {
   type: string;
 }
 interface IMarkets {
-  id: string;
+  uuid: string;
   name: string;
   slug: string;
   icon: null | string;
@@ -53,7 +53,7 @@ interface IBroker {
 }
 
 interface IPlatforms {
-  id: string;
+  uuid: string;
   title: string;
   slug: null | string;
   icon: null | string;
@@ -67,4 +67,13 @@ interface IPlatforms {
   permissions: null | string;
   oss: null | string;
   status: number;
+}
+
+interface IServers {
+  address: string;
+  is_official: boolean;
+  is_public: boolean;
+  port: number;
+  title: string;
+  uuid: string;
 }

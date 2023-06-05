@@ -12,7 +12,7 @@
                 class="w-8 h-8 mr-2"
                 src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
               />
-              <span class="text-gray-900 dark:text-white">Flowbite</span>
+              <span class="text-gray-900 dark:text-white">Trader 4</span>
             </a>
           </div>
           <ol
@@ -50,18 +50,18 @@
               <template v-if="index === 0">
                 <div class="flex md:flex-row flex-col gap-4 my-3">
                   <div class="basis-full">
-                    <label for="broker_id" class="custom-input-label"
-                      >Broker
+                    <label for="broker_id" class="custom-input-label">
+                      Select Market
                     </label>
                     <VField
                       as="select"
-                      name="broker_id"
+                      name="market_id"
                       class="custom-input"
-                      v-model="model.broker_id"
+                      v-model="market_id"
                     >
                       <option
                         :value="item.uuid"
-                        v-for="(item, index) in brokers"
+                        v-for="(item, index) in markets"
                         :key="index"
                       >
                         {{ item.name }}
@@ -69,41 +69,70 @@
                     </VField>
                     <div class="text-red-500 text-sm p-1">
                       <div class="fv-help-block">
-                        <VErrorMessage name="broker_id" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="md:basis-1/3 basis-full">
-                    <label for="platform_id" class="custom-input-label"
-                      >Platform ID</label
-                    >
-                    <VField
-                      as="select"
-                      name="platform_id"
-                      class="custom-input"
-                      v-model="model.platform_id"
-                    >
-                      <option
-                        :value="item.uuid"
-                        v-for="(item, index) in brokers"
-                        :key="index"
-                      >
-                        {{ item.name }}
-                      </option>
-                    </VField>
-                    <div class="text-red-500 text-sm p-1">
-                      <div class="fv-help-block">
-                        <VErrorMessage name="platform_id" />
+                        <VErrorMessage name="market_id" />
                       </div>
                     </div>
                   </div>
                 </div>
               </template>
+
               <template v-if="index === 1">
                 <div class="basis-full">
                   <label for="server_id" class="custom-input-label"
-                    >Server ID</label
+                    >Broker</label
                   >
+                  <VField
+                    as="select"
+                    name="broker_id"
+                    class="custom-input"
+                    v-model="model.broker_id"
+                  >
+                    <option
+                      :value="item.uuid"
+                      v-for="(item, index) in filterdBrokers"
+                      :key="index"
+                    >
+                      {{ item.name }}
+                    </option>
+                  </VField>
+                  <div class="text-red-500 text-sm p-1">
+                    <div class="fv-help-block">
+                      <VErrorMessage name="broker_id" />
+                    </div>
+                  </div>
+                </div>
+              </template>
+              <template v-if="index === 2">
+                <div class="basis-full">
+                  <label for="server_id" class="custom-input-label"
+                    >Platform</label
+                  >
+                  <VField
+                    as="select"
+                    name="platform_id"
+                    class="custom-input"
+                    v-model="model.platform_id"
+                  >
+                    <option
+                      :value="item.uuid"
+                      v-for="(item, index) in filterdPlatforms"
+                      :key="index"
+                    >
+                      {{ item.title }}
+                    </option>
+                  </VField>
+                  <div class="text-red-500 text-sm p-1">
+                    <div class="fv-help-block">
+                      <VErrorMessage name="platform_id" />
+                    </div>
+                  </div>
+                </div>
+              </template>
+              <template v-if="index === 3">
+                <div class="basis-full">
+                  <label for="server_id" class="custom-input-label">
+                    Server
+                  </label>
                   <VField
                     as="select"
                     name="server_id"
@@ -112,10 +141,10 @@
                   >
                     <option
                       :value="item.uuid"
-                      v-for="(item, index) in brokers"
+                      v-for="(item, index) in filterdServers"
                       :key="index"
                     >
-                      {{ item.name }}
+                      {{ item.title }}
                     </option>
                   </VField>
                   <div class="text-red-500 text-sm p-1">
@@ -125,50 +154,52 @@
                   </div>
                 </div>
               </template>
-              <template v-if="index === 2">
-                <div class="flex flex-row gap-4 my-3">
-                  <div class="basis-1/2">
-                    <label for="secret" class="custom-input-label"
-                      >Secret</label
-                    >
+              <template v-if="index === 4">
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="lg:col-span-1 col-span-full">
+                    <label for="server_id" class="custom-input-label">
+                      Secret
+                    </label>
                     <VField
-                      type="text"
                       name="secret"
                       class="custom-input"
                       v-model="model.secret"
-                    />
+                    >
+                    </VField>
                     <div class="text-red-500 text-sm p-1">
-                      <VErrorMessage name="secret" />
+                      <div class="fv-help-block">
+                        <VErrorMessage name="secret" />
+                      </div>
                     </div>
                   </div>
-                  <div class="basis-1/2">
-                    <label for="read_only_secret" class="custom-input-label"
-                      >Read Only Secret</label
-                    >
+                  <div class="lg:col-span-1 col-span-full">
+                    <label for="server_id" class="custom-input-label">
+                      Read Only Secret
+                    </label>
                     <VField
-                      type="text"
                       name="read_only_secret"
                       class="custom-input"
                       v-model="model.read_only_secret"
-                    />
+                    >
+                    </VField>
                     <div class="text-red-500 text-sm p-1">
-                      <VErrorMessage name="read_only_secret" />
+                      <div class="fv-help-block">
+                        <VErrorMessage name="read_only_secret" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </template>
-              <template v-if="index === 3">
-                <div class="gap-4 my-3">
-                  <label for="identity" class="custom-input-label"
-                    >Identity</label
-                  >
-                  <VField
-                    type="text"
-                    name="identity"
-                    class="custom-input"
-                    v-model="model.identity"
-                  />
-                  <div class="text-red-500 text-sm p-1">
+                <label for="server_id" class="custom-input-label">
+                  Identity
+                </label>
+                <VField
+                  name="identity"
+                  class="custom-input"
+                  v-model="model.identity"
+                >
+                </VField>
+                <div class="text-red-500 text-sm p-1">
+                  <div class="fv-help-block">
                     <VErrorMessage name="identity" />
                   </div>
                 </div>
@@ -183,7 +214,7 @@
                   prev
                 </button>
                 <button
-                  v-if="index !== 3"
+                  v-if="index !== 4"
                   type="submit"
                   class="float-right px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded !bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
@@ -191,7 +222,7 @@
                 </button>
 
                 <button
-                  v-if="index === 3"
+                  v-if="index === 4"
                   type="submit"
                   class="float-right px-10 py-2.5 sm:py-2 text-sm font-medium text-center text-white rounded !bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                 >
@@ -216,17 +247,22 @@ const steps = reactive([
     active: true,
   },
   {
+    title: "Broker",
+    icon: "iconsminds-air-balloon-1",
+    active: false,
+  },
+  {
+    title: "Platform",
+    icon: "iconsminds-air-balloon-1",
+    active: false,
+  },
+  {
     title: "Server",
     icon: "iconsminds-air-balloon-1",
     active: false,
   },
   {
-    title: "Secret",
-    icon: "iconsminds-air-balloon-1",
-    active: false,
-  },
-  {
-    title: "Identify",
+    title: "Secret & Identity",
     icon: "iconsminds-air-balloon-1",
     active: false,
   },
@@ -235,9 +271,19 @@ const steps = reactive([
 const index = ref<number>(0);
 
 function nextStep(values: any) {
-  if (index.value === 3) {
+  if (index.value === 4) {
     onSubmit();
     return;
+  }
+
+  if (index.value === 0) {
+    fetchFilterdBrokers(market_id.value);
+  }
+  if (index.value === 1) {
+    fetchFilterdPlatforms(model.broker_id);
+  }
+  if (index.value === 2) {
+    fetchFilterdServers(model.broker_id, model.platform_id);
   }
 
   steps[index.value].active = false;
@@ -256,8 +302,18 @@ const emit = defineEmits({
   submit: (value: TradingAcoounts) => true,
 });
 
-const { fetchMarkets, fetchBrokers, brokers, fetchPlatforms } =
-  useMarketStore();
+const {
+  fetchMarkets,
+  fetchFilterdBrokers,
+  filterdBrokers,
+  markets,
+  fetchFilterdPlatforms,
+  filterdPlatforms,
+  fetchFilterdServers,
+  filterdServers,
+} = useMarketStore();
+
+const market_id = ref("");
 
 const model = reactive<TradingAcoounts>({
   broker_id: "",
@@ -271,12 +327,16 @@ const model = reactive<TradingAcoounts>({
 // Validations Account Details
 const schemas = [
   Yup.object().shape({
-    broker_id: Yup.string().required().label("Broker ID"),
+    market_id: Yup.string().required().label("Market ID"),
+  }),
+  Yup.object().shape({ broker_id: Yup.string().required().label("Broker ID") }),
+  Yup.object().shape({
     platform_id: Yup.string().required().label("Platform ID"),
   }),
-  Yup.object().shape({ server_id: Yup.string().required().label("Server") }),
+  Yup.object().shape({ server_id: Yup.string().required().label("Server ID") }),
   Yup.object().shape(
     {
+      identity: Yup.string().required().label("Identity"),
       secret: Yup.string()
         .label("Secret")
         .when("read_only_secret", {
@@ -294,8 +354,8 @@ const schemas = [
     },
     ["secret", "read_only_secret"] as any
   ),
-  Yup.object().shape({ identity: Yup.string().required().label("Identity") }),
 ];
+
 const currentSchema = computed(() => {
   return schemas[index.value];
 });
@@ -303,8 +363,6 @@ const currentSchema = computed(() => {
 onMounted(() => {
   nextTick(() => {
     fetchMarkets();
-    fetchBrokers();
-    fetchPlatforms();
   });
 });
 
