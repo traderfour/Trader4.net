@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     ],
   ],
   gtm: {
-    id: "GTM-PXF5DHD",
+    id: "GTM-TFRSSPC",
     defer: true,
   },
 
