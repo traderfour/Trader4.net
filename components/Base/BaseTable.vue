@@ -97,9 +97,6 @@
 
               <tr v-else class="text-center text-lg">
                 No data found
-                <client-only>
-                  <!-- <Vue3Lottie animationLink="https://assets6.lottiefiles.com/packages/lf20_rc6CDU.json" :width="200" :height="200" /> -->
-                </client-only>
               </tr>
             </tbody>
           </table>
@@ -117,7 +114,7 @@
 
 <script setup lang="ts">
 const { loading, getTableData, tableData, metas } = useTableStore();
-const tableItems = ref([]);
+const tableItems = ref<any>([]);
 
 const props = defineProps<{
   endpoint: string;
@@ -135,7 +132,7 @@ const fetchTable = async (page?: number) => {
   tableData.value.forEach((tableItem: any) => {
     //@TODO: Fix performance issue
     let dataItems: string[] = [];
-    props.headerFilters.forEach((filterItem: ITableHeaderItem) => {
+    props.headerFilters.forEach((filterItem: ITableHeaderItem | any) => {
       if (
         Object.keys(tableItem).includes(filterItem.key) &&
         tableItem[filterItem.key] !== null

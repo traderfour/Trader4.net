@@ -18,14 +18,17 @@ export const useTableStore = () => {
 
   const getTableData = async (endpoint: string, page?: number) => {
     loading.value = true;
-    await useApi(`/v1${endpoint}/${page ? "?page=" + page : ""}`, {
-      // @ts-ignore
-      headers: { Authorization: useCookie("user").value.access_token },
-    }).then(({ data }: any) => {
-      loading.value = false;
-      tableData.value = data.results;
-      metas.value = data.metas;
-    });
+    const { data } = await useApi(
+      `/v1${endpoint}/${page ? "?page=" + page : ""}`,
+      {
+        // @ts-ignore
+        headers: { Authorization: useCookie("user").value.access_token },
+      }
+    );
+    const res = data.value as IApiResponse;
+    loading.value = false;
+    tableData.value = res.results;
+    metas.value = res.metas;
   };
 
   return { createPost, getPosts, getTableData, tableData, loading, metas };

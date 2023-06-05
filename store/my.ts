@@ -1,10 +1,8 @@
 export const useMyStore = (endpoint: string) => {
   const loading = ref(false);
-  const data = ref();
 
   const create = async (payload: any) => {
-    console.log(payload);
-
+    console.log(payload, "From Store");
     return await useApi(endpoint, {
       headers: {
         method: "post",
