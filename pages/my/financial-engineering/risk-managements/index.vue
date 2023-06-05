@@ -7,14 +7,15 @@
       }"
       endpoint="/my/financial-engineering/risk-managements"
       :header-filters="headerFilters"
-      title="Risk Managements"
-    />
+      title="Risk Managements" />
   </div>
 </template>
 
 <script setup lang="ts">
 const headerFilters = ref([
   { text: "title", index: 1, key: "title" },
-  { text: "id", index: 1, key: "uuid" },
+  { text: "max_risk", index: 1, key: "max_risk" },
+  { text: "max_daily_risk", index: 3, key: "max_daily_risk" },
+  { text: "risk_per_chart", index: 4, key: "risk_per_chart" },
 ]);
 </script>
