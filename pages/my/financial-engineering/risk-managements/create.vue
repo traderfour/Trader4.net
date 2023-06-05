@@ -348,7 +348,7 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="allowed order types" />
           </div>
-          <div class="w-full lg:col-span-3 col-span-full">
+          <!-- <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -357,7 +357,7 @@
             <SharedMultiSelectTagging
               v-model="riskData.trading_account"
               :placeholder="'Select trading accounts'" />
-          </div>
+          </div> -->
           <div class="col-span-full grid grid-cols-12 space-y-5 items-end">
             <div class="justify-start flex lg:col-span-3 col-span-full">
               <label
@@ -505,7 +505,6 @@ const riskData = ref({
   allowed_times: undefined,
   allowed_order_types: undefined,
   public: true,
-  trading_account: undefined,
 });
 const MAX_RISK_MODE = [
   {
@@ -624,6 +623,7 @@ const addRisk = () => {
           loadingDisabled.value = false;
           hasContentError.value = true;
         }
+        loadingDisabled.value = false;
       })
       .catch((err) => {
         //@ts-ignore
@@ -640,10 +640,10 @@ const addRisk = () => {
 
 // Form Validation
 const riskSchema = Yup.object({
-  title: Yup.string().required("Title is Required"),
-  max_risk: Yup.string().required("Max Risk is Required"),
-  max_daily_risk: Yup.string().required("Max Daily Risk is Required"),
-  risk_per_chart: Yup.string().required("Risk Per Chart is Required"),
+  // title: Yup.string().required("Title is Required"),
+  // max_risk: Yup.string().required("Max Risk is Required"),
+  // max_daily_risk: Yup.string().required("Max Daily Risk is Required"),
+  // risk_per_chart: Yup.string().required("Risk Per Chart is Required"),
 });
 </script>
 

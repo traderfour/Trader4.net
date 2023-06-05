@@ -7,14 +7,13 @@
       }"
       endpoint="/my/financial-engineering/money-managements"
       :header-filters="headerFilters"
-      title="Money Managements"
-    />
+      title="Money Managements" />
   </div>
 </template>
 
 <script setup lang="ts">
 const headerFilters = ref([
   { text: "title", index: 1, key: "title" },
-  { text: "id", index: 1, key: "uuid" },
+  { text: "status", index: 2, key: "status" },
 ]);
 </script>
