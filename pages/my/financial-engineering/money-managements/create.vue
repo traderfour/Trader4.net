@@ -6,7 +6,7 @@
       </h2>
       <VForm :validation-schema="moneySchema" @submit="addData">
         <div class="grid gap-4 sm:grid-cols-9 sm:gap-6 items-start">
-          <div class="col-span-full lg:col-span-6">
+          <div class="col-span-full max-w-lg">
             <label
               for="title"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -99,23 +99,56 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="minimum size" />
           </div>
-          <div class="col-span-full lg:col-span-3">
+          <div class="w-full lg:col-span-3 col-span-full">
             <label
-              for="position_size"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Status
-            </label>
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Trading Accounts</label
+            >
+
             <select
-              v-model="moneyData.status"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder=" select status">
+              v-model="moneyData.tradingAccounts"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
               <option
-                v-for="(risktype, riskIndex) in STATUS"
-                :key="riskIndex"
-                :value="risktype.type">
-                {{ risktype.title }}
+                v-for="(account, index) in tradingAccounts"
+                :key="index"
+                :value="account">
+                {{ account.uuid }}
               </option>
             </select>
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Status
+            </label>
+            <div class="flex flex-wrap space-x-3">
+              <div class="m-1">
+                <input
+                  v-model="moneyData.status"
+                  type="radio"
+                  name="status"
+                  id="active"
+                  :value="30220"
+                  class="hidden peer" />
+                <label for="active" class="radio-button">
+                  <span class="w-full">Active</span>
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="moneyData.status"
+                  type="radio"
+                  name="status"
+                  id="inactive"
+                  :value="30221"
+                  class="hidden peer" />
+                <label for="inactive" class="radio-button">
+                  <span class="w-full">Inactive</span>
+                </label>
+              </div>
+            </div>
           </div>
           <!-- <div class="w-full lg:col-span-3 col-span-full">
             <label
@@ -160,55 +193,62 @@ const { $toast } = useNuxtApp();
 import Editor from "@tinymce/tinymce-vue";
 import * as Yup from "yup";
 const router = useRouter();
+const { fetchAccounts, tradingAccounts } = useTradingStore();
+onMounted(() => {
+  nextTick(() => {
+    fetchAccounts();
+  });
+});
 const moneyData = ref({
   title: undefined,
   position_size: undefined,
-  position_size_mode: undefined,
-  position_size_calculation: undefined,
+  position_size_mode: 30200,
+  position_size_calculation: 30210,
   maximum_size: undefined,
   minimum_size: undefined,
   status: "30220",
   instruments: undefined,
+  tradingAccounts: [],
 });
 const POSITION_SIZE_MODE = [
   {
-    title: "balance",
+    title: "Balance",
     type: 30200,
   },
   {
-    title: "equity",
+    title: "Equity",
     type: 30201,
   },
   {
-    title: "free margin",
+    title: "Free Margin",
     type: 30202,
   },
   {
-    title: "margin",
+    title: "Margin",
     type: 30203,
   },
 ];
 const POSITION_SIZE_CALCULATION = [
   {
-    title: "percentage",
+    title: "Percentage",
     type: 30210,
   },
   {
-    title: "amount",
+    title: "Amount",
     type: 30211,
   },
   {
-    title: "lots",
+    title: "Lots",
     type: 30212,
   },
 ];
 const STATUS = [
   {
-    title: "active",
+    title: "Active",
     type: 30220,
   },
   {
-    title: "inactive",
+    title: "Inactive",
     type: 30221,
   },
 ];
@@ -252,7 +292,6 @@ const addData = () => {
 // Form Validation
 const moneySchema = Yup.object({
   title: Yup.string().required("Title is Required"),
-  position_size: Yup.string().required("Position Size is Required"),
 });
 </script>
 
