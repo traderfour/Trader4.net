@@ -258,7 +258,7 @@ export default defineAppConfig({
           title: "Support",
           links: [
             { title: "F.A.Q", link: "/faq" },
-            { title: "Documentation", link: "/documentation" },
+            { title: "Documentation", link: "/docs" },
             { title: "How To", link: "/how-to" },
             { title: "APIs Docs", link: "/docs/apis" },
             {
