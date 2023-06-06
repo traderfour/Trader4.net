@@ -1,6 +1,7 @@
 export const usePostsStore = () => {
+  const { $toast } = useNuxtApp();
   const loading = ref(true);
-  const posts = ref([]);
+  const posts = ref<IPosts[]>([]);
   let post = ref<IPosts>({} as IPosts);
   const metas = ref({});
 
@@ -22,8 +23,17 @@ export const usePostsStore = () => {
     });
   };
 
-  const getPosts = async () => {
-    return await useApi("/v1/posts");
+  const getPosts = (route: string) => {
+    useApi(route)
+      .then((res) => {
+        const response = res.data as IApiResponse;
+        loading.value = false;
+        posts.value = response.results;
+      })
+      .catch((err) => {
+        loading.value = false;
+        $toast.error(err.data.message, { position: "top-right" });
+      });
   };
 
   const getPost = async (slogan: string) => {

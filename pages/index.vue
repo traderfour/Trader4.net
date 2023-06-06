@@ -19,7 +19,7 @@
         </button>
 
         <li
-          v-for="(tag, index) in tags"
+          v-for="(tag, index) in categories"
           :key="index"
           class="px-3 py-1 min-w-fit rounded my-auto bg-white text-gray-600 cursor-pointer dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 ease-in-out transform"
         >
@@ -104,30 +104,15 @@
   </div>
 </template>
 <script lang="ts" setup>
-const tags = ref<ICategory[]>();
-const loading = ref(true);
-const posts = ref();
-
-onMounted(() => {
-  loading.value = true;
-  store
-    .getPosts()
-    .then((res: any) => {
-      loading.value = false;
-      posts.value = res.data.results;
-    })
-    .catch((err) => {
-      loading.value = false;
-    });
-});
-const { data }: { data: any } = await useApi("/v1/categories");
-
-if (data) {
-  tags.value = data.results as ICategory[];
-}
 const tagBox = ref<Ref | null>(null);
+const {
+  categories,
+  fetchCategories,
+}: { categories: Ref<ICategory[]>; fetchCategories: any } = useMarketStore();
+fetchCategories();
 
-const store = usePostsStore();
+const { getPosts, posts, loading } = usePostsStore();
+getPosts("/v1/posts");
 
 const { locale } = useI18n();
 const rtlLangList = [
