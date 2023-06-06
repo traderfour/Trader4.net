@@ -14,7 +14,7 @@ const { createTradingAccount } = useTradingStore();
 
 const submitFrom = async (data: any) => {
   console.log(data);
-  const res = await createTradingAccount(data as TradingAcoounts);
+  const res = await createTradingAccount(data as ITradingAccounts);
   console.log(res);
 };
 </script>

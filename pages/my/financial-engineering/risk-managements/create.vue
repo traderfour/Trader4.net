@@ -17,7 +17,7 @@
               type="text"
               name="title"
               id="title"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded w-3/6 focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="What`s on your mind?" />
             <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
@@ -73,8 +73,39 @@
               </option>
             </select>
           </div>
+          <div class="w-full lg:col-span-2 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Max Risk Relative
+            </label>
+            <div class="flex flex-wrap space-x-3">
+              <div class="m-1">
+                <input
+                  v-model="riskData.is_max_risk_relative"
+                  type="radio"
+                  id="active"
+                  :value="true"
+                  class="hidden peer" />
+                <label for="active" class="radio-button">
+                  <span class="w-full">Active</span>
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="riskData.is_max_risk_relative"
+                  type="radio"
+                  id="inactive"
+                  :value="false"
+                  class="hidden peer" />
+                <label for="inactive" class="radio-button">
+                  <span class="w-full">Inactive</span>
+                </label>
+              </div>
+            </div>
+          </div>
 
-          <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -90,7 +121,7 @@
             <VErrorMessage class="text-red-700 text-sm" name="max_daily_risk" />
           </div>
 
-          <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -109,7 +140,7 @@
             </select>
           </div>
 
-          <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -128,7 +159,7 @@
             </select>
           </div>
 
-          <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -144,7 +175,7 @@
             <VErrorMessage class="text-red-700 text-sm" name="risk_per_chart" />
           </div>
 
-          <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -164,7 +195,7 @@
             </select>
           </div>
 
-          <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -287,7 +318,39 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="low correlation" />
           </div>
-
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Hedge
+            </label>
+            <div class="flex flex-wrap space-x-3">
+              <div class="m-1">
+                <input
+                  v-model="riskData.hedge"
+                  type="radio"
+                  name="hedge"
+                  id="active_hedge"
+                  :value="true"
+                  class="hidden peer" />
+                <label for="active_hedge" class="radio-button">
+                  <span class="w-full">Active</span>
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="riskData.hedge"
+                  type="radio"
+                  name="hedge"
+                  id="inactive_hedge"
+                  :value="false"
+                  class="hidden peer" />
+                <label for="inactive_hedge" class="radio-button">
+                  <span class="w-full">Inactive</span>
+                </label>
+              </div>
+            </div>
+          </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
@@ -306,6 +369,73 @@
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Stop Loss
+            </label>
+            <div class="flex flex-wrap space-x-3">
+              <div class="m-1">
+                <input
+                  v-model="riskData.required_stop_loss"
+                  type="radio"
+                  name="required_stop_loss"
+                  id="active_stop-loss"
+                  :value="true"
+                  class="hidden peer" />
+                <label for="active_stop-loss" class="radio-button">
+                  <span class="w-full">Active</span>
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="riskData.required_stop_loss"
+                  type="radio"
+                  name="required_stop_loss"
+                  id="inactive_stop_loss"
+                  :value="false"
+                  class="hidden peer" />
+                <label for="inactive_stop_loss" class="radio-button">
+                  <span class="w-full">Inactive</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Target Profit
+            </label>
+            <div class="flex flex-wrap space-x-3">
+              <div class="m-1">
+                <input
+                  v-model="riskData.required_target_profit"
+                  type="radio"
+                  name="required_target_profit"
+                  id="active_target_profit"
+                  :value="true"
+                  class="hidden peer" />
+                <label for="active_target_profit" class="radio-button">
+                  <span class="w-full">Active</span>
+                </label>
+              </div>
+              <div class="m-1">
+                <input
+                  v-model="riskData.required_target_profit"
+                  type="radio"
+                  name="required_target_profit"
+                  id="inactive_target_profit"
+                  :value="false"
+                  class="hidden peer" />
+                <label for="inactive_target_profit" class="radio-button">
+                  <span class="w-full">Inactive</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full lg:col-span-4 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Allowed Instruments</label
             >
             <input
@@ -315,7 +445,7 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="allowed instruments" />
           </div>
-          <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -328,7 +458,7 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="allowed times" />
           </div>
-          <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-4 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -342,123 +472,54 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="allowed order types" />
           </div>
-          <h1>{{ tradingAccounts }}</h1>
+
           <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >Trading Accounts</label
             >
+
             <select
-              v-model="riskData.trading_account"
-              class="bg-gray-50 border text-sm border-gray-300 text-gray-900 rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Max Risk Mode">
+              v-model="riskData.tradingAccount"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
               <option
-                v-for="(account, accountIndex) in tradingAccounts"
-                :key="accountIndex"
-                :value="tradingAccounts">
+                v-for="(account, index) in tradingAccounts"
+                :key="index"
+                :value="account">
                 {{ account.uuid }}
               </option>
             </select>
           </div>
-          <!-- <div class="w-full lg:col-span-3 col-span-full">
+          <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Trading Accounts
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Public
             </label>
-            <SharedMultiSelectTagging
-              v-model="riskData.trading_account"
-              :placeholder="'Select trading accounts'" />
-          </div> -->
-          <div class="col-span-full grid grid-cols-12 space-y-5 items-end">
-            <div class="justify-start flex lg:col-span-3 col-span-full">
-              <label
-                for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >public</label
-              >
-              <div>
-                <label
-                  class="relative inline-flex items-center ms-4 cursor-pointer">
-                  <input
-                    v-model="riskData.public"
-                    type="checkbox"
-                    class="sr-only peer outline-none" />
-                  <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <div class="flex flex-wrap space-x-3">
+              <div class="m-1">
+                <input
+                  v-model="riskData.public"
+                  type="radio"
+                  name="public"
+                  id="public"
+                  :value="true"
+                  class="hidden peer" />
+                <label for="public" class="radio-button">
+                  <span class="w-full">Public</span>
                 </label>
               </div>
-            </div>
-            <div class="w-full justify-start flex lg:col-span-3 col-span-full">
-              <label
-                for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >hedge</label
-              >
-              <div>
-                <label
-                  class="relative ms-4 inline-flex items-center cursor-pointer">
-                  <input
-                    v-model="riskData.hedge"
-                    type="checkbox"
-                    class="sr-only peer outline-none" />
-                  <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                </label>
-              </div>
-            </div>
-            <div class="w-full justify-start flex lg:col-span-3 col-span-full">
-              <label
-                for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Stop Loss</label
-              >
-              <div>
-                <label
-                  class="relative ms-4 inline-flex items-center cursor-pointer">
-                  <input
-                    v-model="riskData.required_stop_loss"
-                    type="checkbox"
-                    class="sr-only peer outline-none" />
-                  <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                </label>
-              </div>
-            </div>
-            <div class="w-full justify-start flex lg:col-span-3 col-span-full">
-              <label
-                for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Target Profit</label
-              >
-              <div>
-                <label
-                  class="relative ms-4 inline-flex items-center cursor-pointer">
-                  <input
-                    v-model="riskData.required_target_profit"
-                    type="checkbox"
-                    class="sr-only peer outline-none" />
-                  <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                </label>
-              </div>
-            </div>
-            <div class="w-full justify-start flex lg:col-span-3 col-span-full">
-              <label
-                for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Max Risk Relative</label
-              >
-              <div>
-                <label
-                  class="relative ms-4 inline-flex items-center cursor-pointer">
-                  <input
-                    v-model="riskData.is_max_risk_relative"
-                    type="checkbox"
-                    class="sr-only peer outline-none" />
-                  <div
-                    class="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+              <div class="m-1">
+                <input
+                  v-model="riskData.public"
+                  type="radio"
+                  name="private"
+                  id="private"
+                  :value="false"
+                  class="hidden peer" />
+                <label for="private" class="radio-button">
+                  <span class="w-full">Private</span>
                 </label>
               </div>
             </div>
@@ -487,25 +548,32 @@ import Editor from "@tinymce/tinymce-vue";
 import * as Yup from "yup";
 import { useRiskStore } from "~/store/risk-managements";
 const router = useRouter();
+const { fetchAccounts, tradingAccounts } = useTradingStore();
+onMounted(() => {
+  nextTick(() => {
+    fetchAccounts();
+  });
+});
+console.log(tradingAccounts);
 const riskData = ref({
   title: undefined,
   max_risk: undefined,
-  max_risk_mode: undefined,
-  max_risk_calculation: undefined,
-  is_max_risk_relative: true,
+  max_risk_mode: 30000,
+  max_risk_calculation: 30010,
+  is_max_risk_relative: false,
   max_daily_risk: undefined,
-  max_daily_risk_mode: undefined,
-  max_daily_risk_calculation: undefined,
+  max_daily_risk_mode: 30020,
+  max_daily_risk_calculation: 30030,
 
   risk_per_chart: undefined,
-  risk_per_chart_mode: undefined,
+  risk_per_chart_mode: 30060,
 
-  risk_per_chart_calculation: undefined,
+  risk_per_chart_calculation: 30070,
 
   risk_per_trade: undefined,
-  risk_per_trade_mode: undefined,
+  risk_per_trade_mode: 30080,
 
-  risk_per_trade_calculation: undefined,
+  risk_per_trade_calculation: 30090,
   risk_reward_ratio: undefined,
   positive_correlation: undefined,
   negative_correlation: undefined,
@@ -518,109 +586,106 @@ const riskData = ref({
   allowed_times: undefined,
   allowed_order_types: undefined,
   public: true,
-  trading_account: [],
+  tradingAccount: [],
 });
 const MAX_RISK_MODE = [
   {
-    title: "balance",
+    title: "Balance",
     type: 30000,
   },
   {
-    title: "equity",
+    title: "Equity",
     type: 30001,
   },
 ];
 const MAX_RISK_CALCULATION = [
   {
-    title: "percentage",
+    title: "Percentage",
     type: 30010,
   },
   {
-    title: "amount",
+    title: "Amount",
     type: 30011,
   },
   {
-    title: "lots",
+    title: "Lots",
     type: 30012,
   },
 ];
 const MAX_DAILY_RISK_MODE = [
   {
-    title: "balance",
+    title: "Balance",
     type: 30020,
   },
   {
-    title: "equity",
+    title: "Equity",
     type: 30021,
   },
 ];
 
 const MAX_DAILY_RISK_CALCULATION = [
   {
-    title: "percentage",
+    title: "Percentage",
     type: 30030,
   },
   {
-    title: "amount",
+    title: "Amount",
     type: 30031,
   },
   {
-    title: "lots",
+    title: "Lots",
     type: 30032,
   },
 ];
 
 const RISK_PER_CHART_MODE = [
   {
-    title: "balance",
+    title: "Balance",
     type: 30060,
   },
   {
-    title: "equity",
+    title: "Equity",
     type: 30061,
   },
 ];
 const RISK_PER_CHART_CALCULATION = [
   {
-    title: "percentage",
+    title: "Percentage",
     type: 30070,
   },
   {
-    title: "amount",
+    title: "Amount",
     type: 30071,
   },
   {
-    title: "lots",
+    title: "Lots",
     type: 30072,
   },
 ];
 const RISK_PER_TRADE_MODE = [
   {
-    title: "balance",
+    title: "Balance",
     type: 30080,
   },
   {
-    title: "equity",
+    title: "Equity",
     type: 30081,
   },
 ];
 const RISK_PER_TRADE_CALCULATION = [
   {
-    title: "percentage",
+    title: "Percentage",
     type: 30090,
   },
   {
-    title: "amount",
+    title: "Amount",
     type: 30091,
   },
   {
-    title: "lots",
+    title: "Lots",
     type: 30092,
   },
 ];
-const { fetchTradingAccounts, tradingAccounts } = useTradingStore();
-fetchTradingAccounts();
-console.log(tradingAccounts);
 
 const hasContentError = ref(false);
 const loadingDisabled = ref(false);
