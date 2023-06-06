@@ -257,7 +257,6 @@
               </div>
 <<<<<<< HEAD
               <h3 class="mb-2 text-xl font-bold dark:text-white">Club</h3>
-              <p class="mb-4">
         <span v-if="readMoreStatus">
           <p class="font-light text-gray-500 dark:text-gray-400">Clubs lets traders team up, achieve goals, and celebrate success together. It's a fun way to learn from each other and share strategies.</p>
           </span>
