@@ -1,13 +1,4 @@
-// import { apiTS } from "@traderfour/api-ts";
 export const usePostsStore = () => {
-  // const baseURL = useRuntimeConfig().public.baseUrl;
-  // const api = apiTS();
-  // const posts = useState("posts", () => []);
-
-  // const addPost = () => {
-  //   api.myTs.posts.store();
-  // };
-
   const loading = ref(true);
   const posts = ref([]);
   let post = ref<IPosts>({} as IPosts);
