@@ -1,7 +1,7 @@
 <template>
   <section class="rounded">
-    <div class="py-8 px-4 mx-auto lg:p-10">
-      <div class="max-w-screen-md mb-8 lg:mb-16">
+    <div class="mx-auto">
+      <div class="max-w-screen-2xl mb-8 lg:mb-16">
         <h2 class="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
           Designed for Serious Financial Netizens like You
         </h2>
