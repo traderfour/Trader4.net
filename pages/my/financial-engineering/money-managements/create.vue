@@ -159,7 +159,7 @@ const { $toast } = useNuxtApp();
 
 import Editor from "@tinymce/tinymce-vue";
 import * as Yup from "yup";
-
+const router = useRouter();
 const moneyData = ref({
   title: undefined,
   position_size: undefined,
@@ -229,6 +229,7 @@ const addData = () => {
           $toast.success("Created Successfully", {
             position: "top-right",
           });
+          router.push("/my/financial-engineering/money-managements");
         } else {
           loadingDisabled.value = false;
           hasContentError.value = true;

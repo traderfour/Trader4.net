@@ -10,10 +10,28 @@ export const useTradingStore = () => {
 
   //states
 
+  const tradingAccounts = useState<ITradingAccounts[]>(
+    "tradingAccount",
+    () => []
+  );
+
   //getters
 
   //actions
-  const createTradingAccount = async (payload: TradingAcoounts) => {
+
+  // const fetchTradingAccounts = async () => {
+  //   const { data }: { data: any } = await useApi("/v1/my/trading/accounts");
+  //   tradingAccounts.value = data.results as ITradingAccounts[];
+  // };
+  const fetchTradingAccounts = async (payload: ITradingAccounts) => {
+    return await useApi("/v1/my/trading/accounts", {
+      method: "get",
+      // @ts-ignore
+      headers: { Authorization: useCookie("user").value.access_token },
+    });
+  };
+
+  const createTradingAccount = async (payload: ITradingAccounts) => {
     return await useApi("/v1/my/trading/accounts", {
       method: "POST",
 
@@ -23,5 +41,5 @@ export const useTradingStore = () => {
     });
   };
 
-  return { createTradingAccount };
+  return { createTradingAccount, fetchTradingAccounts, tradingAccounts };
 };
