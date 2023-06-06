@@ -45,8 +45,6 @@
             >
             <select
               v-model="riskData.max_risk_mode"
-              type="number"
-              max="100"
               class="bg-gray-50 border text-sm border-gray-300 text-gray-900 rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Max Risk Mode">
               <option
@@ -65,8 +63,6 @@
             >
             <select
               v-model="riskData.max_risk_calculation"
-              type="number"
-              max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="Max Risk calculation">
               <option
@@ -121,8 +117,6 @@
             >
             <select
               v-model="riskData.max_daily_risk_calculation"
-              type="number"
-              max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="max daily risk calculation">
               <option
@@ -348,6 +342,25 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               placeholder="allowed order types" />
           </div>
+          <h1>{{ tradingAccounts }}</h1>
+          <div class="w-full lg:col-span-3 col-span-full">
+            <label
+              for="type"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Trading Accounts</label
+            >
+            <select
+              v-model="riskData.trading_account"
+              class="bg-gray-50 border text-sm border-gray-300 text-gray-900 rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Max Risk Mode">
+              <option
+                v-for="(account, accountIndex) in tradingAccounts"
+                :key="accountIndex"
+                :value="tradingAccounts">
+                {{ account.uuid }}
+              </option>
+            </select>
+          </div>
           <!-- <div class="w-full lg:col-span-3 col-span-full">
             <label
               for="type"
@@ -473,7 +486,7 @@ const { $toast } = useNuxtApp();
 import Editor from "@tinymce/tinymce-vue";
 import * as Yup from "yup";
 import { useRiskStore } from "~/store/risk-managements";
-
+const router = useRouter();
 const riskData = ref({
   title: undefined,
   max_risk: undefined,
@@ -505,6 +518,7 @@ const riskData = ref({
   allowed_times: undefined,
   allowed_order_types: undefined,
   public: true,
+  trading_account: [],
 });
 const MAX_RISK_MODE = [
   {
@@ -604,6 +618,9 @@ const RISK_PER_TRADE_CALCULATION = [
     type: 30092,
   },
 ];
+const { fetchTradingAccounts, tradingAccounts } = useTradingStore();
+fetchTradingAccounts();
+console.log(tradingAccounts);
 
 const hasContentError = ref(false);
 const loadingDisabled = ref(false);
@@ -611,27 +628,25 @@ const store = useRiskStore();
 const addRisk = () => {
   if (riskData.value) {
     loadingDisabled.value = true;
-    store
-      .createRiskManagement(riskData.value)
-      .then((res: any) => {
-        if (res.data.succeed && res.data.results.uuid) {
-          //@ts-ignore
-          $toast.success("Created Successfully", {
-            position: "top-right",
-          });
-        } else {
-          loadingDisabled.value = false;
-          hasContentError.value = true;
-        }
-        loadingDisabled.value = false;
-      })
-      .catch((err) => {
+    store.createRiskManagement(riskData.value).then((res: any) => {
+      if (res.data.succeed && res.data.results.uuid) {
         //@ts-ignore
-        $toast.error(err.message.toString(), {
+        $toast.success("Created Successfully", {
           position: "top-right",
         });
+      } else {
         loadingDisabled.value = false;
+        hasContentError.value = true;
+      }
+      loadingDisabled.value = false;
+    });
+    router.push("/my/financial-engineering/risk-managements").catch((err) => {
+      //@ts-ignore
+      $toast.error(err.message.toString(), {
+        position: "top-right",
       });
+      loadingDisabled.value = false;
+    });
   } else {
     loadingDisabled.value = false;
     hasContentError.value = true;
