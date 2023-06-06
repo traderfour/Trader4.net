@@ -1,6 +1,6 @@
 <template>
-  <section class=" ">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+  <section>
+    <div class="py-8 mx-auto max-w-screen-2xl sm:py-16">
       <div class="grid gap-16 lg:grid-cols-3">
         <div class="hidden lg:block">
           <h3 class="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
