@@ -1,7 +1,7 @@
 <template>
   <section>
     <div
-      class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-12"
+      class="max-w-screen-2xl py-8 mx-auto text-center lg:py-16"
     >
       <div class="max-w-4xl mx-auto">
         <h1
@@ -61,9 +61,9 @@
       </div>
     </div>
   </section>
-  <section class=" ">
+  <section>
     <div
-      class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6"
+      class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols-2 lg:py-16"
     >
       <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
         <h2
