@@ -1,4 +1,13 @@
 // import { IMarkets, IBroker } from "../market/index";
+
+interface TradingAcoounts {
+  broker_id: string;
+  platform_id: string;
+  server_id: string;
+  identity: string;
+  secret?: string;
+  read_only_secret?: string;
+}
 interface ITradingAccounts {
   uuid: string;
   name: string;
