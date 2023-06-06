@@ -11,13 +11,15 @@
             <div class="flex">
               <label
                 for="title"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
                 Title
               </label>
               <Icon
                 data-tooltip-target="tooltip-title"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer" />
+                class="w-4 h-4 ms-2 cursor-pointer"
+              />
             </div>
 
             <VField
@@ -26,7 +28,8 @@
               name="title"
               id="title"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="What`s on your mind?" />
+              placeholder="What`s on your mind?"
+            />
             <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
 
@@ -35,13 +38,15 @@
             <div class="flex">
               <label
                 for="position_size"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
                 Position Size
               </label>
               <Icon
                 data-tooltip-target="tooltip-size"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer" />
+                class="w-4 h-4 ms-2 cursor-pointer"
+              />
             </div>
 
             <VField
@@ -49,7 +54,8 @@
               type="text"
               name="position_size"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="position size" />
+              placeholder="position size"
+            />
             <VErrorMessage class="text-red-700 text-sm" name="position_size" />
           </div>
 
@@ -58,24 +64,28 @@
             <div class="flex">
               <label
                 for="position_size"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
                 Position Size Mode
               </label>
               <Icon
                 data-tooltip-target="tooltip-position"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer" />
+                class="w-4 h-4 ms-2 cursor-pointer"
+              />
             </div>
 
             <select
               v-model="moneyData.position_size_mode"
               name="position_size_mode"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="position size mode">
+              placeholder="position size mode"
+            >
               <option
                 v-for="(risktype, riskIndex) in POSITION_SIZE_MODE"
                 :key="riskIndex"
-                :value="risktype.type">
+                :value="risktype.type"
+              >
                 {{ risktype.title }}
               </option>
             </select>
@@ -83,28 +93,33 @@
           <div class="col-span-full lg:col-span-3">
             <GlobalTooltip
               id="tooltip-calculation"
-              text="Position Size Calculation" />
+              text="Position Size Calculation"
+            />
             <div class="flex">
               <label
                 for="position_size"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
                 Position Size Calculation
               </label>
               <Icon
                 data-tooltip-target="tooltip-calculation"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer" />
+                class="w-4 h-4 ms-2 cursor-pointer"
+              />
             </div>
 
             <select
               v-model="moneyData.position_size_calculation"
               name="position_size_calculation"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="position size calculation">
+              placeholder="position size calculation"
+            >
               <option
                 v-for="(risktype, riskIndex) in POSITION_SIZE_CALCULATION"
                 :key="riskIndex"
-                :value="risktype.type">
+                :value="risktype.type"
+              >
                 {{ risktype.title }}
               </option>
             </select>
@@ -114,13 +129,15 @@
             <div class="flex">
               <label
                 for="position_size"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
                 Maximum Size
               </label>
               <Icon
                 data-tooltip-target="tooltip-maximum"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer" />
+                class="w-4 h-4 ms-2 cursor-pointer"
+              />
             </div>
 
             <input
@@ -128,20 +145,23 @@
               type="number"
               name="maximum_size"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="maximum size" />
+              placeholder="maximum size"
+            />
           </div>
           <div class="col-span-full lg:col-span-3">
             <GlobalTooltip id="tooltip-minimum" text="Minimum Size" />
             <div class="flex">
               <label
                 for="position_size"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
                 Minimum Size
               </label>
               <Icon
                 data-tooltip-target="tooltip-minimum"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer" />
+                class="w-4 h-4 ms-2 cursor-pointer"
+              />
             </div>
 
             <input
@@ -149,7 +169,8 @@
               type="number"
               name="minimum_size"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="minimum size" />
+              placeholder="minimum size"
+            />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="tooltip-trading" text="Trading Accounts" />
@@ -162,17 +183,20 @@
               <Icon
                 data-tooltip-target="tooltip-trading"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer" />
+                class="w-4 h-4 ms-2 cursor-pointer"
+              />
             </div>
 
             <select
               v-model="moneyData.tradingAccounts"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+            >
               <option
                 v-for="(account, index) in tradingAccounts"
                 :key="index"
-                :value="account">
-                {{ account.uuid }}
+                :value="account.uuid"
+              >
+                {{ account.identity }}
               </option>
             </select>
           </div>
@@ -187,7 +211,8 @@
               <Icon
                 data-tooltip-target="tooltip-status"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer" />
+                class="w-4 h-4 ms-2 cursor-pointer"
+              />
             </div>
 
             <div class="flex flex-wrap space-x-3">
@@ -198,7 +223,8 @@
                   name="status"
                   id="active"
                   :value="30220"
-                  class="hidden peer" />
+                  class="hidden peer"
+                />
                 <label for="active" class="radio-button">
                   <span class="w-full">Active</span>
                 </label>
@@ -210,7 +236,8 @@
                   name="status"
                   id="inactive"
                   :value="30221"
-                  class="hidden peer" />
+                  class="hidden peer"
+                />
                 <label for="inactive" class="radio-button">
                   <span class="w-full">Inactive</span>
                 </label>
@@ -241,12 +268,14 @@
         <button
           type="submit"
           class="items-center px-8 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
-          :disabled="loadingDisabled">
+          :disabled="loadingDisabled"
+        >
           <Icon
             v-if="loadingDisabled"
             class="animate-spin"
             size="1.5rem"
-            name="mdi:loading" />
+            name="mdi:loading"
+          />
           <span v-else>Publish</span>
         </button>
       </VForm>

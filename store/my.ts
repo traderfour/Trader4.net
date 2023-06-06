@@ -1,5 +1,7 @@
 export const useMyStore = () => {
-  const loading = ref(false);
+  const { $toast } = useNuxtApp();
+  const list = ref<IPosts>();
+  const loading = ref<boolean>(false);
 
   const createItem = async (route: string, payload: any) => {
     return await useApi(route, {
@@ -10,5 +12,20 @@ export const useMyStore = () => {
     });
   };
 
-  return { createItem, loading };
+  const getList = async (route: string) => {
+    loading.value = true;
+    await useApi(route)
+      .then((res) => {
+        const response = res.data as IApiResponse;
+        loading.value = false;
+        list.value = response.results;
+      })
+      .catch((err) => {
+        loading.value = false;
+        console.log(err.data.message, "err");
+        $toast.error(err.data.message, { position: "top-right" });
+      });
+  };
+
+  return { createItem, getList, list, loading };
 };

@@ -310,22 +310,10 @@ const hasContentError = ref(false);
 const loadingDisabled = ref(false);
 const store = usePostsStore();
 const router = useRouter();
-const {
-  fetchCategories,
-  categories,
-  fetchMarkets,
-  markets,
-  fetchPlatforms,
-  platforms,
-} = useMarketStore();
-
-onMounted(() => {
-  nextTick(() => {
-    fetchCategories();
-    fetchMarkets();
-    fetchPlatforms();
-  });
-});
+const { fetchMarkets, markets, fetchPlatforms, platforms } = useMarketStore();
+const { createItem } = useMyStore();
+fetchMarkets();
+fetchPlatforms();
 
 const postTypes = [
   {
@@ -439,8 +427,8 @@ const addPost = () => {
       delete postData.value.attachments;
     }
     loadingDisabled.value = true;
-    store
-      .createPost(postData.value)
+
+    createItem("/v1/my/posts", postData.value)
       .then((res: any) => {
         if (res.data.succeed && res.data.results.uuid) {
           $toast.success("Post Created Successfully", {
