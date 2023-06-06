@@ -7,11 +7,19 @@
       <VForm :validation-schema="moneySchema" @submit="addData">
         <div class="grid gap-4 sm:grid-cols-9 sm:gap-6 items-start">
           <div class="col-span-full max-w-lg">
-            <label
-              for="title"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Title
-            </label>
+            <GlobalTooltip id="tooltip-title" text="Title" />
+            <div class="flex">
+              <label
+                for="title"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Title
+              </label>
+              <Icon
+                data-tooltip-target="tooltip-title"
+                name="mdi-help-circle-outline"
+                class="w-4 h-4 ms-2 cursor-pointer" />
+            </div>
+
             <VField
               v-model="moneyData.title"
               type="text"
@@ -21,12 +29,21 @@
               placeholder="What`s on your mind?" />
             <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
+
           <div class="col-span-full lg:col-span-3">
-            <label
-              for="position_size"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Position Size
-            </label>
+            <GlobalTooltip id="tooltip-size" text="Position Size" />
+            <div class="flex">
+              <label
+                for="position_size"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Position Size
+              </label>
+              <Icon
+                data-tooltip-target="tooltip-size"
+                name="mdi-help-circle-outline"
+                class="w-4 h-4 ms-2 cursor-pointer" />
+            </div>
+
             <VField
               v-model="moneyData.position_size"
               type="text"
@@ -35,12 +52,21 @@
               placeholder="position size" />
             <VErrorMessage class="text-red-700 text-sm" name="position_size" />
           </div>
+
           <div class="col-span-full lg:col-span-3">
-            <label
-              for="position_size"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Position Size Mode
-            </label>
+            <GlobalTooltip id="tooltip-position" text="Position Size Mode" />
+            <div class="flex">
+              <label
+                for="position_size"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Position Size Mode
+              </label>
+              <Icon
+                data-tooltip-target="tooltip-position"
+                name="mdi-help-circle-outline"
+                class="w-4 h-4 ms-2 cursor-pointer" />
+            </div>
+
             <select
               v-model="moneyData.position_size_mode"
               name="position_size_mode"
@@ -55,11 +81,21 @@
             </select>
           </div>
           <div class="col-span-full lg:col-span-3">
-            <label
-              for="position_size"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Position Size Calculation
-            </label>
+            <GlobalTooltip
+              id="tooltip-calculation"
+              text="Position Size Calculation" />
+            <div class="flex">
+              <label
+                for="position_size"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Position Size Calculation
+              </label>
+              <Icon
+                data-tooltip-target="tooltip-calculation"
+                name="mdi-help-circle-outline"
+                class="w-4 h-4 ms-2 cursor-pointer" />
+            </div>
+
             <select
               v-model="moneyData.position_size_calculation"
               name="position_size_calculation"
@@ -74,11 +110,19 @@
             </select>
           </div>
           <div class="col-span-full lg:col-span-3">
-            <label
-              for="position_size"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Maximum Size
-            </label>
+            <GlobalTooltip id="tooltip-maximum" text="Maximum Size" />
+            <div class="flex">
+              <label
+                for="position_size"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Maximum Size
+              </label>
+              <Icon
+                data-tooltip-target="tooltip-maximum"
+                name="mdi-help-circle-outline"
+                class="w-4 h-4 ms-2 cursor-pointer" />
+            </div>
+
             <input
               v-model="moneyData.maximum_size"
               type="number"
@@ -87,11 +131,19 @@
               placeholder="maximum size" />
           </div>
           <div class="col-span-full lg:col-span-3">
-            <label
-              for="position_size"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Minimum Size
-            </label>
+            <GlobalTooltip id="tooltip-minimum" text="Minimum Size" />
+            <div class="flex">
+              <label
+                for="position_size"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Minimum Size
+              </label>
+              <Icon
+                data-tooltip-target="tooltip-minimum"
+                name="mdi-help-circle-outline"
+                class="w-4 h-4 ms-2 cursor-pointer" />
+            </div>
+
             <input
               v-model="moneyData.minimum_size"
               type="number"
@@ -100,11 +152,18 @@
               placeholder="minimum size" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
-            <label
-              for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Trading Accounts</label
-            >
+            <GlobalTooltip id="tooltip-trading" text="Trading Accounts" />
+            <div class="flex">
+              <label
+                for="type"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Trading Accounts</label
+              >
+              <Icon
+                data-tooltip-target="tooltip-trading"
+                name="mdi-help-circle-outline"
+                class="w-4 h-4 ms-2 cursor-pointer" />
+            </div>
 
             <select
               v-model="moneyData.tradingAccounts"
@@ -118,11 +177,19 @@
             </select>
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
-            <label
-              for="type"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Status
-            </label>
+            <GlobalTooltip id="tooltip-status" text="Status" />
+            <div class="flex">
+              <label
+                for="type"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Status
+              </label>
+              <Icon
+                data-tooltip-target="tooltip-status"
+                name="mdi-help-circle-outline"
+                class="w-4 h-4 ms-2 cursor-pointer" />
+            </div>
+
             <div class="flex flex-wrap space-x-3">
               <div class="m-1">
                 <input
@@ -192,11 +259,13 @@ const { $toast } = useNuxtApp();
 
 import Editor from "@tinymce/tinymce-vue";
 import * as Yup from "yup";
+import { initFlowbite } from "flowbite";
 const router = useRouter();
 const { fetchAccounts, tradingAccounts } = useTradingStore();
 onMounted(() => {
   nextTick(() => {
     fetchAccounts();
+    initFlowbite();
   });
 });
 const moneyData = ref({
