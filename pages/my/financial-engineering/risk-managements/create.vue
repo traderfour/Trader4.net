@@ -11,15 +11,13 @@
             <div class="flex">
               <label
                 for="title"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
+                class="block text-sm font-medium text-gray-900 mb-2 dark:text-white">
                 Title
               </label>
               <Icon
                 data-tooltip-target="title"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <VField
@@ -28,8 +26,7 @@
               name="title"
               id="title"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded w-3/6 focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="What`s on your mind?"
-            />
+              placeholder="What`s on your mind?" />
             <VErrorMessage class="text-red-700 text-sm" name="title" />
           </div>
 
@@ -38,15 +35,13 @@
             <div class="flex">
               <label
                 for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Max Risk
               </label>
               <Icon
                 data-tooltip-target="max_risk"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <VField
@@ -54,8 +49,7 @@
               type="text"
               name="max_risk"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="max risk "
-            />
+              placeholder="max risk " />
             <VErrorMessage class="text-red-700 text-sm" name="max_risk" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
@@ -69,20 +63,17 @@
               <Icon
                 data-tooltip-target="risk_mode"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <select
               v-model="riskData.max_risk_mode"
               class="bg-gray-50 border text-sm border-gray-300 text-gray-900 rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Max Risk Mode"
-            >
+              placeholder="Max Risk Mode">
               <option
                 v-for="(riskMode, riskIndex) in MAX_RISK_MODE"
                 :key="riskIndex"
-                :value="riskMode.type"
-              >
+                :value="riskMode.type">
                 {{ riskMode.title }}
               </option>
             </select>
@@ -98,20 +89,17 @@
               <Icon
                 data-tooltip-target="risk_calculation"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <select
               v-model="riskData.max_risk_calculation"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Max Risk calculation"
-            >
+              placeholder="Max Risk calculation">
               <option
                 v-for="(risktype, riskIndex) in MAX_RISK_CALCULATION"
                 :key="riskIndex"
-                :value="risktype.type"
-              >
+                :value="risktype.type">
                 {{ risktype.title }}
               </option>
             </select>
@@ -127,8 +115,7 @@
               <Icon
                 data-tooltip-target="risk_relative"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <div class="flex flex-wrap space-x-3">
@@ -138,8 +125,7 @@
                   type="radio"
                   id="active"
                   :value="true"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="active" class="radio-button">
                   <span class="w-full">Active</span>
                 </label>
@@ -150,8 +136,7 @@
                   type="radio"
                   id="inactive"
                   :value="false"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="inactive" class="radio-button">
                   <span class="w-full">Inactive</span>
                 </label>
@@ -164,15 +149,13 @@
               <GlobalTooltip text="Max Daily Risk" id="daily_risk" />
               <label
                 for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Max Daily Risk
               </label>
               <Icon
                 data-tooltip-target="daily_risk"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <VField
@@ -180,8 +163,7 @@
               type="text"
               name="max_daily_risk"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="max daily risk "
-            />
+              placeholder="max daily risk " />
             <VErrorMessage class="text-red-700 text-sm" name="max_daily_risk" />
           </div>
 
@@ -196,20 +178,17 @@
               <Icon
                 data-tooltip-target="daily_risk_mode"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 cursor-pointer" />
             </div>
 
             <select
               v-model="riskData.max_daily_risk_mode"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="max daily risk mode"
-            >
+              placeholder="max daily risk mode">
               <option
                 v-for="(risktype, riskIndex) in MAX_DAILY_RISK_MODE"
                 :key="riskIndex"
-                :value="risktype.type"
-              >
+                :value="risktype.type">
                 {{ risktype.title }}
               </option>
             </select>
@@ -219,8 +198,7 @@
             <div class="flex">
               <GlobalTooltip
                 id="daily_risk_calculation"
-                text="Max Daily Risk Calculation"
-              />
+                text="Max Daily Risk Calculation" />
               <label
                 for="type"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -229,20 +207,17 @@
               <Icon
                 data-tooltip-target="daily_risk_calculation"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <select
               v-model="riskData.max_daily_risk_calculation"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="max daily risk calculation"
-            >
+              placeholder="max daily risk calculation">
               <option
                 v-for="(risktype, riskIndex) in MAX_DAILY_RISK_CALCULATION"
                 :key="riskIndex"
-                :value="risktype.type"
-              >
+                :value="risktype.type">
                 {{ risktype.title }}
               </option>
             </select>
@@ -254,15 +229,13 @@
             <div class="flex">
               <label
                 for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Risk Per Chart
               </label>
               <Icon
                 data-tooltip-target="daily_per_chart"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <VField
@@ -270,8 +243,7 @@
               type="text"
               name="risk_per_chart"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per chart "
-            />
+              placeholder="risk per chart " />
             <VErrorMessage class="text-red-700 text-sm" name="risk_per_chart" />
           </div>
 
@@ -279,8 +251,7 @@
             <div class="flex">
               <GlobalTooltip
                 id="daily_per_chart_mode"
-                text="Risk Per Chart Mode"
-              />
+                text="Risk Per Chart Mode" />
               <label
                 for="type"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -289,20 +260,17 @@
               <Icon
                 data-tooltip-target="daily_per_chart_mode"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <select
               v-model="riskData.risk_per_chart_mode"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per chart mode"
-            >
+              placeholder="risk per chart mode">
               <option
                 v-for="(risktype, riskIndex) in RISK_PER_CHART_MODE"
                 :key="riskIndex"
-                :value="risktype.type"
-              >
+                :value="risktype.type">
                 {{ risktype.title }}
               </option>
             </select>
@@ -311,8 +279,7 @@
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip
               id="daily_per_chart_calculation"
-              text="Risk Per Chart Calculation"
-            />
+              text="Risk Per Chart Calculation" />
             <div class="flex">
               <label
                 for="type"
@@ -322,20 +289,17 @@
               <Icon
                 data-tooltip-target="daily_per_chart_calculation"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <select
               v-model="riskData.risk_per_chart_calculation"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per chart calculation"
-            >
+              placeholder="risk per chart calculation">
               <option
                 v-for="(risktype, riskIndex) in RISK_PER_CHART_CALCULATION"
                 :key="riskIndex"
-                :value="risktype.type"
-              >
+                :value="risktype.type">
                 {{ risktype.title }}
               </option>
             </select>
@@ -346,15 +310,13 @@
             <div class="flex">
               <label
                 for="type"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Risk Per Trade
               </label>
               <Icon
                 data-tooltip-target="daily_per_trade"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <VField
@@ -362,16 +324,14 @@
               type="text"
               name="risk_per_tradet"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per trade"
-            />
+              placeholder="risk per trade" />
             <VErrorMessage class="text-red-700 text-sm" name="risk_per_trade" />
           </div>
 
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip
               id="daily_per_trade_mode"
-              text="Risk Per Trade Mode"
-            />
+              text="Risk Per Trade Mode" />
             <div class="flex">
               <label
                 for="type"
@@ -381,20 +341,17 @@
               <Icon
                 data-tooltip-target="daily_per_trade_mode"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <select
               v-model="riskData.risk_per_trade_mode"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per trade mode"
-            >
+              placeholder="risk per trade mode">
               <option
                 v-for="(risktype, riskIndex) in RISK_PER_TRADE_MODE"
                 :key="riskIndex"
-                :value="risktype.type"
-              >
+                :value="risktype.type">
                 {{ risktype.title }}
               </option>
             </select>
@@ -402,8 +359,7 @@
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip
               id="risk_trade_calculation"
-              text="Risk Per Trade Calculation"
-            />
+              text="Risk Per Trade Calculation" />
             <div class="flex">
               <label
                 for="type"
@@ -413,20 +369,17 @@
               <Icon
                 data-tooltip-target="risk_trade_calculation"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <select
               v-model="riskData.risk_per_trade_calculation"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk per trade calculation"
-            >
+              placeholder="risk per trade calculation">
               <option
                 v-for="(risktype, riskIndex) in RISK_PER_TRADE_CALCULATION"
                 :key="riskIndex"
-                :value="risktype.type"
-              >
+                :value="risktype.type">
                 {{ risktype.title }}
               </option>
             </select>
@@ -442,8 +395,7 @@
               <Icon
                 data-tooltip-target="risk_reward_ratio"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <input
@@ -451,8 +403,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="risk reward ratio"
-            />
+              placeholder="risk reward ratio" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="positive" text="Positive Correlation" />
@@ -465,8 +416,7 @@
               <Icon
                 data-tooltip-target="positive"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <input
@@ -474,8 +424,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="positive correlation"
-            />
+              placeholder="positive correlation" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="negative" text="Negative Correlation" />
@@ -488,8 +437,7 @@
               <Icon
                 data-tooltip-target="negative"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <input
@@ -497,8 +445,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="negative correlation"
-            />
+              placeholder="negative correlation" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="low" text="Low Correlation" />
@@ -511,8 +458,7 @@
               <Icon
                 data-tooltip-target="low"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <input
@@ -520,8 +466,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="low correlation"
-            />
+              placeholder="low correlation" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="hedge" text="Hedge" />
@@ -534,8 +479,7 @@
               <Icon
                 data-tooltip-target="hedge"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <div class="flex flex-wrap space-x-3">
@@ -546,8 +490,7 @@
                   name="hedge"
                   id="active_hedge"
                   :value="true"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="active_hedge" class="radio-button">
                   <span class="w-full">Active</span>
                 </label>
@@ -559,8 +502,7 @@
                   name="hedge"
                   id="inactive_hedge"
                   :value="false"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="inactive_hedge" class="radio-button">
                   <span class="w-full">Inactive</span>
                 </label>
@@ -578,8 +520,7 @@
               <Icon
                 data-tooltip-target="news"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <input
@@ -587,8 +528,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="news trading"
-            />
+              placeholder="news trading" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="stop_loss" text="Stop Loss" />
@@ -601,8 +541,7 @@
               <Icon
                 data-tooltip-target="stop_loss"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <div class="flex flex-wrap space-x-3">
@@ -613,8 +552,7 @@
                   name="required_stop_loss"
                   id="active_stop-loss"
                   :value="true"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="active_stop-loss" class="radio-button">
                   <span class="w-full">Active</span>
                 </label>
@@ -626,8 +564,7 @@
                   name="required_stop_loss"
                   id="inactive_stop_loss"
                   :value="false"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="inactive_stop_loss" class="radio-button">
                   <span class="w-full">Inactive</span>
                 </label>
@@ -645,8 +582,7 @@
               <Icon
                 data-tooltip-target="profit"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <div class="flex flex-wrap space-x-3">
@@ -657,8 +593,7 @@
                   name="required_target_profit"
                   id="active_target_profit"
                   :value="true"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="active_target_profit" class="radio-button">
                   <span class="w-full">Active</span>
                 </label>
@@ -670,38 +605,39 @@
                   name="required_target_profit"
                   id="inactive_target_profit"
                   :value="false"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="inactive_target_profit" class="radio-button">
                   <span class="w-full">Inactive</span>
                 </label>
               </div>
             </div>
           </div>
-
           <div class="w-full lg:col-span-3 col-span-full">
-            <GlobalTooltip id="instrument" text="Allowed Instruments" />
+            <GlobalTooltip id="trading_accounts" text="Trading Accounts" />
             <div class="flex">
               <label
                 for="type"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Allowed Instruments</label
+                >Trading Accounts</label
               >
               <Icon
-                data-tooltip-target="instrument"
+                data-tooltip-target="trading_accounts"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
-            <input
-              v-model="riskData.allowed_instruments"
-              type="number"
-              max="100"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="allowed instruments"
-            />
+            <select
+              v-model="riskData.tradingAccount"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+              <option
+                v-for="(account, index) in tradingAccounts"
+                :key="index"
+                :value="account.uuid">
+                {{ account.identity }}
+              </option>
+            </select>
           </div>
+
           <div class="w-full lg:col-span-3 col-span-full"></div>
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="times" text="Allowed Times" />
@@ -714,8 +650,7 @@
               <Icon
                 data-tooltip-target="times"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <input
@@ -723,8 +658,7 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="allowed times"
-            />
+              placeholder="allowed times" />
           </div>
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="order_types" text="Allowed Order Types" />
@@ -737,8 +671,7 @@
               <Icon
                 data-tooltip-target="order_types"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 cursor-pointer" />
             </div>
 
             <input
@@ -746,38 +679,30 @@
               type="number"
               max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="allowed order types"
-            />
+              placeholder="allowed order types" />
           </div>
-
           <div class="w-full lg:col-span-3 col-span-full">
-            <GlobalTooltip id="trading_accounts" text="Trading Accounts" />
+            <GlobalTooltip id="instrument" text="Allowed Instruments" />
             <div class="flex">
               <label
                 for="type"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Trading Accounts</label
+                >Allowed Instruments</label
               >
               <Icon
-                data-tooltip-target="trading_accounts"
+                data-tooltip-target="instrument"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
-            <select
-              v-model="riskData.tradingAccount"
+            <input
+              v-model="riskData.allowed_instruments"
+              type="number"
+              max="100"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            >
-              <option
-                v-for="(account, index) in tradingAccounts"
-                :key="index"
-                :value="account.uuid"
-              >
-                {{ account.identity }}
-              </option>
-            </select>
+              placeholder="allowed instruments" />
           </div>
+
           <div class="w-full lg:col-span-3 col-span-full">
             <GlobalTooltip id="public" text="Public" />
             <div class="flex">
@@ -789,8 +714,7 @@
               <Icon
                 data-tooltip-target="public"
                 name="mdi-help-circle-outline"
-                class="w-4 h-4 ms-2 cursor-pointer"
-              />
+                class="w-4 h-4 ms-2 mt-0.5 cursor-pointer" />
             </div>
 
             <div class="flex flex-wrap space-x-3">
@@ -801,8 +725,7 @@
                   name="public"
                   id="public"
                   :value="true"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="public" class="radio-button">
                   <span class="w-full">Public</span>
                 </label>
@@ -814,8 +737,7 @@
                   name="private"
                   id="private"
                   :value="false"
-                  class="hidden peer"
-                />
+                  class="hidden peer" />
                 <label for="private" class="radio-button">
                   <span class="w-full">Private</span>
                 </label>
@@ -826,14 +748,12 @@
         <button
           type="submit"
           class="items-center px-8 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white rounded !bg-blue-800 disabled:!bg-gray-500 disabled:cursor-not-allowed"
-          :disabled="loadingDisabled"
-        >
+          :disabled="loadingDisabled">
           <Icon
             v-if="loadingDisabled"
             class="animate-spin"
             size="1.5rem"
-            name="mdi:loading"
-          />
+            name="mdi:loading" />
           <span v-else>Publish</span>
         </button>
       </VForm>
@@ -1015,7 +935,7 @@ const addRisk = () => {
 
 // Form Validation
 const riskSchema = Yup.object({
-  // title: Yup.string().required("Title is Required"),
+  title: Yup.string().required("Title is Required"),
   // max_risk: Yup.string().required("Max Risk is Required"),
   // max_daily_risk: Yup.string().required("Max Daily Risk is Required"),
   // risk_per_chart: Yup.string().required("Risk Per Chart is Required"),
