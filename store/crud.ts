@@ -12,6 +12,14 @@ export const useTableStore = () => {
     });
   };
 
+  const deleteItem = async (endpoint: string, uuid?: string) => {
+    return await useApi(`/v1${endpoint}/${uuid}`, {
+      method: "delete",
+      //@ts-ignore
+      headers: { Authorization: useCookie("user").value.access_token },
+    });
+  };
+
   const getPosts = async () => {
     return await useApi("/v1/posts");
   };
@@ -31,5 +39,13 @@ export const useTableStore = () => {
     metas.value = res.metas;
   };
 
-  return { createPost, getPosts, getTableData, tableData, loading, metas };
+  return {
+    createPost,
+    getPosts,
+    getTableData,
+    tableData,
+    loading,
+    metas,
+    deleteItem,
+  };
 };
