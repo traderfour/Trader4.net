@@ -723,10 +723,10 @@
                   v-model="riskData.public"
                   type="radio"
                   name="public"
-                  id="public"
+                  id="public_data"
                   :value="true"
                   class="hidden peer" />
-                <label for="public" class="radio-button">
+                <label for="public_data" class="radio-button">
                   <span class="w-full">Public</span>
                 </label>
               </div>
@@ -735,10 +735,10 @@
                   v-model="riskData.public"
                   type="radio"
                   name="private"
-                  id="private"
+                  id="private_data"
                   :value="false"
                   class="hidden peer" />
-                <label for="private" class="radio-button">
+                <label for="private_data" class="radio-button">
                   <span class="w-full">Private</span>
                 </label>
               </div>
